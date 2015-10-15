@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ecosystem Simulator</title>
+		<style type = "text/css">
+		</style>
+	</head>
+	<body>
+		<script type ="text/javascript">
+			var modelObjects = [["Grass", new Producer()]];
+			var growToHeightConversion = 1;
+			function Producer(ImageSrc, Name, GrowthPercent, StoragePercent, ReproductionFrequencyPercent, ReproductionStartEnergyPercent, OptimumPercentOfFullEnergy, StartingEnergy){
+				this.energy = StartingEnergy;
+				this.stores = 0;
+				if(GrowthPercent >= 0 && StoragePercent >= 0 && ReproductionFrequencyPercent >= 0 && ReproductionStartEnergyPercent >= 0){
+					if(GrowthPercent+StoragePercent+PeproductionChancePercent+ReproductionStartEnergyPercent == 1){
+						this.reproFreq = ReproductionFrequencyPercent;
+						this.reproStartEn = ReproductionStartEnergyPercent;	
+						this.growPercent = GrowthPercent;
+						this.storePercent = StoragePercent;
+						this.stores = this.energy * this.storePercent;
+					}
+				}
+				if(OptimumPercentOfFullEnergy >= 0 && OptimumPercentOfFullEnergy <= 1){
+					this.storesWantedPercent = OptimumPercentOfFullEnergy;
+				}
+				this.height = 1;
+				this.maintenence = 1/2;
+				this.basicNeeds = "none";
+			}
+				Producer.prototype.getEnergy = function (light){
+					var newEnergy = 0;
+					var optimumEnPercent = this.storesWantedPercent;
+					if(optimumEnPercent>light){
+						newEnergy += this.storageOutput;
+					}
+					newEnergy += this.height * light;
+					this.basicNeeds = "inEnergy";
+				}
+				Producer.prototype.maintenece = function (){
+					if(this.basicNeeds == "inEnergy"){
+						if(this.energy >= 0.1 * this.height){
+							this.energy -= 0.1 * this.height;
+						} else{
+							die();
+						}
+					}
+				}
+				Producer.prototype.storageOutput = function (light, wantedPercent){
+					var outputAmount = 0;
+					if (this.stores <= this.height*wantedPercent - this.height*light){
+						outputAmount = this.stores;
+					} else {
+						outputAmount = this.height*wantedPercent - this.height*light;
+					}
+					this.stores -= outputAmount;
+					return outputAmount;
+				}
+		</script>
+	</body>
+</html>

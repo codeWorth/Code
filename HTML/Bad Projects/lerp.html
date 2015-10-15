@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<input type = "text" id="textfield"></input><br/>
+		<input type = "button" value="Click to Go!" id="button"></input><br/>
+		<script type = "text/javascript">
+			var button = document.getElementById("button");
+			button.onclick = function (){
+				var linksText = document.getElementById("textfield").value;
+				var links = linksText.split("|");
+				for (var i = 0;i<links.length;i++){
+					var elem = document.createElement("img");
+					elem.src = links[i];
+					document.body.appendChild(elem);
+				}
+			}
+		</script>
+	</body>
+</html>

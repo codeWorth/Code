@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>1st Person</title>
+		<style type="text/css">
+			#mainCanvas{
+				background-color:black
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mainCanvas" width="1200" height="750">
+		<script type = "text/javascript">
+		
+			/*Matrix Structure
+			
+			 __        __
+			|            |
+			| [a1,a2,a3],|    a1 a2 a3
+			| [b1,b2,b3],| =  b1 b2 b3
+			| [c1,c2,c3] |    c1 c2 c3
+			|__	       __|
+			
+			*/
+
+			var canvas = document.getElementById('mainCanvas');
+			var ctx = canvas.getContext('2d');
+			var origShapes = [new Shape([{x:0,y:0,z:0},{x:100,y:0,z:0},{x:100,y:100,z:0},{x:0,y:100,z:0},{x:0,y:0,z:100},{x:100,y:0,z:100},{x:100,y:100,z:100},{x:0,y:100,z:100}],[0,1,2,3,0,4,5,6,7,5,6,1,2,7,8,3],false)];
+			var FOV = 0.1;
+			var playerPos = {x:0,y:0,z:-5};
+			var playerYTurn = 0;
+			var playerXTurn = 0;
+			
+			var mousePos = {x:0,y:0};
+			var storedTurn = {x:playerXTurn,y:playerYTurn};
+			var mouseDown = false;
+			
+			function xRotMat(t){
+				return [[1,0,0],
+						[0,Math.cos(t),-Math.sin(t)],
+						[0,Math.sin(t),Math.cos(t)]];
+			}
+						   
+			function yRotMat(t){
+				return [[Math.cos(t),0,Math.sin(t)],
+						[0,1,0],
+						[-Math.sin(t),0,Math.cos(t)]];
+			}
+			
+			function translatePoints(points,playerPos){
+				var newP = [];
+				for (var i = 0;i<points.length;i++){
+					newP.push({x:points[i].x-playerPos.x,y:points[i].y-playerPos.y,z:points[i].z-playerPos.z})
+				}
+				return newP;
+			}
+			
+			function rotateXPoints(points,xAmount){
+				var newL = [];
+				var rotMat = xRotMat(-xAmount);
+				for (var i = 0;i<points.length;i++){
+					var point = points[i];
+					var newPoint = {x:0,y:0,z:0};
+					newPoint.x = point.x*rotMat[0][0]+point.y*rotMat[1][0]+point.z*rotMat[2][0];
+					newPoint.y = point.x*rotMat[0][1]+point.y*rotMat[1][1]+point.z*rotMat[2][1];
+					newPoint.z = point.x*rotMat[0][2]+point.y*rotMat[1][2]+point.z*rotMat[2][2];
+					newL.push(newPoint);
+				}
+				return newL;
+			}
+			
+			function rotateYPoints(points,yAmount){
+				var newL = [];
+				var rotMat = yRotMat(-yAmount);
+				for (var i = 0;i<points.length;i++){
+					var point = points[i];
+					var newPoint = {x:0,y:0,z:0};
+					newPoint.x = point.x*rotMat[0][0]+point.y*rotMat[1][0]+point.z*rotMat[2][0];
+					newPoint.y = point.x*rotMat[0][1]+point.y*rotMat[1][1]+point.z*rotMat[2][1];
+					newPoint.z = point.x*rotMat[0][2]+point.y*rotMat[1][2]+point.z*rotMat[2][2];
+					newL.push(newPoint);
+				}
+				return newL;
+			}
+			
+			function to2dim(points,m,L,H,maxD){
+				var new2d = [];
+				for (var i = 0;i<points.length;i++){
+					var point = points[i];
+					if (point.z < maxD){
+					/*	var restrictBox = {upLeft:{x:L*(1+m*point.z)/-2,y:H*(1+m*point.z)/2},downRight:{x:L*(1+m*point.z)/2,y:H*(1+m*point.z)/-2}};
+						if (point.x >= restrictBox.upLeft.x && point.x <= restrictBox.downRight.x){
+							if (point.y <= restrictBox.upLeft.y && point.y >= restrictBox.downRight.y){*/
+								new2d.push({x:point.x/(1+m*point.z),y:point.y/(1+m*point.z)});
+						//	}
+				//		}
+					}
+				}
+				return new2d;
+				
+			}
+			
+			function pointsToScreen(points,playerPos,playerYTurn,playerXTurn){
+				var TwoDims = to2dim(rotateYPoints(rotateXPoints(translatePoints(points,playerPos),playerXTurn),playerYTurn),FOV,1200,750,300);
+				for (var i = 0;i<TwoDims.length;i++){
+					TwoDims[i].x = TwoDims[i].x+1200/2;
+					TwoDims[i].y = TwoDims[i].y+750/2;
+				}
+				return TwoDims;
+			}
+			
+			function Shape(points,pattern,fill){
+				this.points = points;
+				this.pattern = pattern;
+				this.points2d = [];
+				this.fill = fill;
+			}
+			Shape.prototype.draw = function (playerPos,playerYTurn,playerXTurn){
+				this.points2d = pointsToScreen(this.points,playerPos,playerYTurn,playerXTurn);
+				if (this.points2d.length>0){
+					/*if (this.fill){
+						 ctx.fillStyle="white";
+					} else {
+						ctx.strokeStyle="white";
+					}
+				
+					ctx.beginPath();
+					var currentPoint = this.points2d[this.pattern[0]];
+					ctx.moveTo(currentPoint.x,currentPoint.y);
+				
+					for (var i = 1;i<this.pattern.length;i++){
+						var currentPoint = this.points2d[this.pattern[i]];
+						ctx.lineTo(currentPoint.x,currentPoint.y);
+					}
+					ctx.closePath();
+					if (this.fill){
+						ctx.fill();
+					} else {
+						ctx.stroke();
+					}*/
+					
+					//dots
+					for(var i = 0;i<this.points2d.length;i++){
+						ctx.beginPath();
+						ctx.fillStyle = "white";
+						ctx.arc(this.points2d[i].x,this.points2d[i].y,2,0,Math.PI*2,true);
+						ctx.closePath();
+						ctx.fill();
+					}
+				}
+			}
+			
+			canvas.onmousedown = function (e){
+				mouseDown = true;
+				mousePos = {x:e.x,y:e.y};
+				storedTurn = {x:playerXTurn,y:playerYTurn};
+			}
+			canvas.onmouseup = function (){
+				mouseDown = false;
+			}
+			canvas.onmousemove = function (e){
+				if (mouseDown){
+					playerXTurn = storedTurn.x + (e.y-mousePos.y)/40;
+					playerYTurn = storedTurn.y + (e.x-mousePos.x)/40;
+					ctx.clearRect(0,0,1200,750);
+					/*ctx.fillStyle = "white";
+					ctx.fillRect(0,0,300,750);
+					ctx.fillRect(900,0,300,750);
+					ctx.fillRect(0,0,1200,187);
+					ctx.fillRect(0,562,1200,200);*/
+					for (var i = 0;i<origShapes.length;i++){
+						origShapes[i].draw(playerPos,playerYTurn,playerXTurn);
+					}
+				}
+			}
+			
+			for (var i = 0;i<origShapes.length;i++){
+				origShapes[i].draw(playerPos,playerYTurn,playerXTurn);
+			}
+			
+			document.onkeydown = function (e){
+				if (e.keyCode==37){
+					playerPos.x -= 1;
+				} else if (e.keyCode==38){
+					playerPos.z += 1;
+				} else if (e.keyCode==39){
+					playerPos.x += 1;
+				} else if (e.keyCode==40){
+					playerPos.z -= 1;
+				}
+				ctx.clearRect(0,0,1200,750);
+				ctx.fillText("x:"+playerPos.x+", z:"+playerPos.z,1000,100);
+				for (var i = 0;i<origShapes.length;i++){
+					origShapes[i].draw(playerPos,playerYTurn,playerXTurn);
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+	

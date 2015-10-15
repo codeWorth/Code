@@ -1,0 +1,5 @@
+name: BetterCombat
+author: WhitePrism
+version: 1.0
+description: Adds combat capabilities.
+main: me.WhitePrism.BetterCombat.Main

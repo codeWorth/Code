@@ -1,0 +1,484 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD2225F8190341F60077BE61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225F7190341F60077BE61 /* Foundation.framework */; };
+		BD2225FA190341F60077BE61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225F9190341F60077BE61 /* CoreGraphics.framework */; };
+		BD2225FC190341F60077BE61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225FB190341F60077BE61 /* UIKit.framework */; };
+		BD222602190341F60077BE61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD222600190341F60077BE61 /* InfoPlist.strings */; };
+		BD222604190341F60077BE61 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222603190341F60077BE61 /* main.m */; };
+		BD222608190341F60077BE61 /* soulsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222607190341F60077BE61 /* soulsAppDelegate.m */; };
+		BD22260B190341F60077BE61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD222609190341F60077BE61 /* Main.storyboard */; };
+		BD22260E190341F60077BE61 /* soulsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD22260D190341F60077BE61 /* soulsViewController.m */; };
+		BD222610190341F60077BE61 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD22260F190341F60077BE61 /* Images.xcassets */; };
+		BD222617190341F60077BE61 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD222616190341F60077BE61 /* XCTest.framework */; };
+		BD222618190341F60077BE61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225F7190341F60077BE61 /* Foundation.framework */; };
+		BD222619190341F60077BE61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD2225FB190341F60077BE61 /* UIKit.framework */; };
+		BD222621190341F60077BE61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD22261F190341F60077BE61 /* InfoPlist.strings */; };
+		BD222623190341F60077BE61 /* MastermindSolverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222622190341F60077BE61 /* MastermindSolverTests.m */; };
+		BD22262E190342140077BE61 /* Peg.m in Sources */ = {isa = PBXBuildFile; fileRef = BD22262D190342140077BE61 /* Peg.m */; };
+		BD222631190342500077BE61 /* PegRow.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222630190342500077BE61 /* PegRow.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD22261A190341F60077BE61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD2225EC190341F60077BE61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD2225F3190341F60077BE61;
+			remoteInfo = MastermindSolver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD2225F4190341F60077BE61 /* MastermindSolver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MastermindSolver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD2225F7190341F60077BE61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD2225F9190341F60077BE61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD2225FB190341F60077BE61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD2225FF190341F60077BE61 /* MastermindSolver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MastermindSolver-Info.plist"; sourceTree = "<group>"; };
+		BD222601190341F60077BE61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD222603190341F60077BE61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD222605190341F60077BE61 /* MastermindSolver-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MastermindSolver-Prefix.pch"; sourceTree = "<group>"; };
+		BD222606190341F60077BE61 /* soulsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = soulsAppDelegate.h; sourceTree = "<group>"; };
+		BD222607190341F60077BE61 /* soulsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = soulsAppDelegate.m; sourceTree = "<group>"; };
+		BD22260A190341F60077BE61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD22260C190341F60077BE61 /* soulsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = soulsViewController.h; sourceTree = "<group>"; };
+		BD22260D190341F60077BE61 /* soulsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = soulsViewController.m; sourceTree = "<group>"; };
+		BD22260F190341F60077BE61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD222615190341F60077BE61 /* MastermindSolverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MastermindSolverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD222616190341F60077BE61 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BD22261E190341F60077BE61 /* MastermindSolverTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MastermindSolverTests-Info.plist"; sourceTree = "<group>"; };
+		BD222620190341F60077BE61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD222622190341F60077BE61 /* MastermindSolverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MastermindSolverTests.m; sourceTree = "<group>"; };
+		BD22262C190342140077BE61 /* Peg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Peg.h; sourceTree = "<group>"; };
+		BD22262D190342140077BE61 /* Peg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Peg.m; sourceTree = "<group>"; };
+		BD22262F190342500077BE61 /* PegRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PegRow.h; sourceTree = "<group>"; };
+		BD222630190342500077BE61 /* PegRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PegRow.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD2225F1190341F60077BE61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD2225FA190341F60077BE61 /* CoreGraphics.framework in Frameworks */,
+				BD2225FC190341F60077BE61 /* UIKit.framework in Frameworks */,
+				BD2225F8190341F60077BE61 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD222612190341F60077BE61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD222617190341F60077BE61 /* XCTest.framework in Frameworks */,
+				BD222619190341F60077BE61 /* UIKit.framework in Frameworks */,
+				BD222618190341F60077BE61 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD2225EB190341F60077BE61 = {
+			isa = PBXGroup;
+			children = (
+				BD2225FD190341F60077BE61 /* MastermindSolver */,
+				BD22261C190341F60077BE61 /* MastermindSolverTests */,
+				BD2225F6190341F60077BE61 /* Frameworks */,
+				BD2225F5190341F60077BE61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD2225F5190341F60077BE61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD2225F4190341F60077BE61 /* MastermindSolver.app */,
+				BD222615190341F60077BE61 /* MastermindSolverTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD2225F6190341F60077BE61 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD2225F7190341F60077BE61 /* Foundation.framework */,
+				BD2225F9190341F60077BE61 /* CoreGraphics.framework */,
+				BD2225FB190341F60077BE61 /* UIKit.framework */,
+				BD222616190341F60077BE61 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD2225FD190341F60077BE61 /* MastermindSolver */ = {
+			isa = PBXGroup;
+			children = (
+				BD222606190341F60077BE61 /* soulsAppDelegate.h */,
+				BD222607190341F60077BE61 /* soulsAppDelegate.m */,
+				BD222609190341F60077BE61 /* Main.storyboard */,
+				BD22260C190341F60077BE61 /* soulsViewController.h */,
+				BD22260D190341F60077BE61 /* soulsViewController.m */,
+				BD22262C190342140077BE61 /* Peg.h */,
+				BD22262D190342140077BE61 /* Peg.m */,
+				BD22262F190342500077BE61 /* PegRow.h */,
+				BD222630190342500077BE61 /* PegRow.m */,
+				BD22260F190341F60077BE61 /* Images.xcassets */,
+				BD2225FE190341F60077BE61 /* Supporting Files */,
+			);
+			path = MastermindSolver;
+			sourceTree = "<group>";
+		};
+		BD2225FE190341F60077BE61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD2225FF190341F60077BE61 /* MastermindSolver-Info.plist */,
+				BD222600190341F60077BE61 /* InfoPlist.strings */,
+				BD222603190341F60077BE61 /* main.m */,
+				BD222605190341F60077BE61 /* MastermindSolver-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD22261C190341F60077BE61 /* MastermindSolverTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD222622190341F60077BE61 /* MastermindSolverTests.m */,
+				BD22261D190341F60077BE61 /* Supporting Files */,
+			);
+			path = MastermindSolverTests;
+			sourceTree = "<group>";
+		};
+		BD22261D190341F60077BE61 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD22261E190341F60077BE61 /* MastermindSolverTests-Info.plist */,
+				BD22261F190341F60077BE61 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD2225F3190341F60077BE61 /* MastermindSolver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD222626190341F60077BE61 /* Build configuration list for PBXNativeTarget "MastermindSolver" */;
+			buildPhases = (
+				BD2225F0190341F60077BE61 /* Sources */,
+				BD2225F1190341F60077BE61 /* Frameworks */,
+				BD2225F2190341F60077BE61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MastermindSolver;
+			productName = MastermindSolver;
+			productReference = BD2225F4190341F60077BE61 /* MastermindSolver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD222614190341F60077BE61 /* MastermindSolverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD222629190341F60077BE61 /* Build configuration list for PBXNativeTarget "MastermindSolverTests" */;
+			buildPhases = (
+				BD222611190341F60077BE61 /* Sources */,
+				BD222612190341F60077BE61 /* Frameworks */,
+				BD222613190341F60077BE61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD22261B190341F60077BE61 /* PBXTargetDependency */,
+			);
+			name = MastermindSolverTests;
+			productName = MastermindSolverTests;
+			productReference = BD222615190341F60077BE61 /* MastermindSolverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD2225EC190341F60077BE61 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = souls;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Programming Account";
+				TargetAttributes = {
+					BD222614190341F60077BE61 = {
+						TestTargetID = BD2225F3190341F60077BE61;
+					};
+				};
+			};
+			buildConfigurationList = BD2225EF190341F60077BE61 /* Build configuration list for PBXProject "MastermindSolver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD2225EB190341F60077BE61;
+			productRefGroup = BD2225F5190341F60077BE61 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD2225F3190341F60077BE61 /* MastermindSolver */,
+				BD222614190341F60077BE61 /* MastermindSolverTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD2225F2190341F60077BE61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD222610190341F60077BE61 /* Images.xcassets in Resources */,
+				BD222602190341F60077BE61 /* InfoPlist.strings in Resources */,
+				BD22260B190341F60077BE61 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD222613190341F60077BE61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD222621190341F60077BE61 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD2225F0190341F60077BE61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD22262E190342140077BE61 /* Peg.m in Sources */,
+				BD22260E190341F60077BE61 /* soulsViewController.m in Sources */,
+				BD222604190341F60077BE61 /* main.m in Sources */,
+				BD222608190341F60077BE61 /* soulsAppDelegate.m in Sources */,
+				BD222631190342500077BE61 /* PegRow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD222611190341F60077BE61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD222623190341F60077BE61 /* MastermindSolverTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD22261B190341F60077BE61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD2225F3190341F60077BE61 /* MastermindSolver */;
+			targetProxy = BD22261A190341F60077BE61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD222600190341F60077BE61 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD222601190341F60077BE61 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD222609190341F60077BE61 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD22260A190341F60077BE61 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD22261F190341F60077BE61 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD222620190341F60077BE61 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD222624190341F60077BE61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD222625190341F60077BE61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD222627190341F60077BE61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MastermindSolver/MastermindSolver-Prefix.pch";
+				INFOPLIST_FILE = "MastermindSolver/MastermindSolver-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD222628190341F60077BE61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MastermindSolver/MastermindSolver-Prefix.pch";
+				INFOPLIST_FILE = "MastermindSolver/MastermindSolver-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD22262A190341F60077BE61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MastermindSolver.app/MastermindSolver";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MastermindSolver/MastermindSolver-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MastermindSolverTests/MastermindSolverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BD22262B190341F60077BE61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MastermindSolver.app/MastermindSolver";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MastermindSolver/MastermindSolver-Prefix.pch";
+				INFOPLIST_FILE = "MastermindSolverTests/MastermindSolverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD2225EF190341F60077BE61 /* Build configuration list for PBXProject "MastermindSolver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD222624190341F60077BE61 /* Debug */,
+				BD222625190341F60077BE61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD222626190341F60077BE61 /* Build configuration list for PBXNativeTarget "MastermindSolver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD222627190341F60077BE61 /* Debug */,
+				BD222628190341F60077BE61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BD222629190341F60077BE61 /* Build configuration list for PBXNativeTarget "MastermindSolverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD22262A190341F60077BE61 /* Debug */,
+				BD22262B190341F60077BE61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD2225EC190341F60077BE61 /* Project object */;
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Planets are Good</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="750" style="background-color:black"></canvas> <br/>
+		<button id="play">Start</button> <button id="reset">Reset</button> <div id = "posText"></div>
+		
+		<script type = "text/javascript">
+		//Variables
+		
+			//set up an array for attribute of a planet. Each index corresponds with a planet.
+			
+				var x = []; //planet's x position
+				var y = []; //planet's y position
+				var startX = []; //saved x start
+				var startY = []; //saved y start
+				var vx = []; //planet's velocity in x direction
+				var vy = []; //planet's velocity in y direction
+				var startVX = []; //saved vx start
+				var startVY = []; //saved vy start
+				var fx = []; //planet's force in x
+				var fy = []; //planet's force in y
+				var m = []; //planet's mass
+				var startM = []; //saved m start
+				var r = []; //planet's radius
+				
+				var dTime = 1; //Delta time, number of milliseconds between each frame
+				var timeScale = 0.3; //Scale from dTime to planet's delta time
+				var velArrowScale = 7; //Scale from actual velocity to arrow size
+				
+				var toRemove = []; //List of indices to remove later
+								
+				var xMid = 0; //Camera pos
+				var yMid = 0;
+				
+				var init; //Basically the variable storing the timer that fires the run function
+				
+				var starX = []; //Star positions for background
+				var starY = [];
+				
+				var numOfStars = 200;
+				
+				for (var i = 0; i<numOfStars;i++){ //Generate a bunch of random stars
+					starX.push(Math.floor(Math.random() * (1000 + 1)));
+					starY.push(Math.floor(Math.random() * (750 + 1)));
+				}
+							
+			//UI Variables
+				
+				var canvas = document.getElementById('canvas'); //The canvas element
+				var ctx = canvas.getContext('2d'); //The object for drawing on the canvas
+				
+				var midPos = document.getElementById('posText');
+				
+				var playButton = document.getElementById('play'); //The Play/Pause button
+				var resetButton = document.getElementById('reset'); //The Reset button
+				
+				createPlanet(200,220,4,0,1000); //Create a bunch of planets
+				addDefaultPlanet(200,220,4,0,1000);
+				createPlanet(300,300,4,0,2000);
+				addDefaultPlanet(300,300,4,0,2000);
+				createPlanet(50,500,-1,0,20000);
+				addDefaultPlanet(50,500,-1,0,20000);
+				createPlanet(100,200,-12,0,3000);
+				addDefaultPlanet(100,200,-12,0,3000);
+				
+				for (var i = 0;i < x.length;i++){ //Average all planet positions
+					xMid += x[i];
+					yMid += y[i];
+				}
+				xMid = xMid / x.length - 1000/2; //Make camera pos the average
+				yMid = yMid / x.length - 750/2;
+				
+				//Make star image data, basically a single yellow pixel
+				var star = ctx.createImageData(1,1);
+				var starData = star.data;   
+				
+				starData[0] = 255; //Yellow rgb code
+				starData[1] = 255;
+				starData[2] = 0;
+				starData[3] = 1;  
+				
+				drawAllStars();
+				moveAndRedrawAllPlanets();
+			
+		//Helper Functions
+		
+			//Array manipulation functions
+			
+				function setMass(mass,index){ //set mass of planet index. Also sets radius based on mass
+					m[index] = mass;
+					var newR = Math.pow(mass, 1/3); //cube root of mass is radius
+				
+					if (newR < 8){
+						newR = 8; //minimum radius
+					}
+					r[index] = newR;
+				}
+			
+				function createPlanet(xPos,yPos,velX,velY,m){ //add a planet to the arrays with parameters
+					x.push(xPos);
+					y.push(yPos);
+					vx.push(velX);
+					vy.push(velY);
+					setMass(m,r.length); //strangely, setting an out-of-bounds index to a value adds that value to the array, so this works
+					fx.push(0);
+					fy.push(0);
+				}
+				
+				function addDefaultPlanet(x,y,vx,vy,m){ //Add a default the the default planets for the reset button
+					startX.push(x);
+					startY.push(y);
+					startVX.push(vx);
+					startVY.push(vy);
+					startM.push(m);
+				}
+			
+				function destroyPlanet(index){ //remove a planet from the arrays
+					x.splice(index,1); //splice looks like this: array.splice(index to remove items, number of items to remove)
+					y.splice(index,1);
+					vx.splice(index,1);
+					vy.splice(index,1);
+					m.splice(index,1);
+					r.splice(index,1);
+					fx.splice(index,1);
+					fy.splice(index,1);
+				}
+			
+			//Simulation functions
+			
+				function crashPlanets(i,j){ //Finds the resulting mass and velocity after combining planets i and j
+					var momenXOfI = m[i]*vx[i]; //momentum in each direction. Momentum is Mass times Velocity. 
+					var momenYOfI = m[i]*vy[i]; //The momentum of the new planet is the sum of the momentums of the old planets.
+												//Look up Conservation of Momentum for more
+					var momenXOfJ = m[j]*vx[j];
+					var momenYOfJ = m[j]*vy[j];
+				
+					var newMomenX = momenXOfI + momenXOfJ;
+					var newMomenY = momenYOfI + momenYOfJ;
+					var newMass = m[i]+m[j]; //Just combine masses
+				
+					var newVX = newMomenX/newMass; //Since momentum = mass * velocity, I divided off the mass.
+					var newVY = newMomenY/newMass;
+				
+					vx[i] = newVX;
+					vy[i] = newVY;
+					setMass(newMass,i);
+				
+					x[i] = (x[i]+x[j])/2; //Set new position of planet to midpoint between planets.
+					y[i] = (y[i]+y[j])/2;				
+				}
+				
+				function distanceSquared(i,j){ //Distance between planet i and j. It is 'squared' because there is no need to take square root. Returns the distance.
+					var deltaX = x[i]-x[j];
+					var deltaY = y[i]-y[j];
+					
+					return deltaX*deltaX+deltaY*deltaY;
+				}
+				
+				function isColliding(i,j){ //Check if two planets are close enough to be touching. Return 'true' if they are and 'false' if they aren't.
+					var minDistanceSquared = Math.pow(r[i]+r[j],2); //The sum of the radii is the minimum distance. It is squared so it can be compared with 'distanceSquared'
+					if (distanceSquared(i,j)<=minDistanceSquared){
+						return true;
+					} else {
+						return false;
+					}
+				}
+			
+			//Drawing Functions
+				
+				function moveAndRedrawAllPlanets(){ //Moves the planets based on vx and vy, then draws each planet				
+					//Find midpoint of system
+					var wantedXMid = 0;
+					var wantedYMid = 0;
+					for (var i = 0;i < x.length;i++){ //Find the wanted camera pos
+						wantedXMid += x[i];
+						wantedYMid += y[i];
+					}
+					wantedXMid = wantedXMid / x.length - 1000/2; 
+					wantedYMid = wantedYMid / x.length - 750/2; //I add half width or height to make center actually center (canvas upper left is 0,0)
+					
+					xMid = xMid + (wantedXMid - xMid)/50; //Pan to the wanted camera pos over time
+					yMid = yMid + (wantedYMid - yMid)/50;
+					
+					midPos.innerText = "Position of Camera X:" + Math.floor(xMid) + " Y:" + Math.floor(yMid);
+				
+					ctx.fillStyle = "white"; //Draw Circles
+					ctx.beginPath();
+					for (var i = 0; i<x.length; i++){
+						x[i] = x[i] + vx[i] * dTime * timeScale; //Move planets
+						y[i] = y[i] + vy[i] * dTime * timeScale;
+					
+						ctx.moveTo(x[i] - xMid, y[i] - yMid);
+						ctx.arc(x[i] - xMid, y[i] - yMid, r[i],0,Math.PI*2,true);
+					}
+					ctx.closePath();
+					ctx.fill();
+					
+					ctx.strokeStyle="red"; //Draw Velocity Lines
+					ctx.beginPath()
+					for (var i = 0; i<x.length; i++){
+						ctx.moveTo(x[i] - xMid, y[i] - yMid);
+						ctx.lineTo(x[i]+vx[i]*velArrowScale - xMid, y[i]+vy[i]*velArrowScale - yMid);
+					}
+					ctx.closePath();
+					ctx.stroke();
+					
+					ctx.fillStyle='black'; //Draw Numbers
+					for (var i = 0; i<x.length; i++){
+     					ctx.fillText(i+1, x[i] - xMid, y[i] - yMid); 
+     				} 
+				}
+				
+				function drawAllStars(){
+					for (var i = 0; i<starX.length; i++){
+						var shiftedX = starX[i]-1000*Math.floor((starX[i] - xMid)/1000);
+						var shiftedY = starY[i]-750*Math.floor((starY[i] - yMid)/750);
+						
+						ctx.putImageData(star, shiftedX - xMid, shiftedY - yMid);     
+					}
+				}
+			
+		//UI Functions
+		
+			playButton.onclick = function (e){
+				if (playButton.innerText === "Start"){
+					init = setInterval(run,dTime);
+					playButton.innerText = "Stop";
+				} else if (playButton.innerText === "Stop"){
+					clearInterval(init);
+					playButton.innerText = "Start";
+				}
+			}	
+			
+			resetButton.onclick = function (e){
+				clearInterval(init); //Stop currently running simulation
+				playButton.innerText = "Start";
+				
+				while (x.length > 0){
+					destroyPlanet(0);
+				}
+				
+				for(var i = 0; i<startX.length;i++){
+					createPlanet(startX[i],startY[i],startVX[i],startVY[i],startM[i]);
+				}
+				ctx.clearRect(0,0,1000,750);
+				
+				xMid = 0;
+				yMid = 0;
+				
+				for (var i = 0;i < x.length;i++){
+					xMid += x[i];
+					yMid += y[i];
+				}
+				xMid = xMid / x.length - 1000/2; 
+				yMid = yMid / x.length - 750/2;
+				
+				drawAllStars();
+				moveAndRedrawAllPlanets();
+			}	
+
+		
+		//Run Function
+			
+			function run(){
+				ctx.clearRect(0,0,1000,750); //Clear canvas
+				drawAllStars();
+				moveAndRedrawAllPlanets();
+				
+				fx = []; //Clear the force arrays
+				fy = [];
+				for (var i = 0; i<x.length; i++){ //Fill the force arrays with zeros
+					fx[i] = 0;
+					fy[i] = 0;
+				}
+				
+				for (var i = 0; i<x.length; i++){ //Iterate over all planets
+					var j = i + 1;
+					while (j<x.length){
+						if (isColliding(i,j)){ //If the planets collided
+							crashPlanets(i,j); //Have them crash
+							destroyPlanet(j); //Then destroy planet j
+						} else {
+							var distanceBetween = distanceSquared(i,j);
+						
+							var totalForce = m[i] * m[j] / distanceBetween; //Force given by m_1*m_2/distance^2
+							
+							var deltaX = x[j] - x[i];
+							var deltaY = y[j] - y[i];
+							
+							/*
+							This part is invalid, I found a better way to resolve the force vector into its x and y parts
+							
+							BTW, this section, with the 2 if statements and square root is probably the most processor intensive part other than drawing
+							if (deltaX === 0){
+								var xForce = 0;
+							} else {
+								var xForce = totalForce / Math.sqrt(1 + (deltaY * deltaY) / (deltaX * deltaX)); //Components of force in the x direction
+							}
+							
+							if (deltaY === 0){
+								var yForce = 0;
+							} else {
+								var yForce = totalForce / Math.sqrt(1 + (deltaX * deltaX) / (deltaY * deltaY)); //Components of force in the y direction
+							}*/
+							
+							var distanceBetweenPlanets = Math.sqrt(distanceBetween); //Only square root :D
+							
+							var xForce = totalForce / distanceBetweenPlanets * deltaX;
+							var yForce = totalForce / distanceBetweenPlanets * deltaY;
+							
+							fx[i] = fx[i] + xForce; //Sum up the total x and y forces
+							fx[j] = fx[j] + -xForce;
+							fy[i] = fy[i] + yForce;
+							fy[j] = fy[j] + -yForce;
+							
+							j++;
+						}
+					}
+					//Once all the forces have been summed for planet i, calculate its vx and vy
+					var ax = fx[i] / m[i];
+					var ay = fy[i] / m[i];
+					
+					vx[i] = vx[i] + ax * dTime * timeScale; //'New velocity' is 'old velocity' plus 'acceleration' times 'delta time'
+					vy[i] = vy[i] + ay * dTime * timeScale;
+				}
+			}
+			
+		
+		</script>
+	</body>
+</html>

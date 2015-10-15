@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Gravitationally Gravitating Towards Total Awesome</title>
+  <style type="text/css">
+   #mainCanvas{
+    background-color:black;
+   }
+   input[type="text"]{
+    width:130px;
+   }
+   #xPos{
+    width:75px;
+   }
+   #yPos{
+    width:75px
+   }
+  </style>
+ </head>
+ <body>
+  <canvas id = "mainCanvas" width="1200" height="700"></canvas><br/>
+  <div id = "circleNumber">Planet Selected: None</div>
+  <span>Mass:</span><input type = "text" id="massArea"></input><span>Speed:</span><input type = "text" id="speedArea"></input><span>Direction:</span><input type = "text" id="dirArea"></input><span>X Position:</span><input type = "text" id="xPos"></input><span>Y Position:</span><input type = "text" id="yPos"></input><br/>
+  <button id = "startButton">Start</button><button id = "resetButton">Reset</button>
+  <script type="text/javascript">
+  
+  
+  //variables declarations
+   time = 0;
+   var resetButton = document.getElementById('resetButton');
+   var time;
+   var timeWarp;
+   var startStopButton = document.getElementById('startButton');
+   var canvas = document.getElementById('mainCanvas');
+   var ctx = canvas.getContext('2d');
+   var planetMass = new Array();
+   var planetOriginR = new Array();
+   var planetX = new Array();
+   var planetY = new Array();
+   var planetR = new Array();
+   var planetSpeed = new Array();
+   var planetOriginMass = new Array();
+   var planetOriginX = new Array();
+   var planetOriginY = new Array();
+   var planetOriginSpeed = new Array();
+   var previousX = new Array();
+   var previousY = new Array();
+   var previousXSpeed = new Array();
+   var previousYSpeed = new Array();
+   var started = false;
+   var planetSelected = "false";
+   var circleSelect = document.getElementById('circleNumber');
+   var massField = document.getElementById('massArea');
+   var speedField = document.getElementById('speedArea');
+   var dirField = document.getElementById('dirArea');
+   var xField = document.getElementById('xPos');
+   var yField = document.getElementById('yPos');
+   var init;
+   
+  //graphics functions
+   function distance(x1,y1,x2,y2){
+    //returns the distance in pixels between two objects with specified x and y coordinates
+    return Math.sqrt(Math.pow(x2-x1, 2)+Math.pow(y2-y1, 2));
+   }
+   function touching(x1,y1,m1,x2,y2,m2){
+    //returns true if the distance between to specified x and y coordinates is less than the 
+    //combined radius of each object at the coordinates, in other words, touching
+    if(distance(x1,y1,x2,y2)<m1+m2){
+     return true;
+    }else{
+     return false;
+    }
+   }
+   function drawAllPlanets(){
+    //redraws all the objects in the arrays
+    for(var i = 0;i<planetX.length;i++){
+     ctx.fillStyle = "white";
+     ctx.beginPath();
+     var planetRadius = Math.pow(planetMass[i], 1/3);
+     if(planetRadius > 7.5){
+      ctx.arc(planetX[i], planetY[i], planetRadius, 0, Math.PI*2, true);
+     }
+     else{
+      ctx.arc(planetX[i], planetY[i], 7.5, 0, Math.PI*2, true);
+     }
+     ctx.closePath();
+     ctx.fill();
+     ctx.fillStyle='black';
+     ctx.fillText(i+1, planetX[i], planetY[i]);  
+     ctx.strokeStyle="red";
+     ctx.beginPath()
+     ctx.moveTo(planetX[i], planetY[i]);
+     ctx.lineTo(planetX[i]+Math.cos(planetR[i])*planetSpeed[i], planetY[i]+Math.sin(planetR[i])*planetSpeed[i]);
+     ctx.closePath();
+     ctx.stroke();
+     
+    }
+   }
+   
+   
+  //user interface
+  
+  
+   //array manipulations
+    function deleteBall(e){
+    //removes the item in the lists that has currently been shift-clicked on using the touching function
+     for(var i = 0;i<planetX.length;i++){
+      var planetRadius = Math.pow(planetMass[i], 1/3);
+      if(planetRadius<=7.5){
+       planetRadius = 7.5
+      }
+      if(touching(e.x, e.y, 3, planetOriginX[i], planetOriginY[i], planetRadius)){
+       //the mouse in given a small radius to allow for small error on the users part
+       planetX.splice(i, 1);
+       planetY.splice(i, 1);
+       planetMass.splice(i, 1);
+       planetR.splice(i, 1);
+       planetSpeed.splice(i, 1);
+       planetOriginX.splice(i, 1);
+       planetOriginSpeed.splice(i, 1);
+       planetOriginMass.splice(i, 1);
+       planetOriginR.splice(i, 1);
+       planetOriginY.splice(i, 1);
+       previousX.splice(i, 1);
+       previousY.splice(i, 1);
+       previousXSpeed.splice(i, 1);
+       previousYSpeed.splice(i, 1);
+       i=planetX.length;
+       //once an item is registered as clicked, the function clears and redraws than exits so that the user cannot select more than one ball
+      }
+     }
+     ctx.clearRect(0,0,1200,700);
+     drawAllPlanets();
+     //redraws, putting in affect the changes made
+    }
+    function selectBall(e){
+     //selects a ball for edits in mass speed, etc. to be made
+     for(var i = 0;i<planetX.length;i++){
+      var planetRadius = Math.pow(planetMass[i], 1/3);
+      if(planetRadius<=7.5){
+       planetRadius = 7.5
+      }
+      if(touching(planetOriginX[i], planetOriginY[i], planetRadius, e.x, e.y, 0)){
+       planetSelected = i;
+       ctx.strokeStyle = "yellow";
+       ctx.beginPath();
+       ctx.arc(planetOriginX[i], planetOriginY[i], planetRadius+1, 0, Math.PI*2, true);
+       ctx.closePath();
+       ctx.stroke();
+       massField.value=planetMass[i];
+       speedField.value=planetSpeed[i]/5;
+       circleSelect.innerText = "Planet Selected: "+String(i+1);
+       xField.value = planetOriginX[i];
+       yField.value = 700-planetOriginY[i];
+       dirField.value = (planetR[i]*(180/Math.PI))+90;
+       i=planetX.length;
+       //exits like deleteBall(), however it does not redraw yet, instead, the function resetUserInterface() redraws when the mouse is clicked to deselect the object
+      }
+     }
+    }
+    function newBall(e){
+     //creates a new circle on the canvas and adds the needed values to the lists
+     ctx.fillStyle = "white";
+     ctx.beginPath();
+     ctx.arc(e.x, e.y, Math.pow(1000, 1/3), 0, Math.PI*2, true);
+     ctx.closePath();
+     ctx.fill();
+     planetMass[planetMass.length] = 1000;
+     planetX[planetX.length] = e.x;
+     planetY[planetY.length] = e.y;
+     ctx.fillStyle='black';
+     ctx.fillText(planetX.length, e.x-1, e.y);
+     planetR[planetR.length] = 0;
+     planetSpeed[planetSpeed.length] = 0;
+     planetOriginX[planetOriginX.length] = e.x;
+     planetOriginY[planetOriginY.length] = e.y;
+     planetOriginMass[planetOriginMass.length] = 1000;
+     planetOriginR[planetOriginR.length] = 0;
+     planetOriginSpeed[planetOriginSpeed.length] = 0;
+     previousX[previousX.length] = e.x;
+     previousY[previousY.length] = e.y;
+     previousXSpeed[previousXSpeed.length] = 0;
+     previousYSpeed[previousYSpeed.length] = 0;
+    }
+    function resetUserInterface(){
+     //triggered when the mouse is clicked to deselect a circle, it puts the values of the textareas at the bottom an puts them in the list
+     planetOriginX[planetSelected] = parseFloat(xField.value);
+     planetOriginY[planetSelected] = 700-parseFloat(yField.value);
+     planetX[planetSelected] = planetOriginX[planetSelected]; 
+     planetY[planetSelected] = planetOriginY[planetSelected]; 
+     planetR[planetSelected] = parseFloat(dirField.value-90)*(Math.PI/180);
+     planetSpeed[planetSelected] = parseFloat(speedField.value)*5;
+     planetMass[planetSelected] = parseFloat(massField.value);
+     planetOriginMass[planetSelected] = planetMass[planetSelected];
+     planetOriginR[planetSelected] = planetR[planetSelected];
+     planetOriginSpeed[planetSelected] = planetSpeed[planetSelected];
+     previousX[planetSelected] = planetX[planetSelected];
+     previousY[planetSelected] = planetY[planetSelected];
+     previousXSpeed[planetSelected] = Math.cos(planetR[planetSelected])*planetSpeed[planetSelected];
+     previousYSpeed[planetSelected] = Math.sin(planetR[planetSelected])*planetSpeed[planetSelected];
+     planetSelected = "false";
+     circleSelect.innerText = "Planet Selected: None";
+     //redraws all the planets
+     ctx.clearRect(0,0,1200,700);
+     drawAllPlanets();
+     //clears the text fields
+     massField.value="";
+     speedField.value="";
+     xField.value = "";
+     yField.value = "";
+     dirField.value = "";
+    }
+    function reistantiateOriginalArrays(){
+     //restores all of the arrays to their values at the start of the simulation based on the planetOriginX, planetOriginY, planetOriginMass, and planetOriginSpeed 
+     planetMass.length = 0;
+     planetX.length = 0;
+     planetY.length = 0;
+     planetR.length = 0;
+     planetSpeed.length = 0;
+     previousX.length = 0;
+     previousY.length = 0;
+     previousXSpeed.length = 0;
+     previousYSpeed.length = 0;
+     for(var i = 0;i<planetOriginX.length;i++){
+      planetMass[planetMass.length]=planetOriginMass[i];
+      planetX[planetX.length] = planetOriginX[i];
+      planetY[planetY.length] = planetOriginY[i];
+      planetR[planetR.length] = planetOriginR[i];
+      planetSpeed[planetSpeed.length] = planetOriginSpeed[i];
+      previousX[previousX.length] = planetX[i];
+      previousY[previousY.length] = planetY[i];
+      previousXSpeed[previousXSpeed.length] = Math.cos(planetR[i])*planetSpeed[i];
+      previousYSpeed[previousYSpeed.length] = Math.sin(planetR[i])*planetSpeed[i]; 
+     }
+     ctx.clearRect(0,0,1200,700);
+     drawAllPlanets();
+    }
+    
+    
+   //user input interpreter
+    function canvasClickHandler(e){
+     //takes a value, e, which is the mouse click information. depending on various variables and mouse events, calles the respective function
+     if(!started && planetSelected == "false"){
+      //checks that the simulation isn't running and that there is no planet selected
+      if(!e.altKey && !e.shiftKey){
+       //checls that it is a left mouse click, not alt-click or shift-click
+       newBall(e);
+      }
+      else{
+       //if it is an alt-click or shift-click
+       if(e.altKey){
+        //function for alt-click
+        selectBall(e);
+       }
+       else{
+        if(e.shiftKey){
+         //function for shift-click
+         deleteBall(e);
+        }
+       }
+      }
+     }
+     else{
+      //if either the simulation is running or a circle is selected
+      if(planetSelected !== "false"){
+       //if a circle is selcted, clears the info panel at the bottom
+       resetUserInterface();
+      }else{
+       //stops the simulation if it's started
+       buttonClickHandler();
+      } 
+     }
+    }
+    function buttonClickHandler(){
+     if(started){
+      started = false;
+      startStopButton.innerText = "Start";
+      clearInterval(init);
+     }
+     else{
+      timeWarp=1;
+      init = setInterval(simulate, 1);
+      started = true;
+      startStopButton.innerText = "Stop";
+     }
+    }
+    function resetClickHandler(){
+     if(started){
+      reistantiateOriginalArrays();
+      time = 0;
+      started = false;
+      startStopButton.innerText = "Start";
+      clearInterval(init);
+     }
+    }
+   
+
+
+
+  //simulation ligistics
+   function simulate(){
+    if(time==0){
+     for(var i = 0;i<previousXSpeed.length;i++){
+      previousXSpeed[i]=previousXSpeed[i]/50;
+      previousYSpeed[i]=previousYSpeed[i]/50;
+     }
+    }
+    time=time+0.1;
+    time=Math.ceil(time*10)/10;
+    if((time*10)%10==0){
+     ctx.clearRect(0,0,1200,700);
+     drawAllPlanets();
+    }
+    for(var j = 0;j<planetX.length;j++){
+     xForceSum = 0;
+     yForceSum = 0;
+     var xAccel = 0;
+     var yAccel = 0;
+     for(var i = 0;i<planetX.length;i++){
+      if(i !== j){
+       planetDistance = distance(planetX[j], planetY[j], planetX[i], planetY[i])
+       overallForce = (planetMass[j]*planetMass[i])/Math.pow(planetDistance, 2);
+       xForceSum = xForceSum+((planetX[i]-planetX[j])/planetDistance)*overallForce;
+       yForceSum = yForceSum+((planetY[i]-planetY[j])/planetDistance)*overallForce;
+      } 
+     }
+     xAccel = xForceSum/(planetMass[j]*timeWarp);
+     yAccel = yForceSum/(planetMass[j]*timeWarp);
+     previousXSpeed[j] = xAccel*0.1+previousXSpeed[j];
+     previousYSpeed[j] = yAccel*0.1+previousYSpeed[j];
+     xSpeed = previousXSpeed[j];
+     ySpeed = previousYSpeed[j];
+     previousX[j] = (previousX[j])+(xSpeed*0.1)+(0.5*xAccel*Math.pow(0.1, 2));
+     previousY[j] = (previousY[j])+(ySpeed*0.1)+(0.5*yAccel*Math.pow(0.1, 2));
+     //document.write("speed: "+xSpeed+" time: "+time+" speed*time: "+(xSpeed)+"<br/>");
+    }
+    for(var i = 0;i<planetX.length;i++){
+     for(var j = 0;j<planetX.length;j++){
+      var planetRadiusMain = Math.pow(planetMass[i], 1/3);
+      if(planetRadiusMain<=7.5){
+       planetRadiusMain = 7.5
+      }
+      var planetRadiusSecond = Math.pow(planetMass[j], 1/3);
+      if(planetRadiusSecond<=7.5){
+       planetRadiusSecond = 7.5
+      }
+      if(i!=j && touching(previousX[i], previousY[i], planetRadiusMain, previousX[j], previousY[j], planetRadiusSecond)){
+       if(planetMass[j]>=planetMass[i]){
+        massVelocityX = previousXSpeed[j]*planetMass[j]+previousXSpeed[i]*planetMass[i];
+        massVelocityY = previousYSpeed[j]*planetMass[j]+previousYSpeed[i]*planetMass[i];
+        previousXSpeed[j] = massVelocityX/planetMass[j];
+        previousYSpeed[j] = massVelocityY/planetMass[j];
+        planetMass[j]=planetMass[j]+planetMass[i];
+        planetX.splice(i, 1);
+        planetY.splice(i, 1);
+        planetMass.splice(i, 1);
+        planetR.splice(i, 1);
+        planetSpeed.splice(i, 1);
+        previousX.splice(i, 1);
+        previousY.splice(i, 1);
+        previousXSpeed.splice(i, 1);
+        previousYSpeed.splice(i, 1); 
+       }
+       else{
+        massVelocityX = previousXSpeed[j]*planetMass[j]+previousXSpeed[i]*planetMass[i];
+        massVelocityY = previousYSpeed[j]*planetMass[j]+previousYSpeed[i]*planetMass[i];
+        previousXSpeed[i] = massVelocityX/planetMass[i];
+        previousYSpeed[i] = massVelocityY/planetMass[i];
+        planetMass[i]=planetMass[i]+planetMass[j];
+        planetX.splice(j, 1);
+        planetY.splice(j, 1);
+        planetMass.splice(j, 1);
+        planetR.splice(j, 1);
+        planetSpeed.splice(j, 1);
+        previousX.splice(j, 1);
+        previousY.splice(j, 1);
+        previousXSpeed.splice(j, 1);
+        previousYSpeed.splice(j, 1); 
+       }
+      }
+     }
+     //document.write("x change: "+parseFloat(previousX[i]-planetX[i])+" y change: "+parseFloat(previousY[i]-planetY[i])+"<br/>");
+     planetX[i]=previousX[i];
+     planetY[i]=previousY[i];
+    }
+   }
+   
+   
+   
+  //event handlers
+   canvas.onclick = canvasClickHandler;
+   startStopButton.onclick = buttonClickHandler;
+   resetButton.onclick = resetClickHandler;
+  </script>
+ </body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Planets are Good</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="750" style="background-color:black"></canvas> <br/>
+		<button id="play">Start</button> <button id="reset">Reset</button>
+		
+		<script type = "text/javascript">
+		//Variables
+		
+			//set up an array for attribute of a planet. Each index corresponds with a planet.
+			
+				var x = [750,200]; //planet's x position
+				var y = [50,500]; //planet's y position
+				var vx = [0,0]; //planet's velocity in x direction
+				var vy = [0,0]; //planet's velocity in y direction
+				var m = [1000,1000]; //planet's mass
+				var r = [10,10]; //planet's radius
+				var t = []; //pre rendered numbers
+							
+			//UI Variables
+				
+				var canvas = document.getElementById('canvas'); //The canvas element
+				var ctx = canvas.getContext('2d'); //The object for drawing on the canvas
+				
+				var playButton = document.getElementById('play'); //The Play/Pause button
+				var resetButton = document.getElementById('reset'); //The Reset button
+				
+				ctx.fillStyle = "black"
+				var numberCanvas = document.createElement('canvas');
+				for (var i = 0; i<100;i++){
+					numberCanvas.width = ctx.measureText(i+1);
+					numberCanvas.height = 70;
+					
+					ctx.font="12px Georgia";
+					ctx.fillText(i+1,0,0);
+					
+					t.push(numberCanvas.getContext('2d'));
+				}
+				
+				drawAllPlanets();
+			
+		//Helper Functions
+		
+			//Array manipulation functions
+			
+				function setMass(mass,index){ //set mass of planet index. Also sets radius based on mass
+					m[index] = mass;
+					var newR = Math.pow(mass, 1/3); //cube root of mass is radius
+				
+					if (newR < 8){
+						newR = 8; //minimum radius
+					}
+					r[index] = newR;
+				}
+			
+				function createPlanet(xPos,yPos,velX,velY,m){ //add a planet to the arrays with parameters
+					x.push(xPos);
+					y.push(yPos);
+					vx.push(velX);
+					vy.push(velY);
+					setMass(m,r.length); //strangely, setting an out-of-bounds index to a value adds that value to the array, so this works.
+				}
+			
+				function destroyPlanet(index){ //remove a planet from the arrays
+					x.splice(index,1); //splice looks like this: array.splice(index to remove items, number of items to remove)
+					y.splice(index,1);
+					vx.splice(index,1);
+					vy.splice(index,1);
+					m.splice(index,1);
+					r.splice(index,1);
+				}
+			
+			//Simulation functions
+			
+				function crashPlanets(i,j){ //Finds the resulting mass and velocity after combining planets i and j, then removes the planet j
+					var momenXOfI = m[i]*vx[i]; //momentum in each direction. Momentum is Mass times Velocity. 
+					var momenYOfI = m[i]*vy[i]; //The momentum of the new planet is the sum of the momentums of the old planets.
+												//Look up Conservation of Momentum for more
+					var momenXOfJ = m[j]*vx[j];
+					var momenYOfJ = m[j]*vy[j];
+				
+					var newMomenX = momenXOfI + momenXOfJ;
+					var newMomenY = momenYOfI + momenYOfJ;
+					var newMass = m[i]+m[j]; //Just combine masses
+				
+					var newVX = newMomenX/newMass; //Since momentum = mass * velocity, I divided off the mass.
+					var newVY = newMomenY/newMass;
+				
+					vx[i] = newVX;
+					vy[i] = newVY;
+					setMass(newMass,i);
+				
+					x[i] = (x[i]+x[j])/2; //Set new position of planet to midpoint between planets.
+					y[i] = (y[i]+y[j])/2;
+				
+					destroyPlanet(j); //Remove planet j.
+				}
+				
+				function distanceSquared(i,j){ //Distance between planet i and j. It is 'squared' because there is no need to take square root. Returns the distance.
+					var deltaX = x[i]-x[j];
+					var deltaY = y[i]-y[j];
+					
+					return deltaX*deltaX+deltaY*deltaY;
+				}
+				
+				function isColliding(i,j){ //Check if two planets are close enough to be touching. Return 'true' if they are and 'false' if they aren't.
+					var minDistanceSquared = Math.pow(r[i]+r[j],2); //The sum of the radii is the minimum distance. It is squared so it can be compared with 'distanceSquared'
+					if (distanceSquared(i,j)<=minDistanceSquared){
+						return true;
+					} else {
+						return false;
+					}
+				}
+			
+			//Drawing Functions
+				
+				function drawAllPlanets(){ //Draws each planet
+					ctx.fillStyle = "white";
+					ctx.beginPath();
+					for (var i = 0; i<x.length; i++){
+						ctx.moveTo(x[i],y[i]);
+						ctx.arc(x[i],y[i],r[i],0,Math.PI*2,true);
+					}
+					ctx.closePath();
+					ctx.fill();
+					
+					ctx.strokeStyle="red";
+					ctx.beginPath()
+					for (var i = 0; i<x.length; i++){
+						ctx.moveTo(x[i], y[i]);
+						ctx.lineTo(x[i]+vx[i], y[i]+vy[i]);
+					}
+					ctx.closePath();
+					ctx.stroke();
+					
+					for (var i = 0; i<x.length; i++){
+						ctx.drawImage(t[i], x[i], y[i]);
+					}
+				}
+			
+		//UI Functions
+		
+		</script>
+	</body>
+</html>

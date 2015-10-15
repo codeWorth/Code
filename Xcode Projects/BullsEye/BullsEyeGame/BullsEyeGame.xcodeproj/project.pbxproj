@@ -1,0 +1,621 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DD1508E17AED247004285E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1508D17AED247004285E3 /* UIKit.framework */; };
+		9DD1509017AED247004285E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1508F17AED247004285E3 /* Foundation.framework */; };
+		9DD1509217AED247004285E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1509117AED247004285E3 /* CoreGraphics.framework */; };
+		9DD1509817AED247004285E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1509617AED247004285E3 /* InfoPlist.strings */; };
+		9DD1509A17AED247004285E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1509917AED247004285E3 /* main.m */; };
+		9DD1509E17AED247004285E3 /* BullsEyeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1509D17AED247004285E3 /* BullsEyeAppDelegate.m */; };
+		9DD150A017AED247004285E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1509F17AED247004285E3 /* Default.png */; };
+		9DD150A217AED247004285E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150A117AED247004285E3 /* Default@2x.png */; };
+		9DD150A417AED247004285E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150A317AED247004285E3 /* Default-568h@2x.png */; };
+		9DD150A717AED247004285E3 /* BullsEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD150A617AED247004285E3 /* BullsEyeViewController.m */; };
+		9DD150AA17AED247004285E3 /* BullsEyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150A817AED247004285E3 /* BullsEyeViewController.xib */; };
+		9DD150B217AED247004285E3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD150B117AED247004285E3 /* SenTestingKit.framework */; };
+		9DD150B317AED248004285E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1508D17AED247004285E3 /* UIKit.framework */; };
+		9DD150B417AED248004285E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1508F17AED247004285E3 /* Foundation.framework */; };
+		9DD150BC17AED248004285E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150BA17AED248004285E3 /* InfoPlist.strings */; };
+		9DD150BF17AED248004285E3 /* BullsEyeGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD150BE17AED248004285E3 /* BullsEyeGameTests.m */; };
+		9DD150D717AED291004285E3 /* ak47-gun.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150C917AED291004285E3 /* ak47-gun.png */; };
+		9DD150D817AED291004285E3 /* dartInBullsEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CA17AED291004285E3 /* dartInBullsEye.png */; };
+		9DD150D917AED291004285E3 /* fillIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CB17AED291004285E3 /* fillIcon.png */; };
+		9DD150DA17AED291004285E3 /* machineGun.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CC17AED291004285E3 /* machineGun.gif */; };
+		9DD150DB17AED291004285E3 /* machineGun.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CD17AED291004285E3 /* machineGun.jpg */; };
+		9DD150DC17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM #2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CE17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM #2.jpg */; };
+		9DD150DD17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150CF17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM.jpg */; };
+		9DD150DE17AED291004285E3 /* Screen Shot 2013-06-23 at 7.50.49 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D017AED291004285E3 /* Screen Shot 2013-06-23 at 7.50.49 PM.png */; };
+		9DD150DF17AED291004285E3 /* Screen Shot 2013-07-08 at 9.57.40 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D117AED291004285E3 /* Screen Shot 2013-07-08 at 9.57.40 PM.png */; };
+		9DD150E017AED291004285E3 /* sniperRifle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D217AED291004285E3 /* sniperRifle.jpg */; };
+		9DD150E117AED291004285E3 /* snipers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D317AED291004285E3 /* snipers.jpg */; };
+		9DD150E217AED291004285E3 /* wings.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D417AED291004285E3 /* wings.jpg */; };
+		9DD150E317AED291004285E3 /* wings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D517AED291004285E3 /* wings.png */; };
+		9DD150E417AED291004285E3 /* dartInBullsEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150D617AED291004285E3 /* dartInBullsEye.png */; };
+		9DD150F717AED2A6004285E3 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150E517AED2A6004285E3 /* Background.png */; };
+		9DD150F817AED2A6004285E3 /* Button-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150E617AED2A6004285E3 /* Button-Highlighted.png */; };
+		9DD150F917AED2A6004285E3 /* Button-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150E717AED2A6004285E3 /* Button-Normal.png */; };
+		9DD150FA17AED2A6004285E3 /* SliderThumb-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150E817AED2A6004285E3 /* SliderThumb-Highlighted.png */; };
+		9DD150FB17AED2A6004285E3 /* SliderThumb-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150E917AED2A6004285E3 /* SliderThumb-Normal.png */; };
+		9DD150FC17AED2A6004285E3 /* SliderTrackLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150EA17AED2A6004285E3 /* SliderTrackLeft.png */; };
+		9DD150FD17AED2A6004285E3 /* SliderTrackRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150EB17AED2A6004285E3 /* SliderTrackRight.png */; };
+		9DD150FE17AED2A6004285E3 /* StartOverButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150EC17AED2A6004285E3 /* StartOverButton.png */; };
+		9DD150FF17AED2A6004285E3 /* StartOverIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150ED17AED2A6004285E3 /* StartOverIcon.png */; };
+		9DD1510017AED2A6004285E3 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150EE17AED2A6004285E3 /* Background@2x.png */; };
+		9DD1510117AED2A6004285E3 /* Button-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150EF17AED2A6004285E3 /* Button-Highlighted@2x.png */; };
+		9DD1510217AED2A6004285E3 /* Button-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F017AED2A6004285E3 /* Button-Normal@2x.png */; };
+		9DD1510317AED2A6004285E3 /* SliderThumb-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F117AED2A6004285E3 /* SliderThumb-Highlighted@2x.png */; };
+		9DD1510417AED2A6004285E3 /* SliderThumb-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F217AED2A6004285E3 /* SliderThumb-Normal@2x.png */; };
+		9DD1510517AED2A6004285E3 /* SliderTrackLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F317AED2A6004285E3 /* SliderTrackLeft@2x.png */; };
+		9DD1510617AED2A6004285E3 /* SliderTrackRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F417AED2A6004285E3 /* SliderTrackRight@2x.png */; };
+		9DD1510717AED2A6004285E3 /* StartOverButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F517AED2A6004285E3 /* StartOverButton@2x.png */; };
+		9DD1510817AED2A6004285E3 /* StartOverIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD150F617AED2A6004285E3 /* StartOverIcon@2x.png */; };
+		9DD1510C17AED30F004285E3 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1510A17AED30F004285E3 /* GameViewController.m */; };
+		9DD1510D17AED30F004285E3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1510B17AED30F004285E3 /* GameViewController.xib */; };
+		9DD1511117AED465004285E3 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1510F17AED465004285E3 /* AboutViewController.m */; };
+		9DD1511217AED465004285E3 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1511017AED465004285E3 /* AboutViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DD150B517AED248004285E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DD1508217AED247004285E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DD1508917AED247004285E3;
+			remoteInfo = BullsEyeGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DD1508A17AED247004285E3 /* BullsEyeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsEyeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD1508D17AED247004285E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DD1508F17AED247004285E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DD1509117AED247004285E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DD1509517AED247004285E3 /* BullsEyeGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullsEyeGame-Info.plist"; sourceTree = "<group>"; };
+		9DD1509717AED247004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD1509917AED247004285E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DD1509B17AED247004285E3 /* BullsEyeGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BullsEyeGame-Prefix.pch"; sourceTree = "<group>"; };
+		9DD1509C17AED247004285E3 /* BullsEyeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeAppDelegate.h; sourceTree = "<group>"; };
+		9DD1509D17AED247004285E3 /* BullsEyeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeAppDelegate.m; sourceTree = "<group>"; };
+		9DD1509F17AED247004285E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9DD150A117AED247004285E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9DD150A317AED247004285E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9DD150A517AED247004285E3 /* BullsEyeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeViewController.h; sourceTree = "<group>"; };
+		9DD150A617AED247004285E3 /* BullsEyeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeViewController.m; sourceTree = "<group>"; };
+		9DD150A917AED247004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BullsEyeViewController.xib; sourceTree = "<group>"; };
+		9DD150B017AED247004285E3 /* BullsEyeGameTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeGameTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD150B117AED247004285E3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9DD150B917AED248004285E3 /* BullsEyeGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullsEyeGameTests-Info.plist"; sourceTree = "<group>"; };
+		9DD150BB17AED248004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD150BD17AED248004285E3 /* BullsEyeGameTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeGameTests.h; sourceTree = "<group>"; };
+		9DD150BE17AED248004285E3 /* BullsEyeGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeGameTests.m; sourceTree = "<group>"; };
+		9DD150C917AED291004285E3 /* ak47-gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ak47-gun.png"; path = "Pictures/ak47-gun.png"; sourceTree = "<group>"; };
+		9DD150CA17AED291004285E3 /* dartInBullsEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dartInBullsEye.png; path = Pictures/dartInBullsEye.png; sourceTree = "<group>"; };
+		9DD150CB17AED291004285E3 /* fillIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fillIcon.png; path = Pictures/fillIcon.png; sourceTree = "<group>"; };
+		9DD150CC17AED291004285E3 /* machineGun.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = machineGun.gif; path = Pictures/machineGun.gif; sourceTree = "<group>"; };
+		9DD150CD17AED291004285E3 /* machineGun.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = machineGun.jpg; path = Pictures/machineGun.jpg; sourceTree = "<group>"; };
+		9DD150CE17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM #2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Photo on 7-25-13 at 3.39 PM #2.jpg"; path = "Pictures/Photo on 7-25-13 at 3.39 PM #2.jpg"; sourceTree = "<group>"; };
+		9DD150CF17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "Photo on 7-25-13 at 3.39 PM.jpg"; path = "Pictures/Photo on 7-25-13 at 3.39 PM.jpg"; sourceTree = "<group>"; };
+		9DD150D017AED291004285E3 /* Screen Shot 2013-06-23 at 7.50.49 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2013-06-23 at 7.50.49 PM.png"; path = "Pictures/Screen Shot 2013-06-23 at 7.50.49 PM.png"; sourceTree = "<group>"; };
+		9DD150D117AED291004285E3 /* Screen Shot 2013-07-08 at 9.57.40 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Screen Shot 2013-07-08 at 9.57.40 PM.png"; path = "Pictures/Screen Shot 2013-07-08 at 9.57.40 PM.png"; sourceTree = "<group>"; };
+		9DD150D217AED291004285E3 /* sniperRifle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sniperRifle.jpg; path = Pictures/sniperRifle.jpg; sourceTree = "<group>"; };
+		9DD150D317AED291004285E3 /* snipers.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = snipers.jpg; path = Pictures/snipers.jpg; sourceTree = "<group>"; };
+		9DD150D417AED291004285E3 /* wings.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wings.jpg; path = Pictures/wings.jpg; sourceTree = "<group>"; };
+		9DD150D517AED291004285E3 /* wings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wings.png; path = Pictures/wings.png; sourceTree = "<group>"; };
+		9DD150D617AED291004285E3 /* dartInBullsEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dartInBullsEye.png; sourceTree = "<group>"; };
+		9DD150E517AED2A6004285E3 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = Pictures/Background.png; sourceTree = "<group>"; };
+		9DD150E617AED2A6004285E3 /* Button-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Highlighted.png"; path = "Pictures/Button-Highlighted.png"; sourceTree = "<group>"; };
+		9DD150E717AED2A6004285E3 /* Button-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Normal.png"; path = "Pictures/Button-Normal.png"; sourceTree = "<group>"; };
+		9DD150E817AED2A6004285E3 /* SliderThumb-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderThumb-Highlighted.png"; path = "Pictures/SliderThumb-Highlighted.png"; sourceTree = "<group>"; };
+		9DD150E917AED2A6004285E3 /* SliderThumb-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderThumb-Normal.png"; path = "Pictures/SliderThumb-Normal.png"; sourceTree = "<group>"; };
+		9DD150EA17AED2A6004285E3 /* SliderTrackLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderTrackLeft.png; path = Pictures/SliderTrackLeft.png; sourceTree = "<group>"; };
+		9DD150EB17AED2A6004285E3 /* SliderTrackRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SliderTrackRight.png; path = Pictures/SliderTrackRight.png; sourceTree = "<group>"; };
+		9DD150EC17AED2A6004285E3 /* StartOverButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StartOverButton.png; path = Pictures/StartOverButton.png; sourceTree = "<group>"; };
+		9DD150ED17AED2A6004285E3 /* StartOverIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StartOverIcon.png; path = Pictures/StartOverIcon.png; sourceTree = "<group>"; };
+		9DD150EE17AED2A6004285E3 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Background@2x.png"; path = "Pictures/Background@2x.png"; sourceTree = "<group>"; };
+		9DD150EF17AED2A6004285E3 /* Button-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Highlighted@2x.png"; path = "Pictures/Button-Highlighted@2x.png"; sourceTree = "<group>"; };
+		9DD150F017AED2A6004285E3 /* Button-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Button-Normal@2x.png"; path = "Pictures/Button-Normal@2x.png"; sourceTree = "<group>"; };
+		9DD150F117AED2A6004285E3 /* SliderThumb-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderThumb-Highlighted@2x.png"; path = "Pictures/SliderThumb-Highlighted@2x.png"; sourceTree = "<group>"; };
+		9DD150F217AED2A6004285E3 /* SliderThumb-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderThumb-Normal@2x.png"; path = "Pictures/SliderThumb-Normal@2x.png"; sourceTree = "<group>"; };
+		9DD150F317AED2A6004285E3 /* SliderTrackLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderTrackLeft@2x.png"; path = "Pictures/SliderTrackLeft@2x.png"; sourceTree = "<group>"; };
+		9DD150F417AED2A6004285E3 /* SliderTrackRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SliderTrackRight@2x.png"; path = "Pictures/SliderTrackRight@2x.png"; sourceTree = "<group>"; };
+		9DD150F517AED2A6004285E3 /* StartOverButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StartOverButton@2x.png"; path = "Pictures/StartOverButton@2x.png"; sourceTree = "<group>"; };
+		9DD150F617AED2A6004285E3 /* StartOverIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "StartOverIcon@2x.png"; path = "Pictures/StartOverIcon@2x.png"; sourceTree = "<group>"; };
+		9DD1510917AED30F004285E3 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		9DD1510A17AED30F004285E3 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		9DD1510B17AED30F004285E3 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		9DD1510E17AED465004285E3 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		9DD1510F17AED465004285E3 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		9DD1511017AED465004285E3 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DD1508717AED247004285E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1508E17AED247004285E3 /* UIKit.framework in Frameworks */,
+				9DD1509017AED247004285E3 /* Foundation.framework in Frameworks */,
+				9DD1509217AED247004285E3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD150AC17AED247004285E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD150B217AED247004285E3 /* SenTestingKit.framework in Frameworks */,
+				9DD150B317AED248004285E3 /* UIKit.framework in Frameworks */,
+				9DD150B417AED248004285E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DD1508117AED247004285E3 = {
+			isa = PBXGroup;
+			children = (
+				9DD1509317AED247004285E3 /* BullsEyeGame */,
+				9DD150B717AED248004285E3 /* BullsEyeGameTests */,
+				9DD1508C17AED247004285E3 /* Frameworks */,
+				9DD1508B17AED247004285E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DD1508B17AED247004285E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1508A17AED247004285E3 /* BullsEyeGame.app */,
+				9DD150B017AED247004285E3 /* BullsEyeGameTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DD1508C17AED247004285E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1508D17AED247004285E3 /* UIKit.framework */,
+				9DD1508F17AED247004285E3 /* Foundation.framework */,
+				9DD1509117AED247004285E3 /* CoreGraphics.framework */,
+				9DD150B117AED247004285E3 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DD1509317AED247004285E3 /* BullsEyeGame */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1510917AED30F004285E3 /* GameViewController.h */,
+				9DD1510A17AED30F004285E3 /* GameViewController.m */,
+				9DD1510B17AED30F004285E3 /* GameViewController.xib */,
+				9DD1510E17AED465004285E3 /* AboutViewController.h */,
+				9DD1510F17AED465004285E3 /* AboutViewController.m */,
+				9DD1511017AED465004285E3 /* AboutViewController.xib */,
+				9DD150A517AED247004285E3 /* BullsEyeViewController.h */,
+				9DD150A617AED247004285E3 /* BullsEyeViewController.m */,
+				9DD150A817AED247004285E3 /* BullsEyeViewController.xib */,
+				9DD1509C17AED247004285E3 /* BullsEyeAppDelegate.h */,
+				9DD1509D17AED247004285E3 /* BullsEyeAppDelegate.m */,
+				9DD1509417AED247004285E3 /* Supporting Files */,
+			);
+			path = BullsEyeGame;
+			sourceTree = "<group>";
+		};
+		9DD1509417AED247004285E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DD150E517AED2A6004285E3 /* Background.png */,
+				9DD150E617AED2A6004285E3 /* Button-Highlighted.png */,
+				9DD150E717AED2A6004285E3 /* Button-Normal.png */,
+				9DD150E817AED2A6004285E3 /* SliderThumb-Highlighted.png */,
+				9DD150E917AED2A6004285E3 /* SliderThumb-Normal.png */,
+				9DD150EA17AED2A6004285E3 /* SliderTrackLeft.png */,
+				9DD150EB17AED2A6004285E3 /* SliderTrackRight.png */,
+				9DD150EC17AED2A6004285E3 /* StartOverButton.png */,
+				9DD150ED17AED2A6004285E3 /* StartOverIcon.png */,
+				9DD150EE17AED2A6004285E3 /* Background@2x.png */,
+				9DD150EF17AED2A6004285E3 /* Button-Highlighted@2x.png */,
+				9DD150F017AED2A6004285E3 /* Button-Normal@2x.png */,
+				9DD150F117AED2A6004285E3 /* SliderThumb-Highlighted@2x.png */,
+				9DD150F217AED2A6004285E3 /* SliderThumb-Normal@2x.png */,
+				9DD150F317AED2A6004285E3 /* SliderTrackLeft@2x.png */,
+				9DD150F417AED2A6004285E3 /* SliderTrackRight@2x.png */,
+				9DD150F517AED2A6004285E3 /* StartOverButton@2x.png */,
+				9DD150F617AED2A6004285E3 /* StartOverIcon@2x.png */,
+				9DD150C917AED291004285E3 /* ak47-gun.png */,
+				9DD150CA17AED291004285E3 /* dartInBullsEye.png */,
+				9DD150CB17AED291004285E3 /* fillIcon.png */,
+				9DD150CC17AED291004285E3 /* machineGun.gif */,
+				9DD150CD17AED291004285E3 /* machineGun.jpg */,
+				9DD150CE17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM #2.jpg */,
+				9DD150CF17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM.jpg */,
+				9DD150D017AED291004285E3 /* Screen Shot 2013-06-23 at 7.50.49 PM.png */,
+				9DD150D117AED291004285E3 /* Screen Shot 2013-07-08 at 9.57.40 PM.png */,
+				9DD150D217AED291004285E3 /* sniperRifle.jpg */,
+				9DD150D317AED291004285E3 /* snipers.jpg */,
+				9DD150D417AED291004285E3 /* wings.jpg */,
+				9DD150D517AED291004285E3 /* wings.png */,
+				9DD150D617AED291004285E3 /* dartInBullsEye.png */,
+				9DD1509517AED247004285E3 /* BullsEyeGame-Info.plist */,
+				9DD1509617AED247004285E3 /* InfoPlist.strings */,
+				9DD1509917AED247004285E3 /* main.m */,
+				9DD1509B17AED247004285E3 /* BullsEyeGame-Prefix.pch */,
+				9DD1509F17AED247004285E3 /* Default.png */,
+				9DD150A117AED247004285E3 /* Default@2x.png */,
+				9DD150A317AED247004285E3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DD150B717AED248004285E3 /* BullsEyeGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DD150BD17AED248004285E3 /* BullsEyeGameTests.h */,
+				9DD150BE17AED248004285E3 /* BullsEyeGameTests.m */,
+				9DD150B817AED248004285E3 /* Supporting Files */,
+			);
+			path = BullsEyeGameTests;
+			sourceTree = "<group>";
+		};
+		9DD150B817AED248004285E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DD150B917AED248004285E3 /* BullsEyeGameTests-Info.plist */,
+				9DD150BA17AED248004285E3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DD1508917AED247004285E3 /* BullsEyeGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD150C217AED248004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeGame" */;
+			buildPhases = (
+				9DD1508617AED247004285E3 /* Sources */,
+				9DD1508717AED247004285E3 /* Frameworks */,
+				9DD1508817AED247004285E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BullsEyeGame;
+			productName = BullsEyeGame;
+			productReference = 9DD1508A17AED247004285E3 /* BullsEyeGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DD150AF17AED247004285E3 /* BullsEyeGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD150C517AED248004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeGameTests" */;
+			buildPhases = (
+				9DD150AB17AED247004285E3 /* Sources */,
+				9DD150AC17AED247004285E3 /* Frameworks */,
+				9DD150AD17AED247004285E3 /* Resources */,
+				9DD150AE17AED247004285E3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DD150B617AED248004285E3 /* PBXTargetDependency */,
+			);
+			name = BullsEyeGameTests;
+			productName = BullsEyeGameTests;
+			productReference = 9DD150B017AED247004285E3 /* BullsEyeGameTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DD1508217AED247004285E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BullsEye;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Baby Andrew";
+			};
+			buildConfigurationList = 9DD1508517AED247004285E3 /* Build configuration list for PBXProject "BullsEyeGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9DD1508117AED247004285E3;
+			productRefGroup = 9DD1508B17AED247004285E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DD1508917AED247004285E3 /* BullsEyeGame */,
+				9DD150AF17AED247004285E3 /* BullsEyeGameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DD1508817AED247004285E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1509817AED247004285E3 /* InfoPlist.strings in Resources */,
+				9DD150A017AED247004285E3 /* Default.png in Resources */,
+				9DD150A217AED247004285E3 /* Default@2x.png in Resources */,
+				9DD150A417AED247004285E3 /* Default-568h@2x.png in Resources */,
+				9DD150AA17AED247004285E3 /* BullsEyeViewController.xib in Resources */,
+				9DD150D717AED291004285E3 /* ak47-gun.png in Resources */,
+				9DD150D817AED291004285E3 /* dartInBullsEye.png in Resources */,
+				9DD150D917AED291004285E3 /* fillIcon.png in Resources */,
+				9DD150DA17AED291004285E3 /* machineGun.gif in Resources */,
+				9DD150DB17AED291004285E3 /* machineGun.jpg in Resources */,
+				9DD150DC17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM #2.jpg in Resources */,
+				9DD150DD17AED291004285E3 /* Photo on 7-25-13 at 3.39 PM.jpg in Resources */,
+				9DD150DE17AED291004285E3 /* Screen Shot 2013-06-23 at 7.50.49 PM.png in Resources */,
+				9DD150DF17AED291004285E3 /* Screen Shot 2013-07-08 at 9.57.40 PM.png in Resources */,
+				9DD150E017AED291004285E3 /* sniperRifle.jpg in Resources */,
+				9DD150E117AED291004285E3 /* snipers.jpg in Resources */,
+				9DD150E217AED291004285E3 /* wings.jpg in Resources */,
+				9DD150E317AED291004285E3 /* wings.png in Resources */,
+				9DD150E417AED291004285E3 /* dartInBullsEye.png in Resources */,
+				9DD150F717AED2A6004285E3 /* Background.png in Resources */,
+				9DD150F817AED2A6004285E3 /* Button-Highlighted.png in Resources */,
+				9DD150F917AED2A6004285E3 /* Button-Normal.png in Resources */,
+				9DD150FA17AED2A6004285E3 /* SliderThumb-Highlighted.png in Resources */,
+				9DD150FB17AED2A6004285E3 /* SliderThumb-Normal.png in Resources */,
+				9DD150FC17AED2A6004285E3 /* SliderTrackLeft.png in Resources */,
+				9DD150FD17AED2A6004285E3 /* SliderTrackRight.png in Resources */,
+				9DD150FE17AED2A6004285E3 /* StartOverButton.png in Resources */,
+				9DD150FF17AED2A6004285E3 /* StartOverIcon.png in Resources */,
+				9DD1510017AED2A6004285E3 /* Background@2x.png in Resources */,
+				9DD1510117AED2A6004285E3 /* Button-Highlighted@2x.png in Resources */,
+				9DD1510217AED2A6004285E3 /* Button-Normal@2x.png in Resources */,
+				9DD1510317AED2A6004285E3 /* SliderThumb-Highlighted@2x.png in Resources */,
+				9DD1510417AED2A6004285E3 /* SliderThumb-Normal@2x.png in Resources */,
+				9DD1510517AED2A6004285E3 /* SliderTrackLeft@2x.png in Resources */,
+				9DD1510617AED2A6004285E3 /* SliderTrackRight@2x.png in Resources */,
+				9DD1510717AED2A6004285E3 /* StartOverButton@2x.png in Resources */,
+				9DD1510817AED2A6004285E3 /* StartOverIcon@2x.png in Resources */,
+				9DD1510D17AED30F004285E3 /* GameViewController.xib in Resources */,
+				9DD1511217AED465004285E3 /* AboutViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD150AD17AED247004285E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD150BC17AED248004285E3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9DD150AE17AED247004285E3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DD1508617AED247004285E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1509A17AED247004285E3 /* main.m in Sources */,
+				9DD1509E17AED247004285E3 /* BullsEyeAppDelegate.m in Sources */,
+				9DD150A717AED247004285E3 /* BullsEyeViewController.m in Sources */,
+				9DD1510C17AED30F004285E3 /* GameViewController.m in Sources */,
+				9DD1511117AED465004285E3 /* AboutViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD150AB17AED247004285E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD150BF17AED248004285E3 /* BullsEyeGameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DD150B617AED248004285E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DD1508917AED247004285E3 /* BullsEyeGame */;
+			targetProxy = 9DD150B517AED248004285E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DD1509617AED247004285E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD1509717AED247004285E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9DD150A817AED247004285E3 /* BullsEyeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD150A917AED247004285E3 /* en */,
+			);
+			name = BullsEyeViewController.xib;
+			sourceTree = "<group>";
+		};
+		9DD150BA17AED248004285E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD150BB17AED248004285E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DD150C017AED248004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9DD150C117AED248004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DD150C317AED248004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeGame/BullsEyeGame-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeGame/BullsEyeGame-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9DD150C417AED248004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeGame/BullsEyeGame-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeGame/BullsEyeGame-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9DD150C617AED248004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BullsEyeGame.app/BullsEyeGame";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeGame/BullsEyeGame-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeGameTests/BullsEyeGameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9DD150C717AED248004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BullsEyeGame.app/BullsEyeGame";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeGame/BullsEyeGame-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeGameTests/BullsEyeGameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DD1508517AED247004285E3 /* Build configuration list for PBXProject "BullsEyeGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD150C017AED248004285E3 /* Debug */,
+				9DD150C117AED248004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD150C217AED248004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD150C317AED248004285E3 /* Debug */,
+				9DD150C417AED248004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9DD150C517AED248004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD150C617AED248004285E3 /* Debug */,
+				9DD150C717AED248004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DD1508217AED247004285E3 /* Project object */;
+}

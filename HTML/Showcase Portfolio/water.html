@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Water...</title>
+		<style type = "text/css">
+			#canvas{
+				background-color:black
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id = "canvas" width = "1200" height = "700"></canvas><br/>
+		Particles: <input type ="textfield" id="particles"></input> <button id="set">Set</input> <button id = "go">Start</button>
+		<script type = "text/javascript">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var goButton = document.getElementById('go');
+			var numParticlesField = document.getElementById('particles');
+			var setButton = document.getElementById('set');
+			var numParticles = 100;
+			var particles = [];
+			var init;
+			
+			var speed = 8;
+			var radiusOfCircles = 12;
+			var radiusOfCirclesSquared = radiusOfCircles*radiusOfCircles;
+			
+			function createParticles(num){
+				var row = 1;
+				var column = 1;
+				for (var i = 1;i<=num;i++){
+					particles.push({x:column*radiusOfCircles*4,y:row*radiusOfCircles*4,dx:Math.random()*speed-speed/2,dy:Math.random()*speed-speed/2,color:"white"});
+					column++;
+					drawPart(particles[i - 1]);
+					if ((column+1) * radiusOfCircles*4 > 1200 - radiusOfCircles){
+						column = 1;
+						row++;
+					}
+				}
+				particles[0].color = "red";
+				drawPart(particles[0]);
+			}
+			
+			function run(){
+				ctx.clearRect(0,0,1200,700);
+				for (var i = 0;i<particles.length;i++){
+					var particle = particles[i];
+					particle.x += particle.dx;
+					particle.y += particle.dy;
+					drawPart(particle);
+				}
+				for (var i = 0;i<particles.length;i++){
+					particle1 = particles[i];
+					if (particle1.x > 1200 - radiusOfCircles  || particle1.x < 0 + radiusOfCircles){
+						particle1.dx *= -1;
+						while (particle1.x + particle1.dx > 1200 - radiusOfCircles  || particle1.x + particle1.dx < 0 + radiusOfCircles){
+							particle1.x += particle1.dx;
+							particle1.y += particle1.dy;
+							ctx.beginPath();
+							ctx.fillStyle = "red";
+							ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
+							ctx.closePath();
+							ctx.fill();
+						}
+					}
+					if (particle1.y > 700 - radiusOfCircles || particle1.y < 0 + radiusOfCircles){
+						particle1.dy *= -1;
+						while (particle1.y + particle1.dy > 700 - radiusOfCircles  || particle1.y + particle1.dy < 0 + radiusOfCircles){
+							particle1.x += particle1.dx;
+							particle1.y += particle1.dy;
+							ctx.beginPath();
+							ctx.fillStyle = "red";
+							ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
+							ctx.closePath();
+							ctx.fill();
+						}
+					}
+					for (var j = i+1;j<particles.length;j++){
+						particle2 = particles[j];
+						if (distanceSquared(particle1,particle2) <= radiusOfCirclesSquared*4) {
+							bounce(particle1,particle2);
+							var count = 0;
+							while (distanceSquared({x:particle1.x+particle1.dx,y:particle1.y+particle1.dy},{x:particle2.x+particle2.dx,y:particle2.y+particle2.dy}) <= radiusOfCirclesSquared*4){
+								if (count > 100){
+									console.log('boop');
+									goButton.innerText = "Start";
+									clearInterval(init);
+								}
+								particle1.x += particle1.dx;
+								particle1.y += particle1.dy;
+								ctx.beginPath();
+								ctx.fillStyle = "red";
+								ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
+								ctx.closePath();
+								ctx.fill();
+								ctx.beginPath();
+								ctx.fillStyle = "red";
+								ctx.arc(particle2.x,particle2.y,radiusOfCircles,0,Math.PI*2,true);
+								ctx.closePath();
+								ctx.fill();
+								count++;
+							}
+						}
+					}
+				}
+			}
+			
+			function distanceSquared(p1,p2){
+				var d1 = p2.x-p1.x;
+				var d2 = p2.y-p1.y;
+				return d1*d1+d2*d2;
+			}
+			
+			function bounce(p1,p2){
+				//v_l for v_1
+				if (p2.x-p1.x != 0){
+					var mL = (p2.y-p1.y)/(p2.x-p1.x);
+					if (mL != 0){
+						var xL = (p1.dx/mL + p1.dy)/(mL+1/mL);
+						var vL = {x:xL,y:mL*xL};
+						
+						//v_l for v_2
+						var mL2 = (p1.y-p2.y)/(p1.x-p2.x);
+						var xL2 = (p2.dx/mL2 + p2.dy)/(mL2+1/mL2);
+						var vL2 = {x:xL2,y:mL*xL2};
+						
+						p1.dx -= vL.x;
+						p1.dy -= vL.y;
+						p2.dx += vL.x;
+						p2.dy += vL.y;
+					
+						p2.dx -= vL2.x;
+						p2.dy -= vL2.y;
+						p1.dx += vL2.x;
+						p1.dy += vL2.y;
+					} else {
+						var xL = p1.dx;
+						var vL = {x:xL,y:0};
+						
+						//v_l for v_2
+						var xL2 = p2.dx;
+						var vL2 = {x:xL2,y:0};
+						
+						p1.dx -= vL.x;
+						p1.dy -= vL.y;
+						p2.dx += vL.x;
+						p2.dy += vL.y;
+					
+						p2.dx -= vL2.x;
+						p2.dy -= vL2.y;
+						p1.dx += vL2.x;
+						p1.dy += vL2.y;
+					}
+				} else {
+					var xL = p1.dy;
+					var vL = {x:0,y:xL};
+					
+					//v_l for v_2
+					var xL2 = p2.dy;
+					var vL2 = {x:0,y:xL2};
+					
+					p1.dx -= vL.x;
+					p1.dy -= vL.y;
+					p2.dx += vL.x;
+					p2.dy += vL.y;
+				
+					p2.dx -= vL2.x;
+					p2.dy -= vL2.y;
+					p1.dx += vL2.x;
+					p1.dy += vL2.y;
+				}
+			}
+			
+			function drawPart(obj){
+				ctx.beginPath();
+				ctx.fillStyle = obj.color;
+				ctx.arc(obj.x,obj.y,radiusOfCircles,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fill();
+			}
+			
+			goButton.onclick = function () {
+				if (goButton.innerText === "Start"){
+					goButton.innerText = "Stop";
+					init = setInterval(run,20);
+				}
+				else if (goButton.innerText === "Stop"){
+					goButton.innerText = "Start";
+					clearInterval(init);
+				}
+			}
+			
+			setButton.onclick = function () {
+				numParticles = parseInt(numParticlesField.value);
+				ctx.clearRect(0,0,1200,700);
+				particles = [];
+				createParticles(numParticles);
+			}
+		</script>
+	</body>
+</html>

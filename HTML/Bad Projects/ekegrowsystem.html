@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ekegrowsystem</title>
+		<style type = "text/css">
+		</style>
+	</head>
+	<body>
+		<script type = "text/javascript">
+			function kvpair(key,value){
+				this.key = key
+				this.value = value
+			}
+			function indexOfKey(searchKey,listOfKVs){
+				index = -1
+				for(var i = listOfKVs.length-1,i>=0,i--){
+					if(listOfKVs[i].key == searchKey){
+						index = i;
+					}
+				}
+				return index;
+			}
+			function valueAtKey(searchKey,listOfKVs){
+				index = -1
+				value = -1
+				for(var i = listOfKVs.length-1,i>=0,i--){
+					if(listOfKVs[i].key == searchKey){
+						index = i;
+					}
+				}
+				if(index > -1){
+					value = listOfKVs[index].value
+				}
+				return value;
+			}
+			function producer(startEnergy, traits){
+				this.growth = [new kvpair("leaf", valueAtKey("leaf", traits)), 
+								new kvpair("root", valueAtKey("root", traits)), 
+								new kvpair("stem", valueAtKey("stem", traits))];
+				this.seeds = [new kvpair("starter", valueAtKey("starter", traits)), 
+							  new kvpair("number", valueAtKey("number", traits)), 
+							  new kvpair("travel", valueAtKey("travel", traits))]
+				this.stores = valueAtKey("stores", traits)
+				this.energy = startEnergy;
+			}
+		</script>
+	</body>
+</html>

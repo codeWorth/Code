@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bouncy</title>
+		<style type="text/css">
+			#mainCanv{
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="1420" height = "750" id="mainCanv"></canvas>
+		Radius: <input type = "text" id = "radiusField"></input> Circles: <input type = "text" id = "numCirclesField"></input> 
+		 Start Speed: <input type = "text" id = "speedField"></input> <button id = "setFields">Set</button> <button id = "startStop">Start</button>
+		<script type="text/javascript">
+
+		//HTML elements
+
+		var canvas = document.getElementById("mainCanv");
+		var ctx = canvas.getContext("2d");
+
+		var rField = document.getElementById("radiusField");
+		var nCircleField = document.getElementById("numCirclesField");
+		var startSpeedField = document.getElementById("speedField");
+
+		var setButton = document.getElementById("setFields");
+		var startStopButton = document.getElementById("startSpeed");
+
+		//Parameters
+
+		var canvW = canvas.width;
+		var canvH = canvas.height;
+
+		var maxPrecheckSpeed = 10;
+
+		var circleR = 10;
+		rField.value = circleR;
+
+		var startSpeed = 7;
+		startSpeedField.value = startSpeed;
+
+		var numOfCircles = 70;
+		nCircleField.value = numOfCircles;
+
+		var paddingAmount = 0.5;
+
+		//Variables
+
+		var circleX = [10, 50, 100];
+		var circleY = [30, 200, 70];
+		var circleVX = [];
+		var circleVY = [];
+		var circleVRPad = [];
+
+		var init; //the run function
+
+		//DOM related functions
+
+		setButton.onclick = function (){
+			circleR = parseFloat(rField.value); //set the values based on the input fields
+			startSpeed = parseFloat(startSpeedField.value);
+			numOfCircles = parseInt(nCircleField.value);
+
+			clearInterval(init); //stop repeating
+			ctx.clearRect(0,0,canvW,canvH); //clear the canvas
+
+			resetCirclePositions();
+			drawCircles();
+		}
+
+		//Canvas related functions
+
+		function drawCircles(){
+			ctx.clearRect(0,0,canvW,canvH); //clear the canvas
+			ctx.beginPath(); //start drawing the cirlces
+
+			for (var i = circleX.length - 1; i >= 0; i--) {
+				ctx.moveTo(circleX[i], circleY[i]); //move to the positions so there aren't lines drawn between the circles
+				ctx.arc(circleX[i], circleY[i], circleR, 0, Math.PI*2, true); //draw the circle
+			}
+
+			ctx.fillStyle = "white"; //set fill color
+			ctx.closePath(); //close all the circles
+			ctx.fill(); //fill all the circles with white
+		}
+
+		function resetCirclePositions(){
+			//clear all the lists
+			circleX.length = 0;
+			circleY.length = 0;
+			circleVX.length = 0;
+			circleVY.length = 0;
+			circleVRPad.length = 0;
+
+			var spacePerCircle = circleR * (2 + paddingAmount); //find space needed for each circle, added .5 for padding
+			var maxCirclesAcross = Math.floor(canvW / spacePerCircle); //find how many circles can go across, floor because an extra part of a circle cannot fit on the screen
+
+			var numOfCirclesDown = Math.ceil(numOfCircles / maxCirclesAcross); //find how many rows down, ceil because any extra need their own row
+
+			if (numOfCirclesDown * spacePerCircle > canvH){ //circles extend downwards too far
+				numOfCirclesDown = Math.floor(canvH / spacePerCircle); //set the height to the max, if its above the max
+
+				numOfCircles = numOfCirclesDown * maxCirclesAcross; //number of circles gets set to the maximum
+				nCircleField.value = numOfCircles; //set the field
+			}
+
+			var curX = circleR * (1 + paddingAmount/2); //add the padding at the beginning
+			var curY = circleR * (1 + paddingAmount/2); 
+			var speedX;
+			var speedY;
+			var circlesLeftToDraw = numOfCircles;
+
+			for (var i = 0; i <  numOfCirclesDown; i++){
+				for (var j = 0; j < maxCirclesAcross; j++){
+
+					if (circlesLeftToDraw == 0){ //no more circles to draw
+						break; //exit this for loop
+					}
+
+					circleX.push(curX);
+					circleY.push(curY);
+
+					speedX = (Math.random - 0.5) * startSpeed; //speedX is anywhere from -startSpeed/2 to +startSpeed/2
+					speedY = (Math.random - 0.5) * startSpeed; //speedY is anywhere from -startSpeed/2 to +startSpeed/2
+
+					circleVRPad = Math.sqrt(speedX*speedX + speedY*speedY) + 2*circleR; //find the real velocity with added padding
+
+					curX += spacePerCircle; //increase the curX
+
+					circlesLeftToDraw--; //decrease the number left to draw
+				}
+
+				curX = circleR * (1 + paddingAmount/2); //reset the curX
+				curY += spacePerCircle; //increase the curY
+			}
+		}
+
+		//Math functions
+
+		function bounceCircle(i1, i2, x1, y1, x2, y2){
+
+			var vx1 = circleVX[i1];
+			var vy1 = circleVY[i1];
+
+			var vx2 = circleVX[i2];
+			var vy2 = circleVY[i2];
+
+			var betweenCenteredX = x2 - x1; //center line between at 0, 0
+			var betweenCenteredY = y2 - y1;
+
+			var lenBetween = 2*circleR //the length between is double the radius of the circles because the circles are touching edges
+
+			var dotVelBetween = (betweenCenteredX * vx1 + betweenCenteredY * vy1) / lenBetween; //find the dot product of circle 1's velocity on line between divided by magnitude of line between
+
+			var ratio = dotVelBetween / lenBetween; //ratio of length of transfer velocity to length of line between
+
+			var transferX1 = betweenCenteredX * ratio; //speed in x that should be transfered
+			var transferY1 = betweenCenteredY * ratio; //speed in y that should be transfered
+
+
+
+			betweenCenteredX = x1 - x2; //recenter line between at 0, 0
+			betweenCenteredY = y1 - y2;
+
+			//instead of doing above calculation, simply add a * -1 in front of the betweenCenetered variables, it has the same effect
+
+			dotVelBetween = (-betweenCenteredX * vx2 - betweenCenteredY * vy2) / lenBetween; //find the dot product of circle 2's velocity on line between divided by magnitude of line between
+
+			ratio = dotVelBetween / lenBetween; //recompute ratio
+
+			var transferX2 = -betweenCenteredX * ratio; //same as before
+			var transferY2 = -bewteenCenteredY * ratio;
+
+			vx1 -= transferX1; //remove transferX1 from vx1 (speed goes from circle 1 to circle 2)
+			vx1 += transferX2; //add it to vx2 (goes to circle 2)
+
+			vy1 -= transferY1; //same deal with the y
+			vy1 += transferY2;
+
+
+			vx2 -= transferX2; //remove transferX2 from vx2 (speed goes frm circle)
+			vx2 += transferX1; //add it to vx1 (goes to circle 1)
+
+			vy2 -= transferY2; //same deal with the y
+			vy2 += transferY1;
+
+			var vr1Pad = Math.sqrt(vx1^2 + vy1^2); 
+			var vr2Pad = Math.sqrt(vx2^2 + vy2^2);
+
+			vr1Pad += 2*r;
+			vr2Pad += 2*r;
+
+			circleVX[i1] = vx1;
+			circleVY[i1] = vy1;
+			circleVRPad[i1] = vr1Pad;
+
+			circleVX[i2] = vx2;
+			circleVY[i2] = vy2;
+			circleVRPad[i2] = vr2Pad;
+
+		}
+
+		function bounceBetweenFrames(i1, i2){
+			//x1 y1 is at 0 0
+			//x2 y2 is at the other circle, shifted back(just do x2 - x1, y2 - y1)
+
+			var shouldBounce = false; //if the bounce should be calculated at the end
+
+			var x2 = circleX[i2] - circleX[i1];
+			var y2 = circleY[i2] - circleY[i1];
+
+			if (circleVX[i1] == 0){
+
+				if (circleVX[i2] == 0){
+					if (x2 <= 2 * circleR){
+						shouldBounce = true;
+					}
+				} else {
+					/*
+					(x4 - x3)^2 + (y4 - y3)^2 = 4*r^2
+					x3 is 0 regardless
+					y3 is just t
+					(x4)^2 + (y4 - t)^2 = 4*r^2
+					x4^2 + y4^2 - 2ty4 + t^2 = 4*r^2
+					t^2 - 2*t*y4 = c    c is same as below
+					t^2 - 2*t*(m2*t*k + y2) = c
+					t^2 - 2*t^2*m2*k + 2*t*y2 = c
+					t^2*(1 - 2*m2*k) + 2*t*y2 = c
+
+					d = 1 - 2*m2*k
+					d (t^2 + 2*t*y2/d) = c
+					d (t^2 + 2*t*y2/d + y2^2/d^2) = c + y2^2/d complete the square
+					d (t + y2/d)^2 = c + y2^2/d
+					(t + y2/d)^2 = c/d + y2^2/d^2
+					t + y2/d = {+ or -} sqrt(c/d + y2^2/d^2)
+					t = -y2/d {+ or -} sqrt(c/d + y2^2/d^2)
+					*/
+
+					var m2 = circleVY[i2]/circleVX[i2];
+
+					var k = circleVX[i2]/circleVX[i1]; //ratio of vx's, used with t
+					var c = 4r^2 - x2^2 - y2^2;
+					var d = 1 - 2*m2*k;
+
+					if (d == 0){
+						//break out
+					} else {
+						var determinant = c/d + cOverD*cOverD;
+						if (determinant < 0){
+							//break out
+						}
+					}
+
+					var t = -y2/d + Math.sqrt(determinant);
+
+					if (t < 0 || t > circleVX[i1]){
+						//break out
+					}
+					shouldBounce = true;
+				}
+
+			} else if (circleVX[i2] == 0){
+
+				/*
+
+				(x4 - x3)^2 + (y4 - y3)^2 = 4*r^2
+				x4 is 0, y4 is t
+				(-x3)^2 + (t - y3)^2 = 4*r^2
+				x3^2 + ((1)t - m1*t)^2 = 4*r^2
+				x3^2 + ((1-m1)*t)^2 = 4*r^2
+				x3^2 + (1-m1)^2 * t^2 = 4*r^2
+				*/
+
+			} else {
+
+				var m1 = circleVY[i1]/circleVX[i1]; //slope of the velocity vectors
+				var m2 = circleVY[i2]/circleVX[i2];
+
+				var k = circleVX[i2]/circleVX[i1]; //ratio of vx's, used with t
+				var f = m2*k-m1; //just a number :P
+
+				var a = (k-1)^2 + f^2; //there is no explanation
+				var b = f*y2 + x2 * (k - 1);
+				var c = 4r^2 - x2^2 - y2^2;
+
+			}
+
+			//if t is on line, t goes from 0 to vx1
+
+			var t = -b/a {+ or -} sqrt ( c/a + b^2/a^2 )
+
+			x3 = t
+			y3 = m1(t)
+
+			x4 = t(k) + x2
+			y4 = m2(x4 - x2) + y2
+
+		}
+
+		function checkForBounces(){
+			var circleXLen = circleX.length;
+			var canvHIn = canvH - circleR;
+			var canvWIn = canvW - circleR;
+
+			var thisX;
+			var thisY;
+
+			var t;
+			for (var i = 0; i < circleXLen; i++){
+				thisX = circleX[i];
+				thisY = circleY[i];
+
+				if (thisX < circleR || thisX > canvWIn){
+					circleVX[i] *= -1;
+				}
+				if (thisY < circleR || thisY > canvHIn){
+					circleVY[i] *= -1;
+				}
+
+				for (var j = i + 1; j < circleXLen; j++){
+					if (Math.abs(circleVX[i] + circleVX[j]) > maxPrecheckSpeed){
+						if (specialDistSquared(i, j) > (vr1Pad + vr2Pad) * (vr1Pad + vr2Pad)){
+							bounceBetweenFrames(i, j);
+						}
+					} else {
+						if (distSqaured(i, j) > 4*circleR*circleR){
+							bounceCircle(i, j, circleX[i], circleY[i], circleX[j], circleY[j]);
+						}
+					}
+				}
+			}
+		}
+
+		function distSqaured(i, j){
+			var x1 = circleX[i];
+			var y1 = circleY[i];
+
+			var x2 = circleX[j];
+			var y2 = circleY[j];
+
+			var difX = x2 - x1;
+			var difY = y2 - y1;
+
+			return difX * difX + difY * difY;
+		}
+
+		function specialDistSquared(i, j){
+			//find distance between midpoints of velocity vectors
+
+			var iCenterX = 0.5*circleVX[i] + circleX[i]; //center of circle i
+			var iCenterY = 0.5*circleVY[i] + circleY[i];
+
+			var jCenterX = 0.5*circleVX[j] + circleX[j]; //center of circle j
+			var jCenterY = 0.5*circleVY[j] + circleY[j];
+
+			var difX = iCenterX - jCenterX;
+			var difY = iCenterY - jCenterY;
+
+			return difX*difX + difY*difY;
+		}
+
+		</script>
+	</body>
+</html>
+
+<!--important info:
+
+	-Integer or bitwise op: 1 cycle
+	-Floating-point add/sub/mul: 4 cycles
+	-Conditional branch: avg. 10 cycles, better if well-predicted, much worse if mispredicted
+	-Floating-point div: ~30 cycles
+	-Floating-point sqrt: ~60 cycles depending on implementation
+	-Floating-point exponentiation: ~200 cycles
+
+t is time of bounce:
+	x1 y1 is at 0 0
+	x2 y2 is at some point(just do x2 - x1, y2 - y1)
+
+	(vx1, vy1), (vx2, vy2)
+
+	m1 = vy1/vx1
+	m2 = vy2/vx2
+
+	r = 3 (or any other number)
+
+	k = vx2/vx1
+	f = m2*k-m1
+
+	a = (k-1)^2 + f^2
+	b = f*y2 + x2 * (k - 1)
+	c = 4r^2 - x2^2 - y2^2
+
+	t = -b/a {+ or -} sqrt ( c/a + b^2/a^2 )
+
+(x3, y3), (x4, y4) is the circles' centers at intercept:
+	x3 = t
+	y3 = m1(t)
+
+	x4 = t(k) + x2
+	y4 = m2(x4 - x2) + y2
+
+			   circle 1 start|circle 1 end     circle 2 start|circle 2 end
+how to check if (a.x, a.y) -> (b.x, b.y) is near (c.x, c.y) -> (d.x, d.y)
+
+	b = a + v1
+	d = c + v2
+
+	vr1Pad and vr2Pad get set when they bounce, already defined (happens later)
+
+	find distance between, check if less than a radius:
+
+	cicrle goes around a -> b
+
+	aCenterX = 0.5*(a.x + b.x)
+	aCenterY = 0.5*(a.y + b.y)
+
+
+	cicrle goes around c -> d	
+
+	cCenterX = 0.5*(c.x + d.x)
+	cCenterY = 0.5*(c.y + d.y)
+
+	difX = aCenterX - cCenterX
+	difY = aCenterY - cCenterY
+
+	dist = difX*difX + difY*difY
+
+	if dist < (vr1Pad + vr2Pad) * (vr1Pad + vr2Pad)
+
+bouncing algorithim, taking:
+	-circle 1: (x1, y1), (vx1, vy1)
+	-circle 2: (x2, y2), (vx2, vy2)
+	-radius: r
+here we go:
+
+	find velocity vector of circle one's velocity onto line between (like a dot product):
+
+		line between: (x1, y1) -> (x2, y2)
+
+		betweenCenteredX = x2 - x1 //center line between at 0, 0
+		betweenCenteredY = y2 - y1
+
+		lenBetween = 2*r //the length between is double the radius of the circles because the circles are touching edges
+
+		dotVelBetween = (betweenCenteredX * vx1 + betweenCenteredY * vy1) / lenBetween //find the dot product of circle 1's velocity on line between divided by magnitude of line between
+
+		ratio = dotVelBetween / lenBetween //ratio of length of transfer velocity to length of line between
+
+		transferX1 = betweenCenteredX * ratio //speed in x that should be transfered
+		transferY1 = betweenCenteredY * ratio //speed in x that should be transfered
+
+
+
+		betweenCenteredX = x1 - x2 //recenter line between at 0, 0
+		betweenCenteredY = y1 - y2
+
+		//instead of doing above calculation, simply add a * -1 in front of the betweenCenetered variables, it has the same effect
+
+		dotVelBetween = (-betweenCenteredX * vx2 - betweenCenteredY * vy2) / lenBetween //find the dot product of circle 2's velocity on line between divided by magnitude of line between
+
+		ratio = dotVelBetween / lenBetween
+
+		transferX2 = -betweenCenteredX * ratio
+		transferY2 = -bewteenCenteredY * ratio
+
+		vx1 -= transferX1
+		vx1 += transferX2
+
+		vy1 -= transferY1
+		vy1 += transferY2
+
+
+		vx2 -= transferX2
+		vx2 += transferX1
+
+		vy2 -= transferY2
+		vy2 += transferY1
+
+		vr1Pad = Math.sqrt(vx1^2 + vy1^2) 
+		vr2Pad = Math.sqrt(vx2^2 + vy2^2)
+
+		vr1Pad += 2*r
+		vr2Pad += 2*r
+-->

@@ -1,0 +1,715 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD02372C19BD2BFC00A34F79 /* gunText.png in Resources */ = {isa = PBXBuildFile; fileRef = BD02372B19BD2BFC00A34F79 /* gunText.png */; };
+		BD02372E19BD2C0A00A34F79 /* shootPosture.png in Resources */ = {isa = PBXBuildFile; fileRef = BD02372D19BD2C0A00A34F79 /* shootPosture.png */; };
+		BD0AB05419AA57630043E12D /* 44 magnum.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB03D19AA57630043E12D /* 44 magnum.png */; };
+		BD0AB05519AA57630043E12D /* 45 colt.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB03E19AA57630043E12D /* 45 colt.png */; };
+		BD0AB05619AA57630043E12D /* aerolite plasma rifle.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB03F19AA57630043E12D /* aerolite plasma rifle.png */; };
+		BD0AB05719AA57630043E12D /* axis ion accelorator.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04019AA57630043E12D /* axis ion accelorator.png */; };
+		BD0AB05819AA57630043E12D /* ballista.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04119AA57630043E12D /* ballista.png */; };
+		BD0AB05919AA57630043E12D /* dsr 50.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04219AA57630043E12D /* dsr 50.png */; };
+		BD0AB05A19AA57630043E12D /* five seven.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04319AA57630043E12D /* five seven.png */; };
+		BD0AB05B19AA57630043E12D /* gatling gun.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04419AA57630043E12D /* gatling gun.png */; };
+		BD0AB05C19AA57630043E12D /* hamr.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04519AA57630043E12D /* hamr.png */; };
+		BD0AB05D19AA57630043E12D /* mini uzi.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04619AA57630043E12D /* mini uzi.png */; };
+		BD0AB05E19AA57630043E12D /* neutron cannon.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04719AA57630043E12D /* neutron cannon.png */; };
+		BD0AB05F19AA57630043E12D /* porter's x2 ray gun.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04819AA57630043E12D /* porter's x2 ray gun.png */; };
+		BD0AB06019AA57630043E12D /* positron phaser mark I.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04919AA57630043E12D /* positron phaser mark I.png */; };
+		BD0AB06119AA57630043E12D /* positron phaser mark II.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04A19AA57630043E12D /* positron phaser mark II.png */; };
+		BD0AB06219AA57630043E12D /* ray gun.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04B19AA57630043E12D /* ray gun.png */; };
+		BD0AB06319AA57630043E12D /* ray gun mark II.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04C19AA57630043E12D /* ray gun mark II.png */; };
+		BD0AB06419AA57630043E12D /* rocket propelled grievence.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04D19AA57630043E12D /* rocket propelled grievence.png */; };
+		BD0AB06519AA57630043E12D /* rpg.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04E19AA57630043E12D /* rpg.png */; };
+		BD0AB06619AA57630043E12D /* scar h.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB04F19AA57630043E12D /* scar h.png */; };
+		BD0AB06719AA57630043E12D /* scar l.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB05019AA57630043E12D /* scar l.png */; };
+		BD0AB06819AA57630043E12D /* smaw.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB05119AA57630043E12D /* smaw.png */; };
+		BD0AB06919AA57630043E12D /* tac 45.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB05219AA57630043E12D /* tac 45.png */; };
+		BD0AB06A19AA57630043E12D /* war machine.png in Resources */ = {isa = PBXBuildFile; fileRef = BD0AB05319AA57630043E12D /* war machine.png */; };
+		BD3CD38C19A4305600BD9745 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD38B19A4305600BD9745 /* Foundation.framework */; };
+		BD3CD38E19A4305600BD9745 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD38D19A4305600BD9745 /* CoreGraphics.framework */; };
+		BD3CD39019A4305600BD9745 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD38F19A4305600BD9745 /* UIKit.framework */; };
+		BD3CD39219A4305600BD9745 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD39119A4305600BD9745 /* SpriteKit.framework */; };
+		BD3CD39819A4305600BD9745 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD39619A4305600BD9745 /* InfoPlist.strings */; };
+		BD3CD39A19A4305600BD9745 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD39919A4305600BD9745 /* main.m */; };
+		BD3CD39E19A4305600BD9745 /* standoffAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD39D19A4305600BD9745 /* standoffAppDelegate.m */; };
+		BD3CD3A119A4305600BD9745 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD39F19A4305600BD9745 /* Main.storyboard */; };
+		BD3CD3A419A4305600BD9745 /* standoffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD3A319A4305600BD9745 /* standoffViewController.m */; };
+		BD3CD3A719A4305600BD9745 /* standoffMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD3A619A4305600BD9745 /* standoffMyScene.m */; };
+		BD3CD3AB19A4305600BD9745 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3AA19A4305600BD9745 /* Images.xcassets */; };
+		BD3CD3B219A4305600BD9745 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD3B119A4305600BD9745 /* XCTest.framework */; };
+		BD3CD3B319A4305600BD9745 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD38B19A4305600BD9745 /* Foundation.framework */; };
+		BD3CD3B419A4305600BD9745 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3CD38F19A4305600BD9745 /* UIKit.framework */; };
+		BD3CD3BC19A4305600BD9745 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3BA19A4305600BD9745 /* InfoPlist.strings */; };
+		BD3CD3BE19A4305600BD9745 /* Stand_OffTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD3BD19A4305600BD9745 /* Stand_OffTests.m */; };
+		BD3CD3C919A432E000BD9745 /* startScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD3C819A432E000BD9745 /* startScreenViewController.m */; };
+		BD3CD3D019A440A000BD9745 /* Sniper_Rifle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3CE19A440A000BD9745 /* Sniper_Rifle.mp3 */; };
+		BD3CD3D119A440A000BD9745 /* Gun_Fire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3CF19A440A000BD9745 /* Gun_Fire.mp3 */; };
+		BD3CD3F119A4577D00BD9745 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3E519A4577C00BD9745 /* 2.png */; };
+		BD3CD3F219A4577D00BD9745 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3E619A4577C00BD9745 /* 3.png */; };
+		BD3CD3F319A4577D00BD9745 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3E719A4577C00BD9745 /* 4.png */; };
+		BD3CD3F419A4577D00BD9745 /* bulletHole.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3E819A4577C00BD9745 /* bulletHole.png */; };
+		BD3CD3F519A4577D00BD9745 /* less.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3E919A4577C00BD9745 /* less.png */; };
+		BD3CD3F619A4577D00BD9745 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3EA19A4577C00BD9745 /* more.png */; };
+		BD3CD3F719A4577D00BD9745 /* players.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3EB19A4577C00BD9745 /* players.png */; };
+		BD3CD3F819A4577D00BD9745 /* standOffTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3EC19A4577C00BD9745 /* standOffTitle.png */; };
+		BD3CD3F919A4577D00BD9745 /* start.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3ED19A4577C00BD9745 /* start.png */; };
+		BD3CD3FB19A4577D00BD9745 /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD3EF19A4577C00BD9745 /* wood.jpg */; };
+		BD3CD40019A4628100BD9745 /* customizeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3CD3FF19A4628100BD9745 /* customizeViewController.m */; };
+		BD3CD40219A464B800BD9745 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD40119A464B800BD9745 /* done.png */; };
+		BD3CD40419A464C600BD9745 /* wild_west_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD40319A464C600BD9745 /* wild_west_background.jpg */; };
+		BD3CD40719A46DFA00BD9745 /* beltGold.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD40519A46DFA00BD9745 /* beltGold.png */; };
+		BD3CD40819A46DFA00BD9745 /* cowboy.png in Resources */ = {isa = PBXBuildFile; fileRef = BD3CD40619A46DFA00BD9745 /* cowboy.png */; };
+		BD4FDB9519A6E23800627945 /* buttonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = BD4FDB9419A6E23800627945 /* buttonBack.png */; };
+		BD4FDB9719A6E38F00627945 /* startButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BD4FDB9619A6E38F00627945 /* startButton.png */; };
+		BDA9BD8219AADF1B00EE655D /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA9BD8119AADF1B00EE655D /* Player.m */; };
+		BDA9BD8519AADF2D00EE655D /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA9BD8419AADF2D00EE655D /* PlayerView.m */; };
+		BDFB348119AA6677006066F3 /* myCharacter.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348019AA6677006066F3 /* myCharacter.png */; };
+		BDFB348319AA6978006066F3 /* woodPlank.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348219AA6978006066F3 /* woodPlank.png */; };
+		BDFB348819AA6D63006066F3 /* switch weapon.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348419AA6D63006066F3 /* switch weapon.png */; };
+		BDFB348919AA6D63006066F3 /* shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348519AA6D63006066F3 /* shoot.png */; };
+		BDFB348A19AA6D63006066F3 /* dodge.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348619AA6D63006066F3 /* dodge.png */; };
+		BDFB348B19AA6D63006066F3 /* pass.png in Resources */ = {isa = PBXBuildFile; fileRef = BDFB348719AA6D63006066F3 /* pass.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD3CD3B519A4305600BD9745 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD3CD38019A4305600BD9745 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD3CD38719A4305600BD9745;
+			remoteInfo = "Stand-Off";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD02372B19BD2BFC00A34F79 /* gunText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gunText.png; path = Images.xcassets/gunText.png; sourceTree = "<group>"; };
+		BD02372D19BD2C0A00A34F79 /* shootPosture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shootPosture.png; path = Images.xcassets/shootPosture.png; sourceTree = "<group>"; };
+		BD0AB03D19AA57630043E12D /* 44 magnum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "44 magnum.png"; path = "Images.xcassets/Guns/Gun Buttons/44 magnum.png"; sourceTree = "<group>"; };
+		BD0AB03E19AA57630043E12D /* 45 colt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "45 colt.png"; path = "Images.xcassets/Guns/Gun Buttons/45 colt.png"; sourceTree = "<group>"; };
+		BD0AB03F19AA57630043E12D /* aerolite plasma rifle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "aerolite plasma rifle.png"; path = "Images.xcassets/Guns/Gun Buttons/aerolite plasma rifle.png"; sourceTree = "<group>"; };
+		BD0AB04019AA57630043E12D /* axis ion accelorator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "axis ion accelorator.png"; path = "Images.xcassets/Guns/Gun Buttons/axis ion accelorator.png"; sourceTree = "<group>"; };
+		BD0AB04119AA57630043E12D /* ballista.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ballista.png; path = "Images.xcassets/Guns/Gun Buttons/ballista.png"; sourceTree = "<group>"; };
+		BD0AB04219AA57630043E12D /* dsr 50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dsr 50.png"; path = "Images.xcassets/Guns/Gun Buttons/dsr 50.png"; sourceTree = "<group>"; };
+		BD0AB04319AA57630043E12D /* five seven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "five seven.png"; path = "Images.xcassets/Guns/Gun Buttons/five seven.png"; sourceTree = "<group>"; };
+		BD0AB04419AA57630043E12D /* gatling gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gatling gun.png"; path = "Images.xcassets/Guns/Gun Buttons/gatling gun.png"; sourceTree = "<group>"; };
+		BD0AB04519AA57630043E12D /* hamr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hamr.png; path = "Images.xcassets/Guns/Gun Buttons/hamr.png"; sourceTree = "<group>"; };
+		BD0AB04619AA57630043E12D /* mini uzi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mini uzi.png"; path = "Images.xcassets/Guns/Gun Buttons/mini uzi.png"; sourceTree = "<group>"; };
+		BD0AB04719AA57630043E12D /* neutron cannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "neutron cannon.png"; path = "Images.xcassets/Guns/Gun Buttons/neutron cannon.png"; sourceTree = "<group>"; };
+		BD0AB04819AA57630043E12D /* porter's x2 ray gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "porter's x2 ray gun.png"; path = "Images.xcassets/Guns/Gun Buttons/porter's x2 ray gun.png"; sourceTree = "<group>"; };
+		BD0AB04919AA57630043E12D /* positron phaser mark I.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "positron phaser mark I.png"; path = "Images.xcassets/Guns/Gun Buttons/positron phaser mark I.png"; sourceTree = "<group>"; };
+		BD0AB04A19AA57630043E12D /* positron phaser mark II.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "positron phaser mark II.png"; path = "Images.xcassets/Guns/Gun Buttons/positron phaser mark II.png"; sourceTree = "<group>"; };
+		BD0AB04B19AA57630043E12D /* ray gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ray gun.png"; path = "Images.xcassets/Guns/Gun Buttons/ray gun.png"; sourceTree = "<group>"; };
+		BD0AB04C19AA57630043E12D /* ray gun mark II.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ray gun mark II.png"; path = "Images.xcassets/Guns/Gun Buttons/ray gun mark II.png"; sourceTree = "<group>"; };
+		BD0AB04D19AA57630043E12D /* rocket propelled grievence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rocket propelled grievence.png"; path = "Images.xcassets/Guns/Gun Buttons/rocket propelled grievence.png"; sourceTree = "<group>"; };
+		BD0AB04E19AA57630043E12D /* rpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rpg.png; path = "Images.xcassets/Guns/Gun Buttons/rpg.png"; sourceTree = "<group>"; };
+		BD0AB04F19AA57630043E12D /* scar h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scar h.png"; path = "Images.xcassets/Guns/Gun Buttons/scar h.png"; sourceTree = "<group>"; };
+		BD0AB05019AA57630043E12D /* scar l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scar l.png"; path = "Images.xcassets/Guns/Gun Buttons/scar l.png"; sourceTree = "<group>"; };
+		BD0AB05119AA57630043E12D /* smaw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smaw.png; path = "Images.xcassets/Guns/Gun Buttons/smaw.png"; sourceTree = "<group>"; };
+		BD0AB05219AA57630043E12D /* tac 45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tac 45.png"; path = "Images.xcassets/Guns/Gun Buttons/tac 45.png"; sourceTree = "<group>"; };
+		BD0AB05319AA57630043E12D /* war machine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "war machine.png"; path = "Images.xcassets/Guns/Gun Buttons/war machine.png"; sourceTree = "<group>"; };
+		BD3CD38819A4305600BD9745 /* Stand-Off.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stand-Off.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3CD38B19A4305600BD9745 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD3CD38D19A4305600BD9745 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD3CD38F19A4305600BD9745 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD3CD39119A4305600BD9745 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		BD3CD39519A4305600BD9745 /* Stand-Off-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stand-Off-Info.plist"; sourceTree = "<group>"; };
+		BD3CD39719A4305600BD9745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD3CD39919A4305600BD9745 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD3CD39B19A4305600BD9745 /* Stand-Off-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stand-Off-Prefix.pch"; sourceTree = "<group>"; };
+		BD3CD39C19A4305600BD9745 /* standoffAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = standoffAppDelegate.h; sourceTree = "<group>"; };
+		BD3CD39D19A4305600BD9745 /* standoffAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = standoffAppDelegate.m; sourceTree = "<group>"; };
+		BD3CD3A019A4305600BD9745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD3CD3A219A4305600BD9745 /* standoffViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = standoffViewController.h; sourceTree = "<group>"; };
+		BD3CD3A319A4305600BD9745 /* standoffViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = standoffViewController.m; sourceTree = "<group>"; };
+		BD3CD3A519A4305600BD9745 /* standoffMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = standoffMyScene.h; sourceTree = "<group>"; };
+		BD3CD3A619A4305600BD9745 /* standoffMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = standoffMyScene.m; sourceTree = "<group>"; };
+		BD3CD3AA19A4305600BD9745 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD3CD3B019A4305600BD9745 /* Stand-OffTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stand-OffTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3CD3B119A4305600BD9745 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BD3CD3B919A4305600BD9745 /* Stand-OffTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Stand-OffTests-Info.plist"; sourceTree = "<group>"; };
+		BD3CD3BB19A4305600BD9745 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD3CD3BD19A4305600BD9745 /* Stand_OffTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Stand_OffTests.m; sourceTree = "<group>"; };
+		BD3CD3C719A432E000BD9745 /* startScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = startScreenViewController.h; sourceTree = "<group>"; };
+		BD3CD3C819A432E000BD9745 /* startScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = startScreenViewController.m; sourceTree = "<group>"; };
+		BD3CD3CE19A440A000BD9745 /* Sniper_Rifle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Sniper_Rifle.mp3; path = "../../../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/Sniper_Rifle.mp3"; sourceTree = "<group>"; };
+		BD3CD3CF19A440A000BD9745 /* Gun_Fire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Gun_Fire.mp3; path = "../../../../../Music/iTunes/iTunes Media/Music/Unknown Artist/Unknown Album/Gun_Fire.mp3"; sourceTree = "<group>"; };
+		BD3CD3E519A4577C00BD9745 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = Images.xcassets/2.png; sourceTree = "<group>"; };
+		BD3CD3E619A4577C00BD9745 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = Images.xcassets/3.png; sourceTree = "<group>"; };
+		BD3CD3E719A4577C00BD9745 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = Images.xcassets/4.png; sourceTree = "<group>"; };
+		BD3CD3E819A4577C00BD9745 /* bulletHole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bulletHole.png; path = Images.xcassets/bulletHole.png; sourceTree = "<group>"; };
+		BD3CD3E919A4577C00BD9745 /* less.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = less.png; path = Images.xcassets/less.png; sourceTree = "<group>"; };
+		BD3CD3EA19A4577C00BD9745 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = more.png; path = Images.xcassets/more.png; sourceTree = "<group>"; };
+		BD3CD3EB19A4577C00BD9745 /* players.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = players.png; path = Images.xcassets/players.png; sourceTree = "<group>"; };
+		BD3CD3EC19A4577C00BD9745 /* standOffTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = standOffTitle.png; path = Images.xcassets/standOffTitle.png; sourceTree = "<group>"; };
+		BD3CD3ED19A4577C00BD9745 /* start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = start.png; path = Images.xcassets/start.png; sourceTree = "<group>"; };
+		BD3CD3EF19A4577C00BD9745 /* wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood.jpg; path = Images.xcassets/wood.jpg; sourceTree = "<group>"; };
+		BD3CD3FE19A4628100BD9745 /* customizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customizeViewController.h; sourceTree = "<group>"; };
+		BD3CD3FF19A4628100BD9745 /* customizeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customizeViewController.m; sourceTree = "<group>"; };
+		BD3CD40119A464B800BD9745 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = done.png; path = Images.xcassets/done.png; sourceTree = "<group>"; };
+		BD3CD40319A464C600BD9745 /* wild_west_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wild_west_background.jpg; path = Images.xcassets/wild_west_background.jpg; sourceTree = "<group>"; };
+		BD3CD40519A46DFA00BD9745 /* beltGold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = beltGold.png; path = Images.xcassets/beltGold.png; sourceTree = "<group>"; };
+		BD3CD40619A46DFA00BD9745 /* cowboy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cowboy.png; path = Images.xcassets/cowboy.png; sourceTree = "<group>"; };
+		BD4FDB9419A6E23800627945 /* buttonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = buttonBack.png; path = Images.xcassets/buttonBack.png; sourceTree = "<group>"; };
+		BD4FDB9619A6E38F00627945 /* startButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = startButton.png; path = Images.xcassets/startButton.png; sourceTree = "<group>"; };
+		BDA9BD8019AADF1B00EE655D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		BDA9BD8119AADF1B00EE655D /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		BDA9BD8319AADF2D00EE655D /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		BDA9BD8419AADF2D00EE655D /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		BDFB348019AA6677006066F3 /* myCharacter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myCharacter.png; path = Images.xcassets/myCharacter.png; sourceTree = "<group>"; };
+		BDFB348219AA6978006066F3 /* woodPlank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = woodPlank.png; path = Images.xcassets/woodPlank.png; sourceTree = "<group>"; };
+		BDFB348419AA6D63006066F3 /* switch weapon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "switch weapon.png"; path = "Images.xcassets/switch weapon.png"; sourceTree = "<group>"; };
+		BDFB348519AA6D63006066F3 /* shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shoot.png; path = Images.xcassets/shoot.png; sourceTree = "<group>"; };
+		BDFB348619AA6D63006066F3 /* dodge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dodge.png; path = Images.xcassets/dodge.png; sourceTree = "<group>"; };
+		BDFB348719AA6D63006066F3 /* pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pass.png; path = Images.xcassets/pass.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD3CD38519A4305600BD9745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CD38E19A4305600BD9745 /* CoreGraphics.framework in Frameworks */,
+				BD3CD39019A4305600BD9745 /* UIKit.framework in Frameworks */,
+				BD3CD39219A4305600BD9745 /* SpriteKit.framework in Frameworks */,
+				BD3CD38C19A4305600BD9745 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CD3AD19A4305600BD9745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CD3B219A4305600BD9745 /* XCTest.framework in Frameworks */,
+				BD3CD3B419A4305600BD9745 /* UIKit.framework in Frameworks */,
+				BD3CD3B319A4305600BD9745 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD3CD37F19A4305600BD9745 = {
+			isa = PBXGroup;
+			children = (
+				BD3CD39319A4305600BD9745 /* Stand-Off */,
+				BD3CD3B719A4305600BD9745 /* Stand-OffTests */,
+				BD3CD38A19A4305600BD9745 /* Frameworks */,
+				BD3CD38919A4305600BD9745 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD3CD38919A4305600BD9745 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CD38819A4305600BD9745 /* Stand-Off.app */,
+				BD3CD3B019A4305600BD9745 /* Stand-OffTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD3CD38A19A4305600BD9745 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CD38B19A4305600BD9745 /* Foundation.framework */,
+				BD3CD38D19A4305600BD9745 /* CoreGraphics.framework */,
+				BD3CD38F19A4305600BD9745 /* UIKit.framework */,
+				BD3CD39119A4305600BD9745 /* SpriteKit.framework */,
+				BD3CD3B119A4305600BD9745 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD3CD39319A4305600BD9745 /* Stand-Off */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CD39C19A4305600BD9745 /* standoffAppDelegate.h */,
+				BD3CD39D19A4305600BD9745 /* standoffAppDelegate.m */,
+				BD3CD39F19A4305600BD9745 /* Main.storyboard */,
+				BD3CD3C719A432E000BD9745 /* startScreenViewController.h */,
+				BD3CD3C819A432E000BD9745 /* startScreenViewController.m */,
+				BD3CD3FE19A4628100BD9745 /* customizeViewController.h */,
+				BD3CD3FF19A4628100BD9745 /* customizeViewController.m */,
+				BD3CD3A219A4305600BD9745 /* standoffViewController.h */,
+				BD3CD3A319A4305600BD9745 /* standoffViewController.m */,
+				BD3CD3A519A4305600BD9745 /* standoffMyScene.h */,
+				BD3CD3A619A4305600BD9745 /* standoffMyScene.m */,
+				BDA9BD8019AADF1B00EE655D /* Player.h */,
+				BDA9BD8119AADF1B00EE655D /* Player.m */,
+				BDA9BD8319AADF2D00EE655D /* PlayerView.h */,
+				BDA9BD8419AADF2D00EE655D /* PlayerView.m */,
+				BD3CD3AA19A4305600BD9745 /* Images.xcassets */,
+				BD3CD39419A4305600BD9745 /* Supporting Files */,
+			);
+			path = "Stand-Off";
+			sourceTree = "<group>";
+		};
+		BD3CD39419A4305600BD9745 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD02372D19BD2C0A00A34F79 /* shootPosture.png */,
+				BD02372B19BD2BFC00A34F79 /* gunText.png */,
+				BDFB348419AA6D63006066F3 /* switch weapon.png */,
+				BDFB348519AA6D63006066F3 /* shoot.png */,
+				BDFB348619AA6D63006066F3 /* dodge.png */,
+				BDFB348719AA6D63006066F3 /* pass.png */,
+				BDFB348219AA6978006066F3 /* woodPlank.png */,
+				BDFB348019AA6677006066F3 /* myCharacter.png */,
+				BD0AB03D19AA57630043E12D /* 44 magnum.png */,
+				BD0AB03E19AA57630043E12D /* 45 colt.png */,
+				BD0AB03F19AA57630043E12D /* aerolite plasma rifle.png */,
+				BD0AB04019AA57630043E12D /* axis ion accelorator.png */,
+				BD0AB04119AA57630043E12D /* ballista.png */,
+				BD0AB04219AA57630043E12D /* dsr 50.png */,
+				BD0AB04319AA57630043E12D /* five seven.png */,
+				BD0AB04419AA57630043E12D /* gatling gun.png */,
+				BD0AB04519AA57630043E12D /* hamr.png */,
+				BD0AB04619AA57630043E12D /* mini uzi.png */,
+				BD0AB04719AA57630043E12D /* neutron cannon.png */,
+				BD0AB04819AA57630043E12D /* porter's x2 ray gun.png */,
+				BD0AB04919AA57630043E12D /* positron phaser mark I.png */,
+				BD0AB04A19AA57630043E12D /* positron phaser mark II.png */,
+				BD0AB04B19AA57630043E12D /* ray gun.png */,
+				BD0AB04C19AA57630043E12D /* ray gun mark II.png */,
+				BD0AB04D19AA57630043E12D /* rocket propelled grievence.png */,
+				BD0AB04E19AA57630043E12D /* rpg.png */,
+				BD0AB04F19AA57630043E12D /* scar h.png */,
+				BD0AB05019AA57630043E12D /* scar l.png */,
+				BD0AB05119AA57630043E12D /* smaw.png */,
+				BD0AB05219AA57630043E12D /* tac 45.png */,
+				BD0AB05319AA57630043E12D /* war machine.png */,
+				BD4FDB9619A6E38F00627945 /* startButton.png */,
+				BD4FDB9419A6E23800627945 /* buttonBack.png */,
+				BD3CD40519A46DFA00BD9745 /* beltGold.png */,
+				BD3CD40619A46DFA00BD9745 /* cowboy.png */,
+				BD3CD40319A464C600BD9745 /* wild_west_background.jpg */,
+				BD3CD40119A464B800BD9745 /* done.png */,
+				BD3CD3E519A4577C00BD9745 /* 2.png */,
+				BD3CD3E619A4577C00BD9745 /* 3.png */,
+				BD3CD3E719A4577C00BD9745 /* 4.png */,
+				BD3CD3E819A4577C00BD9745 /* bulletHole.png */,
+				BD3CD3E919A4577C00BD9745 /* less.png */,
+				BD3CD3EA19A4577C00BD9745 /* more.png */,
+				BD3CD3EB19A4577C00BD9745 /* players.png */,
+				BD3CD3EC19A4577C00BD9745 /* standOffTitle.png */,
+				BD3CD3ED19A4577C00BD9745 /* start.png */,
+				BD3CD3EF19A4577C00BD9745 /* wood.jpg */,
+				BD3CD3CE19A440A000BD9745 /* Sniper_Rifle.mp3 */,
+				BD3CD3CF19A440A000BD9745 /* Gun_Fire.mp3 */,
+				BD3CD39519A4305600BD9745 /* Stand-Off-Info.plist */,
+				BD3CD39619A4305600BD9745 /* InfoPlist.strings */,
+				BD3CD39919A4305600BD9745 /* main.m */,
+				BD3CD39B19A4305600BD9745 /* Stand-Off-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD3CD3B719A4305600BD9745 /* Stand-OffTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CD3BD19A4305600BD9745 /* Stand_OffTests.m */,
+				BD3CD3B819A4305600BD9745 /* Supporting Files */,
+			);
+			path = "Stand-OffTests";
+			sourceTree = "<group>";
+		};
+		BD3CD3B819A4305600BD9745 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CD3B919A4305600BD9745 /* Stand-OffTests-Info.plist */,
+				BD3CD3BA19A4305600BD9745 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD3CD38719A4305600BD9745 /* Stand-Off */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3CD3C119A4305600BD9745 /* Build configuration list for PBXNativeTarget "Stand-Off" */;
+			buildPhases = (
+				BD3CD38419A4305600BD9745 /* Sources */,
+				BD3CD38519A4305600BD9745 /* Frameworks */,
+				BD3CD38619A4305600BD9745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Stand-Off";
+			productName = "Stand-Off";
+			productReference = BD3CD38819A4305600BD9745 /* Stand-Off.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD3CD3AF19A4305600BD9745 /* Stand-OffTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3CD3C419A4305600BD9745 /* Build configuration list for PBXNativeTarget "Stand-OffTests" */;
+			buildPhases = (
+				BD3CD3AC19A4305600BD9745 /* Sources */,
+				BD3CD3AD19A4305600BD9745 /* Frameworks */,
+				BD3CD3AE19A4305600BD9745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD3CD3B619A4305600BD9745 /* PBXTargetDependency */,
+			);
+			name = "Stand-OffTests";
+			productName = "Stand-OffTests";
+			productReference = BD3CD3B019A4305600BD9745 /* Stand-OffTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD3CD38019A4305600BD9745 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = standoff;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Programming Account";
+				TargetAttributes = {
+					BD3CD38719A4305600BD9745 = {
+						DevelopmentTeam = K28KQC6A4X;
+					};
+					BD3CD3AF19A4305600BD9745 = {
+						TestTargetID = BD3CD38719A4305600BD9745;
+					};
+				};
+			};
+			buildConfigurationList = BD3CD38319A4305600BD9745 /* Build configuration list for PBXProject "Stand-Off" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD3CD37F19A4305600BD9745;
+			productRefGroup = BD3CD38919A4305600BD9745 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD3CD38719A4305600BD9745 /* Stand-Off */,
+				BD3CD3AF19A4305600BD9745 /* Stand-OffTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD3CD38619A4305600BD9745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD0AB05819AA57630043E12D /* ballista.png in Resources */,
+				BDFB348119AA6677006066F3 /* myCharacter.png in Resources */,
+				BD3CD39819A4305600BD9745 /* InfoPlist.strings in Resources */,
+				BD3CD3F619A4577D00BD9745 /* more.png in Resources */,
+				BD0AB06519AA57630043E12D /* rpg.png in Resources */,
+				BD4FDB9519A6E23800627945 /* buttonBack.png in Resources */,
+				BDFB348B19AA6D63006066F3 /* pass.png in Resources */,
+				BD0AB05D19AA57630043E12D /* mini uzi.png in Resources */,
+				BD3CD3D019A440A000BD9745 /* Sniper_Rifle.mp3 in Resources */,
+				BD0AB06219AA57630043E12D /* ray gun.png in Resources */,
+				BD3CD3F519A4577D00BD9745 /* less.png in Resources */,
+				BD3CD3FB19A4577D00BD9745 /* wood.jpg in Resources */,
+				BD0AB06019AA57630043E12D /* positron phaser mark I.png in Resources */,
+				BD0AB05419AA57630043E12D /* 44 magnum.png in Resources */,
+				BD0AB06619AA57630043E12D /* scar h.png in Resources */,
+				BD0AB05B19AA57630043E12D /* gatling gun.png in Resources */,
+				BD0AB05E19AA57630043E12D /* neutron cannon.png in Resources */,
+				BD3CD3F119A4577D00BD9745 /* 2.png in Resources */,
+				BD0AB06719AA57630043E12D /* scar l.png in Resources */,
+				BD3CD3F819A4577D00BD9745 /* standOffTitle.png in Resources */,
+				BD0AB05719AA57630043E12D /* axis ion accelorator.png in Resources */,
+				BD0AB06819AA57630043E12D /* smaw.png in Resources */,
+				BD0AB05C19AA57630043E12D /* hamr.png in Resources */,
+				BD0AB06119AA57630043E12D /* positron phaser mark II.png in Resources */,
+				BD0AB05519AA57630043E12D /* 45 colt.png in Resources */,
+				BD3CD3F219A4577D00BD9745 /* 3.png in Resources */,
+				BDFB348919AA6D63006066F3 /* shoot.png in Resources */,
+				BD0AB06419AA57630043E12D /* rocket propelled grievence.png in Resources */,
+				BD02372C19BD2BFC00A34F79 /* gunText.png in Resources */,
+				BD3CD40819A46DFA00BD9745 /* cowboy.png in Resources */,
+				BD3CD40419A464C600BD9745 /* wild_west_background.jpg in Resources */,
+				BD0AB05919AA57630043E12D /* dsr 50.png in Resources */,
+				BD0AB06319AA57630043E12D /* ray gun mark II.png in Resources */,
+				BD3CD40719A46DFA00BD9745 /* beltGold.png in Resources */,
+				BD0AB06A19AA57630043E12D /* war machine.png in Resources */,
+				BD0AB06919AA57630043E12D /* tac 45.png in Resources */,
+				BD4FDB9719A6E38F00627945 /* startButton.png in Resources */,
+				BD0AB05F19AA57630043E12D /* porter's x2 ray gun.png in Resources */,
+				BD3CD3F719A4577D00BD9745 /* players.png in Resources */,
+				BD3CD3AB19A4305600BD9745 /* Images.xcassets in Resources */,
+				BD3CD40219A464B800BD9745 /* done.png in Resources */,
+				BD3CD3F919A4577D00BD9745 /* start.png in Resources */,
+				BD02372E19BD2C0A00A34F79 /* shootPosture.png in Resources */,
+				BD3CD3D119A440A000BD9745 /* Gun_Fire.mp3 in Resources */,
+				BD3CD3A119A4305600BD9745 /* Main.storyboard in Resources */,
+				BD3CD3F319A4577D00BD9745 /* 4.png in Resources */,
+				BDFB348319AA6978006066F3 /* woodPlank.png in Resources */,
+				BDFB348A19AA6D63006066F3 /* dodge.png in Resources */,
+				BD3CD3F419A4577D00BD9745 /* bulletHole.png in Resources */,
+				BD0AB05619AA57630043E12D /* aerolite plasma rifle.png in Resources */,
+				BDFB348819AA6D63006066F3 /* switch weapon.png in Resources */,
+				BD0AB05A19AA57630043E12D /* five seven.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CD3AE19A4305600BD9745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CD3BC19A4305600BD9745 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD3CD38419A4305600BD9745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CD40019A4628100BD9745 /* customizeViewController.m in Sources */,
+				BD3CD3C919A432E000BD9745 /* startScreenViewController.m in Sources */,
+				BD3CD39A19A4305600BD9745 /* main.m in Sources */,
+				BD3CD3A719A4305600BD9745 /* standoffMyScene.m in Sources */,
+				BD3CD3A419A4305600BD9745 /* standoffViewController.m in Sources */,
+				BDA9BD8219AADF1B00EE655D /* Player.m in Sources */,
+				BD3CD39E19A4305600BD9745 /* standoffAppDelegate.m in Sources */,
+				BDA9BD8519AADF2D00EE655D /* PlayerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CD3AC19A4305600BD9745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CD3BE19A4305600BD9745 /* Stand_OffTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD3CD3B619A4305600BD9745 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD3CD38719A4305600BD9745 /* Stand-Off */;
+			targetProxy = BD3CD3B519A4305600BD9745 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD3CD39619A4305600BD9745 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD3CD39719A4305600BD9745 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD3CD39F19A4305600BD9745 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD3CD3A019A4305600BD9745 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD3CD3BA19A4305600BD9745 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD3CD3BB19A4305600BD9745 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD3CD3BF19A4305600BD9745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD3CD3C019A4305600BD9745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD3CD3C219A4305600BD9745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stand-Off/Stand-Off-Prefix.pch";
+				INFOPLIST_FILE = "Stand-Off/Stand-Off-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD3CD3C319A4305600BD9745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stand-Off/Stand-Off-Prefix.pch";
+				INFOPLIST_FILE = "Stand-Off/Stand-Off-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD3CD3C519A4305600BD9745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stand-Off.app/Stand-Off";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stand-Off/Stand-Off-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Stand-OffTests/Stand-OffTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BD3CD3C619A4305600BD9745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stand-Off.app/Stand-Off";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Stand-Off/Stand-Off-Prefix.pch";
+				INFOPLIST_FILE = "Stand-OffTests/Stand-OffTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD3CD38319A4305600BD9745 /* Build configuration list for PBXProject "Stand-Off" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CD3BF19A4305600BD9745 /* Debug */,
+				BD3CD3C019A4305600BD9745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3CD3C119A4305600BD9745 /* Build configuration list for PBXNativeTarget "Stand-Off" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CD3C219A4305600BD9745 /* Debug */,
+				BD3CD3C319A4305600BD9745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3CD3C419A4305600BD9745 /* Build configuration list for PBXNativeTarget "Stand-OffTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CD3C519A4305600BD9745 /* Debug */,
+				BD3CD3C619A4305600BD9745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD3CD38019A4305600BD9745 /* Project object */;
+}

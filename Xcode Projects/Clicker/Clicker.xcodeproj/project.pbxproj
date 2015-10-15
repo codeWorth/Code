@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BDDA68EC18A20BE4007EDFD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA68EB18A20BE4007EDFD0 /* Foundation.framework */; };
+		BDDA68EE18A20BE4007EDFD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA68ED18A20BE4007EDFD0 /* CoreGraphics.framework */; };
+		BDDA68F018A20BE4007EDFD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA68EF18A20BE4007EDFD0 /* UIKit.framework */; };
+		BDDA68F618A20BE4007EDFD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDDA68F418A20BE4007EDFD0 /* InfoPlist.strings */; };
+		BDDA68F818A20BE4007EDFD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDA68F718A20BE4007EDFD0 /* main.m */; };
+		BDDA68FC18A20BE4007EDFD0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDA68FB18A20BE4007EDFD0 /* AppDelegate.m */; };
+		BDDA68FF18A20BE4007EDFD0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDDA68FD18A20BE4007EDFD0 /* Main_iPhone.storyboard */; };
+		BDDA690518A20BE4007EDFD0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDA690418A20BE4007EDFD0 /* ViewController.m */; };
+		BDDA690718A20BE4007EDFD0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDA690618A20BE4007EDFD0 /* Images.xcassets */; };
+		BDDA690E18A20BE4007EDFD0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA690D18A20BE4007EDFD0 /* XCTest.framework */; };
+		BDDA690F18A20BE4007EDFD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA68EB18A20BE4007EDFD0 /* Foundation.framework */; };
+		BDDA691018A20BE4007EDFD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDDA68EF18A20BE4007EDFD0 /* UIKit.framework */; };
+		BDDA691818A20BE4007EDFD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BDDA691618A20BE4007EDFD0 /* InfoPlist.strings */; };
+		BDDA691A18A20BE4007EDFD0 /* ClickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDA691918A20BE4007EDFD0 /* ClickerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BDDA691118A20BE4007EDFD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDDA68E018A20BE4007EDFD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BDDA68E718A20BE4007EDFD0;
+			remoteInfo = Clicker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BDDA68E818A20BE4007EDFD0 /* Clicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDDA68EB18A20BE4007EDFD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BDDA68ED18A20BE4007EDFD0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BDDA68EF18A20BE4007EDFD0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BDDA68F318A20BE4007EDFD0 /* Clicker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Clicker-Info.plist"; sourceTree = "<group>"; };
+		BDDA68F518A20BE4007EDFD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDDA68F718A20BE4007EDFD0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDDA68F918A20BE4007EDFD0 /* Clicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clicker-Prefix.pch"; sourceTree = "<group>"; };
+		BDDA68FA18A20BE4007EDFD0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BDDA68FB18A20BE4007EDFD0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BDDA68FE18A20BE4007EDFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		BDDA690318A20BE4007EDFD0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BDDA690418A20BE4007EDFD0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BDDA690618A20BE4007EDFD0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BDDA690C18A20BE4007EDFD0 /* ClickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDDA690D18A20BE4007EDFD0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BDDA691518A20BE4007EDFD0 /* ClickerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClickerTests-Info.plist"; sourceTree = "<group>"; };
+		BDDA691718A20BE4007EDFD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BDDA691918A20BE4007EDFD0 /* ClickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClickerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BDDA68E518A20BE4007EDFD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA68EE18A20BE4007EDFD0 /* CoreGraphics.framework in Frameworks */,
+				BDDA68F018A20BE4007EDFD0 /* UIKit.framework in Frameworks */,
+				BDDA68EC18A20BE4007EDFD0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDA690918A20BE4007EDFD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA690E18A20BE4007EDFD0 /* XCTest.framework in Frameworks */,
+				BDDA691018A20BE4007EDFD0 /* UIKit.framework in Frameworks */,
+				BDDA690F18A20BE4007EDFD0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BDDA68DF18A20BE4007EDFD0 = {
+			isa = PBXGroup;
+			children = (
+				BDDA68F118A20BE4007EDFD0 /* Clicker */,
+				BDDA691318A20BE4007EDFD0 /* ClickerTests */,
+				BDDA68EA18A20BE4007EDFD0 /* Frameworks */,
+				BDDA68E918A20BE4007EDFD0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BDDA68E918A20BE4007EDFD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA68E818A20BE4007EDFD0 /* Clicker.app */,
+				BDDA690C18A20BE4007EDFD0 /* ClickerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BDDA68EA18A20BE4007EDFD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA68EB18A20BE4007EDFD0 /* Foundation.framework */,
+				BDDA68ED18A20BE4007EDFD0 /* CoreGraphics.framework */,
+				BDDA68EF18A20BE4007EDFD0 /* UIKit.framework */,
+				BDDA690D18A20BE4007EDFD0 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDDA68F118A20BE4007EDFD0 /* Clicker */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA68FA18A20BE4007EDFD0 /* AppDelegate.h */,
+				BDDA68FB18A20BE4007EDFD0 /* AppDelegate.m */,
+				BDDA68FD18A20BE4007EDFD0 /* Main_iPhone.storyboard */,
+				BDDA690318A20BE4007EDFD0 /* ViewController.h */,
+				BDDA690418A20BE4007EDFD0 /* ViewController.m */,
+				BDDA690618A20BE4007EDFD0 /* Images.xcassets */,
+				BDDA68F218A20BE4007EDFD0 /* Supporting Files */,
+			);
+			path = Clicker;
+			sourceTree = "<group>";
+		};
+		BDDA68F218A20BE4007EDFD0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA68F318A20BE4007EDFD0 /* Clicker-Info.plist */,
+				BDDA68F418A20BE4007EDFD0 /* InfoPlist.strings */,
+				BDDA68F718A20BE4007EDFD0 /* main.m */,
+				BDDA68F918A20BE4007EDFD0 /* Clicker-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BDDA691318A20BE4007EDFD0 /* ClickerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA691918A20BE4007EDFD0 /* ClickerTests.m */,
+				BDDA691418A20BE4007EDFD0 /* Supporting Files */,
+			);
+			path = ClickerTests;
+			sourceTree = "<group>";
+		};
+		BDDA691418A20BE4007EDFD0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDDA691518A20BE4007EDFD0 /* ClickerTests-Info.plist */,
+				BDDA691618A20BE4007EDFD0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BDDA68E718A20BE4007EDFD0 /* Clicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDDA691D18A20BE4007EDFD0 /* Build configuration list for PBXNativeTarget "Clicker" */;
+			buildPhases = (
+				BDDA68E418A20BE4007EDFD0 /* Sources */,
+				BDDA68E518A20BE4007EDFD0 /* Frameworks */,
+				BDDA68E618A20BE4007EDFD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clicker;
+			productName = Clicker;
+			productReference = BDDA68E818A20BE4007EDFD0 /* Clicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BDDA690B18A20BE4007EDFD0 /* ClickerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BDDA692018A20BE4007EDFD0 /* Build configuration list for PBXNativeTarget "ClickerTests" */;
+			buildPhases = (
+				BDDA690818A20BE4007EDFD0 /* Sources */,
+				BDDA690918A20BE4007EDFD0 /* Frameworks */,
+				BDDA690A18A20BE4007EDFD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BDDA691218A20BE4007EDFD0 /* PBXTargetDependency */,
+			);
+			name = ClickerTests;
+			productName = ClickerTests;
+			productReference = BDDA690C18A20BE4007EDFD0 /* ClickerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BDDA68E018A20BE4007EDFD0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Programming Account";
+				TargetAttributes = {
+					BDDA690B18A20BE4007EDFD0 = {
+						TestTargetID = BDDA68E718A20BE4007EDFD0;
+					};
+				};
+			};
+			buildConfigurationList = BDDA68E318A20BE4007EDFD0 /* Build configuration list for PBXProject "Clicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BDDA68DF18A20BE4007EDFD0;
+			productRefGroup = BDDA68E918A20BE4007EDFD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BDDA68E718A20BE4007EDFD0 /* Clicker */,
+				BDDA690B18A20BE4007EDFD0 /* ClickerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BDDA68E618A20BE4007EDFD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA690718A20BE4007EDFD0 /* Images.xcassets in Resources */,
+				BDDA68FF18A20BE4007EDFD0 /* Main_iPhone.storyboard in Resources */,
+				BDDA68F618A20BE4007EDFD0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDA690A18A20BE4007EDFD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA691818A20BE4007EDFD0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BDDA68E418A20BE4007EDFD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA690518A20BE4007EDFD0 /* ViewController.m in Sources */,
+				BDDA68FC18A20BE4007EDFD0 /* AppDelegate.m in Sources */,
+				BDDA68F818A20BE4007EDFD0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDDA690818A20BE4007EDFD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDDA691A18A20BE4007EDFD0 /* ClickerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BDDA691218A20BE4007EDFD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BDDA68E718A20BE4007EDFD0 /* Clicker */;
+			targetProxy = BDDA691118A20BE4007EDFD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BDDA68F418A20BE4007EDFD0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDDA68F518A20BE4007EDFD0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BDDA68FD18A20BE4007EDFD0 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDDA68FE18A20BE4007EDFD0 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		BDDA691618A20BE4007EDFD0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDDA691718A20BE4007EDFD0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BDDA691B18A20BE4007EDFD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BDDA691C18A20BE4007EDFD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BDDA691E18A20BE4007EDFD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clicker/Clicker-Prefix.pch";
+				INFOPLIST_FILE = "Clicker/Clicker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BDDA691F18A20BE4007EDFD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clicker/Clicker-Prefix.pch";
+				INFOPLIST_FILE = "Clicker/Clicker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BDDA692118A20BE4007EDFD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clicker.app/Clicker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clicker/Clicker-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ClickerTests/ClickerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BDDA692218A20BE4007EDFD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Clicker.app/Clicker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Clicker/Clicker-Prefix.pch";
+				INFOPLIST_FILE = "ClickerTests/ClickerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BDDA68E318A20BE4007EDFD0 /* Build configuration list for PBXProject "Clicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDDA691B18A20BE4007EDFD0 /* Debug */,
+				BDDA691C18A20BE4007EDFD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BDDA691D18A20BE4007EDFD0 /* Build configuration list for PBXNativeTarget "Clicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDDA691E18A20BE4007EDFD0 /* Debug */,
+				BDDA691F18A20BE4007EDFD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BDDA692018A20BE4007EDFD0 /* Build configuration list for PBXNativeTarget "ClickerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDDA692118A20BE4007EDFD0 /* Debug */,
+				BDDA692218A20BE4007EDFD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BDDA68E018A20BE4007EDFD0 /* Project object */;
+}

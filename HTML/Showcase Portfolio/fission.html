@@ -1,0 +1,168 @@
+<html>
+	<head>
+		<title>Fission is Boss</title>
+	</head>
+	<body>
+		Density:<input type="textarea" id="densityValue" value="15"></input><button id="start">Start</button>
+		<div></div><canvas id = "canvas" width="1200" height="700" style="background-color:red"></canvas>
+		<script type="text/javascript">
+			//Variable Declarations
+			var density = document.getElementById('densityValue');
+			var ctx = document.getElementById('canvas').getContext('2d');
+			var go=false;
+			var init;
+			var startButton = document.getElementById('start');
+			var uraniumArrayX = new Array();
+			var uraniumArrayY = new Array();
+			var neutronX = new Array();
+			var neutronY = new Array();
+			var neutronSpeed = new Array();
+			var neutronDirection = new Array();
+			var uraniumIs235 = new Array();
+			var uraniumRadius = 3
+			
+			
+			
+			//Function Declarations
+			function initiateUranium(){
+				for(var i = 0;i<density.value;i++){
+					for(var j = 0;j<density.value;j++){
+						uraniumArrayX[(i*density.value)+j]=(i*(1150/density.value))+50;
+						uraniumArrayY[(i*density.value)+j]=(j*(650/density.value))+50;
+						if(randRange(1,7)==1){
+							uraniumIs235[(i*density.value)+j] = false;
+						}
+						else{
+							uraniumIs235[(i*density.value)+j] = true;
+						}
+					}
+				}
+			}
+			function clearEverything(){
+					neutronX.length = 0;
+					neutronY.length = 0;
+					neutronSpeed.length = 0;
+					neutronDirection.length = 0;
+					uraniumArrayX.length = 0;
+					uraniumArrayY.length = 0;
+					uraniumIs235.length = 0;
+			}
+			function drawUranium(){
+				for(var i = 0;i<uraniumArrayX.length;i++){
+					if(uraniumIs235[i]){
+						ctx.fillStyle = "white";
+					}else{
+						ctx.fillStyle = "blue";
+					}
+					ctx.beginPath();
+					ctx.arc(uraniumArrayX[i], uraniumArrayY[i], uraniumRadius, 0, Math.PI*2, true);
+					ctx.closePath();
+					ctx.fill();
+				}
+			}
+			function distance(x1,x2,y1,y2){
+				return Math.sqrt(Math.pow((x2-x1), 2)+Math.pow((y2-y1), 2));
+			}
+			function randRange(min, max){
+				return Math.floor((Math.random()*(max-min))+min);
+			}
+			function changeText(){
+				if(!go){
+					clearEverything();
+					ctx.clearRect(0,0,1200,700);
+					initiateUranium();
+					drawUranium();
+					startButton.innerText = "Stop"
+					go=true;
+					neutronX[0] = randRange(0,1200);
+					neutronY[0] = randRange(0,700);
+					neutronSpeed[0] = 5;
+					neutronDirection[0] = randRange(0,360)*(Math.PI/180);
+					ctx.fillStyle="white"
+					ctx.beginPath();
+					ctx.arc(neutronX[0], neutronY[0], 15, 0, Math.PI*2, true);
+					ctx.closePath();
+					ctx.fill();
+					setTimeout("init=setInterval(draw, 50);", 250);
+				}
+				else{
+					startButton.innerText = "Start"
+					go=false;
+					clearInterval(init);
+				}
+			}
+			function draw(){
+				ctx.clearRect(0,0,1200,700);
+				drawUranium();
+				for(var j = 0;j<neutronX.length;j++){
+					ctx.fillStyle = "yellow";
+					ctx.beginPath();
+					ctx.arc(neutronX[j], neutronY[j], 2, 0, Math.PI*2, true);
+					ctx.closePath();
+					ctx.fill();		
+					neutronX[j]+=Math.cos(neutronDirection[j])*neutronSpeed[j];
+					neutronY[j]+=Math.sin(neutronDirection[j])*neutronSpeed[j];
+					if(neutronX[j]>=1200 || neutronX[j]<= 0 || neutronY[j]>=700 || neutronY[j]<=0){
+						//neutronX.splice(j, 1);
+						//neutronY.splice(j, 1);
+						//neutronDirection.splice(j, 1);
+						//neutronSpeed.splice(j, 1);
+						if(randRange(1,5)!==1){
+							if(neutronX[j]<=0 || neutronX[j]>=1200){
+								neutronDirection[j]=Math.atan2(Math.sin(neutronDirection[j]), Math.cos(neutronDirection[j])*-1);
+							}
+							else{
+								neutronDirection[j]=Math.atan2(Math.sin(neutronDirection[j])*-1, Math.cos(neutronDirection[j]));
+							}
+						}else{
+							neutronX.splice(j, 1);
+							neutronY.splice(j, 1);
+							neutronDirection.splice(j, 1);
+							neutronSpeed.splice(j, 1);					
+						}
+					}
+				}
+				for(var i = 0;i<neutronX.length;i++){
+					for(var j = 0;j<uraniumArrayX.length;j++){
+						if(distance(neutronX[i], uraniumArrayX[j], neutronY[i], uraniumArrayY[j])<=uraniumRadius*1.5){
+							if(uraniumIs235[j]){
+								neutronDirection[i] = randRange(0,360)*(Math.PI/180);
+								neutronX[i] = uraniumArrayX[j];
+								neutronY[i] = uraniumArrayY[j];
+								//second neutron
+								neutronX[neutronX.length] = uraniumArrayX[j];
+								neutronY[neutronY.length] = uraniumArrayY[j];
+								neutronSpeed[neutronSpeed.length] = 5;
+								neutronDirection[neutronDirection.length] = randRange(0,360)*(Math.PI/180);
+								neutronX[neutronX.length-1]+=Math.cos(neutronDirection[neutronDirection.length-1])*9;
+								neutronY[neutronY.length-1]+=Math.sin(neutronDirection[neutronDirection.length-1])*9;
+								//third neutron
+								neutronX[neutronX.length] = uraniumArrayX[j];
+								neutronY[neutronY.length] = uraniumArrayY[j];
+								neutronSpeed[neutronSpeed.length] = 5;
+								neutronDirection[neutronDirection.length] = randRange(0,360)*(Math.PI/180);
+								neutronX[neutronX.length-1]+=Math.cos(neutronDirection[neutronDirection.length-1])*9;
+								neutronY[neutronY.length-1]+=Math.sin(neutronDirection[neutronDirection.length-1])*9;
+								//original
+								neutronX[i]+=Math.cos(neutronDirection[i])*9;
+								neutronY[i]+=Math.sin(neutronDirection[i])*9;
+							}else{
+								neutronX.splice(i, 1);
+								neutronY.splice(i, 1);
+								neutronDirection.splice(i, 1);
+								neutronSpeed.splice(i, 1);
+							}
+						}
+					}
+				}
+			}
+			
+			
+			
+			//Inintiations
+			initiateUranium();
+			drawUranium();
+			startButton.onclick = changeText;
+		</script>
+	</body>
+</html>

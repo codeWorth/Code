@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;"></canvas>
+		<button onclick="copy()">Copy</button>
+		<script type = "text/javascript">
+			var c=document.getElementById("myCanvas");
+			var ctx=c.getContext("2d");
+			ctx.fillStyle="#ffff00";
+			ctx.fillRect(10,10,50,50);
+			function copy()
+			{
+				var imgData=ctx.getImageData(10,10,1,1).data;
+				var r = imgData[0];
+				var rH = ((r.toString(16).length > 1) ? r.toString(16) : "0"+r.toString(16));
+				var g = imgData[1];
+				var gH = ((g.toString(16).length > 1) ? g.toString(16) : "0"+g.toString(16));
+				var b = imgData[2];
+				var bH = ((b.toString(16).length > 1) ? b.toString(16) : "0"+b.toString(16))
+				var hex = "#"+rH+gH+bH;
+				ctx.fillStyle = hex;
+				ctx.fillRect(10,70,50,50);
+			}
+		</script>
+	</body>
+</html>

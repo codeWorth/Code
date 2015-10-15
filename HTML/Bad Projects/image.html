@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>custom images</title>
+	</head>
+	<body>
+		<canvas id="imageCanv" width="200" height="200"></canvas>
+		<img id="img" width="200" height="200">
+		<script type="text/javascript">
+			var canvas = document.getElementById("imageCanv");
+			var ctx = canvas.getContext('2d');
+			var img = document.getElementById("img");
+			var imgObj = new Image();
+			imgObj.src = "semi.gif";
+			canvas.onload = function (){
+				ctx.drawImage(imgObj, 0, 0);
+				ctx.fillRect(0,0,100,100);
+			}
+		</script>

@@ -1,0 +1,477 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D97CEE217AC227D00A24C3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CEE117AC227D00A24C3F /* UIKit.framework */; };
+		9D97CEE417AC227D00A24C3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CEE317AC227D00A24C3F /* Foundation.framework */; };
+		9D97CEE617AC227D00A24C3F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CEE517AC227D00A24C3F /* CoreGraphics.framework */; };
+		9D97CEEC17AC227D00A24C3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CEEA17AC227D00A24C3F /* InfoPlist.strings */; };
+		9D97CEEE17AC227D00A24C3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D97CEED17AC227D00A24C3F /* main.m */; };
+		9D97CEF217AC227D00A24C3F /* MineAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D97CEF117AC227D00A24C3F /* MineAppDelegate.m */; };
+		9D97CEF417AC227D00A24C3F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CEF317AC227D00A24C3F /* Default.png */; };
+		9D97CEF617AC227D00A24C3F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CEF517AC227D00A24C3F /* Default@2x.png */; };
+		9D97CEF817AC227D00A24C3F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CEF717AC227D00A24C3F /* Default-568h@2x.png */; };
+		9D97CEFB17AC227D00A24C3F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CEF917AC227D00A24C3F /* MainStoryboard.storyboard */; };
+		9D97CEFE17AC227D00A24C3F /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D97CEFD17AC227D00A24C3F /* MineViewController.m */; };
+		9D97CF0617AC227E00A24C3F /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CF0517AC227E00A24C3F /* SenTestingKit.framework */; };
+		9D97CF0717AC227E00A24C3F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CEE117AC227D00A24C3F /* UIKit.framework */; };
+		9D97CF0817AC227E00A24C3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D97CEE317AC227D00A24C3F /* Foundation.framework */; };
+		9D97CF1017AC227E00A24C3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D97CF0E17AC227E00A24C3F /* InfoPlist.strings */; };
+		9D97CF1317AC227E00A24C3F /* Card_ShufflerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D97CF1217AC227E00A24C3F /* Card_ShufflerTests.m */; };
+		9D97CF1E17AC23FF00A24C3F /* NewShuffleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D97CF1D17AC23FF00A24C3F /* NewShuffleViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9D97CF0917AC227E00A24C3F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D97CED617AC227D00A24C3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9D97CEDD17AC227D00A24C3F;
+			remoteInfo = "Card Shuffler";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9D97CEDE17AC227D00A24C3F /* Card Shuffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Card Shuffler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D97CEE117AC227D00A24C3F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9D97CEE317AC227D00A24C3F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9D97CEE517AC227D00A24C3F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9D97CEE917AC227D00A24C3F /* Card Shuffler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Card Shuffler-Info.plist"; sourceTree = "<group>"; };
+		9D97CEEB17AC227D00A24C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9D97CEED17AC227D00A24C3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9D97CEEF17AC227D00A24C3F /* Card Shuffler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Card Shuffler-Prefix.pch"; sourceTree = "<group>"; };
+		9D97CEF017AC227D00A24C3F /* MineAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineAppDelegate.h; sourceTree = "<group>"; };
+		9D97CEF117AC227D00A24C3F /* MineAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineAppDelegate.m; sourceTree = "<group>"; };
+		9D97CEF317AC227D00A24C3F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9D97CEF517AC227D00A24C3F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9D97CEF717AC227D00A24C3F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9D97CEFA17AC227D00A24C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		9D97CEFC17AC227D00A24C3F /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		9D97CEFD17AC227D00A24C3F /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		9D97CF0417AC227E00A24C3F /* Card ShufflerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Card ShufflerTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D97CF0517AC227E00A24C3F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9D97CF0D17AC227E00A24C3F /* Card ShufflerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Card ShufflerTests-Info.plist"; sourceTree = "<group>"; };
+		9D97CF0F17AC227E00A24C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9D97CF1117AC227E00A24C3F /* Card_ShufflerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card_ShufflerTests.h; sourceTree = "<group>"; };
+		9D97CF1217AC227E00A24C3F /* Card_ShufflerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card_ShufflerTests.m; sourceTree = "<group>"; };
+		9D97CF1C17AC23FF00A24C3F /* NewShuffleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewShuffleViewController.h; sourceTree = "<group>"; };
+		9D97CF1D17AC23FF00A24C3F /* NewShuffleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewShuffleViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D97CEDB17AC227D00A24C3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CEE217AC227D00A24C3F /* UIKit.framework in Frameworks */,
+				9D97CEE417AC227D00A24C3F /* Foundation.framework in Frameworks */,
+				9D97CEE617AC227D00A24C3F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D97CF0017AC227E00A24C3F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CF0617AC227E00A24C3F /* SenTestingKit.framework in Frameworks */,
+				9D97CF0717AC227E00A24C3F /* UIKit.framework in Frameworks */,
+				9D97CF0817AC227E00A24C3F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9D97CED517AC227D00A24C3F = {
+			isa = PBXGroup;
+			children = (
+				9D97CEE717AC227D00A24C3F /* Card Shuffler */,
+				9D97CF0B17AC227E00A24C3F /* Card ShufflerTests */,
+				9D97CEE017AC227D00A24C3F /* Frameworks */,
+				9D97CEDF17AC227D00A24C3F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9D97CEDF17AC227D00A24C3F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CEDE17AC227D00A24C3F /* Card Shuffler.app */,
+				9D97CF0417AC227E00A24C3F /* Card ShufflerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9D97CEE017AC227D00A24C3F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CEE117AC227D00A24C3F /* UIKit.framework */,
+				9D97CEE317AC227D00A24C3F /* Foundation.framework */,
+				9D97CEE517AC227D00A24C3F /* CoreGraphics.framework */,
+				9D97CF0517AC227E00A24C3F /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D97CEE717AC227D00A24C3F /* Card Shuffler */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CEF017AC227D00A24C3F /* MineAppDelegate.h */,
+				9D97CEF117AC227D00A24C3F /* MineAppDelegate.m */,
+				9D97CEF917AC227D00A24C3F /* MainStoryboard.storyboard */,
+				9D97CEFC17AC227D00A24C3F /* MineViewController.h */,
+				9D97CEFD17AC227D00A24C3F /* MineViewController.m */,
+				9D97CF1C17AC23FF00A24C3F /* NewShuffleViewController.h */,
+				9D97CF1D17AC23FF00A24C3F /* NewShuffleViewController.m */,
+				9D97CEE817AC227D00A24C3F /* Supporting Files */,
+			);
+			path = "Card Shuffler";
+			sourceTree = "<group>";
+		};
+		9D97CEE817AC227D00A24C3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CEE917AC227D00A24C3F /* Card Shuffler-Info.plist */,
+				9D97CEEA17AC227D00A24C3F /* InfoPlist.strings */,
+				9D97CEED17AC227D00A24C3F /* main.m */,
+				9D97CEEF17AC227D00A24C3F /* Card Shuffler-Prefix.pch */,
+				9D97CEF317AC227D00A24C3F /* Default.png */,
+				9D97CEF517AC227D00A24C3F /* Default@2x.png */,
+				9D97CEF717AC227D00A24C3F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9D97CF0B17AC227E00A24C3F /* Card ShufflerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CF1117AC227E00A24C3F /* Card_ShufflerTests.h */,
+				9D97CF1217AC227E00A24C3F /* Card_ShufflerTests.m */,
+				9D97CF0C17AC227E00A24C3F /* Supporting Files */,
+			);
+			path = "Card ShufflerTests";
+			sourceTree = "<group>";
+		};
+		9D97CF0C17AC227E00A24C3F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D97CF0D17AC227E00A24C3F /* Card ShufflerTests-Info.plist */,
+				9D97CF0E17AC227E00A24C3F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9D97CEDD17AC227D00A24C3F /* Card Shuffler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D97CF1617AC227E00A24C3F /* Build configuration list for PBXNativeTarget "Card Shuffler" */;
+			buildPhases = (
+				9D97CEDA17AC227D00A24C3F /* Sources */,
+				9D97CEDB17AC227D00A24C3F /* Frameworks */,
+				9D97CEDC17AC227D00A24C3F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Card Shuffler";
+			productName = "Card Shuffler";
+			productReference = 9D97CEDE17AC227D00A24C3F /* Card Shuffler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9D97CF0317AC227E00A24C3F /* Card ShufflerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D97CF1917AC227E00A24C3F /* Build configuration list for PBXNativeTarget "Card ShufflerTests" */;
+			buildPhases = (
+				9D97CEFF17AC227E00A24C3F /* Sources */,
+				9D97CF0017AC227E00A24C3F /* Frameworks */,
+				9D97CF0117AC227E00A24C3F /* Resources */,
+				9D97CF0217AC227E00A24C3F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D97CF0A17AC227E00A24C3F /* PBXTargetDependency */,
+			);
+			name = "Card ShufflerTests";
+			productName = "Card ShufflerTests";
+			productReference = 9D97CF0417AC227E00A24C3F /* Card ShufflerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9D97CED617AC227D00A24C3F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Mine;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Baby Andrew";
+			};
+			buildConfigurationList = 9D97CED917AC227D00A24C3F /* Build configuration list for PBXProject "Card Shuffler" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9D97CED517AC227D00A24C3F;
+			productRefGroup = 9D97CEDF17AC227D00A24C3F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9D97CEDD17AC227D00A24C3F /* Card Shuffler */,
+				9D97CF0317AC227E00A24C3F /* Card ShufflerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9D97CEDC17AC227D00A24C3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CEEC17AC227D00A24C3F /* InfoPlist.strings in Resources */,
+				9D97CEF417AC227D00A24C3F /* Default.png in Resources */,
+				9D97CEF617AC227D00A24C3F /* Default@2x.png in Resources */,
+				9D97CEF817AC227D00A24C3F /* Default-568h@2x.png in Resources */,
+				9D97CEFB17AC227D00A24C3F /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D97CF0117AC227E00A24C3F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CF1017AC227E00A24C3F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D97CF0217AC227E00A24C3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9D97CEDA17AC227D00A24C3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CEEE17AC227D00A24C3F /* main.m in Sources */,
+				9D97CEF217AC227D00A24C3F /* MineAppDelegate.m in Sources */,
+				9D97CEFE17AC227D00A24C3F /* MineViewController.m in Sources */,
+				9D97CF1E17AC23FF00A24C3F /* NewShuffleViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D97CEFF17AC227E00A24C3F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D97CF1317AC227E00A24C3F /* Card_ShufflerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9D97CF0A17AC227E00A24C3F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9D97CEDD17AC227D00A24C3F /* Card Shuffler */;
+			targetProxy = 9D97CF0917AC227E00A24C3F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9D97CEEA17AC227D00A24C3F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D97CEEB17AC227D00A24C3F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9D97CEF917AC227D00A24C3F /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D97CEFA17AC227D00A24C3F /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		9D97CF0E17AC227E00A24C3F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9D97CF0F17AC227E00A24C3F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9D97CF1417AC227E00A24C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9D97CF1517AC227E00A24C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9D97CF1717AC227E00A24C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Card Shuffler/Card Shuffler-Prefix.pch";
+				INFOPLIST_FILE = "Card Shuffler/Card Shuffler-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9D97CF1817AC227E00A24C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Card Shuffler/Card Shuffler-Prefix.pch";
+				INFOPLIST_FILE = "Card Shuffler/Card Shuffler-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9D97CF1A17AC227E00A24C3F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Card Shuffler.app/Card Shuffler";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Card Shuffler/Card Shuffler-Prefix.pch";
+				INFOPLIST_FILE = "Card ShufflerTests/Card ShufflerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9D97CF1B17AC227E00A24C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Card Shuffler.app/Card Shuffler";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Card Shuffler/Card Shuffler-Prefix.pch";
+				INFOPLIST_FILE = "Card ShufflerTests/Card ShufflerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9D97CED917AC227D00A24C3F /* Build configuration list for PBXProject "Card Shuffler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D97CF1417AC227E00A24C3F /* Debug */,
+				9D97CF1517AC227E00A24C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D97CF1617AC227E00A24C3F /* Build configuration list for PBXNativeTarget "Card Shuffler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D97CF1717AC227E00A24C3F /* Debug */,
+				9D97CF1817AC227E00A24C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D97CF1917AC227E00A24C3F /* Build configuration list for PBXNativeTarget "Card ShufflerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D97CF1A17AC227E00A24C3F /* Debug */,
+				9D97CF1B17AC227E00A24C3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9D97CED617AC227D00A24C3F /* Project object */;
+}

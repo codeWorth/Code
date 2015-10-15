@@ -1,0 +1,575 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D84906717B2F382004BBFB3 /* BullsEye.html in Resources */ = {isa = PBXBuildFile; fileRef = 9D84906617B2F382004BBFB3 /* BullsEye.html */; };
+		9DD1512017AEDB0B004285E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1511F17AEDB0B004285E3 /* UIKit.framework */; };
+		9DD1512217AEDB0B004285E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1512117AEDB0B004285E3 /* Foundation.framework */; };
+		9DD1512417AEDB0B004285E3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1512317AEDB0B004285E3 /* CoreGraphics.framework */; };
+		9DD1512A17AEDB0B004285E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1512817AEDB0B004285E3 /* InfoPlist.strings */; };
+		9DD1512C17AEDB0B004285E3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1512B17AEDB0B004285E3 /* main.m */; };
+		9DD1513017AEDB0B004285E3 /* BullsEyeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1512F17AEDB0B004285E3 /* BullsEyeAppDelegate.m */; };
+		9DD1513217AEDB0B004285E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1513117AEDB0B004285E3 /* Default.png */; };
+		9DD1513417AEDB0B004285E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1513317AEDB0B004285E3 /* Default@2x.png */; };
+		9DD1513617AEDB0B004285E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1513517AEDB0B004285E3 /* Default-568h@2x.png */; };
+		9DD1513917AEDB0B004285E3 /* BullsEyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1513817AEDB0B004285E3 /* BullsEyeViewController.m */; };
+		9DD1513C17AEDB0B004285E3 /* BullsEyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1513A17AEDB0B004285E3 /* BullsEyeViewController.xib */; };
+		9DD1514417AEDB0C004285E3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1514317AEDB0C004285E3 /* SenTestingKit.framework */; };
+		9DD1514517AEDB0C004285E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1511F17AEDB0B004285E3 /* UIKit.framework */; };
+		9DD1514617AEDB0C004285E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1512117AEDB0B004285E3 /* Foundation.framework */; };
+		9DD1514E17AEDB0C004285E3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1514C17AEDB0C004285E3 /* InfoPlist.strings */; };
+		9DD1515117AEDB0C004285E3 /* BullsEyeFixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1515017AEDB0C004285E3 /* BullsEyeFixTests.m */; };
+		9DD1516D17AEDB48004285E3 /* dartInBullsEye.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515A17AEDB48004285E3 /* dartInBullsEye.png */; };
+		9DD1516E17AEDB48004285E3 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515B17AEDB48004285E3 /* Background.png */; };
+		9DD1516F17AEDB48004285E3 /* Button-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515C17AEDB48004285E3 /* Button-Highlighted.png */; };
+		9DD1517017AEDB48004285E3 /* Button-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515D17AEDB48004285E3 /* Button-Normal.png */; };
+		9DD1517117AEDB48004285E3 /* SliderThumb-Highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515E17AEDB48004285E3 /* SliderThumb-Highlighted.png */; };
+		9DD1517217AEDB48004285E3 /* SliderThumb-Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1515F17AEDB48004285E3 /* SliderThumb-Normal.png */; };
+		9DD1517317AEDB48004285E3 /* SliderTrackLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516017AEDB48004285E3 /* SliderTrackLeft.png */; };
+		9DD1517417AEDB48004285E3 /* SliderTrackRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516117AEDB48004285E3 /* SliderTrackRight.png */; };
+		9DD1517517AEDB48004285E3 /* StartOverButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516217AEDB48004285E3 /* StartOverButton.png */; };
+		9DD1517617AEDB48004285E3 /* StartOverIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516317AEDB48004285E3 /* StartOverIcon.png */; };
+		9DD1517717AEDB48004285E3 /* Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516417AEDB48004285E3 /* Background@2x.png */; };
+		9DD1517817AEDB48004285E3 /* Button-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516517AEDB48004285E3 /* Button-Highlighted@2x.png */; };
+		9DD1517917AEDB48004285E3 /* Button-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516617AEDB48004285E3 /* Button-Normal@2x.png */; };
+		9DD1517A17AEDB48004285E3 /* SliderThumb-Highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516717AEDB48004285E3 /* SliderThumb-Highlighted@2x.png */; };
+		9DD1517B17AEDB48004285E3 /* SliderThumb-Normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516817AEDB48004285E3 /* SliderThumb-Normal@2x.png */; };
+		9DD1517C17AEDB48004285E3 /* SliderTrackLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516917AEDB48004285E3 /* SliderTrackLeft@2x.png */; };
+		9DD1517D17AEDB48004285E3 /* SliderTrackRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516A17AEDB48004285E3 /* SliderTrackRight@2x.png */; };
+		9DD1517E17AEDB48004285E3 /* StartOverButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516B17AEDB48004285E3 /* StartOverButton@2x.png */; };
+		9DD1517F17AEDB48004285E3 /* StartOverIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1516C17AEDB48004285E3 /* StartOverIcon@2x.png */; };
+		9DD1518317AEDD38004285E3 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1518117AEDD38004285E3 /* GameViewController.m */; };
+		9DD1518417AEDD38004285E3 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1518217AEDD38004285E3 /* GameViewController.xib */; };
+		9DD1518817AEDE16004285E3 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD1518617AEDE16004285E3 /* AboutViewController.m */; };
+		9DD1518917AEDE16004285E3 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DD1518717AEDE16004285E3 /* AboutViewController.xib */; };
+		9DD1518B17AEDEB6004285E3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD1518A17AEDEB6004285E3 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DD1514717AEDB0C004285E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DD1511417AEDB0B004285E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DD1511B17AEDB0B004285E3;
+			remoteInfo = BullsEyeFix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9D84906617B2F382004BBFB3 /* BullsEye.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = BullsEye.html; path = "../../../../iOS Course/The iOS Apprentice 1 - Getting Started/Resources/BullsEye.html"; sourceTree = "<group>"; };
+		9DD1511C17AEDB0B004285E3 /* BullsEyeFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullsEyeFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD1511F17AEDB0B004285E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DD1512117AEDB0B004285E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DD1512317AEDB0B004285E3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DD1512717AEDB0B004285E3 /* BullsEyeFix-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullsEyeFix-Info.plist"; sourceTree = "<group>"; };
+		9DD1512917AEDB0B004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD1512B17AEDB0B004285E3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DD1512D17AEDB0B004285E3 /* BullsEyeFix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BullsEyeFix-Prefix.pch"; sourceTree = "<group>"; };
+		9DD1512E17AEDB0B004285E3 /* BullsEyeAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeAppDelegate.h; sourceTree = "<group>"; };
+		9DD1512F17AEDB0B004285E3 /* BullsEyeAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeAppDelegate.m; sourceTree = "<group>"; };
+		9DD1513117AEDB0B004285E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9DD1513317AEDB0B004285E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9DD1513517AEDB0B004285E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9DD1513717AEDB0B004285E3 /* BullsEyeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeViewController.h; sourceTree = "<group>"; };
+		9DD1513817AEDB0B004285E3 /* BullsEyeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeViewController.m; sourceTree = "<group>"; };
+		9DD1513B17AEDB0B004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BullsEyeViewController.xib; sourceTree = "<group>"; };
+		9DD1514217AEDB0C004285E3 /* BullsEyeFixTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullsEyeFixTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DD1514317AEDB0C004285E3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		9DD1514B17AEDB0C004285E3 /* BullsEyeFixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullsEyeFixTests-Info.plist"; sourceTree = "<group>"; };
+		9DD1514D17AEDB0C004285E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DD1514F17AEDB0C004285E3 /* BullsEyeFixTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullsEyeFixTests.h; sourceTree = "<group>"; };
+		9DD1515017AEDB0C004285E3 /* BullsEyeFixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BullsEyeFixTests.m; sourceTree = "<group>"; };
+		9DD1515A17AEDB48004285E3 /* dartInBullsEye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dartInBullsEye.png; sourceTree = "<group>"; };
+		9DD1515B17AEDB48004285E3 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		9DD1515C17AEDB48004285E3 /* Button-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Highlighted.png"; sourceTree = "<group>"; };
+		9DD1515D17AEDB48004285E3 /* Button-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Normal.png"; sourceTree = "<group>"; };
+		9DD1515E17AEDB48004285E3 /* SliderThumb-Highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderThumb-Highlighted.png"; sourceTree = "<group>"; };
+		9DD1515F17AEDB48004285E3 /* SliderThumb-Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderThumb-Normal.png"; sourceTree = "<group>"; };
+		9DD1516017AEDB48004285E3 /* SliderTrackLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderTrackLeft.png; sourceTree = "<group>"; };
+		9DD1516117AEDB48004285E3 /* SliderTrackRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderTrackRight.png; sourceTree = "<group>"; };
+		9DD1516217AEDB48004285E3 /* StartOverButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartOverButton.png; sourceTree = "<group>"; };
+		9DD1516317AEDB48004285E3 /* StartOverIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartOverIcon.png; sourceTree = "<group>"; };
+		9DD1516417AEDB48004285E3 /* Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Background@2x.png"; sourceTree = "<group>"; };
+		9DD1516517AEDB48004285E3 /* Button-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Highlighted@2x.png"; sourceTree = "<group>"; };
+		9DD1516617AEDB48004285E3 /* Button-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button-Normal@2x.png"; sourceTree = "<group>"; };
+		9DD1516717AEDB48004285E3 /* SliderThumb-Highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderThumb-Highlighted@2x.png"; sourceTree = "<group>"; };
+		9DD1516817AEDB48004285E3 /* SliderThumb-Normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderThumb-Normal@2x.png"; sourceTree = "<group>"; };
+		9DD1516917AEDB48004285E3 /* SliderTrackLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTrackLeft@2x.png"; sourceTree = "<group>"; };
+		9DD1516A17AEDB48004285E3 /* SliderTrackRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SliderTrackRight@2x.png"; sourceTree = "<group>"; };
+		9DD1516B17AEDB48004285E3 /* StartOverButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartOverButton@2x.png"; sourceTree = "<group>"; };
+		9DD1516C17AEDB48004285E3 /* StartOverIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StartOverIcon@2x.png"; sourceTree = "<group>"; };
+		9DD1518017AEDD38004285E3 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		9DD1518117AEDD38004285E3 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		9DD1518217AEDD38004285E3 /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		9DD1518517AEDE16004285E3 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		9DD1518617AEDE16004285E3 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		9DD1518717AEDE16004285E3 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		9DD1518A17AEDEB6004285E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DD1511917AEDB0B004285E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1518B17AEDEB6004285E3 /* QuartzCore.framework in Frameworks */,
+				9DD1512017AEDB0B004285E3 /* UIKit.framework in Frameworks */,
+				9DD1512217AEDB0B004285E3 /* Foundation.framework in Frameworks */,
+				9DD1512417AEDB0B004285E3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD1513E17AEDB0C004285E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1514417AEDB0C004285E3 /* SenTestingKit.framework in Frameworks */,
+				9DD1514517AEDB0C004285E3 /* UIKit.framework in Frameworks */,
+				9DD1514617AEDB0C004285E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DD1511317AEDB0B004285E3 = {
+			isa = PBXGroup;
+			children = (
+				9DD1518A17AEDEB6004285E3 /* QuartzCore.framework */,
+				9DD1512517AEDB0B004285E3 /* BullsEyeFix */,
+				9DD1514917AEDB0C004285E3 /* BullsEyeFixTests */,
+				9DD1511E17AEDB0B004285E3 /* Frameworks */,
+				9DD1511D17AEDB0B004285E3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DD1511D17AEDB0B004285E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1511C17AEDB0B004285E3 /* BullsEyeFix.app */,
+				9DD1514217AEDB0C004285E3 /* BullsEyeFixTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DD1511E17AEDB0B004285E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1511F17AEDB0B004285E3 /* UIKit.framework */,
+				9DD1512117AEDB0B004285E3 /* Foundation.framework */,
+				9DD1512317AEDB0B004285E3 /* CoreGraphics.framework */,
+				9DD1514317AEDB0C004285E3 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DD1512517AEDB0B004285E3 /* BullsEyeFix */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1512E17AEDB0B004285E3 /* BullsEyeAppDelegate.h */,
+				9DD1512F17AEDB0B004285E3 /* BullsEyeAppDelegate.m */,
+				9DD1513717AEDB0B004285E3 /* BullsEyeViewController.h */,
+				9DD1513817AEDB0B004285E3 /* BullsEyeViewController.m */,
+				9DD1513A17AEDB0B004285E3 /* BullsEyeViewController.xib */,
+				9DD1518017AEDD38004285E3 /* GameViewController.h */,
+				9DD1518117AEDD38004285E3 /* GameViewController.m */,
+				9DD1518217AEDD38004285E3 /* GameViewController.xib */,
+				9DD1518517AEDE16004285E3 /* AboutViewController.h */,
+				9DD1518617AEDE16004285E3 /* AboutViewController.m */,
+				9DD1518717AEDE16004285E3 /* AboutViewController.xib */,
+				9DD1512617AEDB0B004285E3 /* Supporting Files */,
+			);
+			path = BullsEyeFix;
+			sourceTree = "<group>";
+		};
+		9DD1512617AEDB0B004285E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D84906617B2F382004BBFB3 /* BullsEye.html */,
+				9DD1515A17AEDB48004285E3 /* dartInBullsEye.png */,
+				9DD1515B17AEDB48004285E3 /* Background.png */,
+				9DD1515C17AEDB48004285E3 /* Button-Highlighted.png */,
+				9DD1515D17AEDB48004285E3 /* Button-Normal.png */,
+				9DD1515E17AEDB48004285E3 /* SliderThumb-Highlighted.png */,
+				9DD1515F17AEDB48004285E3 /* SliderThumb-Normal.png */,
+				9DD1516017AEDB48004285E3 /* SliderTrackLeft.png */,
+				9DD1516117AEDB48004285E3 /* SliderTrackRight.png */,
+				9DD1516217AEDB48004285E3 /* StartOverButton.png */,
+				9DD1516317AEDB48004285E3 /* StartOverIcon.png */,
+				9DD1516417AEDB48004285E3 /* Background@2x.png */,
+				9DD1516517AEDB48004285E3 /* Button-Highlighted@2x.png */,
+				9DD1516617AEDB48004285E3 /* Button-Normal@2x.png */,
+				9DD1516717AEDB48004285E3 /* SliderThumb-Highlighted@2x.png */,
+				9DD1516817AEDB48004285E3 /* SliderThumb-Normal@2x.png */,
+				9DD1516917AEDB48004285E3 /* SliderTrackLeft@2x.png */,
+				9DD1516A17AEDB48004285E3 /* SliderTrackRight@2x.png */,
+				9DD1516B17AEDB48004285E3 /* StartOverButton@2x.png */,
+				9DD1516C17AEDB48004285E3 /* StartOverIcon@2x.png */,
+				9DD1512717AEDB0B004285E3 /* BullsEyeFix-Info.plist */,
+				9DD1512817AEDB0B004285E3 /* InfoPlist.strings */,
+				9DD1512B17AEDB0B004285E3 /* main.m */,
+				9DD1512D17AEDB0B004285E3 /* BullsEyeFix-Prefix.pch */,
+				9DD1513117AEDB0B004285E3 /* Default.png */,
+				9DD1513317AEDB0B004285E3 /* Default@2x.png */,
+				9DD1513517AEDB0B004285E3 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DD1514917AEDB0C004285E3 /* BullsEyeFixTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1514F17AEDB0C004285E3 /* BullsEyeFixTests.h */,
+				9DD1515017AEDB0C004285E3 /* BullsEyeFixTests.m */,
+				9DD1514A17AEDB0C004285E3 /* Supporting Files */,
+			);
+			path = BullsEyeFixTests;
+			sourceTree = "<group>";
+		};
+		9DD1514A17AEDB0C004285E3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DD1514B17AEDB0C004285E3 /* BullsEyeFixTests-Info.plist */,
+				9DD1514C17AEDB0C004285E3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DD1511B17AEDB0B004285E3 /* BullsEyeFix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD1515417AEDB0C004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeFix" */;
+			buildPhases = (
+				9DD1511817AEDB0B004285E3 /* Sources */,
+				9DD1511917AEDB0B004285E3 /* Frameworks */,
+				9DD1511A17AEDB0B004285E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BullsEyeFix;
+			productName = BullsEyeFix;
+			productReference = 9DD1511C17AEDB0B004285E3 /* BullsEyeFix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DD1514117AEDB0C004285E3 /* BullsEyeFixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DD1515717AEDB0C004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeFixTests" */;
+			buildPhases = (
+				9DD1513D17AEDB0C004285E3 /* Sources */,
+				9DD1513E17AEDB0C004285E3 /* Frameworks */,
+				9DD1513F17AEDB0C004285E3 /* Resources */,
+				9DD1514017AEDB0C004285E3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DD1514817AEDB0C004285E3 /* PBXTargetDependency */,
+			);
+			name = BullsEyeFixTests;
+			productName = BullsEyeFixTests;
+			productReference = 9DD1514217AEDB0C004285E3 /* BullsEyeFixTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DD1511417AEDB0B004285E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BullsEye;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Baby Andrew";
+			};
+			buildConfigurationList = 9DD1511717AEDB0B004285E3 /* Build configuration list for PBXProject "BullsEyeFix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9DD1511317AEDB0B004285E3;
+			productRefGroup = 9DD1511D17AEDB0B004285E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DD1511B17AEDB0B004285E3 /* BullsEyeFix */,
+				9DD1514117AEDB0C004285E3 /* BullsEyeFixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DD1511A17AEDB0B004285E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1512A17AEDB0B004285E3 /* InfoPlist.strings in Resources */,
+				9DD1513217AEDB0B004285E3 /* Default.png in Resources */,
+				9DD1513417AEDB0B004285E3 /* Default@2x.png in Resources */,
+				9DD1513617AEDB0B004285E3 /* Default-568h@2x.png in Resources */,
+				9DD1513C17AEDB0B004285E3 /* BullsEyeViewController.xib in Resources */,
+				9DD1516D17AEDB48004285E3 /* dartInBullsEye.png in Resources */,
+				9DD1516E17AEDB48004285E3 /* Background.png in Resources */,
+				9DD1516F17AEDB48004285E3 /* Button-Highlighted.png in Resources */,
+				9DD1517017AEDB48004285E3 /* Button-Normal.png in Resources */,
+				9DD1517117AEDB48004285E3 /* SliderThumb-Highlighted.png in Resources */,
+				9DD1517217AEDB48004285E3 /* SliderThumb-Normal.png in Resources */,
+				9DD1517317AEDB48004285E3 /* SliderTrackLeft.png in Resources */,
+				9DD1517417AEDB48004285E3 /* SliderTrackRight.png in Resources */,
+				9DD1517517AEDB48004285E3 /* StartOverButton.png in Resources */,
+				9DD1517617AEDB48004285E3 /* StartOverIcon.png in Resources */,
+				9DD1517717AEDB48004285E3 /* Background@2x.png in Resources */,
+				9DD1517817AEDB48004285E3 /* Button-Highlighted@2x.png in Resources */,
+				9DD1517917AEDB48004285E3 /* Button-Normal@2x.png in Resources */,
+				9DD1517A17AEDB48004285E3 /* SliderThumb-Highlighted@2x.png in Resources */,
+				9DD1517B17AEDB48004285E3 /* SliderThumb-Normal@2x.png in Resources */,
+				9DD1517C17AEDB48004285E3 /* SliderTrackLeft@2x.png in Resources */,
+				9DD1517D17AEDB48004285E3 /* SliderTrackRight@2x.png in Resources */,
+				9DD1517E17AEDB48004285E3 /* StartOverButton@2x.png in Resources */,
+				9DD1517F17AEDB48004285E3 /* StartOverIcon@2x.png in Resources */,
+				9DD1518417AEDD38004285E3 /* GameViewController.xib in Resources */,
+				9DD1518917AEDE16004285E3 /* AboutViewController.xib in Resources */,
+				9D84906717B2F382004BBFB3 /* BullsEye.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD1513F17AEDB0C004285E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1514E17AEDB0C004285E3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9DD1514017AEDB0C004285E3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DD1511817AEDB0B004285E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1512C17AEDB0B004285E3 /* main.m in Sources */,
+				9DD1513017AEDB0B004285E3 /* BullsEyeAppDelegate.m in Sources */,
+				9DD1513917AEDB0B004285E3 /* BullsEyeViewController.m in Sources */,
+				9DD1518317AEDD38004285E3 /* GameViewController.m in Sources */,
+				9DD1518817AEDE16004285E3 /* AboutViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DD1513D17AEDB0C004285E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DD1515117AEDB0C004285E3 /* BullsEyeFixTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DD1514817AEDB0C004285E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DD1511B17AEDB0B004285E3 /* BullsEyeFix */;
+			targetProxy = 9DD1514717AEDB0C004285E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DD1512817AEDB0B004285E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD1512917AEDB0B004285E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9DD1513A17AEDB0B004285E3 /* BullsEyeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD1513B17AEDB0B004285E3 /* en */,
+			);
+			name = BullsEyeViewController.xib;
+			sourceTree = "<group>";
+		};
+		9DD1514C17AEDB0C004285E3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DD1514D17AEDB0C004285E3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DD1515217AEDB0C004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9DD1515317AEDB0C004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DD1515517AEDB0C004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeFix/BullsEyeFix-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeFix/BullsEyeFix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9DD1515617AEDB0C004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeFix/BullsEyeFix-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeFix/BullsEyeFix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9DD1515817AEDB0C004285E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BullsEyeFix.app/BullsEyeFix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeFix/BullsEyeFix-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeFixTests/BullsEyeFixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9DD1515917AEDB0C004285E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BullsEyeFix.app/BullsEyeFix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BullsEyeFix/BullsEyeFix-Prefix.pch";
+				INFOPLIST_FILE = "BullsEyeFixTests/BullsEyeFixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DD1511717AEDB0B004285E3 /* Build configuration list for PBXProject "BullsEyeFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD1515217AEDB0C004285E3 /* Debug */,
+				9DD1515317AEDB0C004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD1515417AEDB0C004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD1515517AEDB0C004285E3 /* Debug */,
+				9DD1515617AEDB0C004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DD1515717AEDB0C004285E3 /* Build configuration list for PBXNativeTarget "BullsEyeFixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DD1515817AEDB0C004285E3 /* Debug */,
+				9DD1515917AEDB0C004285E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DD1511417AEDB0B004285E3 /* Project object */;
+}

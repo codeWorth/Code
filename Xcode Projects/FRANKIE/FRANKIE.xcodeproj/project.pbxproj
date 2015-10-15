@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD40C89C1A85BFF40000CA7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C89B1A85BFF40000CA7B /* Foundation.framework */; };
+		BD40C89E1A85BFF40000CA7B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C89D1A85BFF40000CA7B /* CoreGraphics.framework */; };
+		BD40C8A01A85BFF40000CA7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C89F1A85BFF40000CA7B /* UIKit.framework */; };
+		BD40C8A61A85BFF40000CA7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD40C8A41A85BFF40000CA7B /* InfoPlist.strings */; };
+		BD40C8A81A85BFF40000CA7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD40C8A71A85BFF40000CA7B /* main.m */; };
+		BD40C8AC1A85BFF40000CA7B /* FRANKIEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD40C8AB1A85BFF40000CA7B /* FRANKIEAppDelegate.m */; };
+		BD40C8AF1A85BFF40000CA7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD40C8AD1A85BFF40000CA7B /* Main.storyboard */; };
+		BD40C8B21A85BFF40000CA7B /* FRANKIEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD40C8B11A85BFF40000CA7B /* FRANKIEViewController.m */; };
+		BD40C8B41A85BFF40000CA7B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD40C8B31A85BFF40000CA7B /* Images.xcassets */; };
+		BD40C8BB1A85BFF40000CA7B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C8BA1A85BFF40000CA7B /* XCTest.framework */; };
+		BD40C8BC1A85BFF40000CA7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C89B1A85BFF40000CA7B /* Foundation.framework */; };
+		BD40C8BD1A85BFF40000CA7B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD40C89F1A85BFF40000CA7B /* UIKit.framework */; };
+		BD40C8C51A85BFF40000CA7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD40C8C31A85BFF40000CA7B /* InfoPlist.strings */; };
+		BD40C8C71A85BFF40000CA7B /* FRANKIETests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD40C8C61A85BFF40000CA7B /* FRANKIETests.m */; };
+		BD40C8D11A85C0660000CA7B /* FRANKIE.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD40C8D01A85C0660000CA7B /* FRANKIE.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD40C8BE1A85BFF40000CA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD40C8901A85BFF40000CA7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD40C8971A85BFF40000CA7B;
+			remoteInfo = FRANKIE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD40C8981A85BFF40000CA7B /* FRANKIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRANKIE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD40C89B1A85BFF40000CA7B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD40C89D1A85BFF40000CA7B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD40C89F1A85BFF40000CA7B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD40C8A31A85BFF40000CA7B /* FRANKIE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRANKIE-Info.plist"; sourceTree = "<group>"; };
+		BD40C8A51A85BFF40000CA7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD40C8A71A85BFF40000CA7B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD40C8A91A85BFF40000CA7B /* FRANKIE-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FRANKIE-Prefix.pch"; sourceTree = "<group>"; };
+		BD40C8AA1A85BFF40000CA7B /* FRANKIEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRANKIEAppDelegate.h; sourceTree = "<group>"; };
+		BD40C8AB1A85BFF40000CA7B /* FRANKIEAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRANKIEAppDelegate.m; sourceTree = "<group>"; };
+		BD40C8AE1A85BFF40000CA7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD40C8B01A85BFF40000CA7B /* FRANKIEViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FRANKIEViewController.h; sourceTree = "<group>"; };
+		BD40C8B11A85BFF40000CA7B /* FRANKIEViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRANKIEViewController.m; sourceTree = "<group>"; };
+		BD40C8B31A85BFF40000CA7B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD40C8B91A85BFF40000CA7B /* FRANKIETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FRANKIETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD40C8BA1A85BFF40000CA7B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BD40C8C21A85BFF40000CA7B /* FRANKIETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FRANKIETests-Info.plist"; sourceTree = "<group>"; };
+		BD40C8C41A85BFF40000CA7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD40C8C61A85BFF40000CA7B /* FRANKIETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FRANKIETests.m; sourceTree = "<group>"; };
+		BD40C8D01A85C0660000CA7B /* FRANKIE.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FRANKIE.jpg; sourceTree = "<group>"; };
+		BD40C8D31A85C6410000CA7B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		BD40C8D41A85C6410000CA7B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD40C8D51A85C6410000CA7B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD40C8951A85BFF40000CA7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C89E1A85BFF40000CA7B /* CoreGraphics.framework in Frameworks */,
+				BD40C8A01A85BFF40000CA7B /* UIKit.framework in Frameworks */,
+				BD40C89C1A85BFF40000CA7B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD40C8B61A85BFF40000CA7B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C8BB1A85BFF40000CA7B /* XCTest.framework in Frameworks */,
+				BD40C8BD1A85BFF40000CA7B /* UIKit.framework in Frameworks */,
+				BD40C8BC1A85BFF40000CA7B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD40C88F1A85BFF40000CA7B = {
+			isa = PBXGroup;
+			children = (
+				BD40C8A11A85BFF40000CA7B /* FRANKIE */,
+				BD40C8C01A85BFF40000CA7B /* FRANKIETests */,
+				BD40C89A1A85BFF40000CA7B /* Frameworks */,
+				BD40C8991A85BFF40000CA7B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD40C8991A85BFF40000CA7B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C8981A85BFF40000CA7B /* FRANKIE.app */,
+				BD40C8B91A85BFF40000CA7B /* FRANKIETests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD40C89A1A85BFF40000CA7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C89B1A85BFF40000CA7B /* Foundation.framework */,
+				BD40C89D1A85BFF40000CA7B /* CoreGraphics.framework */,
+				BD40C89F1A85BFF40000CA7B /* UIKit.framework */,
+				BD40C8BA1A85BFF40000CA7B /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD40C8A11A85BFF40000CA7B /* FRANKIE */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C8AA1A85BFF40000CA7B /* FRANKIEAppDelegate.h */,
+				BD40C8AB1A85BFF40000CA7B /* FRANKIEAppDelegate.m */,
+				BD40C8AD1A85BFF40000CA7B /* Main.storyboard */,
+				BD40C8B01A85BFF40000CA7B /* FRANKIEViewController.h */,
+				BD40C8B11A85BFF40000CA7B /* FRANKIEViewController.m */,
+				BD40C8B31A85BFF40000CA7B /* Images.xcassets */,
+				BD40C8A21A85BFF40000CA7B /* Supporting Files */,
+			);
+			path = FRANKIE;
+			sourceTree = "<group>";
+		};
+		BD40C8A21A85BFF40000CA7B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C8D01A85C0660000CA7B /* FRANKIE.jpg */,
+				BD40C8A31A85BFF40000CA7B /* FRANKIE-Info.plist */,
+				BD40C8A41A85BFF40000CA7B /* InfoPlist.strings */,
+				BD40C8A71A85BFF40000CA7B /* main.m */,
+				BD40C8A91A85BFF40000CA7B /* FRANKIE-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD40C8C01A85BFF40000CA7B /* FRANKIETests */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C8C61A85BFF40000CA7B /* FRANKIETests.m */,
+				BD40C8C11A85BFF40000CA7B /* Supporting Files */,
+			);
+			path = FRANKIETests;
+			sourceTree = "<group>";
+		};
+		BD40C8C11A85BFF40000CA7B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD40C8C21A85BFF40000CA7B /* FRANKIETests-Info.plist */,
+				BD40C8C31A85BFF40000CA7B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD40C8971A85BFF40000CA7B /* FRANKIE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD40C8CA1A85BFF40000CA7B /* Build configuration list for PBXNativeTarget "FRANKIE" */;
+			buildPhases = (
+				BD40C8941A85BFF40000CA7B /* Sources */,
+				BD40C8951A85BFF40000CA7B /* Frameworks */,
+				BD40C8961A85BFF40000CA7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FRANKIE;
+			productName = FRANKIE;
+			productReference = BD40C8981A85BFF40000CA7B /* FRANKIE.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD40C8B81A85BFF40000CA7B /* FRANKIETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD40C8CD1A85BFF40000CA7B /* Build configuration list for PBXNativeTarget "FRANKIETests" */;
+			buildPhases = (
+				BD40C8B51A85BFF40000CA7B /* Sources */,
+				BD40C8B61A85BFF40000CA7B /* Frameworks */,
+				BD40C8B71A85BFF40000CA7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD40C8BF1A85BFF40000CA7B /* PBXTargetDependency */,
+			);
+			name = FRANKIETests;
+			productName = FRANKIETests;
+			productReference = BD40C8B91A85BFF40000CA7B /* FRANKIETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD40C8901A85BFF40000CA7B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FRANKIE;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = milo;
+				TargetAttributes = {
+					BD40C8B81A85BFF40000CA7B = {
+						TestTargetID = BD40C8971A85BFF40000CA7B;
+					};
+				};
+			};
+			buildConfigurationList = BD40C8931A85BFF40000CA7B /* Build configuration list for PBXProject "FRANKIE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				es,
+			);
+			mainGroup = BD40C88F1A85BFF40000CA7B;
+			productRefGroup = BD40C8991A85BFF40000CA7B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD40C8971A85BFF40000CA7B /* FRANKIE */,
+				BD40C8B81A85BFF40000CA7B /* FRANKIETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD40C8961A85BFF40000CA7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C8B41A85BFF40000CA7B /* Images.xcassets in Resources */,
+				BD40C8A61A85BFF40000CA7B /* InfoPlist.strings in Resources */,
+				BD40C8D11A85C0660000CA7B /* FRANKIE.jpg in Resources */,
+				BD40C8AF1A85BFF40000CA7B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD40C8B71A85BFF40000CA7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C8C51A85BFF40000CA7B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD40C8941A85BFF40000CA7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C8A81A85BFF40000CA7B /* main.m in Sources */,
+				BD40C8AC1A85BFF40000CA7B /* FRANKIEAppDelegate.m in Sources */,
+				BD40C8B21A85BFF40000CA7B /* FRANKIEViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD40C8B51A85BFF40000CA7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD40C8C71A85BFF40000CA7B /* FRANKIETests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD40C8BF1A85BFF40000CA7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD40C8971A85BFF40000CA7B /* FRANKIE */;
+			targetProxy = BD40C8BE1A85BFF40000CA7B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD40C8A41A85BFF40000CA7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD40C8A51A85BFF40000CA7B /* en */,
+				BD40C8D41A85C6410000CA7B /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD40C8AD1A85BFF40000CA7B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD40C8AE1A85BFF40000CA7B /* Base */,
+				BD40C8D31A85C6410000CA7B /* es */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD40C8C31A85BFF40000CA7B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD40C8C41A85BFF40000CA7B /* en */,
+				BD40C8D51A85C6410000CA7B /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD40C8C81A85BFF40000CA7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD40C8C91A85BFF40000CA7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD40C8CB1A85BFF40000CA7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FRANKIE/FRANKIE-Prefix.pch";
+				INFOPLIST_FILE = "FRANKIE/FRANKIE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD40C8CC1A85BFF40000CA7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FRANKIE/FRANKIE-Prefix.pch";
+				INFOPLIST_FILE = "FRANKIE/FRANKIE-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD40C8CE1A85BFF40000CA7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRANKIE.app/FRANKIE";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FRANKIE/FRANKIE-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FRANKIETests/FRANKIETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BD40C8CF1A85BFF40000CA7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FRANKIE.app/FRANKIE";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FRANKIE/FRANKIE-Prefix.pch";
+				INFOPLIST_FILE = "FRANKIETests/FRANKIETests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD40C8931A85BFF40000CA7B /* Build configuration list for PBXProject "FRANKIE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD40C8C81A85BFF40000CA7B /* Debug */,
+				BD40C8C91A85BFF40000CA7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD40C8CA1A85BFF40000CA7B /* Build configuration list for PBXNativeTarget "FRANKIE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD40C8CB1A85BFF40000CA7B /* Debug */,
+				BD40C8CC1A85BFF40000CA7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BD40C8CD1A85BFF40000CA7B /* Build configuration list for PBXNativeTarget "FRANKIETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD40C8CE1A85BFF40000CA7B /* Debug */,
+				BD40C8CF1A85BFF40000CA7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD40C8901A85BFF40000CA7B /* Project object */;
+}

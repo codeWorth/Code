@@ -1,0 +1,28 @@
+<html>
+	<body>
+		<button id = "go">Calculate</button>
+		<script type = "text/javascript">
+			var goButton = document.getElementById('go');
+			var parts = 1000;
+			var sunRadius = 10;
+			var sunMass = 1000000;
+			var moonDistance = 1;
+			var moonMass = 1000
+			var forceCenter = sunMass*moonMass/Math.pow((sunRadius+moonDistance), 2);
+			var forceParts = 0;
+			goButton.onclick = function (){
+				document.write(forceCenter+"<br/>");
+				var massPart = sunMass*moonMass/parts;
+				for(var i = 0;i<Math.ceil(parts/2);i++){
+					forceParts+=massPart/Math.pow((sunRadius+moonDistance-(i*(sunRadius*2/parts))),2);
+					document.write(sunRadius+moonDistance-(i*(sunRadius*2/parts))+"<br/>");
+				}
+				for(var i = 1;i<Math.ceil(parts/2);i++){
+					forceParts+=massPart/Math.pow((sunRadius+moonDistance+(i*(sunRadius*2/parts))),2);
+					document.write(sunRadius+moonDistance+(i*(sunRadius*2/parts))+"<br/>");
+				}
+				document.write(forceParts+"<br/>");
+			}
+		</script>
+	</body>
+</html>

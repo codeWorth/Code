@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Planets are Good</title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="750" style="background-color:black"></canvas> <br/>
+		<button id="play">Start</button> <button id="reset">Reset</button> <div id = "posText"></div>
+		<div id = "circleNumber">Planet Selected: None</div>
+		<span>Mass:</span><input type = "textarea" id="massArea"></input><span>Speed:</span><input type = "textarea" id="speedArea"></input><span>Direction:</span><input type = "textarea" id="dirArea"></input><span>X Position:</span><input type = "textarea" id="xPos"></input><span>Y Position:</span><input type = "textarea" id="yPos"></input><br/>
+		<script type = "text/javascript">
+		//Variables
+		
+			//set up an array for attribute of a planet. Each index corresponds with a planet.
+			
+				var x = []; //planet's x position
+				var y = []; //planet's y position
+				var vx = []; //planet's velocity in x direction
+				var vy = []; //planet's velocity in y direction
+				var fx = []; //planet's force in x
+				var fy = []; //planet's force in y
+				var m = []; //planet's mass
+				var r = []; //planet's radius
+				
+				var x0 = []; //planet's x position for reset
+				var y0 = []; //planet's y position for reset
+				var vx0 = []; //planet's velocity in x direction for reset
+				var vy0 = []; //planet's velocity in y direction for reset
+				var fx0 = []; //planet's force in x for reset
+				var fy0 = []; //planet's force in y for reset
+				var m0 = []; //planet's mass for reset
+				var r0 = []; //planet's radius for reset
+				var setStartingConfig = true; //whether to set reset variables
+				
+				
+				var dTime = 10; //Delta time, number of milliseconds between each frame
+				var timeScale = 0.01; //Scale from dTime to planet's delta time
+				var velArrowScale = 7; //Scale from actual velocity to arrow size
+				
+				var toRemove = []; //List of indices to remove later
+				
+				var scaleFactor = 1;
+				var wantedScale = 1;
+				var scaleDivision = 5;
+				var zoomDampening = 150;
+				var cameraDampening = 100;
+				var starMovement = 20;
+				
+				var mousedown = false;
+				var planetSelected = -1;
+				var shouldMove = false;
+				var mouseX = 0;
+				var mouseY = 0;
+				
+				var xMid = 0;
+				var yMid = 0;
+				
+				var init;
+				
+				var starX = [];
+				var starY = [];
+				
+				var numOfStars = 200;
+				
+				for (var i = 0; i<numOfStars;i++){
+					starX.push(Math.floor(Math.random() * (1000 + 1)));
+					starY.push(Math.floor(Math.random() * (750 + 1)));
+				}
+							
+			//UI Variables
+				
+				var canvas = document.getElementById('canvas'); //The canvas element
+				var ctx = canvas.getContext('2d'); //The object for drawing on the canvas
+				
+				var massBox = document.getElementById('massArea');
+				var speedBox = document.getElementById('speedArea');
+				var angleBox = document.getElementById('dirArea');
+				var xBox = document.getElementById('xPos');
+				var yBox = document.getElementById('yPos');
+				
+				var selectedText = document.getElementById('circleNumber');
+				
+				var midPos = document.getElementById('posText');
+				
+				var playButton = document.getElementById('play'); //The Play/Pause button
+				var resetButton = document.getElementById('reset'); //The Reset button
+				
+				var numCounted = 0;
+				for (var i = 0;i < x.length;i++){
+					if (x[i] >= 0 && x[i] <= 1000 && y[i] >= 0 && y[i] <= 750){
+						xMid += x[i];
+						yMid += y[i];
+						numCounted++;
+					}
+				}
+				xMid = xMid / numCounted - 1000/2; 
+				yMid = yMid / numCounted - 750/2;
+				
+				drawAllStars();
+				moveAndRedrawAllPlanets();
+			
+		//Helper Functions
+		
+			//Array manipulation functions
+			
+				function setMass(mass,index){ //set mass of planet index. Also sets radius based on mass
+					m[index] = mass;
+					var newR = Math.pow(mass, 1/3); //cube root of mass is radius
+				
+					if (newR < 8){
+						newR = 8; //minimum radius
+					}
+					r[index] = newR;
+				}
+			
+				function createPlanet(xPos,yPos,velX,velY,m){ //add a planet to the arrays with parameters
+					x.push(xPos);
+					y.push(yPos);
+					vx.push(velX);
+					vy.push(velY);
+					setMass(m,r.length); //strangely, setting an out-of-bounds index to a value adds that value to the array, so this works
+					fx.push(0);
+					fy.push(0);
+				}
+			
+				function destroyPlanet(index){ //remove a planet from the arrays
+					x.splice(index,1); //splice looks like this: array.splice(index to remove items, number of items to remove)
+					y.splice(index,1);
+					vx.splice(index,1);
+					vy.splice(index,1);
+					m.splice(index,1);
+					r.splice(index,1);
+					fx.splice(index,1);
+					fy.splice(index,1);
+				}
+				
+				function absAndCameraXPosForArray(array){
+					var newArray = [];
+					for (var i = 0; i<array.length;i++){
+						newArray[i] = Math.abs(canvasXPosAfterScale(array[i]  - xMid) - 500);
+					}
+					return newArray;
+				}
+				
+				function absAndCameraYPosForArray(array){
+					var newArray = [];
+					for (var i = 0; i<array.length;i++){
+						newArray[i] = Math.abs(canvasYPosAfterScale(array[i]  - yMid) - 375);
+					}
+					return newArray;
+				}
+				
+				function findScaleFactor(){
+					var maxX = Math.max.apply(null, absAndCameraXPosForArray(x));
+					var maxY = Math.max.apply(null, absAndCameraYPosForArray(y));
+					
+					var xScale = 500/maxX;
+					var yScale = 375/maxY;
+															
+					if (xScale < yScale){
+						if (xScale < 1 && scaleFactor == wantedScale){
+							wantedScale = wantedScale / scaleDivision;
+						}
+					} else if (yScale < 1 && scaleFactor == wantedScale){
+						wantedScale = wantedScale / scaleDivision;
+					}
+					
+					scaleFactor = scaleFactor + (wantedScale - scaleFactor)/ zoomDampening;
+				}
+							
+			//Simulation functions
+			
+				function crashPlanets(i,j){ //Finds the resulting mass and velocity after combining planets i and j
+					var momenXOfI = m[i]*vx[i]; //momentum in each direction. Momentum is Mass times Velocity. 
+					var momenYOfI = m[i]*vy[i]; //The momentum of the new planet is the sum of the momentums of the old planets.
+												//Look up Conservation of Momentum for more
+					var momenXOfJ = m[j]*vx[j];
+					var momenYOfJ = m[j]*vy[j];
+				
+					var newMomenX = momenXOfI + momenXOfJ;
+					var newMomenY = momenYOfI + momenYOfJ;
+					var newMass = m[i]+m[j]; //Just combine masses
+				
+					var newVX = newMomenX/newMass; //Since momentum = mass * velocity, I divided off the mass.
+					var newVY = newMomenY/newMass;
+				
+					vx[i] = newVX;
+					vy[i] = newVY;
+					setMass(newMass,i);
+				
+					x[i] = (x[i]+x[j])/2; //Set new position of planet to midpoint between planets.
+					y[i] = (y[i]+y[j])/2;				
+				}
+				
+				function distanceSquared(i,j){ //Distance between planet i and j. It is 'squared' because there is no need to take square root. Returns the distance.
+					var deltaX = x[i]-x[j];
+					var deltaY = y[i]-y[j];
+					
+					return deltaX*deltaX+deltaY*deltaY;
+				}
+				
+				function isColliding(i,j){ //Check if two planets are close enough to be touching. Return 'true' if they are and 'false' if they aren't.
+					var minDistanceSquared = Math.pow(r[i]+r[j],2); //The sum of the radii is the minimum distance. It is squared so it can be compared with 'distanceSquared'
+					if (distanceSquared(i,j)<=minDistanceSquared){
+						return true;
+					} else {
+						return false;
+					}
+				}
+				
+				function canvasXPosAfterScale(x){
+					//Move from upper left corner x by given amount times scale factor. Upper left corner x is 'canvas width' / 2 - 'canvas width' * 'scale factor' / 2
+					var upperLeftX = 500 - 500 * scaleFactor;
+					var newX = upperLeftX + x * scaleFactor;
+					return newX;
+				}
+				
+				function canvasYPosAfterScale(y){
+					//Move from upper left corner x by given amount times scale factor. Upper left corner y is 'canvas height' / 2 - 'canvas height' * 'scale factor' / 2
+					var upperLeftY = 375 - 375 * scaleFactor;
+					var newY = upperLeftY + y * scaleFactor;
+					return newY;
+				}
+			
+			//Drawing Functions
+				
+				function moveAndRedrawAllPlanets(){ //Moves the planets based on vx and vy, then draws each planet				
+					//Find midpoint of system
+					var wantedXMid = 0;
+					var wantedYMid = 0;
+					for (var i = 0;i < x.length;i++){
+						wantedXMid += x[i];
+						wantedYMid += y[i];
+					}
+					wantedXMid = wantedXMid / x.length - 500; 
+					wantedYMid = wantedYMid / x.length - 375; //I add half width or height to make center actually center (canvas upper left is 0,0)
+					
+					xMid = xMid + (wantedXMid - xMid)/cameraDampening;
+					yMid = yMid + (wantedYMid - yMid)/cameraDampening;
+					
+					midPos.innerText = "Position of Camera X:" + Math.floor(xMid) + " Y:" + Math.floor(yMid);
+				
+					ctx.fillStyle = "white"; //Draw Circles
+					ctx.beginPath();
+					for (var i = 0; i<x.length; i++){
+						x[i] = x[i] + vx[i] * dTime * timeScale; //Move planets
+						y[i] = y[i] + vy[i] * dTime * timeScale;
+					
+						ctx.moveTo(canvasXPosAfterScale(x[i] - xMid), canvasYPosAfterScale(y[i] - yMid));
+						ctx.arc(canvasXPosAfterScale(x[i] - xMid), canvasYPosAfterScale(y[i] - yMid), radius(r[i]*scaleFactor),0,Math.PI*2,true);
+					}
+					ctx.closePath();
+					ctx.fill();
+					
+					ctx.strokeStyle="red"; //Draw Velocity Lines
+					ctx.beginPath()
+					for (var i = 0; i<x.length; i++){
+						ctx.moveTo(canvasXPosAfterScale(x[i] - xMid), canvasYPosAfterScale(y[i] - yMid));
+						ctx.lineTo(canvasXPosAfterScale(x[i]+vx[i]*velArrowScale - xMid), canvasYPosAfterScale(y[i]+vy[i]*velArrowScale - yMid));
+					}
+					ctx.closePath();
+					ctx.stroke();
+					
+					ctx.fillStyle='black'; //Draw Numbers
+					for (var i = 0; i<x.length; i++){
+     					ctx.fillText(i+1, canvasXPosAfterScale(x[i] - xMid), canvasYPosAfterScale(y[i] - yMid)); 
+     				} 
+				}
+				
+				function drawAllStars(){
+					ctx.fillStyle = "yellow";
+					ctx.beginPath();
+					for (var i = 0; i<starX.length; i++){
+						var shiftedX = starX[i]-1000*Math.floor((starX[i] - xMid / starMovement)/1000);
+						var shiftedY = starY[i]-750*Math.floor((starY[i] - yMid / starMovement)/750);
+						
+						ctx.moveTo(shiftedX - xMid / starMovement, shiftedY - yMid / starMovement);
+						ctx.arc(shiftedX - xMid / starMovement, shiftedY - yMid / starMovement ,1,0,Math.PI*2,true);
+					}
+					ctx.closePath();
+					ctx.fill();
+				}
+				
+				function radius(r){
+					if (r < 7){
+						return 7;
+					} else {
+						return r;
+					}
+				}
+				
+		//GUI Functions
+		
+			function ballClicked(mouseX, mouseY){
+				var i = m.length;
+				while (i--){
+					if(distanceSqaured(mouseX,mouseY,x[i],y[i])<=Math.pow(Math.max(Math.pow(m[i], 1/3), 5)+2, 2)){
+						return i
+					}
+				}
+				return -1;
+			}
+			
+			function selectBall(ballI){
+				drawSelectCircle(ballI);
+				showBallStats(ballI);
+				selectedText.innerText = "Planet Selected: " + String(ballI+1);
+			}
+			
+			function deselectBall(ballI){
+				ctx.clearRect(0,0,1200,700);
+				selectedText.innerText = "Planet Selected: None";
+				updateBallStats(ballI);
+				clearUserInterface();
+				for(var i = 0;i<x.length;i++){
+					drawBall(i);
+				}
+			}
+			
+		//UI Functions
+		
+			function playButtonHandler(){
+				if (playButton.innerText === "Start"){
+					if (setStartingConfig){
+						setStartingConfig = false;
+						x0 = [];
+						y0 = [];
+						vx0 = []; 
+						vy0 = [];
+						fx0 = [];
+						fy0 = []; 
+						m0 = []; 
+						r0 = []; 
+						
+						for (var i = 0;i < x.length; i++){
+							x0[i] = x[i];
+							y0[i] = y[i];
+							vx0[i] = vx[i];
+							vy0[i] = vy[i];
+							fx0[i] = fx[i];
+							fy0[i] = fy[i];
+							m0[i] = m[i];
+							r0[i] = r[i];
+						}
+					}
+					init = setInterval(run,dTime);
+					playButton.innerText = "Pause";
+				} else if (playButton.innerText === "Pause"){
+					clearInterval(init);
+					playButton.innerText = "Start";
+				}
+			}
+			function resetButtonHandler(){
+				if (playButton.innerText === "Pause"){
+					clearInterval(init);
+					playButton.innerText = "Start";
+				}
+				setStartingConfig = true;
+				xMid = 0;
+				yMid = 0;
+				scaleFactor = 1;
+				wantedScale = 1;
+				
+				midPos.innerText = "Position of Camera X:" + Math.floor(xMid) + " Y:" + Math.floor(yMid);
+			
+				ctx.fillStyle = "white"; //Draw Circles
+				ctx.beginPath();
+				for (var i = 0; i<x0.length; i++){
+					ctx.moveTo(x0[i], y0[i]);
+					ctx.arc(x0[i], y0[i], radius(r0[i]),0,Math.PI*2,true);
+				}
+				ctx.closePath();
+				ctx.fill();
+				
+				ctx.strokeStyle="red"; //Draw Velocity Lines
+				ctx.beginPath()
+				for (var i = 0; i<x0.length; i++){
+					ctx.moveTo(x0[i], y0[i]);
+					ctx.lineTo(x0[i]+vx0[i]*velArrowScale, y0[i]+vy0[i]*velArrowScale);
+				}
+				ctx.closePath();
+				ctx.stroke();
+				
+				ctx.fillStyle='black'; //Draw Numbers
+				for (var i = 0; i<x0.length; i++){
+					ctx.fillText(i+1, x0[i], y0[i]); 
+				} 
+			}
+			
+			function canvasClickHandler(e){
+				if(setStartingConfig){
+					var clicked = ballClicked(e.x,e.y);
+					if(e.altKey){
+						if(clicked > -1 && selected == "none"){
+							selected = clicked;
+							selectBall(clicked);
+						}
+					} else if(selected != "none" ){
+						if(!e.shiftKey && clicked == -1){
+							deselectBall(selected);
+							selected = "none";
+						}
+					} else if(!e.shiftKey){
+						addBall(e.x,e.y);
+						selectBall(x.length-1);
+						selected = x.length-1;
+					}
+				}
+			}
+			
+		//Event handlers
+			
+			playButton.onclick = playButtonHandler();
+			resetButton.onclick = resetButtonHandler();
+
+			canvas.onmousedown = function (e){
+				mousedown = true;
+			}
+			canvas.onmouseup = function (e){
+				mousedown = false;
+				shouldMove = false;
+			}
+			canvas.onclick = function (e){
+				canvasClickHandler(e);
+			}
+			
+			canvas.onmousemove = function (e){
+				mouseX = e.clientX;
+				mouseY = e.clientY;
+			}
+		
+		//Run Function
+			
+			function run(){
+				ctx.clearRect(0,0,1000,750); //Clear canvas
+				drawAllStars();
+				moveAndRedrawAllPlanets();
+				findScaleFactor();
+				
+				fx = []; //Clear the force arrays
+				fy = [];
+				for (var i = 0; i<x.length; i++){ //Fill the force arrays with zeros
+					fx[i] = 0;
+					fy[i] = 0;
+				}
+				
+				for (var i = 0; i<x.length; i++){ //Iterate over all planets
+					var j = i + 1;
+					while (j<x.length){
+						if (isColliding(i,j)){ //If the planets collided
+							crashPlanets(i,j); //Have them crash
+							destroyPlanet(j); //Then destroy planet j
+						} else {
+							var distanceBetween = distanceSquared(i,j);
+						
+							var totalForce = m[i] * m[j] / distanceBetween; //Force given by m_1*m_2/distance^2
+							
+							var deltaX = x[j] - x[i];
+							var deltaY = y[j] - y[i];
+							
+							/*
+							This part is invalid, I found a better way to resolve the force vector into its x and y parts
+							
+							BTW, this section, with the 2 if statements and square root is probably the most processor intensive part other than drawing
+							if (deltaX === 0){
+								var xForce = 0;
+							} else {
+								var xForce = totalForce / Math.sqrt(1 + (deltaY * deltaY) / (deltaX * deltaX)); //Components of force in the x direction
+							}
+							
+							if (deltaY === 0){
+								var yForce = 0;
+							} else {
+								var yForce = totalForce / Math.sqrt(1 + (deltaX * deltaX) / (deltaY * deltaY)); //Components of force in the y direction
+							}*/
+							
+							var distanceBetweenPlanets = Math.sqrt(distanceBetween); //Only square root :D
+							
+							var xForce = totalForce / distanceBetweenPlanets * deltaX;
+							var yForce = totalForce / distanceBetweenPlanets * deltaY;
+							
+							fx[i] = fx[i] + xForce; //Sum up the total x and y forces
+							fx[j] = fx[j] + -xForce;
+							fy[i] = fy[i] + yForce;
+							fy[j] = fy[j] + -yForce;
+							
+							j++;
+						}
+					}
+					//Once all the forces have been summed for planet i, calculate its vx and vy
+					var ax = fx[i] / m[i];
+					var ay = fy[i] / m[i];
+					
+					vx[i] = vx[i] + ax * dTime * timeScale; //'New velocity' is 'old velocity' plus 'acceleration' times 'delta time'
+					vy[i] = vy[i] + ay * dTime * timeScale;
+				}
+			}
+			
+		
+		</script>
+	</body>
+</html>

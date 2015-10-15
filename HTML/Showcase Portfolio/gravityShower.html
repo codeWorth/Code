@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<style>
+		body{
+			background-color:white;
+		}
+		canvas{
+			background-color:black;
+		}
+		</style>
+	</head>
+	<body>
+	Enter the number of particles:<input type="text" id="num_of_particals" value="7">Enter the mi/h:<input type="text" id="speed_of_particals" value="50">
+	<canvas id="canvas" width="1660" height="800"></canvas>
+
+		<script type="text/javascript">
+		var init;
+		var ctx = document.getElementById('canvas').getContext('2d');
+		var origin_x;
+		var origin_y;
+		var speed;
+		var num_of_particals = 7;
+		var angles = new Array();
+		var t;
+		var r = 4;
+		var y_gravity = 0.0060956514/2;
+		var particalsOut = new Array();
+		ctx.fillStyle="#FF0000";
+		ctx.fillRect(1555,796,r,r);
+		for(var i = 0;i < num_of_particals;i++){
+			particalsOut[i] = "1";
+		}
+		function makeAngles(){
+			for(var i = 0;i<num_of_particals;i++){
+				if(i == 0){
+					particalsOut[i] = "1";
+					angles[i] = Math.PI*2/num_of_particals;
+				}
+				else{
+					particalsOut[i] = "1";
+					angles[i] = angles[i-1] + Math.PI*2/num_of_particals;	//make the next angle the previous one plus the increment
+				}
+			}
+		}
+		function drawParticals(){
+			t++;
+			if (t % 10 == 1){
+				ctx.clearRect(0,0,1660,800);
+			}
+			for(var i = 0;i<angles.length;i++){	//for each angle, compute the position
+				if(particalsOut[i] == "1"){	//checks if partical is not on edge of canvas
+					var partical_x = speed*Math.sin(angles[i])*t+origin_x; 
+					var partical_y = y_gravity*Math.pow(t,2)+speed*Math.cos(angles[i])*t+origin_y;
+					//do the math with the gravity equation
+					if(partical_x < 1660 - r && partical_x > r && partical_y < 800 - r && partical_y > r){
+						if (t % 10 == 1){
+							ctx.fillStyle = "white";   
+							ctx.beginPath();
+							ctx.arc(Math.round(partical_x), Math.round(partical_y), r, 0, Math.PI*2, true);
+							ctx.closePath();
+							ctx.fill();
+							if(anyIn() == "no"){
+								clearInterval(init);
+							}
+						}
+					}
+					else{	//if this partical was not on the edge, but is now, enter that in the array
+						particalsOut[i] = "0";
+					}
+				}
+				else{
+				}
+			}
+		}	
+		function anyIn(){
+			//check if all the particals are on the canvas edge 
+			anyOut = "no";
+			for (var i = 0; i < particalsOut.length; i++) {
+				if (particalsOut[i] === "1") {
+					anyOut = "yes";
+				}
+			}
+			return anyOut;
+		}
+		document.getElementById('canvas').addEventListener('click', function (e) {
+			t = 0;
+			speed = parseFloat(document.getElementById('speed_of_particals').value)/60
+			origin_x = e.clientX;
+			origin_y = e.clientY;
+			makeAngles();
+			init = setInterval(drawParticals, 1);
+		});
+		</script>
+
+	</body>
+</html>

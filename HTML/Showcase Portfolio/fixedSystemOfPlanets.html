@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gravitationally Gravitating Towards Total Awesome</title>
+		<style type="text/css">
+			#mainCanvas{
+				background-color:black;
+				background-size:contain;
+			}
+			input[type=textarea]{
+				width:130px;
+			}
+			#xPos{
+				width:75px;
+			}
+			#yPos{
+				width:75px
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id = "mainCanvas" width="1200" height="700"></canvas><br/>
+		<div id = "circleNumber">Planet Selected: None</div>
+		<span>Mass:</span><input type = "textarea" id="massArea"></input><span>Speed:</span><input type = "textarea" id="speedArea"></input><span>Direction:</span><input type = "textarea" id="dirArea"></input><span>X Position:</span><input type = "textarea" id="xPos"></input><span>Y Position:</span><input type = "textarea" id="yPos"></input><br/>
+		<button id = "startButton">Start</button><button id = "resetButton">Reset</button>
+		<script type="text/javascript">
+		//variables
+		//html to javascript variables
+			var canvas = document.getElementById('mainCanvas');
+			var ctx = canvas.getContext('2d');
+			var playButton = document.getElementById('startButton');
+			var resetButton = document.getElementById('resetButton');
+			var massBox = document.getElementById('massArea');
+			var speedBox = document.getElementById('speedArea');
+			var angleBox = document.getElementById('dirArea');
+			var xBox = document.getElementById('xPos');
+			var yBox = document.getElementById('yPos');
+			var selectedText = document.getElementById('circleNumber');
+		//ball attribute variables
+			var initX = new Array();
+			var initY = new Array();
+			var x = new Array();
+			var y = new Array();
+			var prevX = new Array();
+			var prevY = new Array();
+			var initAngle = new Array();
+			var initSpeed = new Array();
+			var xVel = new Array();
+			var yVel = new Array();
+			var prevXVel = new Array();
+			var prevYVel = new Array();
+			var initMass = new Array();
+			var mass = new Array();
+			var xAccel = new Array();
+			var yAccel = new Array();
+		//global variables
+			var speedConversionFactor = 15;
+			var massConversionFactor = 3;
+			var mousedown = false;
+			var playing = false;
+			var started = false;
+			var selected = "none";
+			var dT = 0.1;
+			var t = 0;
+			var init;
+		//helpful functions
+			function distance(x1,y1,x2,y2){
+				return Math.sqrt(Math.pow(x2-x1, 2)+Math.pow(y2-y1, 2));
+			}
+			
+			function angle(x1,y1,x2,y2){
+				return Math.atan2(y2-y1, x2-x1);
+			}
+			
+		//list operation functions
+			function partialDeleteBall(ballIndex){
+				x.splice(ballIndex, 1);
+				y.splice(ballIndex, 1);
+				prevX.splice(ballIndex, 1);
+				prevY.splice(ballIndex, 1);
+				xVel.splice(ballIndex, 1);
+				yVel.splice(ballIndex, 1);
+				prevXVel.splice(ballIndex, 1);
+				prevYVel.splice(ballIndex, 1);
+				mass.splice(ballIndex, 1);
+				xAccel.splice(ballIndex, 1);
+				yAccel.splice(ballIndex, 1);
+			}
+			
+			function fullDeleteBall(ballI){
+				partialDeleteBall(ballI);
+				initX.splice(ballI, 1);
+				initY.splice(ballI, 1);
+				initAngle.splice(ballI, 1);
+				initSpeed.splice(ballI, 1);
+				initMass.splice(ballI, 1);
+			}
+			
+			function addBall(startX, startY){
+				x[x.length] = startX;
+				initX[initX.length] = startX;
+				prevX[prevX.length] = startX;
+				y[y.length] = startY;
+				initY[initY.length] = startY;
+				prevY[prevY.length] = startY;
+				initAngle[initAngle.length] = 0;
+				initSpeed[initSpeed.length] = 0;
+				xVel[xVel.length] = 0;
+				yVel[yVel.length] = 0;
+				prevXVel[prevXVel.length] = 0;
+				prevYVel[prevYVel.length] = 0;
+				initMass[initMass.length] = 1000 * massConversionFactor;
+				mass[mass.length] = 1000 * massConversionFactor;
+				xAccel[xAccel.length] = 0;
+				yAccel[yAccel.length] = 0;
+				drawBall(x.length-1);
+			}
+			
+			function showBallStats(ballI){
+				massBox.value = mass[ballI] / massConversionFactor;
+				speedBox.value = initSpeed[ballI] * speedConversionFactor;
+				angleBox.value = initAngle[ballI] / (Math.PI/180);
+				xBox.value = x[ballI];
+				yBox.value = y[ballI]; 
+			}
+			
+			function updateBallStats(ballI){
+				mass[ballI] = parseFloat(massBox.value) * massConversionFactor;
+				initMass[ballI] = mass[ballI];
+				initSpeed[ballI] = parseFloat(speedBox.value) / speedConversionFactor;
+				initAngle[ballI] = parseFloat(angleBox.value) * (Math.PI/180);
+				x[ballI] = parseFloat(xBox.value);
+				prevX[ballI] = x[ballI];
+				initX[ballI] = x[ballI];
+				y[ballI] = parseFloat(yBox.value);
+				prevY[ballI] = y[ballI];
+				initY[ballI] = y[ballI];
+				xVel[ballI] = initSpeed[ballI] * Math.cos(initAngle[ballI]);
+				prevXVel[ballI] = xVel[ballI];
+				yVel[ballI] = initSpeed[ballI] * Math.sin(initAngle[ballI]);
+				prevYVel[ballI] = yVel[ballI];
+			}
+			
+			function clearUserInterface(){
+				massBox.value = "";
+				speedBox.value = "";
+				angleBox.value = ""; 
+				xBox.value = "";
+				yBox.value = "";
+			}
+			
+			function resetToInitial(){
+				for(var ballI = 0;ballI<initX.length;ballI++){
+					if(ballI<x.length){
+						mass[ballI] = initMass[ballI];
+						x[ballI] = initX[ballI];
+						prevX[ballI] = initX[ballI];
+						y[ballI] = initY[ballI];
+						prevY[ballI] = initY[ballI];
+						xVel[ballI] = initSpeed[ballI] * Math.cos(initAngle[ballI]);
+						prevXVel[ballI] = xVel[ballI];
+						yVel[ballI] = initSpeed[ballI] * Math.sin(initAngle[ballI]);
+						prevYVel[ballI] = yVel[ballI];
+						xAccel[ballI] = 0;
+						yAccel[ballI] = 0;
+					} else {
+						mass.push(initMass[ballI]);
+						x.push(initX[ballI]);
+						prevX.push(initX[ballI]);
+						y.push(initY[ballI]);
+						prevY.push(initY[ballI]);
+						xVel.push(initSpeed[ballI] * Math.cos(initAngle[ballI]));
+						prevXVel.push(xVel[ballI]);
+						yVel.push(initSpeed[ballI] * Math.sin(initAngle[ballI]));
+						prevYVel.push(yVel[ballI]);	
+						xAccel.push(0);
+						yAccel.push(0);
+					}
+				}	
+				redrawAllBalls();
+			}
+			
+		//canvas operation functions	
+			function drawBall(ballI){
+				var lineLength = distance(0,0,xVel[ballI],yVel[ballI]);
+				var ballR = Math.max(Math.pow(mass[ballI]/massConversionFactor, 1/3), 5);
+				var addedX = ballR * (xVel[ballI]/lineLength);
+				var addedY = ballR * (yVel[ballI]/lineLength);
+				ctx.strokeStyle = "red"
+				ctx.strokeWidth = "1px";
+				ctx.beginPath();
+				ctx.moveTo(x[ballI], y[ballI]);
+				ctx.lineTo(x[ballI]+xVel[ballI]*speedConversionFactor+addedX, y[ballI]+yVel[ballI]*speedConversionFactor+addedY);
+				ctx.stroke();
+				ctx.closePath();
+				arrowhead(x[ballI], y[ballI], x[ballI]+xVel[ballI]*speedConversionFactor+addedX, y[ballI]+yVel[ballI]*speedConversionFactor+addedY);
+				ctx.fillStyle = "white"
+				ctx.beginPath();
+				ctx.arc(x[ballI], y[ballI], Math.max(Math.pow(mass[ballI]/massConversionFactor, 1/3), 5), 0, 2*Math.PI, true);
+				ctx.fill();
+				ctx.closePath();
+				ctx.fillStyle = "black";
+				ctx.textAlign = "center";
+				ctx.fillText(ballI+1, x[ballI], y[ballI]);
+			}
+			
+			function drawSelectCircle(ballI){
+				ctx.strokeStyle = "yellow"				
+				ctx.beginPath();
+				ctx.arc(x[ballI], y[ballI], Math.max(Math.pow(mass[ballI]/massConversionFactor, 1/3), 5) + 1, 0, 2*Math.PI, true);
+				ctx.stroke();
+				ctx.closePath();
+			}
+			function selectBall(ballI){
+				drawSelectCircle(ballI);
+				showBallStats(ballI);
+				selectedText.innerText = "Planet Selected: " + String(ballI+1);
+			}
+			
+			function deselectBall(ballI){
+				ctx.clearRect(0,0,1200,700);
+				selectedText.innerText = "Planet Selected: None";
+				updateBallStats(ballI);
+				clearUserInterface();
+				for(var i = 0;i<x.length;i++){
+					drawBall(i);
+				}
+			}
+			
+			function redrawAllBalls(){
+				ctx.clearRect(0,0,1200,700);
+				for(var i = 0;i<x.length;i++){
+					drawBall(i);
+				}
+			}
+			
+			function arrowhead(fromx, fromy, tox, toy){
+				var headlen = 10;
+				var angle = Math.atan2(toy-fromy,tox-fromx);
+				ctx.strokeStyle = "red";
+				ctx.beginPath();
+				ctx.moveTo(tox, toy);
+				ctx.lineTo(tox-headlen*Math.cos(angle-Math.PI/6),toy-headlen*Math.sin(angle-Math.PI/6));
+				ctx.moveTo(tox, toy);
+				ctx.lineTo(tox-headlen*Math.cos(angle+Math.PI/6),toy-headlen*Math.sin(angle+Math.PI/6));
+				ctx.stroke();
+				ctx.closePath();
+			}
+		
+		//on-canvas-ball functions
+			function changeVelocity(mouseX, mouseY, ballI){
+				speedBox.value = distance(x[ballI], y[ballI], mouseX, mouseY);
+				angleBox.value = angle(x[ballI], y[ballI], mouseX, mouseY) / (Math.PI/180);
+				updateBallStats(ballI);
+				redrawAllBalls();
+				drawSelectCircle(ballI);
+			}
+			
+			function changePosition(mouseX, mouseY, ballI){
+				xBox.value = mouseX;
+				yBox.value = mouseY;
+				updateBallStats(ballI);
+				redrawAllBalls();
+				drawSelectCircle(ballI);
+			}
+
+			function ballClicked(mouseX, mouseY){
+				var i = mass.length;
+				while (i--){
+					if(distance(mouseX,mouseY,x[i],y[i])<=Math.max(Math.pow(mass[i], 1/3), 5)+2){
+						return i
+					}
+				}
+				return -1;
+			}
+		//canvas click handeling
+			function onclickHandler(e){
+				if(!playing && !started){
+					var clicked = ballClicked(e.x,e.y);
+					if(e.altKey){
+						if(clicked > -1 && selected == "none"){
+							selected = clicked;
+							selectBall(clicked);
+						}
+					} else if(selected != "none" ){
+						if(!e.shiftKey && clicked == -1){
+							deselectBall(selected);
+							selected = "none";
+						}
+					} else if(!e.shiftKey){
+						addBall(e.x,e.y);
+						selectBall(x.length-1);
+						selected = x.length-1;
+					}
+				}
+			}
+			
+			function mousemoveHandler(e){
+				if(mousedown && selected != "none"){
+					if(e.shiftKey){
+						changePosition(e.x,e.y,selected);
+					}
+					else if(e.altKey){
+						changeVelocity(e.x,e.y,selected);
+					}
+				}
+			}
+		//button click handlers
+			function startButtonHandler(e){
+				if(started){
+					if(playing){
+						clearInterval(init);
+						playing = false;
+						startButton.innerText = "Play";
+					} else {
+						init = setInterval(simulate, 2);
+						playing = true;
+						startButton.innerText = "Pause";
+					}
+				} else {
+					init = setInterval(simulate, 2);
+					started = true;
+					playing = true;
+					startButton.innerText = "Pause";
+				}
+			}
+			
+			function resetButtonHandler(e){
+				if(started){
+					selected = "none";
+					startButton.innerText = "Start";
+					clearInterval(init);
+					started = false;
+					playing = false;
+					resetToInitial();
+				}
+			}
+			
+			function keyupHandler(e){
+				if(e.keyCode == 8 && selected != "none"){
+					if(!(massBox.hasFocus || speedBox.hasFocus || angleBox.hasFocus || xBox.hasFocus || yBox.hasFocus)){
+						deselectBall(selected);
+						fullDeleteBall(selected);
+						redrawAllBalls();
+						selected = "none";
+					}
+				}
+			}
+		
+		//event listeners
+			canvas.onclick = onclickHandler;
+			canvas.onmousedown = function (e){
+				mousedown = true;
+			}
+			canvas.onmouseup = function (e){
+				mousedown = false;
+			}
+			canvas.onmousemove = mousemoveHandler;
+			startButton.onclick = startButtonHandler;
+			resetButton.onclick = resetButtonHandler;
+			document.onkeyup = keyupHandler;
+			
+		//simulation runner functions
+			function gravityForceBetween(x1,y1,m1,x2,y2,m2){
+				distanceBetween = distance(x1,y1,x2,y2);
+				force = m1*m2/Math.pow(distanceBetween, 2);
+				return force;			
+			}
+			
+			function simulate(){
+				t = t + 1;
+				var xForceSum;
+				var yForceSum;
+				var distancePlanets;
+				var forceBetween;
+				var xAccell;
+				var yAccell;
+				var xSpeed;
+				var ySpeed;
+				var newX;
+				var newY;
+				var mvX;
+				var mvY;
+				if(t % 5 == 0){
+					redrawAllBalls();
+				}
+				for(var j = 0;j<x.length;j++){
+					xForceSum = 0;
+					yForceSum = 0;
+					for(var i = 0;i<x.length;i++){
+						if(i != j){
+							distancePlanets = distance(x[j],y[j],x[i],y[i]);
+							forceBetween = gravityForceBetween(x[i],y[i],mass[i],x[j],y[j],mass[j]);
+							xForceSum += forceBetween * ((x[i]-x[j])/distancePlanets);
+							yForceSum += forceBetween * ((y[i]-y[j])/distancePlanets);
+						}
+					}
+					xAccell = xForceSum/mass[j];
+					yAccell = yForceSum/mass[j];
+					xSpeed = 0.5*(xAccell+xAccel[j])*dT + prevXVel[j];
+					ySpeed = 0.5*(yAccell+yAccel[j])*dT + prevYVel[j];
+					newX = 0.5*xAccell*Math.pow(dT, 2)+xSpeed*dT+prevX[j];
+					newY = 0.5*yAccell*Math.pow(dT, 2)+ySpeed*dT+prevY[j];
+					x[j] = newX;
+					y[j] = newY;
+					prevX[j] = newX;
+					prevY[j] = newY;
+					xVel[j] = xSpeed;
+					yVel[j] = ySpeed;
+					prevXVel[j] = xSpeed;
+					prevYVel[j] = ySpeed;
+					for(var i = 0;i<x.length;i++){
+						if(i != j){
+							distancePlanets = distance(x[j],y[j],x[i],y[i]);
+							if(distancePlanets<=(Math.max(Math.pow(mass[j]/massConversionFactor, 1/3), 5)+Math.max(Math.pow(mass[i]/massConversionFactor, 1/3), 5))){
+								mvX = xVel[j]*mass[j]+xVel[i]*mass[i];
+								mvY = yVel[j]*mass[j]+yVel[i]*mass[i];
+								mass[j] = mass[j] + mass[i];
+								xVel[j] = mvX/(mass[j]);
+								yVel[j] = mvY/(mass[j]);
+								prevXVel[j] = xVel[j];
+								prevYVel[j] = yVel[j];
+								x[j] = Math.max(Math.pow(mass[j]/massConversionFactor, 1/3), 5) * (x[i]-x[j])/distancePlanets + x[j];
+								y[j] = Math.max(Math.pow(mass[j]/massConversionFactor, 1/3), 5) * (y[i]-y[j])/distancePlanets + y[j];
+								prevX[j] = x[j];
+								prevY[j] = y[j];
+								partialDeleteBall(i);
+							}
+						}
+					}
+				}
+			}
+		</script>
+	<br/>
+	<pre>
+Controls:
+	Click to create planet or deselect planet
+	Alt-click to select planet
+	Alt-click-drag while a planet is selected to change velocity
+	Shift-click-drag while a planet is selected to change position
+	
+Possible stable(ish) orbits:
+    1. (two-bodies, sun+planet):
+	a. sun:mass=10000; speed=0; direction=90; x position:583; y position:376
+	b. planet:mass=0.02; speed=50; dircetion=0; x position=200; y position=362
+	</pre>
+	</body>
+</html>
+		

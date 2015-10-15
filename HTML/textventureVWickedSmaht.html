@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Textventure, Wicked Smaht Edition</title>
+		<style type="text/css">
+			.section {
+				border: 1px solid black;
+				float:left;
+			}
+			#scrollingText {
+				overflow-y:scroll;
+			}
+			
+			#scrollingLeft {
+				width:240px;
+				height:650px;
+				overflow-y:scroll;
+			}
+			#rightSidebar {
+				width:240px;
+				height:650px;
+			}
+			#exploringMap {
+				height:650px;
+				width:650px;
+				border-left:0px solid black;
+				border-right:0px solid black;
+			}
+			#map{
+				margin:10px;
+		
+		</style>
+	</head>
+	<body>
+		<div class="section" id="scrollingLeft"><p id="scrollingText"></p></div>
+		<div class="section" id="exploringMap">
+			<canvas width="630" height="630" id="map"></canvas>
+		</div>
+		<div class="section" id="rightSidebar"></div>
+		<script type="text/javascript"> 
+			var scrollingLeft = document.getElementById("scrollingLeft");
+			var scrollingText = document.getElementById("scrollingText");
+			var map = document.getElementById("exploringMap");
+			var resources = document.getElementById("rightSidebar");
+    		var chatLog = [];
+    		
+    		var canvas = document.getElementById("map");
+    		var ctx = canvas.getContext("2d");
+    		
+    		var xPos = 0;
+    		var yPos = 0;
+    		
+    		var map = [];
+    		for (var i = 0;i<200;i++){
+    			map.push([]);
+    			for (var j = 0;j<100;j++){
+    				map[i].push('X');
+    				map[i].push('Y');
+    			}
+    		}
+    				
+    		
+    		function addTextToChat(text){
+    			chatLog.push(text);
+    			var divisionFactor = text.length/30;
+    			if (divisionFactor < 1){
+    				divisionFactor = 1;
+    			}
+    			typeText((text+"\n\n").split(""),45/divisionFactor);
+				scrollingLeft.scrollTop = scrollingLeft.scrollHeight; 
+    		}
+			
+			function typeText(text,typeSpeed){
+				if (text.length > 0){
+					var newText = scrollingText.innerText + text[0];
+					var slicePos = 1;
+					if(text[0] === " " && text.length > 1){
+						newText = newText + text[1];
+						slicePos = 2;
+					}
+					scrollingText.innerText = newText;
+					scrollingLeft.scrollTop = scrollingLeft.scrollHeight;  
+					setTimeout(function (){ typeText(text.slice(slicePos),typeSpeed); }, Math.floor(Math.random()*((typeSpeed - 45) + 75)) + typeSpeed);
+				}
+			}
+			
+			ctx.fillStyle="black";
+			
+			function showMap(x,y){
+				newX = x+79;
+				newY = y+79;
+				for(var i = newX;i<41+newX;i++){
+					for(var j = newY;j<41+newY;j++){
+						ctx.fillText(map[i][j],(i-newX)*15+10,(j-newY)*15+20);
+					}
+				}
+			}
+			
+			showMap(xPos,yPos);
+			
+			document.onkeypressed = function (e){
+				if (e.keyCode === 65 || e.keyCode === 37){
+					xPos--;
+					showMap(xPos,yPos);
+				} else if (e.keyCode === 68 || e.keyCode === 39){
+					xPos++;
+					showMap(xPos,yPos);
+				} else if (e.keyCode === 87 || e.keyCode === 38){
+					yPos++;
+					showMap(xPos,yPos);
+				} else if (e.keyCode === 83 || e.keyCode === 40){
+					yPos--;
+					showMap(xPos,yPos);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

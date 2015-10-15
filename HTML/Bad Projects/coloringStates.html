@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Optimal Coloring</title>
+		<style type = "text/css">
+			#canvas{
+				position:absolute;
+				top: 8px;
+				left: 8px;
+				z-index:1;
+			}
+		</style>
+	</head>
+	<body>
+		<img src = "states.png"></img>
+		<canvas id = "canvas" width = 770 height = 595></canvas>
+		<script type = "text/javascript">
+			var statesPlaces = "647,265|113,116|101,170|74,288|126,254|181,361|254,366|269,291|193,272|256,220|167,189|242,142|344,152|344,199|348,247|364,300|387,354|351,422|445,415|447,364|442,304|429,240|414,171|477,202|490,274|525,274|538,213|572,264|547,310|599,286|634,297|489,398|529,398|578,393|612,459|531,344|637,334|613,373|667,269|675,245|629,241|656,198|680,170|696,185|687,201|690,215|705,212|716,144|166,519|58,489|";
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var x = "";
+			var y = " ";
+			var list = [];
+			
+			function State(x,y,i){
+				this.x = x;
+				this.y = y;
+				this.adjacent = [];
+				this.index = i;
+			}
+			
+			for (var i = 0;i<statesPlaces.length;i++){
+				if (statesPlaces[i] === "|"){
+					list.push(new State(parseInt(x),parseInt(y),list.length));
+					x = "";
+					y = " ";
+				} else if ( y === " "){
+					if (statesPlaces[i] === ","){
+						y = "";
+					} else {
+						x = x + statesPlaces[i];
+					}
+				} else {
+					y = y + statesPlaces[i];
+				}
+			}
+			for (var i = 0;i<list.length;i++){
+				ctx.beginPath();
+				ctx.fillStyle = "red";
+				ctx.arc(list[i].x,list[i].y,5,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fill();
+			}
+		</script>
+	</body>
+</html>

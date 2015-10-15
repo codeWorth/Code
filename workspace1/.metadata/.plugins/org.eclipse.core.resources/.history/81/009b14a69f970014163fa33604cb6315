@@ -1,0 +1,164 @@
+package me.WhitePrism.BetterCombat;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import net.minecraft.server.v1_7_R3.PacketPlayOutWorldParticles;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Snowball;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class SpellItem {
+
+	private ItemStack attachedItem;
+	private Projectile proj;
+	private boolean shouldRemove = false;
+	public CombatPlayer owner;
+	public int power;
+	private JavaPlugin plugin;
+	
+	private static double maxLightningRange = 5;
+	private static double maxLightningDamage = 5;
+	
+	private static int maxId = 0;
+	private static int maxLightning = 0;
+	private static Map<Integer, SpellItem> spellItems = new HashMap<Integer, SpellItem>();
+	
+    private SpellItem(ItemStack item, Projectile proj, int power, CombatPlayer owner, JavaPlugin plugin) {
+    	this.attachedItem = item;
+    	this.proj = proj;
+    	this.power = power;
+    	this.owner = owner;
+    	this.plugin = plugin;
+        spellItems.put(maxId, this);
+    	proj.setMetadata("ID", new FixedMetadataValue(this.plugin, Integer.valueOf(maxId++)));
+    }
+    
+    // Return a running instance
+    public static SpellItem getInstanceOfSpell(Projectile proj) {
+        if(proj.hasMetadata("ID") && spellItems.containsKey(proj.getMetadata("ID").get(0).asInt())) {
+            return spellItems.get(proj.getMetadata("ID").get(0).asInt());
+        }
+        else {
+           return null;
+        }
+    }
+    
+    //Create a new instance
+    public static SpellItem createSpellItem(ItemStack item, Projectile proj, int power, CombatPlayer player, JavaPlugin plugin){
+    	return new SpellItem(item, proj, power, player, plugin);
+    }
+    
+    public long subtractWithZeros(long number1, long number2){
+    	long result = number1 - number2;
+    	String strResult = String.valueOf(result);
+    	String strNum1 = String.valueOf(number1);
+    	String strNum2 = String.valueOf(number2);
+    	int totalLength = Math.max(strNum1.length(), strNum2.length());
+    	int numOfNeededZeros = totalLength = strResult.length();
+    	
+    }
+    
+    //Change the amount of the ItemStack
+    @SuppressWarnings("deprecation")
+	public boolean setAmountOfItem(int amount){
+    	if (amount > 0 && amount <= attachedItem.getMaxStackSize()){
+    		this.owner.player.getInventory().getItem(this.owner.selectedSlot).setAmount(amount);
+    		this.owner.player.updateInventory();
+    		return true;
+    	} else if (amount == 0){
+    		this.owner.player.getInventory().setItem(this.owner.selectedSlot, new ItemStack(Material.AIR, 0));
+    		this.owner.selectedPotion = null;
+    		this.owner.selectedSlot = 0;
+    		this.shouldRemove = true;
+    		this.owner.player.updateInventory();
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean decreaseItemByOne(){
+    	int amount = this.attachedItem.getAmount() - 1;
+    	return this.setAmountOfItem(amount);
+    }
+    
+    //Use this item at its position
+    public void useItem(Location location){
+    	final Player owner = this.owner.player;
+    	if (this.attachedItem.getType().equals(Material.FIREBALL)){
+    		if (this.shouldRemove){
+    			spellItems.remove(this.proj.getMetadata("ID").get(0).asInt());
+    		}
+    		owner.getWorld().createExplosion(location, 4.0f);
+    	} else if (this.attachedItem.getType() == Material.BLAZE_POWDER){
+    		owner.getWorld().playEffect(location, Effect.SMOKE, 0);
+    		SpellItem.lightningOnLocation(location, 0, this.plugin, SpellItem.maxLightning++);
+    	}
+    }
+    
+    private static void lightningOnLocation(Location loc, int lightningCount, JavaPlugin plugin, int indentifier){
+    	if (lightningCount < SpellItem.maxLightningRange){
+	    	double range = (SpellItem.maxLightningRange - lightningCount) * (SpellItem.maxLightningRange - lightningCount);
+	    	for (LivingEntity e : loc.getWorld().getLivingEntities()){
+				if (e.getLocation().distanceSquared(loc) < range){
+					if (!e.hasMetadata("L_ID")){
+						e.damage(SpellItem.maxLightningDamage - lightningCount/2);
+						for(Player player : Bukkit.getOnlinePlayers()){
+							((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutWorldParticles("fireworksSpark", loc.getBlockX(),loc.getBlockY(), loc.getBlockZ(), 1, 1, 1, 0, 5));
+						}
+						e.setMetadata("L_ID", new FixedMetadataValue(plugin, Integer.valueOf(indentifier)));
+						final JavaPlugin fPlugin = plugin;
+						final int fLightningCount = lightningCount;
+						final int fIndentifier = indentifier;
+						final Location fLoc = e.getLocation();
+						plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+							public void run(){
+								SpellItem.lightningOnLocation(fLoc, fLightningCount + 1, fPlugin, fIndentifier);
+							}
+						}, 7);
+					}else if (e.getMetadata("L_ID").get(0).asInt() != indentifier){
+						e.damage(SpellItem.maxLightningDamage - lightningCount/2);
+						e.setMetadata("L_ID", new FixedMetadataValue(plugin, Integer.valueOf(indentifier)));
+						final JavaPlugin fPlugin = plugin;
+						final int fLightningCount = lightningCount;
+						final int fIndentifier = indentifier;
+						final Location fLoc = e.getLocation();
+						plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable(){
+							public void run(){
+								SpellItem.lightningOnLocation(fLoc, fLightningCount + 1, fPlugin, fIndentifier);
+							}
+						}, 7);
+					}
+				}
+			}
+    	}
+    }
+    
+    public static boolean isSpellItem(ItemStack item){
+    	Material type = item.getType();
+    	if (type.equals(Material.FIREBALL) || type.equals(Material.BLAZE_POWDER)){
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public static Class<?extends Projectile> projTypeForItem(ItemStack item){
+    	if (item.getType() == Material.FIREBALL){
+    		return Snowball.class;
+    	} else if (item.getType() == Material.BLAZE_POWDER){
+    		return Snowball.class;
+    	}
+    	return null;
+    }
+    
+}

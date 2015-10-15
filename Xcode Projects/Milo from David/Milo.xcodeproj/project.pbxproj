@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD10528D1A5B8861002A4327 /* ActivityItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD10528C1A5B8861002A4327 /* ActivityItem.m */; };
+		BD1052901A5B8F95002A4327 /* activityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD10528F1A5B8F95002A4327 /* activityTableViewCell.m */; };
+		BD1052931A5B96CC002A4327 /* leaderboardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1052921A5B96CC002A4327 /* leaderboardTableViewCell.m */; };
+		BD1052961A5B976C002A4327 /* LeaderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD1052951A5B976C002A4327 /* LeaderItem.m */; };
+		BD3998FE1A6A1E4300E763CB /* challengeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3998FD1A6A1E4300E763CB /* challengeViewController.m */; };
+		BD3C548B1A85E36800BE2287 /* TIBLECBKeyfob.m in Sources */ = {isa = PBXBuildFile; fileRef = BD3C548A1A85E36800BE2287 /* TIBLECBKeyfob.m */; };
+		BD46D69B1A664C8500703F1A /* cat-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BD46D6991A664C8500703F1A /* cat-50.png */; };
+		BD46D69C1A664C8500703F1A /* globe-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BD46D69A1A664C8500703F1A /* globe-50.png */; };
+		BD46D69F1A664DE700703F1A /* globe-32.png in Resources */ = {isa = PBXBuildFile; fileRef = BD46D69D1A664DE700703F1A /* globe-32.png */; };
+		BD46D6A01A664DE700703F1A /* cat-32.png in Resources */ = {isa = PBXBuildFile; fileRef = BD46D69E1A664DE700703F1A /* cat-32.png */; };
+		BD5150ED1A5B489C0042634D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5150EC1A5B489C0042634D /* Foundation.framework */; };
+		BD5150EF1A5B489C0042634D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5150EE1A5B489C0042634D /* CoreGraphics.framework */; };
+		BD5150F11A5B489C0042634D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5150F01A5B489C0042634D /* UIKit.framework */; };
+		BD5150F71A5B489C0042634D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD5150F51A5B489C0042634D /* InfoPlist.strings */; };
+		BD5150F91A5B489C0042634D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5150F81A5B489C0042634D /* main.m */; };
+		BD5150FD1A5B489C0042634D /* miloAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5150FC1A5B489C0042634D /* miloAppDelegate.m */; };
+		BD5151001A5B489C0042634D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD5150FE1A5B489C0042634D /* Main.storyboard */; };
+		BD5151031A5B489C0042634D /* miloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5151021A5B489C0042634D /* miloViewController.m */; };
+		BD51510C1A5B489C0042634D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD51510B1A5B489C0042634D /* XCTest.framework */; };
+		BD51510D1A5B489C0042634D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5150EC1A5B489C0042634D /* Foundation.framework */; };
+		BD51510E1A5B489C0042634D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5150F01A5B489C0042634D /* UIKit.framework */; };
+		BD5151161A5B489C0042634D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD5151141A5B489C0042634D /* InfoPlist.strings */; };
+		BD5151181A5B489C0042634D /* MiloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5151171A5B489C0042634D /* MiloTests.m */; };
+		BD5151231A5B4F4E0042634D /* counterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5151221A5B4F4E0042634D /* counterViewController.m */; };
+		BD5151261A5B4F700042634D /* activityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5151251A5B4F700042634D /* activityTableViewController.m */; };
+		BD5151291A5B4FA20042634D /* leaderboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5151281A5B4FA20042634D /* leaderboardTableViewController.m */; };
+		BD51512C1A5B4FB70042634D /* profileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD51512B1A5B4FB70042634D /* profileViewController.m */; };
+		BD51512F1A5B590C0042634D /* miloImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BD51512E1A5B590C0042634D /* miloImage.png */; };
+		BD5151331A5B5BF70042634D /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD5151301A5B5BF70042634D /* cat3.jpg */; };
+		BD5151341A5B5BF70042634D /* cat2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD5151311A5B5BF70042634D /* cat2.jpg */; };
+		BD5151351A5B5BF70042634D /* cat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD5151321A5B5BF70042634D /* cat.jpg */; };
+		BD5151371A5B64D60042634D /* pinball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BD5151361A5B64D60042634D /* pinball.jpg */; };
+		BD641B8F1A7B0C9D0040CA6F /* Settings Button.png in Resources */ = {isa = PBXBuildFile; fileRef = BD641B8C1A7B0C9D0040CA6F /* Settings Button.png */; };
+		BD641B901A7B0C9D0040CA6F /* Games Button.png in Resources */ = {isa = PBXBuildFile; fileRef = BD641B8D1A7B0C9D0040CA6F /* Games Button.png */; };
+		BD641B911A7B0C9D0040CA6F /* Activity Button.png in Resources */ = {isa = PBXBuildFile; fileRef = BD641B8E1A7B0C9D0040CA6F /* Activity Button.png */; };
+		BD641B931A7B11090040CA6F /* miloLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = BD641B921A7B11090040CA6F /* miloLogo.png */; };
+		BD641B951A7B110D0040CA6F /* miloBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BD641B941A7B110D0040CA6F /* miloBackground.png */; };
+		BD98D1F61A6B2D07008045F6 /* CustomTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BD98D1F51A6B2D07008045F6 /* CustomTimer.m */; };
+		BDC428091A6CAC6600EBDED1 /* pairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC428081A6CAC6600EBDED1 /* pairViewController.m */; };
+		BDC4280C1A6CAD2400EBDED1 /* settingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC4280B1A6CAD2400EBDED1 /* settingsViewController.m */; };
+		BDC720541A7338AB002D4C0E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC720531A7338AB002D4C0E /* AVFoundation.framework */; };
+		BDC720561A734071002D4C0E /* BonusBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDC720551A734071002D4C0E /* BonusBell.mp3 */; };
+		BDC720581A7346BD002D4C0E /* CashSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BDC720571A7346BD002D4C0E /* CashSound.mp3 */; };
+		BDC972911A86B23300230C9F /* KeyFobDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDC972901A86B23300230C9F /* KeyFobDelegate.m */; };
+		BDDD6F9A1A5CFB02007591B6 /* infoPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDDD6F991A5CFB02007591B6 /* infoPageViewController.m */; };
+		CE6B8E731A9DAA540001CB2F /* PinballHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = CE6B8E721A9DAA530001CB2F /* PinballHeader.png */; };
+		D5266A1B1A9ACC79008B480F /* miloDayChartWithPoints.png in Resources */ = {isa = PBXBuildFile; fileRef = D5266A1A1A9ACC79008B480F /* miloDayChartWithPoints.png */; };
+		D53804901A9AB82300809B35 /* miloActivity.png in Resources */ = {isa = PBXBuildFile; fileRef = D538048B1A9AB82300809B35 /* miloActivity.png */; };
+		D53804911A9AB82300809B35 /* miloLeaderboard.png in Resources */ = {isa = PBXBuildFile; fileRef = D538048C1A9AB82300809B35 /* miloLeaderboard.png */; };
+		D53804921A9AB82300809B35 /* miloChartWithPoints.png in Resources */ = {isa = PBXBuildFile; fileRef = D538048D1A9AB82300809B35 /* miloChartWithPoints.png */; };
+		D53804931A9AB82300809B35 /* miloBonus.png in Resources */ = {isa = PBXBuildFile; fileRef = D538048E1A9AB82300809B35 /* miloBonus.png */; };
+		D53804941A9AB82300809B35 /* miloBird.png in Resources */ = {isa = PBXBuildFile; fileRef = D538048F1A9AB82300809B35 /* miloBird.png */; };
+		D53804991A9AB82F00809B35 /* miloSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = D53804961A9AB82F00809B35 /* miloSettings.png */; };
+		D538049A1A9AB82F00809B35 /* miloGames.png in Resources */ = {isa = PBXBuildFile; fileRef = D53804971A9AB82F00809B35 /* miloGames.png */; };
+		D538049D1A9AB91C00809B35 /* gamesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D538049C1A9AB91C00809B35 /* gamesViewController.m */; };
+		D538049F1A9AC06400809B35 /* miloCombo.png in Resources */ = {isa = PBXBuildFile; fileRef = D538049E1A9AC06400809B35 /* miloCombo.png */; };
+		D53804A11A9AC10B00809B35 /* miloPinball.png in Resources */ = {isa = PBXBuildFile; fileRef = D53804A01A9AC10B00809B35 /* miloPinball.png */; };
+		D53804A31A9AC16E00809B35 /* miloBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D53804A21A9AC16E00809B35 /* miloBackground.jpg */; };
+		D54C42191A9A99CB007D7BA9 /* activitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54C42181A9A99CB007D7BA9 /* activitiesViewController.m */; };
+		D54C421A1A9AA2F5007D7BA9 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3C54861A85E1BF00BE2287 /* CoreBluetooth.framework */; };
+		D54C421D1A9AAB08007D7BA9 /* paired.png in Resources */ = {isa = PBXBuildFile; fileRef = D54C421B1A9AAB08007D7BA9 /* paired.png */; };
+		D54C421E1A9AAB08007D7BA9 /* notPaired.png in Resources */ = {isa = PBXBuildFile; fileRef = D54C421C1A9AAB08007D7BA9 /* notPaired.png */; };
+		D56A9A311A9936790020F15C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D56A9A301A9936790020F15C /* Images.xcassets */; };
+		D56CBC1C1A990F96003BDCFF /* miloChallenge.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC111A990F96003BDCFF /* miloChallenge.png */; };
+		D56CBC1D1A990F96003BDCFF /* miloFreeplay.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC121A990F96003BDCFF /* miloFreeplay.png */; };
+		D56CBC1E1A990F96003BDCFF /* miloYear.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC131A990F96003BDCFF /* miloYear.png */; };
+		D56CBC1F1A990F96003BDCFF /* miloMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC141A990F96003BDCFF /* miloMonth.png */; };
+		D56CBC201A990F96003BDCFF /* miloDay.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC151A990F96003BDCFF /* miloDay.png */; };
+		D56CBC211A990F96003BDCFF /* miloChartActivity.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC161A990F96003BDCFF /* miloChartActivity.png */; };
+		D56CBC221A990F96003BDCFF /* miloPair.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC171A990F96003BDCFF /* miloPair.png */; };
+		D56CBC231A990F96003BDCFF /* miloEditProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC181A990F96003BDCFF /* miloEditProfile.png */; };
+		D56CBC241A990F96003BDCFF /* miloCatPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC191A990F96003BDCFF /* miloCatPhoto.png */; };
+		D56CBC251A990F96003BDCFF /* pairedMilo.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC1A1A990F96003BDCFF /* pairedMilo.png */; };
+		D56CBC261A990F96003BDCFF /* notPairedMilo.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC1B1A990F96003BDCFF /* notPairedMilo.png */; };
+		D56CBC2F1A991A0F003BDCFF /* Day View-32.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC2D1A991A0F003BDCFF /* Day View-32.png */; };
+		D56CBC301A991A0F003BDCFF /* Month View-32.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC2E1A991A0F003BDCFF /* Month View-32.png */; };
+		D56CBC321A991B09003BDCFF /* Chart.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC311A991B09003BDCFF /* Chart.png */; };
+		D56CBC3A1A991ED0003BDCFF /* miloBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D56CBC391A991ED0003BDCFF /* miloBack.png */; };
+		D56CBC3D1A991FAB003BDCFF /* miloNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = D56CBC3C1A991FAB003BDCFF /* miloNavController.m */; };
+		D5E025921AABA63C00ED6F1D /* overBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D5E0258F1AABA63B00ED6F1D /* overBackground.png */; };
+		D5E025931AABA63C00ED6F1D /* sessionScoreWords.png in Resources */ = {isa = PBXBuildFile; fileRef = D5E025901AABA63C00ED6F1D /* sessionScoreWords.png */; };
+		D5E025941AABA63C00ED6F1D /* backSessionScore.png in Resources */ = {isa = PBXBuildFile; fileRef = D5E025911AABA63C00ED6F1D /* backSessionScore.png */; };
+		F438EB8F1A90066E006B3322 /* miloBall.png in Resources */ = {isa = PBXBuildFile; fileRef = F438EB8E1A90066E006B3322 /* miloBall.png */; };
+		F438EB921A90084B006B3322 /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = F438EB901A90084B006B3322 /* mouse.png */; };
+		F438EB931A90084B006B3322 /* robot.png in Resources */ = {isa = PBXBuildFile; fileRef = F438EB911A90084B006B3322 /* robot.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD51510F1A5B489C0042634D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD5150E11A5B489C0042634D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD5150E81A5B489C0042634D;
+			remoteInfo = Milo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD10528B1A5B8861002A4327 /* ActivityItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityItem.h; sourceTree = "<group>"; };
+		BD10528C1A5B8861002A4327 /* ActivityItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityItem.m; sourceTree = "<group>"; };
+		BD10528E1A5B8F95002A4327 /* activityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activityTableViewCell.h; sourceTree = "<group>"; };
+		BD10528F1A5B8F95002A4327 /* activityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activityTableViewCell.m; sourceTree = "<group>"; };
+		BD1052911A5B96CC002A4327 /* leaderboardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leaderboardTableViewCell.h; sourceTree = "<group>"; };
+		BD1052921A5B96CC002A4327 /* leaderboardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leaderboardTableViewCell.m; sourceTree = "<group>"; };
+		BD1052941A5B976C002A4327 /* LeaderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderItem.h; sourceTree = "<group>"; };
+		BD1052951A5B976C002A4327 /* LeaderItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderItem.m; sourceTree = "<group>"; };
+		BD3998FC1A6A1E4300E763CB /* challengeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = challengeViewController.h; sourceTree = "<group>"; };
+		BD3998FD1A6A1E4300E763CB /* challengeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = challengeViewController.m; sourceTree = "<group>"; };
+		BD3C54861A85E1BF00BE2287 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BD3C54891A85E36800BE2287 /* TIBLECBKeyfob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIBLECBKeyfob.h; sourceTree = "<group>"; };
+		BD3C548A1A85E36800BE2287 /* TIBLECBKeyfob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIBLECBKeyfob.m; sourceTree = "<group>"; };
+		BD3C548C1A85E3B300BE2287 /* TIBLECBKeyfobDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIBLECBKeyfobDefines.h; sourceTree = "<group>"; };
+		BD46D6991A664C8500703F1A /* cat-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat-50.png"; sourceTree = "<group>"; };
+		BD46D69A1A664C8500703F1A /* globe-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe-50.png"; sourceTree = "<group>"; };
+		BD46D69D1A664DE700703F1A /* globe-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe-32.png"; sourceTree = "<group>"; };
+		BD46D69E1A664DE700703F1A /* cat-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cat-32.png"; sourceTree = "<group>"; };
+		BD5150E91A5B489C0042634D /* Milo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD5150EC1A5B489C0042634D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD5150EE1A5B489C0042634D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD5150F01A5B489C0042634D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD5150F61A5B489C0042634D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD5150F81A5B489C0042634D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD5150FA1A5B489C0042634D /* Milo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Milo-Prefix.pch"; sourceTree = "<group>"; };
+		BD5150FB1A5B489C0042634D /* miloAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miloAppDelegate.h; sourceTree = "<group>"; };
+		BD5150FC1A5B489C0042634D /* miloAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = miloAppDelegate.m; sourceTree = "<group>"; };
+		BD5150FF1A5B489C0042634D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD5151011A5B489C0042634D /* miloViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miloViewController.h; sourceTree = "<group>"; };
+		BD5151021A5B489C0042634D /* miloViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = miloViewController.m; sourceTree = "<group>"; };
+		BD51510A1A5B489C0042634D /* MiloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD51510B1A5B489C0042634D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BD5151131A5B489C0042634D /* MiloTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MiloTests-Info.plist"; sourceTree = "<group>"; };
+		BD5151151A5B489C0042634D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD5151171A5B489C0042634D /* MiloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MiloTests.m; sourceTree = "<group>"; };
+		BD5151211A5B4F4E0042634D /* counterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = counterViewController.h; sourceTree = "<group>"; };
+		BD5151221A5B4F4E0042634D /* counterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = counterViewController.m; sourceTree = "<group>"; };
+		BD5151241A5B4F700042634D /* activityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activityTableViewController.h; sourceTree = "<group>"; };
+		BD5151251A5B4F700042634D /* activityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activityTableViewController.m; sourceTree = "<group>"; };
+		BD5151271A5B4FA20042634D /* leaderboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = leaderboardTableViewController.h; sourceTree = "<group>"; };
+		BD5151281A5B4FA20042634D /* leaderboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = leaderboardTableViewController.m; sourceTree = "<group>"; };
+		BD51512A1A5B4FB70042634D /* profileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profileViewController.h; sourceTree = "<group>"; };
+		BD51512B1A5B4FB70042634D /* profileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profileViewController.m; sourceTree = "<group>"; };
+		BD51512E1A5B590C0042634D /* miloImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloImage.png; sourceTree = "<group>"; };
+		BD5151301A5B5BF70042634D /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
+		BD5151311A5B5BF70042634D /* cat2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat2.jpg; sourceTree = "<group>"; };
+		BD5151321A5B5BF70042634D /* cat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat.jpg; sourceTree = "<group>"; };
+		BD5151361A5B64D60042634D /* pinball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pinball.jpg; sourceTree = "<group>"; };
+		BD641B8C1A7B0C9D0040CA6F /* Settings Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings Button.png"; sourceTree = "<group>"; };
+		BD641B8D1A7B0C9D0040CA6F /* Games Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Games Button.png"; sourceTree = "<group>"; };
+		BD641B8E1A7B0C9D0040CA6F /* Activity Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Activity Button.png"; sourceTree = "<group>"; };
+		BD641B921A7B11090040CA6F /* miloLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloLogo.png; sourceTree = "<group>"; };
+		BD641B941A7B110D0040CA6F /* miloBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloBackground.png; sourceTree = "<group>"; };
+		BD98D1F41A6B2D07008045F6 /* CustomTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTimer.h; sourceTree = "<group>"; };
+		BD98D1F51A6B2D07008045F6 /* CustomTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTimer.m; sourceTree = "<group>"; };
+		BDC428071A6CAC6600EBDED1 /* pairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pairViewController.h; sourceTree = "<group>"; };
+		BDC428081A6CAC6600EBDED1 /* pairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pairViewController.m; sourceTree = "<group>"; };
+		BDC4280A1A6CAD2400EBDED1 /* settingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsViewController.h; sourceTree = "<group>"; };
+		BDC4280B1A6CAD2400EBDED1 /* settingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = settingsViewController.m; sourceTree = "<group>"; };
+		BDC720531A7338AB002D4C0E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BDC720551A734071002D4C0E /* BonusBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BonusBell.mp3; sourceTree = "<group>"; };
+		BDC720571A7346BD002D4C0E /* CashSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CashSound.mp3; sourceTree = "<group>"; };
+		BDC9728F1A86B23300230C9F /* KeyFobDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyFobDelegate.h; sourceTree = "<group>"; };
+		BDC972901A86B23300230C9F /* KeyFobDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyFobDelegate.m; sourceTree = "<group>"; };
+		BDDD6F981A5CFB02007591B6 /* infoPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoPageViewController.h; sourceTree = "<group>"; };
+		BDDD6F991A5CFB02007591B6 /* infoPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoPageViewController.m; sourceTree = "<group>"; };
+		CE6B8E721A9DAA530001CB2F /* PinballHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinballHeader.png; sourceTree = "<group>"; };
+		D5266A1A1A9ACC79008B480F /* miloDayChartWithPoints.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloDayChartWithPoints.png; sourceTree = "<group>"; };
+		D538048B1A9AB82300809B35 /* miloActivity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloActivity.png; sourceTree = "<group>"; };
+		D538048C1A9AB82300809B35 /* miloLeaderboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloLeaderboard.png; sourceTree = "<group>"; };
+		D538048D1A9AB82300809B35 /* miloChartWithPoints.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloChartWithPoints.png; sourceTree = "<group>"; };
+		D538048E1A9AB82300809B35 /* miloBonus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloBonus.png; sourceTree = "<group>"; };
+		D538048F1A9AB82300809B35 /* miloBird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloBird.png; sourceTree = "<group>"; };
+		D53804961A9AB82F00809B35 /* miloSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloSettings.png; sourceTree = "<group>"; };
+		D53804971A9AB82F00809B35 /* miloGames.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloGames.png; sourceTree = "<group>"; };
+		D538049B1A9AB91C00809B35 /* gamesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gamesViewController.h; sourceTree = "<group>"; };
+		D538049C1A9AB91C00809B35 /* gamesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gamesViewController.m; sourceTree = "<group>"; };
+		D538049E1A9AC06400809B35 /* miloCombo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloCombo.png; sourceTree = "<group>"; };
+		D53804A01A9AC10B00809B35 /* miloPinball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloPinball.png; sourceTree = "<group>"; };
+		D53804A21A9AC16E00809B35 /* miloBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = miloBackground.jpg; sourceTree = "<group>"; };
+		D54C42171A9A99CB007D7BA9 /* activitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = activitiesViewController.h; sourceTree = "<group>"; };
+		D54C42181A9A99CB007D7BA9 /* activitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = activitiesViewController.m; sourceTree = "<group>"; };
+		D54C421B1A9AAB08007D7BA9 /* paired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paired.png; sourceTree = "<group>"; };
+		D54C421C1A9AAB08007D7BA9 /* notPaired.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notPaired.png; sourceTree = "<group>"; };
+		D56A9A301A9936790020F15C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		D56CBC111A990F96003BDCFF /* miloChallenge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloChallenge.png; sourceTree = "<group>"; };
+		D56CBC121A990F96003BDCFF /* miloFreeplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloFreeplay.png; sourceTree = "<group>"; };
+		D56CBC131A990F96003BDCFF /* miloYear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloYear.png; sourceTree = "<group>"; };
+		D56CBC141A990F96003BDCFF /* miloMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloMonth.png; sourceTree = "<group>"; };
+		D56CBC151A990F96003BDCFF /* miloDay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloDay.png; sourceTree = "<group>"; };
+		D56CBC161A990F96003BDCFF /* miloChartActivity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloChartActivity.png; sourceTree = "<group>"; };
+		D56CBC171A990F96003BDCFF /* miloPair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloPair.png; sourceTree = "<group>"; };
+		D56CBC181A990F96003BDCFF /* miloEditProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloEditProfile.png; sourceTree = "<group>"; };
+		D56CBC191A990F96003BDCFF /* miloCatPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloCatPhoto.png; sourceTree = "<group>"; };
+		D56CBC1A1A990F96003BDCFF /* pairedMilo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pairedMilo.png; sourceTree = "<group>"; };
+		D56CBC1B1A990F96003BDCFF /* notPairedMilo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notPairedMilo.png; sourceTree = "<group>"; };
+		D56CBC2D1A991A0F003BDCFF /* Day View-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Day View-32.png"; sourceTree = "<group>"; };
+		D56CBC2E1A991A0F003BDCFF /* Month View-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Month View-32.png"; sourceTree = "<group>"; };
+		D56CBC311A991B09003BDCFF /* Chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chart.png; sourceTree = "<group>"; };
+		D56CBC391A991ED0003BDCFF /* miloBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloBack.png; sourceTree = "<group>"; };
+		D56CBC3B1A991FAB003BDCFF /* miloNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = miloNavController.h; path = ../miloNavController.h; sourceTree = "<group>"; };
+		D56CBC3C1A991FAB003BDCFF /* miloNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = miloNavController.m; path = ../miloNavController.m; sourceTree = "<group>"; };
+		D5AE3B291AA02EAE0001735D /* Milo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Milo-Info.plist"; sourceTree = "<group>"; };
+		D5E0258F1AABA63B00ED6F1D /* overBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overBackground.png; sourceTree = "<group>"; };
+		D5E025901AABA63C00ED6F1D /* sessionScoreWords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sessionScoreWords.png; sourceTree = "<group>"; };
+		D5E025911AABA63C00ED6F1D /* backSessionScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backSessionScore.png; sourceTree = "<group>"; };
+		F438EB8E1A90066E006B3322 /* miloBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = miloBall.png; sourceTree = "<group>"; };
+		F438EB901A90084B006B3322 /* mouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouse.png; sourceTree = "<group>"; };
+		F438EB911A90084B006B3322 /* robot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = robot.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD5150E61A5B489C0042634D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D54C421A1A9AA2F5007D7BA9 /* CoreBluetooth.framework in Frameworks */,
+				BDC720541A7338AB002D4C0E /* AVFoundation.framework in Frameworks */,
+				BD5150EF1A5B489C0042634D /* CoreGraphics.framework in Frameworks */,
+				BD5150F11A5B489C0042634D /* UIKit.framework in Frameworks */,
+				BD5150ED1A5B489C0042634D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD5151071A5B489C0042634D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD51510C1A5B489C0042634D /* XCTest.framework in Frameworks */,
+				BD51510E1A5B489C0042634D /* UIKit.framework in Frameworks */,
+				BD51510D1A5B489C0042634D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD5150E01A5B489C0042634D = {
+			isa = PBXGroup;
+			children = (
+				BD5150F21A5B489C0042634D /* Milo */,
+				BD5151111A5B489C0042634D /* MiloTests */,
+				BD5150EB1A5B489C0042634D /* Frameworks */,
+				BD5150EA1A5B489C0042634D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD5150EA1A5B489C0042634D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD5150E91A5B489C0042634D /* Milo.app */,
+				BD51510A1A5B489C0042634D /* MiloTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD5150EB1A5B489C0042634D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD3C54861A85E1BF00BE2287 /* CoreBluetooth.framework */,
+				BDC720531A7338AB002D4C0E /* AVFoundation.framework */,
+				BD5150EC1A5B489C0042634D /* Foundation.framework */,
+				BD5150EE1A5B489C0042634D /* CoreGraphics.framework */,
+				BD5150F01A5B489C0042634D /* UIKit.framework */,
+				BD51510B1A5B489C0042634D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD5150F21A5B489C0042634D /* Milo */ = {
+			isa = PBXGroup;
+			children = (
+				BD5150FB1A5B489C0042634D /* miloAppDelegate.h */,
+				BD5150FC1A5B489C0042634D /* miloAppDelegate.m */,
+				BD5150FE1A5B489C0042634D /* Main.storyboard */,
+				D56CBC3B1A991FAB003BDCFF /* miloNavController.h */,
+				D56CBC3C1A991FAB003BDCFF /* miloNavController.m */,
+				BD5151011A5B489C0042634D /* miloViewController.h */,
+				BD5151021A5B489C0042634D /* miloViewController.m */,
+				D538049B1A9AB91C00809B35 /* gamesViewController.h */,
+				D538049C1A9AB91C00809B35 /* gamesViewController.m */,
+				BD5151211A5B4F4E0042634D /* counterViewController.h */,
+				BD5151221A5B4F4E0042634D /* counterViewController.m */,
+				BD3998FC1A6A1E4300E763CB /* challengeViewController.h */,
+				BD3998FD1A6A1E4300E763CB /* challengeViewController.m */,
+				BD98D1F41A6B2D07008045F6 /* CustomTimer.h */,
+				BD98D1F51A6B2D07008045F6 /* CustomTimer.m */,
+				D54C42171A9A99CB007D7BA9 /* activitiesViewController.h */,
+				D54C42181A9A99CB007D7BA9 /* activitiesViewController.m */,
+				BD5151241A5B4F700042634D /* activityTableViewController.h */,
+				BD5151251A5B4F700042634D /* activityTableViewController.m */,
+				BD5151271A5B4FA20042634D /* leaderboardTableViewController.h */,
+				BD5151281A5B4FA20042634D /* leaderboardTableViewController.m */,
+				BDC4280A1A6CAD2400EBDED1 /* settingsViewController.h */,
+				BDC4280B1A6CAD2400EBDED1 /* settingsViewController.m */,
+				BD51512A1A5B4FB70042634D /* profileViewController.h */,
+				BD51512B1A5B4FB70042634D /* profileViewController.m */,
+				BDC428071A6CAC6600EBDED1 /* pairViewController.h */,
+				BDC428081A6CAC6600EBDED1 /* pairViewController.m */,
+				BDDD6F981A5CFB02007591B6 /* infoPageViewController.h */,
+				BDDD6F991A5CFB02007591B6 /* infoPageViewController.m */,
+				BD10528B1A5B8861002A4327 /* ActivityItem.h */,
+				BD10528C1A5B8861002A4327 /* ActivityItem.m */,
+				BD1052941A5B976C002A4327 /* LeaderItem.h */,
+				BD1052951A5B976C002A4327 /* LeaderItem.m */,
+				BD10528E1A5B8F95002A4327 /* activityTableViewCell.h */,
+				BD10528F1A5B8F95002A4327 /* activityTableViewCell.m */,
+				BD1052911A5B96CC002A4327 /* leaderboardTableViewCell.h */,
+				BD1052921A5B96CC002A4327 /* leaderboardTableViewCell.m */,
+				BD3C54891A85E36800BE2287 /* TIBLECBKeyfob.h */,
+				BD3C548A1A85E36800BE2287 /* TIBLECBKeyfob.m */,
+				BD3C548C1A85E3B300BE2287 /* TIBLECBKeyfobDefines.h */,
+				BDC9728F1A86B23300230C9F /* KeyFobDelegate.h */,
+				BDC972901A86B23300230C9F /* KeyFobDelegate.m */,
+				D56A9A301A9936790020F15C /* Images.xcassets */,
+				BD5150F31A5B489C0042634D /* Supporting Files */,
+			);
+			path = Milo;
+			sourceTree = "<group>";
+		};
+		BD5150F31A5B489C0042634D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDC720551A734071002D4C0E /* BonusBell.mp3 */,
+				BDC720571A7346BD002D4C0E /* CashSound.mp3 */,
+				BD51512D1A5B58FE0042634D /* Images */,
+				BD5150F51A5B489C0042634D /* InfoPlist.strings */,
+				D5AE3B291AA02EAE0001735D /* Milo-Info.plist */,
+				BD5150F81A5B489C0042634D /* main.m */,
+				BD5150FA1A5B489C0042634D /* Milo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD5151111A5B489C0042634D /* MiloTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD5151171A5B489C0042634D /* MiloTests.m */,
+				BD5151121A5B489C0042634D /* Supporting Files */,
+			);
+			path = MiloTests;
+			sourceTree = "<group>";
+		};
+		BD5151121A5B489C0042634D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD5151131A5B489C0042634D /* MiloTests-Info.plist */,
+				BD5151141A5B489C0042634D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD51512D1A5B58FE0042634D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D5266A1A1A9ACC79008B480F /* miloDayChartWithPoints.png */,
+				BD641B8C1A7B0C9D0040CA6F /* Settings Button.png */,
+				BD641B921A7B11090040CA6F /* miloLogo.png */,
+				BD641B8D1A7B0C9D0040CA6F /* Games Button.png */,
+				D56CBC391A991ED0003BDCFF /* miloBack.png */,
+				BD641B8E1A7B0C9D0040CA6F /* Activity Button.png */,
+				BD641B941A7B110D0040CA6F /* miloBackground.png */,
+				BD46D69D1A664DE700703F1A /* globe-32.png */,
+				D56CBC111A990F96003BDCFF /* miloChallenge.png */,
+				D56CBC121A990F96003BDCFF /* miloFreeplay.png */,
+				CE6B8E721A9DAA530001CB2F /* PinballHeader.png */,
+				D56CBC131A990F96003BDCFF /* miloYear.png */,
+				D56CBC311A991B09003BDCFF /* Chart.png */,
+				D56CBC141A990F96003BDCFF /* miloMonth.png */,
+				D5E0258F1AABA63B00ED6F1D /* overBackground.png */,
+				D5E025901AABA63C00ED6F1D /* sessionScoreWords.png */,
+				D5E025911AABA63C00ED6F1D /* backSessionScore.png */,
+				D56CBC151A990F96003BDCFF /* miloDay.png */,
+				D56CBC161A990F96003BDCFF /* miloChartActivity.png */,
+				D56CBC171A990F96003BDCFF /* miloPair.png */,
+				D56CBC181A990F96003BDCFF /* miloEditProfile.png */,
+				D56CBC191A990F96003BDCFF /* miloCatPhoto.png */,
+				D54C421B1A9AAB08007D7BA9 /* paired.png */,
+				D54C421C1A9AAB08007D7BA9 /* notPaired.png */,
+				D56CBC1A1A990F96003BDCFF /* pairedMilo.png */,
+				D538048B1A9AB82300809B35 /* miloActivity.png */,
+				D538048C1A9AB82300809B35 /* miloLeaderboard.png */,
+				D538048D1A9AB82300809B35 /* miloChartWithPoints.png */,
+				D53804A01A9AC10B00809B35 /* miloPinball.png */,
+				D53804A21A9AC16E00809B35 /* miloBackground.jpg */,
+				D53804961A9AB82F00809B35 /* miloSettings.png */,
+				D53804971A9AB82F00809B35 /* miloGames.png */,
+				D538048E1A9AB82300809B35 /* miloBonus.png */,
+				D538048F1A9AB82300809B35 /* miloBird.png */,
+				D56CBC1B1A990F96003BDCFF /* notPairedMilo.png */,
+				F438EB901A90084B006B3322 /* mouse.png */,
+				F438EB911A90084B006B3322 /* robot.png */,
+				F438EB8E1A90066E006B3322 /* miloBall.png */,
+				D538049E1A9AC06400809B35 /* miloCombo.png */,
+				D56CBC2D1A991A0F003BDCFF /* Day View-32.png */,
+				D56CBC2E1A991A0F003BDCFF /* Month View-32.png */,
+				BD46D69E1A664DE700703F1A /* cat-32.png */,
+				BD51512E1A5B590C0042634D /* miloImage.png */,
+				BD46D6991A664C8500703F1A /* cat-50.png */,
+				BD46D69A1A664C8500703F1A /* globe-50.png */,
+				BD5151301A5B5BF70042634D /* cat3.jpg */,
+				BD5151311A5B5BF70042634D /* cat2.jpg */,
+				BD5151321A5B5BF70042634D /* cat.jpg */,
+				BD5151361A5B64D60042634D /* pinball.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD5150E81A5B489C0042634D /* Milo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD51511B1A5B489C0042634D /* Build configuration list for PBXNativeTarget "Milo" */;
+			buildPhases = (
+				BD5150E51A5B489C0042634D /* Sources */,
+				BD5150E61A5B489C0042634D /* Frameworks */,
+				BD5150E71A5B489C0042634D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Milo;
+			productName = Milo;
+			productReference = BD5150E91A5B489C0042634D /* Milo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD5151091A5B489C0042634D /* MiloTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD51511E1A5B489C0042634D /* Build configuration list for PBXNativeTarget "MiloTests" */;
+			buildPhases = (
+				BD5151061A5B489C0042634D /* Sources */,
+				BD5151071A5B489C0042634D /* Frameworks */,
+				BD5151081A5B489C0042634D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD5151101A5B489C0042634D /* PBXTargetDependency */,
+			);
+			name = MiloTests;
+			productName = MiloTests;
+			productReference = BD51510A1A5B489C0042634D /* MiloTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD5150E11A5B489C0042634D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = milo;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = milo;
+				TargetAttributes = {
+					BD5150E81A5B489C0042634D = {
+						DevelopmentTeam = K28KQC6A4X;
+					};
+					BD5151091A5B489C0042634D = {
+						DevelopmentTeam = EM527HDYCF;
+						TestTargetID = BD5150E81A5B489C0042634D;
+					};
+				};
+			};
+			buildConfigurationList = BD5150E41A5B489C0042634D /* Build configuration list for PBXProject "Milo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD5150E01A5B489C0042634D;
+			productRefGroup = BD5150EA1A5B489C0042634D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD5150E81A5B489C0042634D /* Milo */,
+				BD5151091A5B489C0042634D /* MiloTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD5150E71A5B489C0042634D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D53804911A9AB82300809B35 /* miloLeaderboard.png in Resources */,
+				D538049F1A9AC06400809B35 /* miloCombo.png in Resources */,
+				D5E025921AABA63C00ED6F1D /* overBackground.png in Resources */,
+				D56A9A311A9936790020F15C /* Images.xcassets in Resources */,
+				D53804921A9AB82300809B35 /* miloChartWithPoints.png in Resources */,
+				D53804991A9AB82F00809B35 /* miloSettings.png in Resources */,
+				D56CBC1C1A990F96003BDCFF /* miloChallenge.png in Resources */,
+				F438EB931A90084B006B3322 /* robot.png in Resources */,
+				D53804941A9AB82300809B35 /* miloBird.png in Resources */,
+				BD46D69B1A664C8500703F1A /* cat-50.png in Resources */,
+				D56CBC1F1A990F96003BDCFF /* miloMonth.png in Resources */,
+				D56CBC241A990F96003BDCFF /* miloCatPhoto.png in Resources */,
+				D56CBC3A1A991ED0003BDCFF /* miloBack.png in Resources */,
+				BD641B931A7B11090040CA6F /* miloLogo.png in Resources */,
+				D5E025941AABA63C00ED6F1D /* backSessionScore.png in Resources */,
+				BD51512F1A5B590C0042634D /* miloImage.png in Resources */,
+				D56CBC211A990F96003BDCFF /* miloChartActivity.png in Resources */,
+				D53804931A9AB82300809B35 /* miloBonus.png in Resources */,
+				D56CBC1D1A990F96003BDCFF /* miloFreeplay.png in Resources */,
+				D5E025931AABA63C00ED6F1D /* sessionScoreWords.png in Resources */,
+				BD641B8F1A7B0C9D0040CA6F /* Settings Button.png in Resources */,
+				F438EB921A90084B006B3322 /* mouse.png in Resources */,
+				BDC720561A734071002D4C0E /* BonusBell.mp3 in Resources */,
+				BD641B951A7B110D0040CA6F /* miloBackground.png in Resources */,
+				D5266A1B1A9ACC79008B480F /* miloDayChartWithPoints.png in Resources */,
+				D56CBC231A990F96003BDCFF /* miloEditProfile.png in Resources */,
+				D538049A1A9AB82F00809B35 /* miloGames.png in Resources */,
+				BD46D69F1A664DE700703F1A /* globe-32.png in Resources */,
+				D56CBC251A990F96003BDCFF /* pairedMilo.png in Resources */,
+				BD46D69C1A664C8500703F1A /* globe-50.png in Resources */,
+				F438EB8F1A90066E006B3322 /* miloBall.png in Resources */,
+				D56CBC321A991B09003BDCFF /* Chart.png in Resources */,
+				BD5151341A5B5BF70042634D /* cat2.jpg in Resources */,
+				CE6B8E731A9DAA540001CB2F /* PinballHeader.png in Resources */,
+				D56CBC1E1A990F96003BDCFF /* miloYear.png in Resources */,
+				BDC720581A7346BD002D4C0E /* CashSound.mp3 in Resources */,
+				BD5151331A5B5BF70042634D /* cat3.jpg in Resources */,
+				D53804901A9AB82300809B35 /* miloActivity.png in Resources */,
+				D54C421E1A9AAB08007D7BA9 /* notPaired.png in Resources */,
+				D56CBC301A991A0F003BDCFF /* Month View-32.png in Resources */,
+				BD641B901A7B0C9D0040CA6F /* Games Button.png in Resources */,
+				D56CBC2F1A991A0F003BDCFF /* Day View-32.png in Resources */,
+				D53804A11A9AC10B00809B35 /* miloPinball.png in Resources */,
+				D56CBC261A990F96003BDCFF /* notPairedMilo.png in Resources */,
+				BD5151371A5B64D60042634D /* pinball.jpg in Resources */,
+				D53804A31A9AC16E00809B35 /* miloBackground.jpg in Resources */,
+				D54C421D1A9AAB08007D7BA9 /* paired.png in Resources */,
+				BD641B911A7B0C9D0040CA6F /* Activity Button.png in Resources */,
+				BD5150F71A5B489C0042634D /* InfoPlist.strings in Resources */,
+				BD5151351A5B5BF70042634D /* cat.jpg in Resources */,
+				D56CBC221A990F96003BDCFF /* miloPair.png in Resources */,
+				D56CBC201A990F96003BDCFF /* miloDay.png in Resources */,
+				BD5151001A5B489C0042634D /* Main.storyboard in Resources */,
+				BD46D6A01A664DE700703F1A /* cat-32.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD5151081A5B489C0042634D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD5151161A5B489C0042634D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD5150E51A5B489C0042634D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD51512C1A5B4FB70042634D /* profileViewController.m in Sources */,
+				BD5150F91A5B489C0042634D /* main.m in Sources */,
+				BD5151231A5B4F4E0042634D /* counterViewController.m in Sources */,
+				BD3C548B1A85E36800BE2287 /* TIBLECBKeyfob.m in Sources */,
+				BDC972911A86B23300230C9F /* KeyFobDelegate.m in Sources */,
+				D56CBC3D1A991FAB003BDCFF /* miloNavController.m in Sources */,
+				BDC4280C1A6CAD2400EBDED1 /* settingsViewController.m in Sources */,
+				BDC428091A6CAC6600EBDED1 /* pairViewController.m in Sources */,
+				BD5151031A5B489C0042634D /* miloViewController.m in Sources */,
+				D538049D1A9AB91C00809B35 /* gamesViewController.m in Sources */,
+				D54C42191A9A99CB007D7BA9 /* activitiesViewController.m in Sources */,
+				BD5151261A5B4F700042634D /* activityTableViewController.m in Sources */,
+				BD1052961A5B976C002A4327 /* LeaderItem.m in Sources */,
+				BD3998FE1A6A1E4300E763CB /* challengeViewController.m in Sources */,
+				BD10528D1A5B8861002A4327 /* ActivityItem.m in Sources */,
+				BD5151291A5B4FA20042634D /* leaderboardTableViewController.m in Sources */,
+				BD1052901A5B8F95002A4327 /* activityTableViewCell.m in Sources */,
+				BD5150FD1A5B489C0042634D /* miloAppDelegate.m in Sources */,
+				BD1052931A5B96CC002A4327 /* leaderboardTableViewCell.m in Sources */,
+				BDDD6F9A1A5CFB02007591B6 /* infoPageViewController.m in Sources */,
+				BD98D1F61A6B2D07008045F6 /* CustomTimer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD5151061A5B489C0042634D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD5151181A5B489C0042634D /* MiloTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD5151101A5B489C0042634D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD5150E81A5B489C0042634D /* Milo */;
+			targetProxy = BD51510F1A5B489C0042634D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD5150F51A5B489C0042634D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD5150F61A5B489C0042634D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD5150FE1A5B489C0042634D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD5150FF1A5B489C0042634D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD5151141A5B489C0042634D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD5151151A5B489C0042634D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD5151191A5B489C0042634D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD51511A1A5B489C0042634D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD51511C1A5B489C0042634D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Milo/Milo-Prefix.pch";
+				INFOPLIST_FILE = "Milo/Milo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD51511D1A5B489C0042634D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Milo/Milo-Prefix.pch";
+				INFOPLIST_FILE = "Milo/Milo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD51511F1A5B489C0042634D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Milo.app/Milo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Milo/Milo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MiloTests/MiloTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BD5151201A5B489C0042634D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Milo.app/Milo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Milo/Milo-Prefix.pch";
+				INFOPLIST_FILE = "MiloTests/MiloTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD5150E41A5B489C0042634D /* Build configuration list for PBXProject "Milo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD5151191A5B489C0042634D /* Debug */,
+				BD51511A1A5B489C0042634D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD51511B1A5B489C0042634D /* Build configuration list for PBXNativeTarget "Milo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD51511C1A5B489C0042634D /* Debug */,
+				BD51511D1A5B489C0042634D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD51511E1A5B489C0042634D /* Build configuration list for PBXNativeTarget "MiloTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD51511F1A5B489C0042634D /* Debug */,
+				BD5151201A5B489C0042634D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD5150E11A5B489C0042634D /* Project object */;
+}

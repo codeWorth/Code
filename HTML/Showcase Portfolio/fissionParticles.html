@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title>Fission Particles</title>
+	</head>
+	<body>
+		<div>Click the red box to make a particle at your mouse pointer.</div>
+		<canvas id="canvas" width="680" height="680"></canvas>
+	</body>
+	<script type="text/javascript">
+		var x = new Array();
+		var y = new Array();
+		var init;
+		var deleted;
+		var speed = new Array();
+		var size = new Array();
+		var times = new Array();
+		var angle = new Array();
+		var ctx = document.getElementById('canvas').getContext('2d');
+		document.getElementById('canvas').style.background = 'red';
+		function newCircle(e){
+		if(x.length<100){
+			ctx.fillStyle="white";
+			times[times.length]=0;
+			size[size.length]=15;
+			x[x.length]=e.x;
+			y[y.length]=e.y;
+			speed[speed.length]=0.5+Math.floor(Math.random()*4.5);
+			angle[angle.length]=Math.random()*Math.PI*2;
+			if(x.length==1){
+				deleted=0;
+				init=setInterval(move,10);
+			}
+			ctx.beginPath();
+			ctx.arc(x[x.length-1],y[y.length-1],15,0,Math.PI*2,true);
+			ctx.closePath();
+			ctx.fill();
+		}
+		}
+		function move(){
+			ctx.clearRect(0, 0, 680, 680);
+			if(x.length==0){
+				clearInterval(init);
+			}
+			i=0
+			for(var w = 0;w<x.length;w++){
+				if(size[w]<1.5){
+					x.splice(w,1);
+					y.splice(w,1);
+					speed.splice(w,1);
+					size.splice(w,1);
+					times.splice(w,1);
+					angle.splice(w,1);
+				}
+			}
+			while(i<x.length){
+				times[i]=times[i]+1;
+				x[i]=x[i]+Math.cos(angle[i])*speed[i];
+				y[i]=y[i]+Math.sin(angle[i])*speed[i];
+				if(x[i]<680-size[i] && x[i]>size[i] && y[i]>size[i] && y[i]<680-size[i]){
+					ctx.beginPath();
+					ctx.arc(x[i],y[i],size[i],0,Math.PI*2,true);
+					ctx.closePath();
+					ctx.fill();
+					if(times[i]*speed[i]>250 && x.length<100 && size[i]>1.5){
+						times[i]=0;
+						size[size.length]=size[i]/1.25;
+						size[i]=size[i]/1.25;
+						times[times.length]=0;
+						x[x.length]=x[i];
+						y[y.length]=y[i];
+						speed[speed.length]=speed[i];
+						var d = Math.round(Math.random());
+						if(d==1){
+							angle[angle.length]=angle[i]+0.523598776;
+						}
+						else{
+							angle[angle.length]=angle[i]-0.523598776;
+						}
+					}	
+				}
+				else{
+					if(y[i]>680-size[i]){
+						x.splice(i,1);
+						y.splice(i,1);
+						speed.splice(i,1);
+						angle.splice(i,1);
+						times.splice(i, 1);
+						size.splice(i, 1);
+					}	
+					if(y[i]<size[i]){
+						angle[i]=Math.PI*2-angle[i];
+					//	x.splice(i,1);
+					//	y.splice(i,1);
+					//	speed.splice(i,1);
+					//	angle.splice(i,1);
+					//	times.splice(i, 1);
+					//	size.splice(i, 1);
+					}
+					if(x[i]<size[i]){
+						angle[i]=Math.PI-angle[i];
+					}
+					if(x[i]>680-size[i]){
+						angle[i]=Math.PI-angle[i];
+					}
+				}
+				i+=1;
+			}
+		}
+		document.getElementById('canvas').onclick = newCircle;
+	</script>
+</html>

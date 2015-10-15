@@ -1,0 +1,508 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DA2CE7018661011006D9F7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE6F18661011006D9F7A /* Foundation.framework */; };
+		9DA2CE7218661011006D9F7A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE7118661011006D9F7A /* CoreGraphics.framework */; };
+		9DA2CE7418661011006D9F7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE7318661011006D9F7A /* UIKit.framework */; };
+		9DA2CE7A18661011006D9F7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DA2CE7818661011006D9F7A /* InfoPlist.strings */; };
+		9DA2CE7C18661011006D9F7A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2CE7B18661011006D9F7A /* main.m */; };
+		9DA2CE8018661011006D9F7A /* ChecklistAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2CE7F18661011006D9F7A /* ChecklistAppDelegate.m */; };
+		9DA2CE8318661011006D9F7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA2CE8118661011006D9F7A /* Main.storyboard */; };
+		9DA2CE8618661011006D9F7A /* MainGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2CE8518661011006D9F7A /* MainGameViewController.m */; };
+		9DA2CE8818661011006D9F7A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA2CE8718661011006D9F7A /* Images.xcassets */; };
+		9DA2CE8F18661011006D9F7A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE8E18661011006D9F7A /* XCTest.framework */; };
+		9DA2CE9018661011006D9F7A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE6F18661011006D9F7A /* Foundation.framework */; };
+		9DA2CE9118661011006D9F7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DA2CE7318661011006D9F7A /* UIKit.framework */; };
+		9DA2CE9918661011006D9F7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DA2CE9718661011006D9F7A /* InfoPlist.strings */; };
+		9DA2CE9B18661011006D9F7A /* SpaceNarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA2CE9A18661011006D9F7A /* SpaceNarTests.m */; };
+		BD82E389188A4A8500BA815C /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82E388188A4A8500BA815C /* Planet.m */; };
+		BD82E390188A4B9A00BA815C /* Materials.m in Sources */ = {isa = PBXBuildFile; fileRef = BD82E38F188A4B9A00BA815C /* Materials.m */; };
+		BD8E91D2188B193F0001CF8E /* SolarSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8E91D1188B193F0001CF8E /* SolarSystem.m */; };
+		BD8E91D5188B19B60001CF8E /* Structure.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8E91D4188B19B60001CF8E /* Structure.m */; };
+		BD8E91D8188B1FBA0001CF8E /* Ship.m in Sources */ = {isa = PBXBuildFile; fileRef = BD8E91D7188B1FBA0001CF8E /* Ship.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DA2CE9218661011006D9F7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DA2CE6418661011006D9F7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DA2CE6B18661011006D9F7A;
+			remoteInfo = SpaceNar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DA2CE6C18661011006D9F7A /* SpaceNar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceNar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DA2CE6F18661011006D9F7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9DA2CE7118661011006D9F7A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9DA2CE7318661011006D9F7A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9DA2CE7718661011006D9F7A /* SpaceNar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpaceNar-Info.plist"; sourceTree = "<group>"; };
+		9DA2CE7918661011006D9F7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DA2CE7B18661011006D9F7A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9DA2CE7D18661011006D9F7A /* SpaceNar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpaceNar-Prefix.pch"; sourceTree = "<group>"; };
+		9DA2CE7E18661011006D9F7A /* ChecklistAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChecklistAppDelegate.h; sourceTree = "<group>"; };
+		9DA2CE7F18661011006D9F7A /* ChecklistAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChecklistAppDelegate.m; sourceTree = "<group>"; };
+		9DA2CE8218661011006D9F7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DA2CE8418661011006D9F7A /* MainGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainGameViewController.h; sourceTree = "<group>"; };
+		9DA2CE8518661011006D9F7A /* MainGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainGameViewController.m; sourceTree = "<group>"; };
+		9DA2CE8718661011006D9F7A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9DA2CE8D18661011006D9F7A /* SpaceNarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceNarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DA2CE8E18661011006D9F7A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9DA2CE9618661011006D9F7A /* SpaceNarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpaceNarTests-Info.plist"; sourceTree = "<group>"; };
+		9DA2CE9818661011006D9F7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9DA2CE9A18661011006D9F7A /* SpaceNarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpaceNarTests.m; sourceTree = "<group>"; };
+		BD82E387188A4A8500BA815C /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
+		BD82E388188A4A8500BA815C /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
+		BD82E38E188A4B9A00BA815C /* Materials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Materials.h; sourceTree = "<group>"; };
+		BD82E38F188A4B9A00BA815C /* Materials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Materials.m; sourceTree = "<group>"; };
+		BD8E91D0188B193F0001CF8E /* SolarSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolarSystem.h; path = ../SolarSystem.h; sourceTree = "<group>"; };
+		BD8E91D1188B193F0001CF8E /* SolarSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SolarSystem.m; path = ../SolarSystem.m; sourceTree = "<group>"; };
+		BD8E91D3188B19B60001CF8E /* Structure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Structure.h; sourceTree = "<group>"; };
+		BD8E91D4188B19B60001CF8E /* Structure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Structure.m; sourceTree = "<group>"; };
+		BD8E91D6188B1FBA0001CF8E /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ship.h; sourceTree = "<group>"; };
+		BD8E91D7188B1FBA0001CF8E /* Ship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ship.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DA2CE6918661011006D9F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA2CE7218661011006D9F7A /* CoreGraphics.framework in Frameworks */,
+				9DA2CE7418661011006D9F7A /* UIKit.framework in Frameworks */,
+				9DA2CE7018661011006D9F7A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DA2CE8A18661011006D9F7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA2CE8F18661011006D9F7A /* XCTest.framework in Frameworks */,
+				9DA2CE9118661011006D9F7A /* UIKit.framework in Frameworks */,
+				9DA2CE9018661011006D9F7A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DA2CE6318661011006D9F7A = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE7518661011006D9F7A /* SpaceNar */,
+				9DA2CE9418661011006D9F7A /* SpaceNarTests */,
+				9DA2CE6E18661011006D9F7A /* Frameworks */,
+				9DA2CE6D18661011006D9F7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DA2CE6D18661011006D9F7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE6C18661011006D9F7A /* SpaceNar.app */,
+				9DA2CE8D18661011006D9F7A /* SpaceNarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DA2CE6E18661011006D9F7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE6F18661011006D9F7A /* Foundation.framework */,
+				9DA2CE7118661011006D9F7A /* CoreGraphics.framework */,
+				9DA2CE7318661011006D9F7A /* UIKit.framework */,
+				9DA2CE8E18661011006D9F7A /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9DA2CE7518661011006D9F7A /* SpaceNar */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE7E18661011006D9F7A /* ChecklistAppDelegate.h */,
+				9DA2CE7F18661011006D9F7A /* ChecklistAppDelegate.m */,
+				9DA2CE8118661011006D9F7A /* Main.storyboard */,
+				9DA2CE8418661011006D9F7A /* MainGameViewController.h */,
+				9DA2CE8518661011006D9F7A /* MainGameViewController.m */,
+				BD8E91D0188B193F0001CF8E /* SolarSystem.h */,
+				BD8E91D1188B193F0001CF8E /* SolarSystem.m */,
+				BD82E387188A4A8500BA815C /* Planet.h */,
+				BD82E388188A4A8500BA815C /* Planet.m */,
+				BD8E91D3188B19B60001CF8E /* Structure.h */,
+				BD8E91D4188B19B60001CF8E /* Structure.m */,
+				BD8E91D6188B1FBA0001CF8E /* Ship.h */,
+				BD8E91D7188B1FBA0001CF8E /* Ship.m */,
+				BD82E38E188A4B9A00BA815C /* Materials.h */,
+				BD82E38F188A4B9A00BA815C /* Materials.m */,
+				9DA2CE8718661011006D9F7A /* Images.xcassets */,
+				9DA2CE7618661011006D9F7A /* Supporting Files */,
+			);
+			path = SpaceNar;
+			sourceTree = "<group>";
+		};
+		9DA2CE7618661011006D9F7A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE7718661011006D9F7A /* SpaceNar-Info.plist */,
+				9DA2CE7818661011006D9F7A /* InfoPlist.strings */,
+				9DA2CE7B18661011006D9F7A /* main.m */,
+				9DA2CE7D18661011006D9F7A /* SpaceNar-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DA2CE9418661011006D9F7A /* SpaceNarTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE9A18661011006D9F7A /* SpaceNarTests.m */,
+				9DA2CE9518661011006D9F7A /* Supporting Files */,
+			);
+			path = SpaceNarTests;
+			sourceTree = "<group>";
+		};
+		9DA2CE9518661011006D9F7A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DA2CE9618661011006D9F7A /* SpaceNarTests-Info.plist */,
+				9DA2CE9718661011006D9F7A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DA2CE6B18661011006D9F7A /* SpaceNar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DA2CE9E18661011006D9F7A /* Build configuration list for PBXNativeTarget "SpaceNar" */;
+			buildPhases = (
+				9DA2CE6818661011006D9F7A /* Sources */,
+				9DA2CE6918661011006D9F7A /* Frameworks */,
+				9DA2CE6A18661011006D9F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceNar;
+			productName = SpaceNar;
+			productReference = 9DA2CE6C18661011006D9F7A /* SpaceNar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DA2CE8C18661011006D9F7A /* SpaceNarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DA2CEA118661011006D9F7A /* Build configuration list for PBXNativeTarget "SpaceNarTests" */;
+			buildPhases = (
+				9DA2CE8918661011006D9F7A /* Sources */,
+				9DA2CE8A18661011006D9F7A /* Frameworks */,
+				9DA2CE8B18661011006D9F7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DA2CE9318661011006D9F7A /* PBXTargetDependency */,
+			);
+			name = SpaceNarTests;
+			productName = SpaceNarTests;
+			productReference = 9DA2CE8D18661011006D9F7A /* SpaceNarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DA2CE6418661011006D9F7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Checklist;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Baby Andrew";
+				TargetAttributes = {
+					9DA2CE8C18661011006D9F7A = {
+						TestTargetID = 9DA2CE6B18661011006D9F7A;
+					};
+				};
+			};
+			buildConfigurationList = 9DA2CE6718661011006D9F7A /* Build configuration list for PBXProject "SpaceNar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DA2CE6318661011006D9F7A;
+			productRefGroup = 9DA2CE6D18661011006D9F7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DA2CE6B18661011006D9F7A /* SpaceNar */,
+				9DA2CE8C18661011006D9F7A /* SpaceNarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DA2CE6A18661011006D9F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA2CE8818661011006D9F7A /* Images.xcassets in Resources */,
+				9DA2CE7A18661011006D9F7A /* InfoPlist.strings in Resources */,
+				9DA2CE8318661011006D9F7A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DA2CE8B18661011006D9F7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA2CE9918661011006D9F7A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DA2CE6818661011006D9F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD8E91D5188B19B60001CF8E /* Structure.m in Sources */,
+				BD82E389188A4A8500BA815C /* Planet.m in Sources */,
+				9DA2CE7C18661011006D9F7A /* main.m in Sources */,
+				BD82E390188A4B9A00BA815C /* Materials.m in Sources */,
+				9DA2CE8618661011006D9F7A /* MainGameViewController.m in Sources */,
+				BD8E91D8188B1FBA0001CF8E /* Ship.m in Sources */,
+				BD8E91D2188B193F0001CF8E /* SolarSystem.m in Sources */,
+				9DA2CE8018661011006D9F7A /* ChecklistAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DA2CE8918661011006D9F7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA2CE9B18661011006D9F7A /* SpaceNarTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DA2CE9318661011006D9F7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DA2CE6B18661011006D9F7A /* SpaceNar */;
+			targetProxy = 9DA2CE9218661011006D9F7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DA2CE7818661011006D9F7A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DA2CE7918661011006D9F7A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9DA2CE8118661011006D9F7A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DA2CE8218661011006D9F7A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DA2CE9718661011006D9F7A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DA2CE9818661011006D9F7A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DA2CE9C18661011006D9F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9DA2CE9D18661011006D9F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DA2CE9F18661011006D9F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceNar/SpaceNar-Prefix.pch";
+				INFOPLIST_FILE = "SpaceNar/SpaceNar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9DA2CEA018661011006D9F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceNar/SpaceNar-Prefix.pch";
+				INFOPLIST_FILE = "SpaceNar/SpaceNar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9DA2CEA218661011006D9F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceNar.app/SpaceNar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceNar/SpaceNar-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SpaceNarTests/SpaceNarTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9DA2CEA318661011006D9F7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpaceNar.app/SpaceNar";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpaceNar/SpaceNar-Prefix.pch";
+				INFOPLIST_FILE = "SpaceNarTests/SpaceNarTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DA2CE6718661011006D9F7A /* Build configuration list for PBXProject "SpaceNar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DA2CE9C18661011006D9F7A /* Debug */,
+				9DA2CE9D18661011006D9F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DA2CE9E18661011006D9F7A /* Build configuration list for PBXNativeTarget "SpaceNar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DA2CE9F18661011006D9F7A /* Debug */,
+				9DA2CEA018661011006D9F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DA2CEA118661011006D9F7A /* Build configuration list for PBXNativeTarget "SpaceNarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DA2CEA218661011006D9F7A /* Debug */,
+				9DA2CEA318661011006D9F7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DA2CE6418661011006D9F7A /* Project object */;
+}

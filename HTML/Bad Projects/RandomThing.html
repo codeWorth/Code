@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>THATS ME</title>
+		<style type="text/css">
+			#canvas{
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width=1200 height=700></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+
+
+			var mapSize = {width:2000, height:2000};
+			var stars = [];
+			var starMult = 5;
+			var starsPlacement = [];
+
+			var charPos = {x:0, y:0};
+
+			function generateStars(){
+				var chunckSize = {width:50, height:50};
+
+				var chunckNumberWidth = Math.ceil(mapSize.width/chunckSize.width);
+				var chunckNumberHeight = Math.ceil(mapSize.height/chunckSize.height);
+
+				var starX;
+				var starY;
+				for (var i = 0; i < chunckNumberWidth; i++){
+					starsPlacement.push([]);
+					for (var j = 0; j < chunckNumberHeight; j++){
+						starX = getRandomInt(chunckSize.width)+i*chunckSize.width*starMult;
+						starY = getRandomInt(chunckSize.height)+j*chunckSize.height*starMult;
+
+						starX = Math.min(starX/starMult, mapSize.width) - mapSize.width/2;
+						starY = Math.min(starY/starMult, mapSize.height) - mapSize.height/2;
+
+						if (starX/starMult < 1200 && starX/starMult > 0 && starY/starMult < 700 && starY/starMult > 0){
+							stars.push({x:starX, y:starY, onscreen:true});
+						} else {
+							stars.push({x:starX, y:starY, onscreen:false});
+						}
+						starsPlacement[i].push(stars.length-1);
+					}
+				}
+			}
+
+			function drawStars(){
+				var starSize = 1;
+				var fillColor = {r:255, g:255, b:128};
+				ctx.fillStyle = "#"+fillColor.r.toString(16)+fillColor.g.toString(16)+fillColor.b.toString(16);
+
+				var starsLength = stars.length;
+				for (var i = 0; i < starsLength; i++){
+					if (stars[i].onscreen){
+						ctx.beginPath();
+						ctx.arc(stars[i].x/starMult + mapSize.width/2, stars[i].y/starMult + mapSize.height/2, starSize, 0, 2*Math.PI, true);
+						ctx.closePath();
+						ctx.fill();
+					}
+				}
+				
+			}
+
+			function getRandomInt(max) {
+			  return Math.floor(Math.random() * max);
+			}
+
+			generateStars();
+			drawStars();
+		</script>
+	</body>

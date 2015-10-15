@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction()
+{
+var arOriginNames = ["blarg", "snarg", "glarg", "argg"];
+var arOriginAmounts = [22, 33, 11, 231];
+var arNewNames = ["snarg", "glarg", "blarg", "argg"];
+var arNewAmounts = [35, 20, 22, 400];
+var hasMats = true;
+for (var i = 0; i < arOriginAmounts.length; i++) {
+	document.write(arNewNames.indexOf(arOriginNames[i]) + "<br/>");
+    if (arNewAmounts[arNewNames.indexOf(arOriginNames[i])] < arOriginAmounts[i]) {
+        hasMats = false;
+    } else {
+        arNewAmounts.splice(i, 1, arNewAmounts[i] - arOriginAmounts[i]);
+    }
+}
+document.write(hasMats);
+}2
+</script>
+
+</body>
+</html>

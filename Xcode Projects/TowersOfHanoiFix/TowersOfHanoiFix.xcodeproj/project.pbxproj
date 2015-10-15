@@ -1,0 +1,502 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD114F0C187A947500C60D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F0B187A947500C60D8C /* Foundation.framework */; };
+		BD114F0E187A947500C60D8C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F0D187A947500C60D8C /* CoreGraphics.framework */; };
+		BD114F10187A947500C60D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F0F187A947500C60D8C /* UIKit.framework */; };
+		BD114F16187A947500C60D8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD114F14187A947500C60D8C /* InfoPlist.strings */; };
+		BD114F18187A947500C60D8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F17187A947500C60D8C /* main.m */; };
+		BD114F1C187A947500C60D8C /* AndrewDoesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F1B187A947500C60D8C /* AndrewDoesAppDelegate.m */; };
+		BD114F1F187A947500C60D8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD114F1D187A947500C60D8C /* Main.storyboard */; };
+		BD114F22187A947500C60D8C /* AndrewDoesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F21187A947500C60D8C /* AndrewDoesViewController.m */; };
+		BD114F24187A947500C60D8C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD114F23187A947500C60D8C /* Images.xcassets */; };
+		BD114F2B187A947500C60D8C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F2A187A947500C60D8C /* XCTest.framework */; };
+		BD114F2C187A947500C60D8C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F0B187A947500C60D8C /* Foundation.framework */; };
+		BD114F2D187A947500C60D8C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD114F0F187A947500C60D8C /* UIKit.framework */; };
+		BD114F35187A947800C60D8C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BD114F33187A947800C60D8C /* InfoPlist.strings */; };
+		BD114F37187A947800C60D8C /* TowersOfHanoiFixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F36187A947800C60D8C /* TowersOfHanoiFixTests.m */; };
+		BD114F42187A951100C60D8C /* Ring.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F41187A951100C60D8C /* Ring.m */; };
+		BD114F45187A952900C60D8C /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F44187A952900C60D8C /* Pin.m */; };
+		BD114F48187A953B00C60D8C /* HanoiGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = BD114F47187A953B00C60D8C /* HanoiGameLogic.m */; };
+		BD6DB4E9187B80E2008F3685 /* HanoiGame.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6DB4E8187B80E2008F3685 /* HanoiGame.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD114F2E187A947500C60D8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD114F00187A947500C60D8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD114F07187A947500C60D8C;
+			remoteInfo = TowersOfHanoiFix;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD114F08187A947500C60D8C /* TowersOfHanoiFix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TowersOfHanoiFix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD114F0B187A947500C60D8C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD114F0D187A947500C60D8C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BD114F0F187A947500C60D8C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BD114F13187A947500C60D8C /* TowersOfHanoiFix-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TowersOfHanoiFix-Info.plist"; sourceTree = "<group>"; };
+		BD114F15187A947500C60D8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD114F17187A947500C60D8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD114F19187A947500C60D8C /* TowersOfHanoiFix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TowersOfHanoiFix-Prefix.pch"; sourceTree = "<group>"; };
+		BD114F1A187A947500C60D8C /* AndrewDoesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AndrewDoesAppDelegate.h; sourceTree = "<group>"; };
+		BD114F1B187A947500C60D8C /* AndrewDoesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AndrewDoesAppDelegate.m; sourceTree = "<group>"; };
+		BD114F1E187A947500C60D8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BD114F20187A947500C60D8C /* AndrewDoesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AndrewDoesViewController.h; sourceTree = "<group>"; };
+		BD114F21187A947500C60D8C /* AndrewDoesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AndrewDoesViewController.m; sourceTree = "<group>"; };
+		BD114F23187A947500C60D8C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BD114F29187A947500C60D8C /* TowersOfHanoiFixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TowersOfHanoiFixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD114F2A187A947500C60D8C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BD114F32187A947800C60D8C /* TowersOfHanoiFixTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TowersOfHanoiFixTests-Info.plist"; sourceTree = "<group>"; };
+		BD114F34187A947800C60D8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BD114F36187A947800C60D8C /* TowersOfHanoiFixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TowersOfHanoiFixTests.m; sourceTree = "<group>"; };
+		BD114F40187A951100C60D8C /* Ring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ring.h; sourceTree = "<group>"; };
+		BD114F41187A951100C60D8C /* Ring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ring.m; sourceTree = "<group>"; };
+		BD114F43187A952900C60D8C /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
+		BD114F44187A952900C60D8C /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
+		BD114F46187A953B00C60D8C /* HanoiGameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanoiGameLogic.h; sourceTree = "<group>"; };
+		BD114F47187A953B00C60D8C /* HanoiGameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanoiGameLogic.m; sourceTree = "<group>"; };
+		BD6DB4E7187B80E2008F3685 /* HanoiGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanoiGame.h; sourceTree = "<group>"; };
+		BD6DB4E8187B80E2008F3685 /* HanoiGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanoiGame.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD114F05187A947500C60D8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F0E187A947500C60D8C /* CoreGraphics.framework in Frameworks */,
+				BD114F10187A947500C60D8C /* UIKit.framework in Frameworks */,
+				BD114F0C187A947500C60D8C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD114F26187A947500C60D8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F2B187A947500C60D8C /* XCTest.framework in Frameworks */,
+				BD114F2D187A947500C60D8C /* UIKit.framework in Frameworks */,
+				BD114F2C187A947500C60D8C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD114EFF187A947500C60D8C = {
+			isa = PBXGroup;
+			children = (
+				BD114F11187A947500C60D8C /* TowersOfHanoiFix */,
+				BD114F30187A947800C60D8C /* TowersOfHanoiFixTests */,
+				BD114F0A187A947500C60D8C /* Frameworks */,
+				BD114F09187A947500C60D8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD114F09187A947500C60D8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F08187A947500C60D8C /* TowersOfHanoiFix.app */,
+				BD114F29187A947500C60D8C /* TowersOfHanoiFixTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD114F0A187A947500C60D8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F0B187A947500C60D8C /* Foundation.framework */,
+				BD114F0D187A947500C60D8C /* CoreGraphics.framework */,
+				BD114F0F187A947500C60D8C /* UIKit.framework */,
+				BD114F2A187A947500C60D8C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD114F11187A947500C60D8C /* TowersOfHanoiFix */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F1A187A947500C60D8C /* AndrewDoesAppDelegate.h */,
+				BD114F1B187A947500C60D8C /* AndrewDoesAppDelegate.m */,
+				BD114F1D187A947500C60D8C /* Main.storyboard */,
+				BD114F20187A947500C60D8C /* AndrewDoesViewController.h */,
+				BD114F21187A947500C60D8C /* AndrewDoesViewController.m */,
+				BD114F40187A951100C60D8C /* Ring.h */,
+				BD114F41187A951100C60D8C /* Ring.m */,
+				BD114F43187A952900C60D8C /* Pin.h */,
+				BD114F44187A952900C60D8C /* Pin.m */,
+				BD114F46187A953B00C60D8C /* HanoiGameLogic.h */,
+				BD114F47187A953B00C60D8C /* HanoiGameLogic.m */,
+				BD6DB4E7187B80E2008F3685 /* HanoiGame.h */,
+				BD6DB4E8187B80E2008F3685 /* HanoiGame.m */,
+				BD114F23187A947500C60D8C /* Images.xcassets */,
+				BD114F12187A947500C60D8C /* Supporting Files */,
+			);
+			path = TowersOfHanoiFix;
+			sourceTree = "<group>";
+		};
+		BD114F12187A947500C60D8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F13187A947500C60D8C /* TowersOfHanoiFix-Info.plist */,
+				BD114F14187A947500C60D8C /* InfoPlist.strings */,
+				BD114F17187A947500C60D8C /* main.m */,
+				BD114F19187A947500C60D8C /* TowersOfHanoiFix-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD114F30187A947800C60D8C /* TowersOfHanoiFixTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F36187A947800C60D8C /* TowersOfHanoiFixTests.m */,
+				BD114F31187A947800C60D8C /* Supporting Files */,
+			);
+			path = TowersOfHanoiFixTests;
+			sourceTree = "<group>";
+		};
+		BD114F31187A947800C60D8C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD114F32187A947800C60D8C /* TowersOfHanoiFixTests-Info.plist */,
+				BD114F33187A947800C60D8C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD114F07187A947500C60D8C /* TowersOfHanoiFix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD114F3A187A947800C60D8C /* Build configuration list for PBXNativeTarget "TowersOfHanoiFix" */;
+			buildPhases = (
+				BD114F04187A947500C60D8C /* Sources */,
+				BD114F05187A947500C60D8C /* Frameworks */,
+				BD114F06187A947500C60D8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TowersOfHanoiFix;
+			productName = TowersOfHanoiFix;
+			productReference = BD114F08187A947500C60D8C /* TowersOfHanoiFix.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD114F28187A947500C60D8C /* TowersOfHanoiFixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD114F3D187A947800C60D8C /* Build configuration list for PBXNativeTarget "TowersOfHanoiFixTests" */;
+			buildPhases = (
+				BD114F25187A947500C60D8C /* Sources */,
+				BD114F26187A947500C60D8C /* Frameworks */,
+				BD114F27187A947500C60D8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD114F2F187A947500C60D8C /* PBXTargetDependency */,
+			);
+			name = TowersOfHanoiFixTests;
+			productName = TowersOfHanoiFixTests;
+			productReference = BD114F29187A947500C60D8C /* TowersOfHanoiFixTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD114F00187A947500C60D8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AndrewDoes;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Programming Account";
+				TargetAttributes = {
+					BD114F28187A947500C60D8C = {
+						TestTargetID = BD114F07187A947500C60D8C;
+					};
+				};
+			};
+			buildConfigurationList = BD114F03187A947500C60D8C /* Build configuration list for PBXProject "TowersOfHanoiFix" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD114EFF187A947500C60D8C;
+			productRefGroup = BD114F09187A947500C60D8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD114F07187A947500C60D8C /* TowersOfHanoiFix */,
+				BD114F28187A947500C60D8C /* TowersOfHanoiFixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD114F06187A947500C60D8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F24187A947500C60D8C /* Images.xcassets in Resources */,
+				BD114F16187A947500C60D8C /* InfoPlist.strings in Resources */,
+				BD114F1F187A947500C60D8C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD114F27187A947500C60D8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F35187A947800C60D8C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD114F04187A947500C60D8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F22187A947500C60D8C /* AndrewDoesViewController.m in Sources */,
+				BD6DB4E9187B80E2008F3685 /* HanoiGame.m in Sources */,
+				BD114F42187A951100C60D8C /* Ring.m in Sources */,
+				BD114F1C187A947500C60D8C /* AndrewDoesAppDelegate.m in Sources */,
+				BD114F48187A953B00C60D8C /* HanoiGameLogic.m in Sources */,
+				BD114F45187A952900C60D8C /* Pin.m in Sources */,
+				BD114F18187A947500C60D8C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD114F25187A947500C60D8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD114F37187A947800C60D8C /* TowersOfHanoiFixTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD114F2F187A947500C60D8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD114F07187A947500C60D8C /* TowersOfHanoiFix */;
+			targetProxy = BD114F2E187A947500C60D8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BD114F14187A947500C60D8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD114F15187A947500C60D8C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BD114F1D187A947500C60D8C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD114F1E187A947500C60D8C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BD114F33187A947800C60D8C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BD114F34187A947800C60D8C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BD114F38187A947800C60D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BD114F39187A947800C60D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BD114F3B187A947800C60D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TowersOfHanoiFix/TowersOfHanoiFix-Prefix.pch";
+				INFOPLIST_FILE = "TowersOfHanoiFix/TowersOfHanoiFix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BD114F3C187A947800C60D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TowersOfHanoiFix/TowersOfHanoiFix-Prefix.pch";
+				INFOPLIST_FILE = "TowersOfHanoiFix/TowersOfHanoiFix-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BD114F3E187A947800C60D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TowersOfHanoiFix.app/TowersOfHanoiFix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TowersOfHanoiFix/TowersOfHanoiFix-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TowersOfHanoiFixTests/TowersOfHanoiFixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BD114F3F187A947800C60D8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TowersOfHanoiFix.app/TowersOfHanoiFix";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TowersOfHanoiFix/TowersOfHanoiFix-Prefix.pch";
+				INFOPLIST_FILE = "TowersOfHanoiFixTests/TowersOfHanoiFixTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD114F03187A947500C60D8C /* Build configuration list for PBXProject "TowersOfHanoiFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD114F38187A947800C60D8C /* Debug */,
+				BD114F39187A947800C60D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD114F3A187A947800C60D8C /* Build configuration list for PBXNativeTarget "TowersOfHanoiFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD114F3B187A947800C60D8C /* Debug */,
+				BD114F3C187A947800C60D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD114F3D187A947800C60D8C /* Build configuration list for PBXNativeTarget "TowersOfHanoiFixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD114F3E187A947800C60D8C /* Debug */,
+				BD114F3F187A947800C60D8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD114F00187A947500C60D8C /* Project object */;
+}

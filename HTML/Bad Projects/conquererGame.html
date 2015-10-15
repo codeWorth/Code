@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type = "text/css">
+		</style>
+	</head>
+	<body>
+		<script type = "text/javascript">
+			var builds = new Array();
+			var research = new Array();
+			var mats = new Array();
+			function addResearch(res){
+				research[research.length] = res;
+			}
+			function itemOfResearchAtIndexOf(name){
+				return research[1][research[0].indexOf(name)];
+			}
+			function Energy(Name, RequiredResearch, LossPerRelay, Researched, Amount){
+				this.name = Name;
+				this.loss = LossPerRelay;
+				this.resReqs = RequiredResearch
+				this.researched = Researched;
+				this.amount = Amount;
+			}
+				Energy.prototype.makeNew = function (Amount){
+					if (this.researched) {
+						return new Energy(this.name, this.resReq, this.loss, this.researched, Amount);
+					}
+				Energy.prototype.research = function(prevRes){
+					var hasResearch = true;
+					for (var i = 0;i<this.resReqs.length;i++){
+						if (prevReqs.indexOf(this.resReqs[i]) != -1){
+							hasResearch = false;
+						}
+					}
+					if (hasResearch){
+						addResearch(this.name);
+						this.researched = true;
+						return true;
+					}else{
+						return false;
+					}
+				}
+				}
+			function Material(Name, RequiredResearch, ChanceToMine, Researched, Amount){
+				this.name = Name;
+				this.miningChance = AmountPerMine;
+				this.resReqs = RequiredResearch;
+				this.researched = Researched;
+				this.amount = Amount;
+			}
+				Matarial.prtotype.makeNew = function (miningCoeffecient){
+					if(this.researched){
+						return new Material(this.name, this.resReqs, this.mining, miningCoeffecient*this.mining);
+					}
+				}
+				Energy.prototype.research = function(prevRes){
+					var hasResearch = true;
+					for (var i = 0;i<this.resReqs.length;i++){
+						if (prevReqs.indexOf(this.resReqs[i]) != -1){
+							hasResearch = false;
+						}
+					}
+					if (hasResearch){
+						addResearch(this.name);
+						this.researched = true;
+						return true;
+					}else{
+						return false;
+					}
+				}
+				
+				
+			function EnergySource(Name, OutputLevelCoeffecient, FuelType, OutputType, MatTypeList, MatAmountList, RequiredResearch, Researched, UsagePerGenerationPercent, xMaxEnxtent, yMaxEnxtent){
+				this.name = Name;
+				this.outMultiplier = OutputLevelCoeffecient;
+				this.fuelName = FuelType;
+				this.outType = OutputType;
+				this.matNames = MatTypeList;
+				this.matAmounts = MatAmountList;
+				this.fuel = ["",0];
+				this.researched = Researched;
+				this.resReqs = RequiredResearch;
+				this.usagePercent = UsagePerGenerationPercent;
+				this.xpos = 0;
+				this.ypos = 0;
+				this.xRange = xMaxEnxtent;
+				this.yRange = yMaxEnxtent;
+			}
+				EnergySource.prototype.build = function (buildingMatsNames, buildingMatsAmounts){
+					if(fitsSpace(this.xRange, this.yRange) && this.researched){
+						var hasMats = true;
+						for(var i = 0;i<this.matNames.length;i++){
+							if(buildingMatsNames.indexOf(this.matNames[i]) < 0){
+								hasMats = false;
+							}
+						}
+						if(hasMats == true){
+							for(var i = 0;i<this.matAmounts.length;i++){
+								if(buildingMatsAmounts[buildingMatsNames.indexOf(this.matNames[i])] < this.matAmounts[i]){
+									hasMats = false;
+								} else {
+									buildingMatsAmounts.splice(i, 1, buildingMatsAmounts[i] - this.matAmounts[i]);
+								}
+							}
+						}
+						if(hasMats == true){
+							return new EnergySource(this.name, this.outMultiplier, this.fuelName, this.outType, this.matNames, this.matAmounts, this.resReqs, this.researched, this.usagePercent);
+						}
+					}
+				}
+				Energy.prototype.research = function(prevRes){
+					var hasResearch = true;
+					for (var i = 0;i<this.resReqs.length;i++){
+						if (prevReqs.indexOf(this.resReqs[i]) != -1){
+							hasResearch = false;
+						}
+					}
+					if (hasResearch){
+						addResearch(this.name);
+						this.researched = true;
+						return true;
+					}else{
+						return false;
+					}
+				}
+				EnergySource.prototype.addMats = function (matsName, matsAmount){
+					if (matNames.indexOf(matsName) > -1){
+						fuel[0] = matsName;
+						fuel[1] = matsAmount;
+					}
+				}
+				EnergySource.generateEn = function (link){
+					var enBase = itemOfResearchAtIndexOf(this.outType);
+					var en = enBase.makeNew(this.outMultiplier*(fuel[1]*this.usagePercent);
+					if(link){
+						link.give(en);
+					}
+				}
+				
+			function EnergyLink(Name,  DecayRate, TransmitLength){
+				this.name = Name;
+			}
+		</script>
+	</body>
+</html>
+	
