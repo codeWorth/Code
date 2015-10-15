@@ -48,6 +48,7 @@
 				
 				var mousedown = false;
 				var planetSelected = -1;
+				var selected = "none";
 				var shouldMove = false;
 				var mouseX = 0;
 				var mouseY = 0;
@@ -112,6 +113,16 @@
 					}
 					r[index] = newR;
 				}
+
+				function setMassDefault(mass, index){
+					m0[index] = mass;
+					var newR = Math.pow(mass, 1/3); //cube root of mass is radius
+				
+					if (newR < 8){
+						newR = 8; //minimum radius
+					}
+					r0[index] = newR;
+				}
 			
 				function createPlanet(xPos,yPos,velX,velY,m){ //add a planet to the arrays with parameters
 					x.push(xPos);
@@ -121,6 +132,19 @@
 					setMass(m,r.length); //strangely, setting an out-of-bounds index to a value adds that value to the array, so this works
 					fx.push(0);
 					fy.push(0);
+				}
+
+				function addPlanet(xPos,yPos,velX,velY,m){ //add a planet to the arrays with parameters
+					x0.push(xPos);
+					y0.push(yPos);
+					vx0.push(velX);
+					vy0.push(velY);
+					setMassDefault(m,r.length); //strangely, setting an out-of-bounds index to a value adds that value to the array, so this works
+					fx0.push(0);
+					fy0.push(0);
+					createPlanet(xPos,yPos,velX,velY,m);
+					drawBall(x.length-1);
+
 				}
 			
 				function destroyPlanet(index){ //remove a planet from the arrays
@@ -132,6 +156,25 @@
 					r.splice(index,1);
 					fx.splice(index,1);
 					fy.splice(index,1);
+				}
+
+				function fullDestroyPlanet(index){ //remove a planet from the arrays
+					x.splice(index,1); //splice looks like this: array.splice(index to remove items, number of items to remove)
+					y.splice(index,1);
+					vx.splice(index,1);
+					vy.splice(index,1);
+					m.splice(index,1);
+					r.splice(index,1);
+					fx.splice(index,1);
+					fy.splice(index,1);
+					x0.splice(index,1); //remove defaults too
+					y0.splice(index,1);
+					vx0.splice(index,1);
+					vy0.splice(index,1);
+					m0.splice(index,1);
+					r0.splice(index,1);
+					fx0.splice(index,1);
+					fy0.splice(index,1);
 				}
 				
 				function absAndCameraXPosForArray(array){
@@ -290,11 +333,19 @@
 				}
 				
 		//GUI Functions
+
+			function drawBall(ballI){
+				ctx.fillStyle = "white";
+				ctx.beginPath();
+				ctx.arc(x[ballI],y[ballI],r[ballI],0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fill();
+			}
 		
 			function ballClicked(mouseX, mouseY){
 				var i = m.length;
 				while (i--){
-					if(distanceSqaured(mouseX,mouseY,x[i],y[i])<=Math.pow(Math.max(Math.pow(m[i], 1/3), 5)+2, 2)){
+					if(distanceSquared(mouseX,mouseY,x[i],y[i])<=Math.pow(Math.max(Math.pow(m[i], 1/3), 5)+2, 2)){
 						return i
 					}
 				}
@@ -316,9 +367,29 @@
 					drawBall(i);
 				}
 			}
+
+			function drawSelectCircle(ballI){
+				ctx.fillStyle="yellow";
+				ctx.beginPath();
+				ctx.arc(x[ballI],y[ballI],r[ballI],0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.stroke();
+			}
 			
 		//UI Functions
+
+			function showBallStats(ballI){
+
+			}
+
+			function updateBallStats(ballI){
+
+			}
 		
+			function clearUserInterface(){
+
+			}
+
 			function playButtonHandler(){
 				if (playButton.innerText === "Start"){
 					if (setStartingConfig){
@@ -401,7 +472,7 @@
 							selected = "none";
 						}
 					} else if(!e.shiftKey){
-						addBall(e.x,e.y);
+						addPlanet(e.x,e.y);
 						selectBall(x.length-1);
 						selected = x.length-1;
 					}
