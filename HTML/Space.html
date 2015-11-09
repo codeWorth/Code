@@ -22,9 +22,12 @@
 			var canvWidth = mainCanv.width;
 			var canvHeight = mainCanv.height;
 
+			//character
+			var centerX = 17; //approximate values, dependent on draw func
+			var centerY = 24;
 			var charX = worldWidth/2;
 			var charY = worldHeight/2;
-
+			var totalMass = 30;
 			var charModel;
 
 			var aDown = false;
@@ -136,6 +139,35 @@
 				if (e.keyCode == 83){
 					sDown = false;
 				}
+			}
+
+			function resolveForce(fCX, fCY, fX, fY, mFC){ //fCX and FCY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {towards:..., normal:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
+				var mag = 1;
+				if (mFC === 0){
+					var magSquared = fCX*fCX + fCY*fCY;
+					if (magSquared === 0){
+						return false;
+					} else {
+						mag = Math.sqrt(magSquared);
+					}
+				} else {
+					mag = mFC;
+				}
+
+				var dot = fX*fCX + fY*fCY;
+				var proj = dot/mag;
+
+				var projVecX = fCX * dot/mag;
+				var projVecY = fCY * dot/mag;
+
+				/*
+				dot product = fX*fCX + fY*fCY
+
+				projection of f onto fC = dot product / magnitude fC
+				orthagonal of f onto fC = projVec - projection of f onto fC
+
+
+				*/
 			}
 
 			document.body.onkeydown = checkKeysDown;
