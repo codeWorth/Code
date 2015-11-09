@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Space</title>
+		<style type="text/css">
+			#mainCanv{
+				background-color:black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mainCanv" width="1400" height="750"></canvas>
+		<script type="text/javascript">
+			var mainCanv = document.getElementById("mainCanv");
+			var ctx = mainCanv.getContext("2d");
+
+			var gridSpace = 75;
+
+			var worldWidth = 10000;
+			var worldHeight = 10000;
+
+			var canvWidth = mainCanv.width;
+			var canvHeight = mainCanv.height;
+
+			var charX = worldWidth/2;
+			var charY = worldHeight/2;
+
+			function drawGrid(x,y){
+				var xOff = (x - canvWidth/2) % gridSpace;
+				var yOff = (y - canvHeight/2) % gridSpace;
+
+				var xLinesToDraw = canvWidth/gridSpace;
+				var yLinesToDraw = canvHeight/gridSpace;
+
+				ctx.strokeStyle = "lightGray";
+				ctx.lineWidth = 0.3;
+
+				ctx.beginPath();
+
+				for (var i = -1; i < xLinesToDraw + 1; i++){
+					ctx.moveTo(gridSpace*i - xOff, 0);
+					ctx.lineTo(gridSpace*i - xOff, canvHeight);
+				}
+
+				for (var i = -1; i < yLinesToDraw + 1; i++){
+					ctx.moveTo(0, gridSpace*i - yOff);
+					ctx.lineTo(canvWidth, gridSpace*i - yOff);
+				}
+
+				ctx.moveTo(xOff, 0);
+				ctx.closePath();
+
+				ctx.stroke();
+
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = "white";
+
+				if (y < canvHeight/2){ //upper left corner
+					ctx.moveTo(0, canvHeight/2 - y);
+					ctx.lineTo(canvWidth, canvHeight/2 - y);
+					ctx.moveTo(0, canvHeight/2 - y);
+				} else if (y > worldHeight - canvHeight/2) { //lower left corner
+					ctx.moveTo(0, worldHeight + canvHeight/2 - y);
+					ctx.lineTo(canvWidth, worldHeight + canvHeight/2 - y);
+					ctx.moveTo(0, worldHeight + canvHeight/2 - y);
+				}
+
+				if (x < canvWidth/2){
+					ctx.moveTo(canvWidth/2 - x, 0);
+					ctx.lineTo(canvWidth/2 - x, canvHeight);
+					ctx.moveTo(canvWidth/2 - x, 0);
+				} else if (x > worldWidth - canvWidth/2){
+					ctx.moveTo(worldWidth + canvWidth/2 - x, 0);
+					ctx.lineTo(worldWidth + canvWidth/2 - x, canvHeight);
+					ctx.moveTo(worldWidth + canvWidth/2 - x, 0);
+				}
+
+				ctx.closePath();
+				ctx.stroke();
+			}
+
+			
+		</script>
+	</body>
+</html>
