@@ -25,6 +25,34 @@
 			var charX = worldWidth/2;
 			var charY = worldHeight/2;
 
+			var charModel;
+
+			var aDown = false;
+			var dDown = false;
+			var wDown = false;
+			var sDown = false;
+
+			function renderFunction(width, height, renderFunction) {
+			    var buffer = document.createElement('canvas');
+			    buffer.width = width;
+			    buffer.height = height;
+			    renderFunction(buffer.getContext('2d'));
+			    return buffer;
+			}
+
+			//create character model
+			charModel = renderFunction(34, 44, function (ctx){
+				ctx.beginPath();
+				ctx.moveTo(2,42);
+				ctx.lineTo(17,2);
+				ctx.lineTo(32,42);
+				ctx.arc(17,48,15,-Math.PI/4+Math.PI/5,-3*Math.PI/4-Math.PI/5,true);
+				ctx.closePath();
+				ctx.strokeStyle = "white";
+				ctx.lineWidth = 3;
+				ctx.stroke();
+			});
+
 			function drawGrid(x,y){
 				var xOff = (x - canvWidth/2) % gridSpace;
 				var yOff = (y - canvHeight/2) % gridSpace;
@@ -80,7 +108,38 @@
 				ctx.stroke();
 			}
 
-			
+			function checkKeysDown(e){
+				if (e.keyCode == 65){
+					aDown = true;
+				}
+				if (e.keyCode == 68){
+					dDown = true;
+				}
+				if (e.keyCode == 87){
+					wDown = true;
+				}
+				if (e.keyCode == 83){
+					sDown = true;
+				}
+			}
+
+			function checkKeysUp(e){
+				if (e.keyCode == 65){
+					aDown = false;
+				}
+				if (e.keyCode == 68){
+					dDown = false;
+				}
+				if (e.keyCode == 87){
+					wDown = false;
+				}
+				if (e.keyCode == 83){
+					sDown = false;
+				}
+			}
+
+			document.body.onkeydown = checkKeysDown;
+			document.body.onkeyup = checkKeysUp;
 		</script>
 	</body>
 </html>
