@@ -1,4 +1,4 @@
-public class Rectangle{
+public class Rectangle extends Shape{
 	public Point upperLeft = new Point(); 
 
 	public double width = 0;
