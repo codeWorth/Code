@@ -1,5 +1,7 @@
 import java.util.*;
 
+=======
+>>>>>>> origin/master
 public class Rectangle extends Shape{
 	public Point upperLeft = new Point(); 
 
