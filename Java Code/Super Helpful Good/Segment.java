@@ -15,6 +15,10 @@ public class Segment{
 		endPoint.y = endY;
 	}
 
+	public Segment(){
+
+	}
+
 	public boolean intersectsSegment(Segment otherSeg){
 		/*
 		   us
@@ -66,7 +70,7 @@ public class Segment{
 			return false;
 		}
 
-		double n1 = ((a-w)*(d-b) - (x-b)*(y-w))/mainDividend
+		double n1 = ((a-w)*(d-b) - (x-b)*(y-w))/mainDividend;
 
 		double otherDividend = y-w;
 
@@ -78,6 +82,16 @@ public class Segment{
 
 		if (n1 >= 0 && n1 < 1 && n2 >= 0 && n2 < 1){
 			return true;
+		}
+
+		return false;
+	}
+
+	public void sortByY(){
+		if (startPoint.y < endPoint.y){
+			Point temp = startPoint.copy();
+			startPoint = endPoint.copy();
+			endPoint = temp;
 		}
 	}
 }

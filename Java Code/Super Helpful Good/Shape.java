@@ -1,67 +1,78 @@
-public class Shape{
-	private ArrayList<Point> points;
+import java.util.*;
 
-	public ArrayList<Point> points(){
+public class Shape{
+
+	private final int defaultLayers = 3;
+	private Point[] points;
+
+	public Point[] points(){
 		return points;
 	}
 
-	public void addPoint(Point point){
-		points.add(point.copy());
-		setBoundingBox();
-	}
-
-	public boolean removePoint(int indexOfPoint){
-		if (indexOfPoint < 0 || indexOfPoint >= points.size()){
+	public boolean set(Point point, int index){
+		if (index < 0 || index > points.length-1){
 			return false;
-		} else {
-			points.remove(indexOfPoint);
-			setBoundingBox();
-			return true;
 		}
+		points[index] = point;
+		setAssocVars();
+		return true;
 	}
 
 
-	private Rectangle boundingBox = new Rectangle;
+	private BoundingBox boundingBox = new BoundingBox();
 
 	public Shape(Point[] pointsToAdd){
+		points = new Point[pointsToAdd.length];
+		int i = 0;
 		for (Point point : pointsToAdd){
-			points.add(point.copy());
+			points[i] = point.copy();
+			i++;
 		}
-		setBoundingBox();
+		setAssocVars();
+	}
+
+	public Shape(int vertecies){
+		if (vertecies < 3){
+			vertecies = 3;
+		}
+		points = new Point[vertecies];
+		for (int i = 0; i < vertecies; i++){
+			points[i] = new Point();
+		}
+		setAssocVars();
 	}
 
 	public Shape(){
-		points = new ArrayList<Point>();
+		points = new Point[3];
 	}
 
-	public boolean isPointWithin(int pointX, int pointY){
+	public boolean isPointWithin(double pointX, double pointY){
 		Segment ray = new Segment(boundingBox.upperLeft.x-1, boundingBox.upperLeft.y+1, pointX, pointY);
 		Segment shapeSection;
 
 		Point outPoint = new Point(-1, -1);
 
-		if (points.size() == 0){
+		if (points.length == 0){
 			return false;
 		} 
 
-		Point curPoint = points.get(0);
+		Point curPoint = points[0];
 
-		if (points.size() == 1){
+		if (points.length == 1){
 			return (curPoint.x == pointX && curPoint.y == pointY);
-		} else if (points.size() == 2){
-			shapeSection = new Segment(curPoint.x, curPoint.y, points.get(1).x, points.get(1).y);
+		} else if (points.length == 2){
+			shapeSection = new Segment(curPoint.x, curPoint.y, points[1].x, points[1].y);
 			return ray.intersectsSegment(shapeSection);
 		} else {
-			int length = points.size();
 			shapeSection = new Segment();
 
 			int hitCount = 0;
 
 			Point nextPoint;
 
-			for (int i = 0; i < length-1; i++){
-				curPoint = points.get(i);
-				nextPoint = points.get(i+1);
+			for (int i = 0; i < points.length-1; i++){
+				curPoint = points[i];
+				nextPoint = points[i+1];
 
 				shapeSection.startPoint = curPoint;
 				shapeSection.endPoint = nextPoint;
@@ -71,8 +82,8 @@ public class Shape{
 				}
 			}
 
-			curPoint = points.get(length-1);
-			nextPoint = points.get(0);
+			curPoint = points[points.length-1];
+			nextPoint = points[0];
 
 			shapeSection.startPoint = curPoint;
 			shapeSection.endPoint = nextPoint;
@@ -85,12 +96,23 @@ public class Shape{
 		}
 	}
 
-	public ArrayList<Rectangle> rectanglesInShape(int layersDeep){
+	public ArrayList<Shape> shapesInShape(int layersDeep){
 		return subdivideRect(0, layersDeep, boundingBox);
 	}
 
+	public double area(){
+		double area = 0;
+		ArrayList<Shape> rects = shapesInShape(defaultLayers);
+
+		for (Shape shape : rects){
+			area += shape.area();
+		}
+
+		return area;
+	}
+
 	public Point centerOfMass(int accuracy){ //assumes shape is homogenious (no varying density within). 1 is least accuracte, don't go too high (more than 10?) if you don't want to kill the computer
-		ArrayList<Rectangle> rects = rectanglesInShape(accuracy);
+		ArrayList<Shape> shapes = shapesInShape(accuracy);
 
 		double topSumX = 0;
 		double topSumY = 0;
@@ -98,23 +120,64 @@ public class Shape{
 
 		Point thisCenter;
 
-		for (Rectangle rect : rects){
-			thisCenter = rect.center();
+		for (Shape shape : shapes){
+			thisCenter = shape.centerOfMass(defaultLayers);
 
-			topSumX += rect.area()*thisCenter.x;
-			topSumY += rect.area()*thisCenter.y;
+			topSumX += shape.area()*thisCenter.x;
+			topSumY += shape.area()*thisCenter.y;
 
-			totalMass += rect.area();
+			totalMass += shape.area();
 		}
 
 		Point centerOMass = new Point(topSumX/totalMass, topSumY/totalMass);
+
+		return centerOMass;
 	}
 
-	private ArrayList<Rectangle> subdivideRect(int curLayer, int maxLayers, Rectangle toDivide){
+	private ArrayList<Shape> subdivideRect(int curLayer, int maxLayers, Rectangle toDivide){
 		if (curLayer == maxLayers){
-			return new ArrayList<Rectangle>();
+			return new ArrayList<Shape>();
 		} else {
-			ArrayList<Rectangle> rects = new ArrayList<Rectangle>();
+			Segment cutOff = null;
+			Segment curSeg = new Segment();
+
+			for (int i = 0; i < points.length-1; i++){
+				curSeg.startPoint = points[i];
+				curSeg.endPoint = points[i+1];
+				cutOff = toDivide.intersectionWithSegment(curSeg);
+				if (cutOff != null){
+					break;
+				}
+			}
+
+			ArrayList<Shape> shapes = new ArrayList<Shape>();
+
+			if (cutOff != null){
+				cutOff.sortByY();
+
+				Trapezoid caseOne = new Trapezoid();
+				caseOne.upperLeft = toDivide.upperLeft;
+				caseOne.lowerLeft = toDivide.lowerLeft();
+				caseOne.upWidth = toDivide.upperLeft.x - curSeg.startPoint.x;
+				caseOne.downWidth = toDivide.upperLeft.x - curSeg.endPoint.x;
+
+				Trapezoid caseTwo = new Trapezoid();
+				caseTwo.upperLeft = curSeg.startPoint;
+				caseTwo.lowerLeft = curSeg.endPoint;
+				caseTwo.upWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.upperLeft.x;
+				caseTwo.downWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.lowerLeft.x;
+
+				Point caseOneCenter = caseOne.centerOfMass(0);
+				Point caseTwoCenter = caseTwo.centerOfMass(0);
+
+				if (isPointWithin(caseOneCenter.x, caseOneCenter.y)){
+					shapes.add(caseOne);
+					return shapes;
+				} else if (isPointWithin(caseTwoCenter.x, caseTwoCenter.y)){
+					shapes.add(caseTwo);
+					return shapes;
+				}
+			}
 
 			double halfWidth = toDivide.width/2;
 			double halfHeight = toDivide.height/2;
@@ -126,74 +189,37 @@ public class Shape{
 
 			int rectScore = upLeft.amountOnShape(this);
 			if (rectScore == 2){
-				rects.add(upLeft);
+				shapes.add(upLeft);
 			} else if (rectScore == 1){
-				rects.addAll(subdivideRect(curLayer+1, maxLayers, upLeft));
+				shapes.addAll(subdivideRect(curLayer+1, maxLayers, upLeft));
 			}
 
 			rectScore = upRight.amountOnShape(this);
 			if (rectScore == 2){
-				rects.add(upRight);
+				shapes.add(upRight);
 			} else if (rectScore == 1){
-				rects.addAll(subdivideRect(curLayer+1, maxLayers, upRight));
+				shapes.addAll(subdivideRect(curLayer+1, maxLayers, upRight));
 			}
 
 			rectScore = downLeft.amountOnShape(this);
 			if (rectScore == 2){
-				rects.add(downLeft);
+				shapes.add(downLeft);
 			} else if (rectScore == 1){
-				rects.addAll(subdivideRect(curLayer+1, maxLayers, downLeft));
+				shapes.addAll(subdivideRect(curLayer+1, maxLayers, downLeft));
 			}
 
 			rectScore = downRight.amountOnShape(this);
 			if (rectScore == 2){
-				rects.add(downRight);
+				shapes.add(downRight);
 			} else if (rectScore == 1){
-				rects.addAll(subdivideRect(curLayer+1, maxLayers, downRight));
+				shapes.addAll(subdivideRect(curLayer+1, maxLayers, downRight));
 			}
+
+			return shapes;
 		}
 	}
 
-	private void setBoundingBox(){
-		if (points.size() > 0){
-			Point curPoint = points.get(0);
-
-			double maxX = curPoint.x;
-			double minX = curPoint.x;
-
-			double maxY = curPoint.y;
-			double minY = curPoint.y;
-
-			int i = 1;
-			while (i < points.size()){
-				curPoint = points.get(i);
-
-				if (curPoint.x > maxX){
-					maxX = curPoint.x;
-				}
-				if (curPoint.y > maxY){
-					maxY = curPoint.y;
-				}
-
-				if (curPoint.x < minX){
-					minX = curPoint.x;
-				}
-				if (curPoint.y < minY){
-					minY = curPoint.y;
-				}
-			}
-
-			boundingBox.upperLeft.x = minX;
-			boundingBox.upperLeft.y = minY;
-
-			boundingBox.width = maxX - minX;
-			boundingBox.height = maxY - minY;
-		} else {
-			boundingBox.upperLeft.x = 0;
-			boundingBox.upperLeft.y = 0;
-
-			boundingBox.width = 0;
-			boundingBox.height = 0;
-		}
+	private void setAssocVars(){
+		boundingBox.fitToShape(this);
 	}
 }
