@@ -1,15 +1,13 @@
 public class MainTest{
 	public static void main(String[] args) {
-		Shape shape = new Shape(4);
+		Shape shape = new Shape(6);
 		shape.set(new MyPoint(10,10), 0);
 		shape.set(new MyPoint(30,10), 1);
-		shape.set(new MyPoint(30,20), 2);
-		shape.set(new MyPoint(10,20), 3);
-
-		System.out.println(shape.isPointWithin(0,0) + " false");
-		System.out.println(shape.isPointWithin(10,10) + " true");
-		System.out.println(shape.isPointWithin(15,20) + " true");
-		System.out.println(shape.isPointWithin(30,20) + " true");
-		System.out.println(shape.isPointWithin(40,10) + " false");
+		shape.set(new MyPoint(30,15), 2);
+		shape.set(new MyPoint(25,15), 3);
+		shape.set(new MyPoint(25,20), 4);
+		shape.set(new MyPoint(10,20), 5);
+		
+		System.out.println(shape.area());
 	}
 }

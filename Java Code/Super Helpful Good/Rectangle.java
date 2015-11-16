@@ -42,85 +42,6 @@ public class Rectangle extends Shape{
 		return new MyPoint(upperLeft.x, upperLeft.y - height);
 	}
 
-	public Segment intersectionWithSegment(Segment seg){
-		double n1 = -1;
-		double n2 = -1;
-		double n3 = -1;
-		double n4 = -1;
-
-		Segment returnSeg = new Segment();
-		boolean firstSet = false;
-		boolean secondSet = false;
-
-		/*
-		x = n(b_x-a_x)+a_x
-		y = n(b_y-a_y)+a_y
-
-		(x-a_x)/(b_x-a_x) = n
-		(y-a_y)/(b_y-a_y) = n
-		*/
-
-		double difX = seg.endPoint.x - seg.startPoint.x;
-		double difY = seg.endPoint.y - seg.startPoint.y;
-
-		if (difX != 0){
-			//left side
-			n1 = (upperLeft.x-seg.startPoint.x)/difX;
-
-			//right side
-			n2 = (upperLeft.x+width-seg.startPoint.x)/difX;
-		}
-
-		if (difY != 0){
-			//top side
-			n3 = (upperLeft.y - seg.startPoint.y)/difY;
-
-			//bottom side
-			n4 = (upperLeft.y - height - seg.startPoint.y)/difY;
-		}
-
-		if (n1 >= 0 && n1 <= 1){
-			returnSeg.startPoint = new MyPoint(upperLeft.x, n1*difY+seg.startPoint.y);
-			firstSet = true;
-			n1 = -1;
-		} else if (n2 >= 0 && n2 <= 1){
-			returnSeg.startPoint = new MyPoint(upperLeft.x + width, n2*difY+seg.startPoint.y);
-			firstSet = true;
-			n2 = -1;
-		} else if (n3 >= 0 && n3 <= 1){
-			returnSeg.startPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y);
-			firstSet = true;
-			n3 = -1;
-		} else if (n4 >= 0 && n4 <= 1){
-			returnSeg.startPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y - height);
-			firstSet = true;
-			n4 = -1;
-		} 
-
-		if (n1 >= 0 && n1 <= 1){
-			returnSeg.endPoint = new MyPoint(upperLeft.x, n1*difY+seg.startPoint.y);
-			secondSet = true;
-			n1 = -1;
-		} else if (n2 >= 0 && n2 <= 1){
-			returnSeg.endPoint = new MyPoint(upperLeft.x + width, n2*difY+seg.startPoint.y);
-			secondSet = true;
-			n2 = -1;
-		} else if (n3 >= 0 && n3 <= 1){
-			returnSeg.endPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y);
-			secondSet = true;
-			n3 = -1;
-		} else if (n4 >= 0 && n4 <= 1){
-			returnSeg.endPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y - height);
-			secondSet = true;
-			n4 = -1;
-		}
-
-		if (firstSet && secondSet){
-			return returnSeg;
-		} else {
-			return null;
-		}
-	}
 
 	public double width(){
 		double minX = upperLeft.x;
@@ -163,6 +84,14 @@ public class Rectangle extends Shape{
 	private void setAssocVars(){
 		width();
 		height();
+	}
+	
+	public Rectangle copy(){
+		Rectangle copied = new Rectangle();
+		copied.upperLeft = upperLeft;
+		copied.width = width;
+		copied.height = height;
+		return copied;
 	}
 
 	public int amountOnShape(Shape shape){ //returns 0 for none, 1 for partially, and 2 for completely on
@@ -225,7 +154,7 @@ public class Rectangle extends Shape{
 		distSquaredX *= distSquaredX;
 		distSquaredY *= distSquaredY;
 
-		if (distSquaredX <= halfWidth*halfWidth && distSquaredY <= halfHeight*halfHeight){
+		if (distSquaredX < halfWidth*halfWidth && distSquaredY < halfHeight*halfHeight){
 			return true;
 		}
 		return false;

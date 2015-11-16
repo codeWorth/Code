@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Shape{
 
-	private final int defaultLayers = 3;
+	private final int defaultLayers = 10;
 	private MyPoint[] points;
 
 	public MyPoint[] points(){
@@ -47,7 +47,7 @@ public class Shape{
 	}
 
 	public boolean isPointWithin(double pointX, double pointY){
-		Segment ray = new Segment(boundingBox.upperLeft.x-1, boundingBox.upperLeft.y+1, pointX, pointY);
+		Segment ray = new Segment(boundingBox.upperLeft.x-1, boundingBox.upperLeft.y-1, pointX, pointY);
 		Segment shapeSection;
 
 		if (points.length == 0){
@@ -75,7 +75,7 @@ public class Shape{
 				shapeSection.startPoint = curPoint;
 				shapeSection.endPoint = nextPoint;
 
-				if (ray.intersectsSegment(shapeSection)){
+				if (shapeSection.intersectsSegment(ray)){
 					hitCount++;
 				}
 			}
@@ -86,7 +86,7 @@ public class Shape{
 			shapeSection.startPoint = curPoint;
 			shapeSection.endPoint = nextPoint;
 
-			if (ray.intersectsSegment(shapeSection)){
+			if (shapeSection.intersectsSegment(ray)){
 				hitCount++;
 			}
 
@@ -136,45 +136,20 @@ public class Shape{
 		if (curLayer == maxLayers){
 			return new ArrayList<Shape>();
 		} else {
-			Segment cutOff = null;
-			Segment curSeg = new Segment();
+			boolean done = true;
 
-			for (int i = 0; i < points.length-1; i++){
-				curSeg.startPoint = points[i];
-				curSeg.endPoint = points[i+1];
-				cutOff = toDivide.intersectionWithSegment(curSeg);
-				if (cutOff != null){
+			for (int i = 0; i < points.length; i++){
+				if (toDivide.isPointWithin(points[i].x, points[i].y)){
+					done = false;
 					break;
 				}
 			}
 
 			ArrayList<Shape> shapes = new ArrayList<Shape>();
 
-			if (cutOff != null){
-				cutOff.sortByY();
-
-				Trapezoid caseOne = new Trapezoid();
-				caseOne.upperLeft = toDivide.upperLeft;
-				caseOne.lowerLeft = toDivide.lowerLeft();
-				caseOne.upWidth = toDivide.upperLeft.x - curSeg.startPoint.x;
-				caseOne.downWidth = toDivide.upperLeft.x - curSeg.endPoint.x;
-
-				Trapezoid caseTwo = new Trapezoid();
-				caseTwo.upperLeft = curSeg.startPoint;
-				caseTwo.lowerLeft = curSeg.endPoint;
-				caseTwo.upWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.upperLeft.x;
-				caseTwo.downWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.lowerLeft.x;
-
-				MyPoint caseOneCenter = caseOne.centerOfMass(0);
-				MyPoint caseTwoCenter = caseTwo.centerOfMass(0);
-
-				if (isPointWithin(caseOneCenter.x, caseOneCenter.y)){
-					shapes.add(caseOne);
-					return shapes;
-				} else if (isPointWithin(caseTwoCenter.x, caseTwoCenter.y)){
-					shapes.add(caseTwo);
-					return shapes;
-				}
+			if (done){
+				shapes.add(toDivide.copy());
+				return shapes;
 			}
 
 			double halfWidth = toDivide.width/2;

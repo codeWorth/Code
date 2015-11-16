@@ -45,6 +45,8 @@ public class BoundingBox{
 				if (curPoint.y < minY){
 					minY = curPoint.y;
 				}
+				
+				i++;
 			}
 
 			upperLeft.x = minX;
