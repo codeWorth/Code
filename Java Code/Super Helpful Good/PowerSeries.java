@@ -3,7 +3,7 @@ public class PowerSeries{
 	public int startPower = 0;
 
 	public PowerSeries(){
-		coefficients = {0};
+		coefficients = new double[] {0};
 	}
 
 	public PowerSeries(double[] coeffs){
@@ -15,7 +15,7 @@ public class PowerSeries{
 		startPower = startPow;
 	}
 
-	public PowerSeries(Point[] points){
+	public PowerSeries(MyPoint[] points){
 		
 	}
 

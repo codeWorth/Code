@@ -1,22 +1,21 @@
-import java.util.*;
 
 public class Trapezoid extends Shape{
-	public Point upperLeft = new Point(); 
-	public Point lowerLeft = new Point(); 
+	public MyPoint upperLeft = new MyPoint(); 
+	public MyPoint lowerLeft = new MyPoint(); 
 
 	public double upWidth = 0;
 	public double downWidth = 0;
 
-	private Point[] points;
+	private MyPoint[] points;
 
 	@Override
-	public Point[] points(){
-		points = new Point[] {upperLeft, lowerLeft, new Point(upperLeft.x + upWidth, upperLeft.y), new Point(lowerLeft.x + downWidth, lowerLeft.y)};
+	public MyPoint[] points(){
+		points = new MyPoint[] {upperLeft, lowerLeft, new MyPoint(upperLeft.x + upWidth, upperLeft.y), new MyPoint(lowerLeft.x + downWidth, lowerLeft.y)};
 		return points;
 	}
 
 	@Override
-	public boolean set(Point point, int index){ //will expand to become largest possible trapezoid. Maximum Y will become upperLeft's y, minimum Y will become lowerLeft's y. upWidth will be top point and second to top point, the inverse with downWidth
+	public boolean set(MyPoint point, int index){ //will expand to become largest possible trapezoid. Maximum Y will become upperLeft's y, minimum Y will become lowerLeft's y. upWidth will be top point and second to top point, the inverse with downWidth
 		if (index < 0 || index > points.length-1){
 			return false;
 		}
@@ -25,34 +24,34 @@ public class Trapezoid extends Shape{
 		return true;
 	}
 
-	public Trapezoid(Point upPoint, Point downPoint, double lowWidth, double highWidth){
+	public Trapezoid(MyPoint upPoint, MyPoint downPoint, double lowWidth, double highWidth){
 		upperLeft = upPoint.copy();
 		lowerLeft = downPoint.copy();
 
 		upWidth = highWidth;
 		downWidth = lowWidth;
 
-		points = new Point[] {upperLeft, lowerLeft, new Point(upperLeft.x + upWidth, upperLeft.y), new Point(lowerLeft.x + downWidth, lowerLeft.y)};
+		points = new MyPoint[] {upperLeft, lowerLeft, new MyPoint(upperLeft.x + upWidth, upperLeft.y), new MyPoint(lowerLeft.x + downWidth, lowerLeft.y)};
 	}
 
 	public Trapezoid(){
 	}
 
 	private void setAssocVars(){
-		Point maxY = maxY();
-		Point minY = minY();
+		MyPoint maxY = maxY();
+		MyPoint minY = minY();
 
-		Point secondMaxPoint = new Point();
-		Point secondMinPoint = new Point();
+		MyPoint secondMaxPoint = new MyPoint();
+		MyPoint secondMinPoint = new MyPoint();
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.y != minY.y && point.y != maxY.y){
 				secondMaxPoint.y = point.y;
 				break;
 			}
 		}
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.y != minY.y && point.y != maxY.y && point.y != secondMaxPoint.y){
 				secondMinPoint.y = point.y;
 				break;
@@ -60,7 +59,7 @@ public class Trapezoid extends Shape{
 		}
 
 		if (secondMaxPoint.y < secondMinPoint.y){
-			Point temp = secondMaxPoint.copy();
+			MyPoint temp = secondMaxPoint.copy();
 			secondMaxPoint = secondMinPoint.copy();
 			secondMinPoint = temp;
 		}
@@ -84,10 +83,10 @@ public class Trapezoid extends Shape{
 		}
 	}
 
-	private Point minY(){
-		Point minY = points[0];
+	private MyPoint minY(){
+		MyPoint minY = points[0];
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.y < minY.y){
 				minY = point;
 			}
@@ -96,10 +95,10 @@ public class Trapezoid extends Shape{
 		return minY.copy();
 	}
 
-	private Point maxY(){
-		Point maxY = points[0];
+	private MyPoint maxY(){
+		MyPoint maxY = points[0];
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.y > maxY.y){
 				maxY = point;
 			}
@@ -159,7 +158,7 @@ public class Trapezoid extends Shape{
 	}
 
 	@Override
-	public Point centerOfMass(int accuracy){ 
+	public MyPoint centerOfMass(int accuracy){ 
 		double y = upperLeft.y + lowerLeft.y;
 		y *= 0.5;
 
@@ -171,6 +170,6 @@ public class Trapezoid extends Shape{
 		double x = x1 + x2;
 		x *= 0.5;
 
-		return new Point(x, y);
+		return new MyPoint(x, y);
 	}
 }

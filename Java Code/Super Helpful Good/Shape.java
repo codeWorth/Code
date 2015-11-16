@@ -1,15 +1,15 @@
-import java.util.*;
+import java.util.ArrayList;
 
 public class Shape{
 
 	private final int defaultLayers = 3;
-	private Point[] points;
+	private MyPoint[] points;
 
-	public Point[] points(){
+	public MyPoint[] points(){
 		return points;
 	}
 
-	public boolean set(Point point, int index){
+	public boolean set(MyPoint point, int index){
 		if (index < 0 || index > points.length-1){
 			return false;
 		}
@@ -21,10 +21,10 @@ public class Shape{
 
 	private BoundingBox boundingBox = new BoundingBox();
 
-	public Shape(Point[] pointsToAdd){
-		points = new Point[pointsToAdd.length];
+	public Shape(MyPoint[] pointsToAdd){
+		points = new MyPoint[pointsToAdd.length];
 		int i = 0;
-		for (Point point : pointsToAdd){
+		for (MyPoint point : pointsToAdd){
 			points[i] = point.copy();
 			i++;
 		}
@@ -35,28 +35,26 @@ public class Shape{
 		if (vertecies < 3){
 			vertecies = 3;
 		}
-		points = new Point[vertecies];
+		points = new MyPoint[vertecies];
 		for (int i = 0; i < vertecies; i++){
-			points[i] = new Point();
+			points[i] = new MyPoint();
 		}
 		setAssocVars();
 	}
 
 	public Shape(){
-		points = new Point[3];
+		points = new MyPoint[3];
 	}
 
 	public boolean isPointWithin(double pointX, double pointY){
 		Segment ray = new Segment(boundingBox.upperLeft.x-1, boundingBox.upperLeft.y+1, pointX, pointY);
 		Segment shapeSection;
 
-		Point outPoint = new Point(-1, -1);
-
 		if (points.length == 0){
 			return false;
 		} 
 
-		Point curPoint = points[0];
+		MyPoint curPoint = points[0];
 
 		if (points.length == 1){
 			return (curPoint.x == pointX && curPoint.y == pointY);
@@ -68,7 +66,7 @@ public class Shape{
 
 			int hitCount = 0;
 
-			Point nextPoint;
+			MyPoint nextPoint;
 
 			for (int i = 0; i < points.length-1; i++){
 				curPoint = points[i];
@@ -97,7 +95,7 @@ public class Shape{
 	}
 
 	public ArrayList<Shape> shapesInShape(int layersDeep){
-		return subdivideRect(0, layersDeep, boundingBox);
+		return subdivideRect(0, layersDeep, boundingBox.rectForm());
 	}
 
 	public double area(){
@@ -111,14 +109,14 @@ public class Shape{
 		return area;
 	}
 
-	public Point centerOfMass(int accuracy){ //assumes shape is homogenious (no varying density within). 1 is least accuracte, don't go too high (more than 10?) if you don't want to kill the computer
+	public MyPoint centerOfMass(int accuracy){ //assumes shape is homogenious (no varying density within). 1 is least accuracte, don't go too high (more than 10?) if you don't want to kill the computer
 		ArrayList<Shape> shapes = shapesInShape(accuracy);
 
 		double topSumX = 0;
 		double topSumY = 0;
 		double totalMass = 0;
 
-		Point thisCenter;
+		MyPoint thisCenter;
 
 		for (Shape shape : shapes){
 			thisCenter = shape.centerOfMass(defaultLayers);
@@ -129,7 +127,7 @@ public class Shape{
 			totalMass += shape.area();
 		}
 
-		Point centerOMass = new Point(topSumX/totalMass, topSumY/totalMass);
+		MyPoint centerOMass = new MyPoint(topSumX/totalMass, topSumY/totalMass);
 
 		return centerOMass;
 	}
@@ -167,8 +165,8 @@ public class Shape{
 				caseTwo.upWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.upperLeft.x;
 				caseTwo.downWidth = toDivide.upperLeft.x + toDivide.width - caseTwo.lowerLeft.x;
 
-				Point caseOneCenter = caseOne.centerOfMass(0);
-				Point caseTwoCenter = caseTwo.centerOfMass(0);
+				MyPoint caseOneCenter = caseOne.centerOfMass(0);
+				MyPoint caseTwoCenter = caseTwo.centerOfMass(0);
 
 				if (isPointWithin(caseOneCenter.x, caseOneCenter.y)){
 					shapes.add(caseOne);

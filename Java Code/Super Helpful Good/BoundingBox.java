@@ -1,5 +1,5 @@
 public class BoundingBox{
-	public Point upperLeft = new Point();
+	public MyPoint upperLeft = new MyPoint();
 	public double width = 0;
 	public double height = 0;
 
@@ -9,10 +9,18 @@ public class BoundingBox{
 		width = theWidth;
 		height = theHeight;
 	}
+	
+	public BoundingBox(){
+		
+	}
+	
+	public Rectangle rectForm(){
+		return new Rectangle(upperLeft.x, upperLeft.y, width, height);
+	}
 
 	public void fitToShape(Shape shape){
-		if (shape.points.length > 0){
-			Point curPoint = points[0];
+		if (shape.points().length > 0){
+			MyPoint curPoint = shape.points()[0];
 
 			double maxX = curPoint.x;
 			double minX = curPoint.x;
@@ -21,8 +29,8 @@ public class BoundingBox{
 			double minY = curPoint.y;
 
 			int i = 1;
-			while (i < shape.points.length){
-				curPoint = shape.points[i];
+			while (i < shape.points().length){
+				curPoint = shape.points()[i];
 
 				if (curPoint.x > maxX){
 					maxX = curPoint.x;

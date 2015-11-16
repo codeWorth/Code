@@ -1,20 +1,24 @@
-public class Point{
+public class PointExtended{
 	private double x = 0;
 	private double y = 0;
 
 	private boolean isNull;
 
-	private distSquared = 0;
+	private double distSquared = 0;
 
-	public Point(int x, int y){
+	public PointExtended(double x, double y){
 		this.x = x;
 		this.y = y;
 		distSquared = x*x + y*y;
 		isNull = false;
 	}
 
-	public Point(boolean null){
-		isNull = null;
+	public PointExtended(boolean isItNull){
+		isNull = isItNull;
+	}
+	
+	public PointExtended(){
+		isNull = false;
 	}
 
 	public boolean isNull(){
@@ -27,7 +31,7 @@ public class Point{
 	}
 
 	public void setY(double newY){
-		Y = newY;
+		y = newY;
 		distSquared = x*x + y*y;
 	}
 
@@ -39,17 +43,17 @@ public class Point{
 		return y;
 	}
 
-	public void add(Point otherPoint){
+	public void add(PointExtended otherPoint){
 		x += otherPoint.x;
 		y += otherPoint.y;
 	}
 
-	public void subtract(Point otherPoint){
+	public void subtract(PointExtended otherPoint){
 		x -= otherPoint.x;
 		y -= otherPoint.y;
 	}
 
-	public void dot(Point otherPoint){
+	public double dot(PointExtended otherPoint){
 		return this.x*otherPoint.x + this.y*otherPoint.y;
 	}
 
@@ -57,15 +61,15 @@ public class Point{
 		return distSquared;
 	}
 
-	public double distSquaredTo(Point otherPoint){
+	public double distSquaredTo(PointExtended otherPoint){
 		double difX = x - otherPoint.x;
 		double difY = y - otherPoint.y;
 
 		return difX*difX + difY*difY;
 	}
 
-	public Point copy(){
-		Point copy = new Point(x,y);
+	public PointExtended copy(){
+		PointExtended copy = new PointExtended(x,y);
 		return copy;
 	}
 }

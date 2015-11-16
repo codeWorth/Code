@@ -1,34 +1,34 @@
 public class Line{
 	public double slope = 0;
-	public Point point;
+	public PointExtended point;
 
-	private yIntercept = 0;
+	private double yIntercept = 0;
 
 	public Line(){
 		slope = 0;
-		point = new Point();
+		point = new PointExtended();
 		yIntercept = 0;
 	}
 
-	public Line(double slope, Point point){
+	public Line(double slope, PointExtended point){
 		this.slope = slope;
 		this.point = point;
 
-		yIntercept = point.y - slope * point.x;
+		yIntercept = point.y() - slope * point.x();
 	}
 
 	public Line(double slope){
 		this.slope = slope;
-		point = new Point();
+		point = new PointExtended();
 	}
 
-	public Line(Point point){
+	public Line(PointExtended point){
 		this.point = point;
 
-		yIntercept = point.y;
+		yIntercept = point.y();
 	}
 
-	public Point intercept(Line otherLine){
+	public PointExtended intercept(Line otherLine){
 		/*
 		m(x-x1)+y1=n(x-x2)+y2
 		mx - mx1 + y1 = nx - nx2 + y2
@@ -39,16 +39,16 @@ public class Line{
 		double over = slope - otherLine.slope;
 
 		if (over == 0){
-			return new Point(true);
+			return new PointExtended(true);
 		}
 
-		double intX = (slope * this.point.x - otherLine.slope * otherLine.point.x + otherLine.point.y - this.point.y)/over;
+		double intX = (slope * this.point.x() - otherLine.slope * otherLine.point.x() + otherLine.point.y() - this.point.y())/over;
 		double intY = this.yAt(intX);
 
-		return new Point(intX, inty);
+		return new PointExtended(intX, intY);
 	}
 
 	public double yAt(double x){
-		return slope * (x - point.x) + point.y;
+		return slope * (x - point.x()) + point.y();
 	}
 }

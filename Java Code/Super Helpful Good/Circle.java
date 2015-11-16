@@ -1,4 +1,4 @@
 public class Circle{
-	public Point center;
+	public MyPoint center;
 	public double radius = 0;
 }

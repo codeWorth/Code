@@ -1,23 +1,21 @@
-import java.util.*;
+import java.util.ArrayList;
 
-=======
->>>>>>> origin/master
 public class Rectangle extends Shape{
-	public Point upperLeft = new Point(); 
+	public MyPoint upperLeft = new MyPoint(); 
 
 	public double width = 0;
 	public double height = 0;
 
-	private Point[] points;
+	private MyPoint[] points;
 
 	@Override
-	public Point[] points(){
-		points = new Point[] {upperLeft, new Point(upperLeft.x + width, upperLeft.y), new Point(upperLeft.x + width, upperLeft.y + height), new Point(upperLeft.x, upperLeft.y + height)};
+	public MyPoint[] points(){
+		points = new MyPoint[] {upperLeft, new MyPoint(upperLeft.x + width, upperLeft.y), new MyPoint(upperLeft.x + width, upperLeft.y + height), new MyPoint(upperLeft.x, upperLeft.y + height)};
 		return points;
 	}
 
 	@Override
-	public boolean set(Point point, int index){ //will expand to new rect, will not contract
+	public boolean set(MyPoint point, int index){ //will expand to new rect, will not contract
 		if (index < 0 || index > points.length-1){
 			return false;
 		}
@@ -33,15 +31,15 @@ public class Rectangle extends Shape{
 		width = theWidth;
 		height = theHeight;
 
-		points = new Point[] {upperLeft, new Point(upperLeft.x + width, upperLeft.y), new Point(upperLeft.x + width, upperLeft.y + height), new Point(upperLeft.x, upperLeft.y + height)};
+		points = new MyPoint[] {upperLeft, new MyPoint(upperLeft.x + width, upperLeft.y), new MyPoint(upperLeft.x + width, upperLeft.y + height), new MyPoint(upperLeft.x, upperLeft.y + height)};
 	}
 
 	public Rectangle(){
-		points = new Point[] {upperLeft, upperLeft.copy(), upperLeft.copy(), upperLeft.copy()};
+		points = new MyPoint[] {upperLeft, upperLeft.copy(), upperLeft.copy(), upperLeft.copy()};
 	}
 
-	public Point lowerLeft(){
-		return new Point(upperLeft.x, upperLeft.y - height);
+	public MyPoint lowerLeft(){
+		return new MyPoint(upperLeft.x, upperLeft.y - height);
 	}
 
 	public Segment intersectionWithSegment(Segment seg){
@@ -82,37 +80,37 @@ public class Rectangle extends Shape{
 		}
 
 		if (n1 >= 0 && n1 <= 1){
-			returnSeg.startPoint = new Point(upperLeft.x, n1*difY+seg.startPoint.y);
+			returnSeg.startPoint = new MyPoint(upperLeft.x, n1*difY+seg.startPoint.y);
 			firstSet = true;
 			n1 = -1;
 		} else if (n2 >= 0 && n2 <= 1){
-			returnSeg.startPoint = new Point(upperLeft.x + width, n2*difY+seg.startPoint.y);
+			returnSeg.startPoint = new MyPoint(upperLeft.x + width, n2*difY+seg.startPoint.y);
 			firstSet = true;
 			n2 = -1;
 		} else if (n3 >= 0 && n3 <= 1){
-			returnSeg.startPoint = new Point(n3*difX+seg.startPoint.x, upperLeft.y);
+			returnSeg.startPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y);
 			firstSet = true;
 			n3 = -1;
 		} else if (n4 >= 0 && n4 <= 1){
-			returnSeg.startPoint = new Point(n3*difX+seg.startPoint.x, upperLeft.y - height);
+			returnSeg.startPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y - height);
 			firstSet = true;
 			n4 = -1;
 		} 
 
 		if (n1 >= 0 && n1 <= 1){
-			returnSeg.endPoint = new Point(upperLeft.x, n1*difY+seg.startPoint.y);
+			returnSeg.endPoint = new MyPoint(upperLeft.x, n1*difY+seg.startPoint.y);
 			secondSet = true;
 			n1 = -1;
 		} else if (n2 >= 0 && n2 <= 1){
-			returnSeg.endPoint = new Point(upperLeft.x + width, n2*difY+seg.startPoint.y);
+			returnSeg.endPoint = new MyPoint(upperLeft.x + width, n2*difY+seg.startPoint.y);
 			secondSet = true;
 			n2 = -1;
 		} else if (n3 >= 0 && n3 <= 1){
-			returnSeg.endPoint = new Point(n3*difX+seg.startPoint.x, upperLeft.y);
+			returnSeg.endPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y);
 			secondSet = true;
 			n3 = -1;
 		} else if (n4 >= 0 && n4 <= 1){
-			returnSeg.endPoint = new Point(n3*difX+seg.startPoint.x, upperLeft.y - height);
+			returnSeg.endPoint = new MyPoint(n3*difX+seg.startPoint.x, upperLeft.y - height);
 			secondSet = true;
 			n4 = -1;
 		}
@@ -128,7 +126,7 @@ public class Rectangle extends Shape{
 		double minX = upperLeft.x;
 		double maxX = 0;
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.x < minX){
 				minX = point.x;
 			}
@@ -147,7 +145,7 @@ public class Rectangle extends Shape{
 		double minY = upperLeft.y;
 		double maxY = 0;
 
-		for (Point point : points){
+		for (MyPoint point : points){
 			if (point.y < minY){
 				minY = point.y;
 			}
@@ -168,9 +166,9 @@ public class Rectangle extends Shape{
 	}
 
 	public int amountOnShape(Shape shape){ //returns 0 for none, 1 for partially, and 2 for completely on
-		Point upperRight = new Point(upperLeft.x + width, upperLeft.y);
-		Point bottomRight = new Point(upperLeft.x + width, upperLeft.y - height);
-		Point bottomLeft = new Point(upperLeft.x, upperLeft.y - height);
+		MyPoint upperRight = new MyPoint(upperLeft.x + width, upperLeft.y);
+		MyPoint bottomRight = new MyPoint(upperLeft.x + width, upperLeft.y - height);
+		MyPoint bottomLeft = new MyPoint(upperLeft.x, upperLeft.y - height);
 
 		int numIn = 0;
 		if (shape.isPointWithin(upperLeft.x, upperLeft.y)){
@@ -195,8 +193,8 @@ public class Rectangle extends Shape{
 		}
 	}
 
-	public Point center(){
-		return new Point(upperLeft.x+width/2, upperLeft.y+height/2);
+	public MyPoint center(){
+		return new MyPoint(upperLeft.x+width/2, upperLeft.y+height/2);
 	}
 
 	@Override
@@ -212,7 +210,7 @@ public class Rectangle extends Shape{
 	}
 
 	@Override
-	public Point centerOfMass(int accuracy){ 
+	public MyPoint centerOfMass(int accuracy){ 
 		return center();
 	}
 

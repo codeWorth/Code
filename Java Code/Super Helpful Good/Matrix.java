@@ -24,16 +24,16 @@ public class Matrix{
 	}
 
 	public boolean add(Matrix otherMatrix){
-		if (otherMatrix.length != this.matrix.length){
+		if (otherMatrix.matrix().length != this.matrix.length){
 			return false;
 		}
-		if (otherMatrix[0].length != this.matrix[0].length){
+		if (otherMatrix.matrix()[0].length != this.matrix[0].length){
 			return false;
 		}
 
-		for (int i = 0; i < otherMatrix.length; i++){
-			for (int j = 0; j < otherMatrix[i].length; j++){
-				this.matrix[i][j] += otherMatrix[i][j];
+		for (int i = 0; i < otherMatrix.matrix().length; i++){
+			for (int j = 0; j < otherMatrix.matrix()[i].length; j++){
+				this.matrix[i][j] += otherMatrix.matrix()[i][j];
 			}
 		}
 
@@ -41,16 +41,16 @@ public class Matrix{
 	}
 
 	public boolean subtract(Matrix otherMatrix){
-		if (otherMatrix.length != this.matrix.length){
+		if (otherMatrix.matrix().length != this.matrix.length){
 			return false;
 		}
-		if (otherMatrix[0].length != this.matrix[0].length){
+		if (otherMatrix.matrix()[0].length != this.matrix[0].length){
 			return false;
 		}
 
-		for (int i = 0; i < otherMatrix.length; i++){
-			for (int j = 0; j < otherMatrix[i].length; j++){
-				this.matrix[i][j] -= otherMatrix[i][j];
+		for (int i = 0; i < otherMatrix.matrix().length; i++){
+			for (int j = 0; j < otherMatrix.matrix()[i].length; j++){
+				this.matrix[i][j] -= otherMatrix.matrix()[i][j];
 			}
 		}
 
@@ -64,18 +64,18 @@ public class Matrix{
 		 2 7 3
 		 8 0 1] 
 		*/
-		 if (this.matrix[0].length != otherMatrix.length){
+		 if (this.matrix[0].length != otherMatrix.matrix().length){
 		 	return false;
 		 }
 
-		 double[][] newMat = new double[this.matrix.length][otherMatrix[0].length];
+		 double[][] newMat = new double[this.matrix.length][otherMatrix.matrix()[0].length];
 
 		 for (int i = 0; i < newMat.length; i++){
 		 	for (int j = 0; j < newMat[i].length; j++){
 		 		double thisVal = 0;
 
-		 		for (int k = 0; k < otherMatrix.length; i++){
-		 			thisVal += this.matrix[i][k]*otherMatrix[k][j];
+		 		for (int k = 0; k < otherMatrix.matrix().length; i++){
+		 			thisVal += this.matrix[i][k]*otherMatrix.matrix()[k][j];
 		 		}
 
 		 		newMat[i][j] = thisVal;

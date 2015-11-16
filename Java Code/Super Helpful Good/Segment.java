@@ -1,6 +1,6 @@
 public class Segment{
-	public Point startPoint = new Point();
-	public Point endPoint = new Point();
+	public MyPoint startPoint = new MyPoint();
+	public MyPoint endPoint = new MyPoint();
 
 	public Segment(double endX, double endY){
 		endPoint.x = endX;
@@ -89,7 +89,7 @@ public class Segment{
 
 	public void sortByY(){
 		if (startPoint.y < endPoint.y){
-			Point temp = startPoint.copy();
+			MyPoint temp = startPoint.copy();
 			startPoint = endPoint.copy();
 			endPoint = temp;
 		}
