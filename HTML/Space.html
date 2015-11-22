@@ -214,8 +214,8 @@
 				rotation = rotation % Math.PI*2;
 
 				var aLR = aLX*aLX + aLY*aLY;
-				aLX = aLR * Math.cos(dir+rotation + Math.PI/2);
-				aLY = aLR * Math.sin(dir + rotation + Math.PI/2);*/
+				aLX = aLR * Math.cos(dir+rotation);
+				aLY = aLR * Math.sin(dir + rotation);
 
 				omega += aW*dT/r;
 				vX += aLX*dT;
