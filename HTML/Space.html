@@ -27,13 +27,26 @@
 			var centerY = 24;
 			var charX = worldWidth/2;
 			var charY = worldHeight/2;
+			var rotation = 0;
 			var totalMass = 30;
 			var charModel;
+			var omega = 0; //angular velocity
+			var vX = 0; //linear x vel
+			var vY = 0; //linear y vel
+
+			var leftForwardEngine = {x:2, y:42, fX:0, fY:-5};
+			var rightForwardEngine = {x:32, y:42, fX:0, fY:-5};
+
+			var backwardsEngine = {x:17, y:2, fX:0, fY:5};
+
+			var dT = 0.3; //timestep
 
 			var aDown = false;
 			var dDown = false;
 			var wDown = false;
 			var sDown = false;
+
+			var init;
 
 			function renderFunction(width, height, renderFunction) {
 			    var buffer = document.createElement('canvas');
@@ -54,7 +67,19 @@
 				ctx.strokeStyle = "white";
 				ctx.lineWidth = 3;
 				ctx.stroke();
+				ctx.fillStyle = "red";
+				ctx.beginPath();
+				ctx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
+				ctx.arc(leftForwardEngine.x, leftForwardEngine.y, 2, 0, Math.PI*2, true);
+				ctx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
+				ctx.arc(rightForwardEngine.x, rightForwardEngine.y, 2, 0, Math.PI*2, true);
+				ctx.moveTo(backwardsEngine.x, backwardsEngine.y);
+				ctx.arc(backwardsEngine.x, backwardsEngine.y, 2, 0, Math.PI*2, true);
+				ctx.closePath();
+				ctx.fill();
 			});
+
+			ctx.drawImage(charModel, canvWidth/2, canvHeight/2);
 
 			function drawGrid(x,y){
 				var xOff = (x - canvWidth/2) % gridSpace;
@@ -63,8 +88,8 @@
 				var xLinesToDraw = canvWidth/gridSpace;
 				var yLinesToDraw = canvHeight/gridSpace;
 
-				ctx.strokeStyle = "lightGray";
-				ctx.lineWidth = 0.3;
+				ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+				ctx.lineWidth = 2;
 
 				ctx.beginPath();
 
@@ -141,7 +166,9 @@
 				}
 			}
 
-			function resolveForce(fCX, fCY, fX, fY, mFC){ //fCX and FCY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {towards:..., normal:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
+			function applyForce(fCX, fCY, fX, fY, mFC){ //fCX and FCY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {projX:..., projY:..., orth:..., r:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it, r is the distance from the force to the center. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
+				//rotate force vectors for direction of ship
+
 				var mag = 1;
 				if (mFC === 0){
 					var magSquared = fCX*fCX + fCY*fCY;
@@ -157,18 +184,88 @@
 				var dot = fX*fCX + fY*fCY;
 				var proj = dot/mag;
 
-				var projVecX = fCX * dot/mag;
-				var projVecY = fCY * dot/mag;
+				var orth = Math.sqrt (fX*fX + fY*fY - proj*proj);
+				var crossZ = fCX*fY - fCY*fX;
+				if (crossZ < 0){
+					orth *= -1;
+				}
+
+				var projX = proj/mag * fCX;
+				var projY = proj/mag * fCY;
+
+				changeVels(projX, projY, orth, mag);
 
 				/*
 				dot product = fX*fCX + fY*fCY
 
 				projection of f onto fC = dot product / magnitude fC
-				orthagonal of f onto fC = projVec - projection of f onto fC
-
-
+				orthagonal of f onto fC = sqrt (magSquared - proj*proj)
 				*/
 			}
+
+			function changeVels(projX, projY, orth, r){
+				//w looks kinda like omega :P
+				//l means linear
+				var aW = orth/totalMass;
+				var aLX = projX/totalMass;
+				var aLY = projY/totalMass; 
+
+				var dir = Math.atan2(aLY, aLX);
+				rotation = rotation % Math.PI*2;
+
+				var aLR = aLX*aLX + aLY*aLY;
+				aLX = aLR * Math.cos(dir+rotation + Math.PI/2);
+				aLY = aLR * Math.sin(dir + rotation + Math.PI/2);*/
+
+				omega += aW*dT/r;
+				vX += aLX*dT;
+				vY += aLY*dT;
+			}
+
+			function update(){
+				if (wDown){
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+				}
+				if (sDown){
+					applyForce(backwardsEngine.x-centerX, backwardsEngine.y-centerY, backwardsEngine.fX, backwardsEngine.fY, 0);
+				}
+				if (dDown){
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
+				}
+				if (aDown){
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+				}
+				charX += vX;
+				charY += vY;
+				rotation += omega;
+
+				ctx.clearRect(0,0,canvWidth,canvHeight);
+				drawRotatedImage(charModel, canvWidth/2, canvHeight/2, rotation);
+				drawGrid(charX,charY);
+			}
+
+			function drawRotatedImage(image, x, y, angle) { 
+			 
+				// save the current co-ordinate system 
+				// before we screw with it
+				ctx.save(); 
+			 
+				// move to the middle of where we want to draw our image
+				ctx.translate(x, y);
+			 
+				// rotate around that point
+				ctx.rotate(angle);
+			 
+				// draw it up and to the left by half the width
+				// and height of the image 
+				ctx.drawImage(image, -(image.width/2), -(image.height/2));
+			 
+				// and restore the co-ords to how they were when we began
+				ctx.restore(); 
+			}
+
+			init = setInterval(update, 20);
 
 			document.body.onkeydown = checkKeysDown;
 			document.body.onkeyup = checkKeysUp;
