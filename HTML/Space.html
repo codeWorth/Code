@@ -22,8 +22,10 @@
 			var canvWidth = mainCanv.width;
 			var canvHeight = mainCanv.height;
 
+			var thrusterRadius = 3;
+
 			//character
-			var centerX = 17; //approximate values, dependent on draw func
+			var centerX = 18; //approximate values, dependent on draw func
 			var centerY = 24;
 			var charX = worldWidth/2;
 			var charY = worldHeight/2;
@@ -34,10 +36,10 @@
 			var vX = 0; //linear x vel
 			var vY = 0; //linear y vel
 
-			var leftForwardEngine = {x:2, y:42, fX:0, fY:-5};
-			var rightForwardEngine = {x:32, y:42, fX:0, fY:-5};
+			var leftForwardEngine = {x:3, y:42, fX:0, fY:-5};
+			var rightForwardEngine = {x:33, y:42, fX:0, fY:-5};
 
-			var backwardsEngine = {x:17, y:2, fX:0, fY:5};
+			var backwardsEngine = {x:18, y:5, fX:0, fY:5};
 
 			var dT = 0.3; //timestep
 
@@ -48,6 +50,9 @@
 
 			var init;
 
+			var onscreenX = canvWidth/2 - 5;
+			var onscreenY = canvHeight/2 - 5;
+
 			function renderFunction(width, height, renderFunction) {
 			    var buffer = document.createElement('canvas');
 			    buffer.width = width;
@@ -56,27 +61,17 @@
 			    return buffer;
 			}
 
-			//create character model
-			charModel = renderFunction(34, 44, function (ctx){
+			//create character models
+			charModel = renderFunction(40, 50, function (ctx){
 				ctx.beginPath();
-				ctx.moveTo(2,42);
-				ctx.lineTo(17,2);
+				ctx.moveTo(3,42);
+				ctx.lineTo(18,5);
 				ctx.lineTo(32,42);
-				ctx.arc(17,48,15,-Math.PI/4+Math.PI/5,-3*Math.PI/4-Math.PI/5,true);
+				ctx.arc(18,46,15,0-Math.PI/7,8*Math.PI/7,true);
 				ctx.closePath();
 				ctx.strokeStyle = "white";
 				ctx.lineWidth = 3;
 				ctx.stroke();
-				ctx.fillStyle = "red";
-				ctx.beginPath();
-				ctx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
-				ctx.arc(leftForwardEngine.x, leftForwardEngine.y, 2, 0, Math.PI*2, true);
-				ctx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
-				ctx.arc(rightForwardEngine.x, rightForwardEngine.y, 2, 0, Math.PI*2, true);
-				ctx.moveTo(backwardsEngine.x, backwardsEngine.y);
-				ctx.arc(backwardsEngine.x, backwardsEngine.y, 2, 0, Math.PI*2, true);
-				ctx.closePath();
-				ctx.fill();
 			});
 
 			ctx.drawImage(charModel, canvWidth/2, canvHeight/2);
@@ -211,11 +206,10 @@
 				var aLY = projY/totalMass; 
 
 				var dir = Math.atan2(aLY, aLX);
-				rotation = rotation % Math.PI*2;
+				var len = Math.sqrt(aLX*aLX + aLY*aLY);
 
-				var aLR = aLX*aLX + aLY*aLY;
-				aLX = aLR * Math.cos(dir+rotation);
-				aLY = aLR * Math.sin(dir + rotation);
+				aLX = len * Math.cos(dir + rotation + Math.PI*2);
+				aLY = len * Math.sin(dir + rotation + Math.PI*2);
 
 				omega += aW*dT/r;
 				vX += aLX*dT;
@@ -223,25 +217,63 @@
 			}
 
 			function update(){
+				ctx.clearRect(0,0,canvWidth,canvHeight);
+				var buffer = document.createElement('canvas');
+			    buffer.width = charModel.width;
+			    buffer.height = charModel.height;
+			    bufferCtx = buffer.getContext('2d');
+
 				if (wDown){
 					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
 					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+
+					bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
+					bufferCtx.arc(leftForwardEngine.x, leftForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
+					bufferCtx.arc(rightForwardEngine.x, rightForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();
 				}
 				if (sDown){
 					applyForce(backwardsEngine.x-centerX, backwardsEngine.y-centerY, backwardsEngine.fX, backwardsEngine.fY, 0);
+
+					bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(backwardsEngine.x, backwardsEngine.y);
+					bufferCtx.arc(backwardsEngine.x, backwardsEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();
 				}
 				if (dDown){
 					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
+
+					bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
+					bufferCtx.arc(leftForwardEngine.x, leftForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();
 				}
 				if (aDown){
 					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+
+					bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
+					bufferCtx.arc(rightForwardEngine.x, rightForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();
 				}
+
 				charX += vX;
 				charY += vY;
 				rotation += omega;
 
-				ctx.clearRect(0,0,canvWidth,canvHeight);
-				drawRotatedImage(charModel, canvWidth/2, canvHeight/2, rotation);
+				drawRotatedImage(charModel, onscreenX, onscreenY, rotation);
+				drawRotatedImage(buffer, onscreenX, onscreenY, rotation);
+
 				drawGrid(charX,charY);
 			}
 
