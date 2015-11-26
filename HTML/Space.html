@@ -43,6 +43,15 @@
 
 			var dT = 0.3; //timestep
 
+			function Planet(x, y, r, color) {
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.color = color;
+			}
+
+			var planets = [new Planet(4500, 4500, 30, “red”), new Planet(2500, 2500, 50, “green”), new Planet(4500, 6000, 20, “lightBlue”)]; 
+
 			var aDown = false;
 			var dDown = false;
 			var wDown = false;
@@ -75,6 +84,25 @@
 			});
 
 			ctx.drawImage(charModel, canvWidth/2, canvHeight/2);
+
+			function drawPlanets(x, y){
+				var leftX = x - canvWidth/2;
+				var topY = y - canvHeight/2;
+
+				var thisPlanet;
+
+				for (var i = 0; i < planets.length; i++){
+					thisPlanet = planets[i];
+					if (thisPlanet.x > leftX - thisPlanet.r && thisPlanet.x < leftX + canvWidth + thisPlanet.r && thisPlanet.y > topY - thisPlanet.r && thisPlanet.y < topY + canvHeight + thisPlanet.r){
+						ctx.beginPath();
+						ctx.moveTo(thisPlanet.x, thisPlanet.y);
+						ctx.arc(thisPlanet.x, thisPlanet.y, thisPlanet.r, 0, Math.PI*2, true);
+						ctx.closePath();
+						ctx.fillStyle = thisPlanet.color;
+						ctx.fill();
+					}
+				}
+			}
 
 			function drawGrid(x,y){
 				var xOff = (x - canvWidth/2) % gridSpace;
@@ -219,11 +247,13 @@
 			function update(){
 				ctx.clearRect(0,0,canvWidth,canvHeight);
 				var buffer = document.createElement('canvas');
-			    buffer.width = charModel.width;
-			    buffer.height = charModel.height;
-			    bufferCtx = buffer.getContext('2d');
+			   	buffer.width = charModel.width;
+			    	buffer.height = charModel.height;
+			  	bufferCtx = buffer.getContext('2d');
 
-				if (wDown){
+				drawPlanets(charX, charY);
+				
+				if (wDown && !aDown && !dDown){
 					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
 					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
 
