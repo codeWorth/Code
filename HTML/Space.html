@@ -206,7 +206,7 @@
 				var dot = fX*fCX + fY*fCY;
 				var proj = dot/mag;
 
-				var orth = Math.sqrt (fX*fX + fY*fY - proj*proj);
+				var orth = Math.sqrt (mag*mag - proj*proj);
 				var crossZ = fCX*fY - fCY*fX;
 				if (crossZ < 0){
 					orth *= -1;
