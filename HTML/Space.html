@@ -36,10 +36,16 @@
 			var vX = 0; //linear x vel
 			var vY = 0; //linear y vel
 
-			var leftForwardEngine = {x:3, y:42, fX:0, fY:-5};
-			var rightForwardEngine = {x:33, y:42, fX:0, fY:-5};
+			var leftForwardEngine = {x:3, y:42, fX:0, fY:-5, d:0};
+			var rightForwardEngine = {x:33, y:42, fX:0, fY:-5, d:0};
 
-			var backwardsEngine = {x:18, y:5, fX:0, fY:5};
+			var leftDist = Math.sqrt((leftForwardEngine.x-centerX)*(leftForwardEngine.x-centerX) + (leftForwardEngine.y-centerY)*(leftForwardEngine.y-centerY));
+			leftForwardEngine.d = leftDist;
+			rightForwardEngine.d = leftDist;
+
+			var backwardsEngine = {x:18, y:5, fX:0, fY:5, d:0};
+
+			var backDist = Math.sqrt((backwardsEngine.x-centerX)*(backwardsEngine.x-centerX) + (backwardsEngine.y-centerY)*(backwardsEngine.y-centerY));
 
 			var dT = 0.3; //timestep
 
@@ -49,17 +55,82 @@
 				this.r = r;
 				this.color = color;
 			}
-			var planets = [new Planet(4500, 4500, 30, "red"), new Planet(2500, 2500, 50, "green"), new Planet(4500, 6000, 20, "lightBlue")];
+			var planets = [new Planet(4500, 4500, 200, "red"), new Planet(2500, 2500, 300, "green"), new Planet(4500, 6000, 270, "lightBlue")];
+
+			function Projectile(startX, startY, vX, vY, direction, shape){
+				this.x = startX + charX - shipX;
+				this.y = startY + charY - shipY;
+				this.vX = vX;
+				this.vY = vY;
+
+				this.direction = direction;
+				var len = Math.sqrt(vX*vX + vY*vY);
+				var startDir = Math.atan2(vY, vX);
+
+				this.vX = len * Math.cos(startDir + direction);
+				this.vY = len * Math.sin(startDir + direction);
+
+				this.shape = shape;
+			}
+
+			Projectile.prototype.move = function() {
+				this.x += this.vX;
+				this.y += this.vY;
+			}
+			Projectile.prototype.isOutOfBounds = function (){
+				var leftX = charX - canvWidth/2.2;
+				var topY = charY - canvHeight/2.2;
+				if (this.x < leftX - this.shape.width/2 || this.x > leftX + canvWidth + this.shape.width/2 || this.y < topY - this.shape.height/2 || this.y > topY + canvHeight + this.shape.height/2){
+					return true;
+				}
+				return false;
+			}
+			Projectile.prototype.draw = function (){
+				drawRotatedImage(this.shape, this.x + shipX - charX, this.y + shipY - charY, this.direction)
+			}
+			var projectiles = [];
+
+			function Laser(startX, startY, direction, lWidth, rgb){
+				this.startX = startX;
+				this.startY = startY;
+				this.direction = direction;
+				this.lWidth = lWidth;
+				this.rgb = rgb;
+				this.life = 30;
+				this.length = 600;
+			}
+
+			Laser.prototype.draw = function (){
+				ctx.beginPath();
+				ctx.lineWidth = 1 + this.life/30 * this.lWidth;
+				ctx.moveTo(this.startX, this.startY);
+				var endX = this.startX + Math.cos(this.direction) * this.length;
+				var endY = 0;//this.startY + Math.sin(this.direction) * this.length;
+				ctx.lineTo(endX, endY);
+				ctx.fillStyle = "red";//"rgba("+ this.rgb + "," + String(this.life/20 + 0.5) + ")";
+				ctx.closePath();
+				ctx.stroke();
+				//this.life--;
+			}
+			var lasers = [];
 
 			var aDown = false;
 			var dDown = false;
 			var wDown = false;
 			var sDown = false;
+			var oDown = false;
+			var pDown = false;
+
+			var leftTimer = 0;
+			var rightTimer = 0;
+			var projModel;
 
 			var init;
 
 			var onscreenX = canvWidth/2 - 5;
 			var onscreenY = canvHeight/2 - 5;
+			var shipX = 0;
+			var shipY = 0;
 
 			function renderFunction(width, height, renderFunction) {
 			    var buffer = document.createElement('canvas');
@@ -80,9 +151,57 @@
 				ctx.strokeStyle = "white";
 				ctx.lineWidth = 3;
 				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(10,24);
+				ctx.lineTo(10,12);
+				ctx.moveTo(26,24);
+				ctx.lineTo(26,12);
+				ctx.moveTo(10,24);
+				ctx.closePath();
+				ctx.lineWidth = 2;
+				ctx.stroke();
+			});
+
+			shipX = onscreenX - charModel.width/2;
+			shipY = onscreenY - charModel.height/2;
+
+			projModel = renderFunction(8, 8, function (ctx){
+				ctx.beginPath();
+				ctx.moveTo(4,4);
+				ctx.arc(4,4,4,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fillStyle = "green";
+				ctx.fill();
 			});
 
 			ctx.drawImage(charModel, canvWidth/2, canvHeight/2);
+
+			function rotatePoint(x, y, centerX, centerY, newRot){
+				var difX = x - centerX;
+				var difY = y - centerY;
+				var len = Math.sqrt(difX*difX + difY*difY);
+
+				var curDir = Math.atan2(difY, difX);
+
+				var newX = len*Math.cos(curDir + newRot + Math.PI*2) + centerX;
+				var newY = len*Math.sin(curDir + newRot + Math.PI*2) + centerY;
+
+				return {x:newX, y:newY};
+			}
+
+			function drawLasers(x, y){
+				var curLaser;
+				for (var i = 0; i < lasers.length; i++){
+					curLaser = lasers[i];
+					curLaser.draw();
+				}
+
+				for (var i = lasers.length-1; i >= 0; i--){
+					if (curLaser.life == 0){
+						lasers.splice(i, 1);
+					}
+				}
+			}
 
 			function drawPlanets(x, y){
 				var leftX = x - canvWidth/2;
@@ -94,8 +213,8 @@
 					thisPlanet = planets[i];
 					if (thisPlanet.x > leftX - thisPlanet.r && thisPlanet.x < leftX + canvWidth + thisPlanet.r && thisPlanet.y > topY - thisPlanet.r && thisPlanet.y < topY + canvHeight + thisPlanet.r){
 						ctx.beginPath();
-						ctx.moveTo(thisPlanet.x, thisPlanet.y);
-						ctx.arc(thisPlanet.x, thisPlanet.y, thisPlanet.r, 0, Math.PI*2, true);
+						ctx.moveTo(thisPlanet.x - charX + canvWidth/2, thisPlanet.y - charY + canvHeight/2);
+						ctx.arc(thisPlanet.x - charX + canvWidth/2, thisPlanet.y - charY + canvHeight/2, thisPlanet.r, 0, Math.PI*2, true);
 						ctx.closePath();
 						ctx.fillStyle = thisPlanet.color;
 						ctx.fill();
@@ -132,7 +251,7 @@
 
 				ctx.beginPath();
 				ctx.lineWidth = 1;
-				ctx.strokeStyle = "white";
+				ctx.strokeStyle = "rgba(0,0,0,1)";
 
 				if (y < canvHeight/2){ //upper left corner
 					ctx.moveTo(0, canvHeight/2 - y);
@@ -171,6 +290,12 @@
 				if (e.keyCode == 83){
 					sDown = true;
 				}
+				if (e.keyCode == 79){
+					oDown = true;
+				}
+				if (e.keyCode == 80){
+					pDown = true;
+				}
 			}
 
 			function checkKeysUp(e){
@@ -186,14 +311,46 @@
 				if (e.keyCode == 83){
 					sDown = false;
 				}
+				if (e.keyCode == 79){
+					oDown = false;
+				}
+				if (e.keyCode == 80){
+					pDown = false;
+				}
 			}
 
-			function applyForce(fCX, fCY, fX, fY, mFC){ //fCX and FCY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {projX:..., projY:..., orth:..., r:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it, r is the distance from the force to the center. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
+			function fireLeftGun(){
+				leftTimer = 30;
+				
+				var projStartPos = rotatePoint(shipX + 10, shipY + 13, onscreenX, onscreenY, rotation);
+				var newProj = new Projectile(projStartPos.x, projStartPos.y, vX, vY-5, rotation, projModel);
+
+				projectiles.push(newProj);/*
+				var projStartPos = rotatePoint(shipX + 10, shipY + 13, onscreenX, onscreenY, rotation);
+
+				lasers.push(new Laser(projStartPos.x, projStartPos.y, rotation-Math.PI/2, 5, "77, 232, 26"));*/
+			}
+
+			function fireRightGun(){
+				rightTimer = 30;
+
+				var projSpeed = Math.sqrt(vX*vX + (-vY+4)*(-vY+4));
+
+				var projStartPos = rotatePoint(shipX + 26, shipY + 13, onscreenX, onscreenY, rotation);
+				var newProj = new Projectile(projStartPos.x, projStartPos.y, vX, vY-5, rotation, projModel);
+
+				projectiles.push(newProj);/*
+				var projStartPos = rotatePoint(shipX + 26, shipY + 13, onscreenX, onscreenY, rotation);
+
+				lasers.push(new Laser(projStartPos.x, projStartPos.y, rotation-Math.PI/2, 5, "77, 232, 26"));*/
+			}
+
+			function applyForce(rX, rY, fX, fY, mFC){ //rX and rY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {projX:..., projY:..., orth:..., r:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it, r is the distance from the force to the center. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
 				//rotate force vectors for direction of ship
 
 				var mag = 1;
 				if (mFC === 0){
-					var magSquared = fCX*fCX + fCY*fCY;
+					var magSquared = rX*rX + rY*rY;
 					if (magSquared === 0){
 						return false;
 					} else {
@@ -203,22 +360,22 @@
 					mag = mFC;
 				}
 
-				var dot = fX*fCX + fY*fCY;
+				var dot = fX*rX + fY*rY;
 				var proj = dot/mag;
 
-				var orth = Math.sqrt (mag*mag - proj*proj);
-				var crossZ = fCX*fY - fCY*fX;
+				var orth = Math.sqrt (fX*fX + fY*fY - proj*proj);
+				var crossZ = rX*fY - rY*fX;
 				if (crossZ < 0){
 					orth *= -1;
 				}
 
-				var projX = proj/mag * fCX;
-				var projY = proj/mag * fCY;
+				var projX = proj/mag * rX;
+				var projY = proj/mag * rY;
 
 				changeVels(projX, projY, orth, mag);
 
 				/*
-				dot product = fX*fCX + fY*fCY
+				dot product = fX*rX + fY*rY
 
 				projection of f onto fC = dot product / magnitude fC
 				orthagonal of f onto fC = sqrt (magSquared - proj*proj)
@@ -243,18 +400,43 @@
 				vY += aLY*dT;
 			}
 
+			function drawProjectiles(){
+				var thisProj;
+				for (var i = 0; i < projectiles.length; i++){
+					thisProj = projectiles[i];
+					thisProj.move();
+					thisProj.draw();
+				}
+				for (var i = projectiles.length - 1; i >= 0 ; i--){
+					thisProj = projectiles[i];
+					if (thisProj.isOutOfBounds()){
+						projectiles.splice(i,1);
+					}
+				}
+			}
+
 			function update(){
+				if (leftTimer > 0){
+					leftTimer--;
+				}
+
+				if (rightTimer > 0){
+					rightTimer--;
+				}
+
 				ctx.clearRect(0,0,canvWidth,canvHeight);
+
 				var buffer = document.createElement('canvas');
 			   	buffer.width = charModel.width;
-			    	buffer.height = charModel.height;
+			    buffer.height = charModel.height;
 			  	bufferCtx = buffer.getContext('2d');
 
-				drawPlanets(charX, charY);
+			  	drawProjectiles();
+			  	drawLasers();
 				
 				if (wDown && !aDown && !dDown){
-					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
-					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, leftForwardEngine.d);
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, rightForwardEngine.d);
 
 					bufferCtx.fillStyle = "red";
 					bufferCtx.beginPath();
@@ -266,7 +448,7 @@
 					bufferCtx.fill();
 				}
 				if (sDown){
-					applyForce(backwardsEngine.x-centerX, backwardsEngine.y-centerY, backwardsEngine.fX, backwardsEngine.fY, 0);
+					applyForce(backwardsEngine.x-centerX, backwardsEngine.y-centerY, backwardsEngine.fX, backwardsEngine.fY, backwardsEngine.d);
 
 					bufferCtx.fillStyle = "red";
 					bufferCtx.beginPath();
@@ -276,7 +458,7 @@
 					bufferCtx.fill();
 				}
 				if (dDown){
-					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, 0);
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, leftForwardEngine.d);
 
 					bufferCtx.fillStyle = "red";
 					bufferCtx.beginPath();
@@ -286,7 +468,7 @@
 					bufferCtx.fill();
 				}
 				if (aDown){
-					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, 0);
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, rightForwardEngine.d);
 
 					bufferCtx.fillStyle = "red";
 					bufferCtx.beginPath();
@@ -294,6 +476,16 @@
 					bufferCtx.arc(rightForwardEngine.x, rightForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
 					bufferCtx.closePath();
 					bufferCtx.fill();
+				}
+
+				drawPlanets(charX, charY);
+
+				if (oDown && leftTimer == 0){
+					fireLeftGun();
+				}
+
+				if (pDown && rightTimer == 0){
+					fireRightGun();
 				}
 
 				charX += vX;
