@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Space</title>
+		<style type="text/css">
+			#mainCanv{
+				background-color:black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mainCanv" width="1400" height="750"></canvas>
+		<script type="text/javascript">
+			var mainCanv = document.getElementById("mainCanv");
+			var ctx = mainCanv.getContext("2d");
+
+			var gridSpace = 75;
+
+			var worldWidth = 10000;
+			var worldHeight = 10000;
+
+			var canvWidth = mainCanv.width;
+			var canvHeight = mainCanv.height;
+
+			var thrusterRadius = 3;
+
+			//character
+			var centerX = 18; //approximate values, dependent on draw func
+			var centerY = 24;
+			var charX = worldWidth/2;
+			var charY = worldHeight/2;
+			var rotation = 0;
+			var totalMass = 30;
+			var momentOfInertia = 2;
+			var charModel;
+			var omega = 0; //angular velocity
+			var vX = 0; //linear x vel
+			var vY = 0; //linear y vel
+
+			var leftForwardEngine = {x:3, y:42, fX:0, fY:-5, d:0};
+			var rightForwardEngine = {x:33, y:42, fX:0, fY:-5, d:0};
+
+			var leftDist = Math.sqrt((leftForwardEngine.x-centerX)*(leftForwardEngine.x-centerX) + (leftForwardEngine.y-centerY)*(leftForwardEngine.y-centerY));
+			leftForwardEngine.d = leftDist;
+			rightForwardEngine.d = leftDist;
+
+			var backwardsEngine = {x:18, y:5, fX:0, fY:5, d:0};
+
+			var backDist = Math.sqrt((backwardsEngine.x-centerX)*(backwardsEngine.x-centerX) + (backwardsEngine.y-centerY)*(backwardsEngine.y-centerY));
+
+			var dT = 0.3; //timestep
+
+			var explosions = [];
+
+			var aDown = false;
+			var dDown = false;
+			var wDown = false;
+			var sDown = false;
+			var oDown = false;
+			var pDown = false;
+
+			var leftTimer = 0;
+			var rightTimer = 0;
+			var projModel;
+
+			var init;
+
+			var onscreenX = canvWidth/2 - 5;
+			var onscreenY = canvHeight/2 - 5;
+			var shipX = 0;
+			var shipY = 0;
+
+			function Planet(x, y, r, color) {
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.color = color;
+			}
+			var planets = [new Planet(4500, 4500, 200, "red"), new Planet(2500, 2500, 300, "green"), new Planet(4500, 6000, 270, "lightBlue")];
+
+			function Projectile(startX, startY, vX, vY, speed, direction, shape){
+				this.x = startX + charX - shipX;
+				this.y = startY + charY - shipY;
+				this.vX = vX;
+				this.vY = vY;
+
+				this.vX = speed * Math.cos(direction);
+				this.vY = speed * Math.sin(direction);
+
+				this.vX += vX;
+				this.vY += vY;
+
+				this.shape = shape;
+
+				this.life = 55;
+			}
+
+			Projectile.prototype.move = function() {
+				this.x += this.vX;
+				this.y += this.vY;
+				this.life--;
+				
+			}
+			Projectile.prototype.isOutOfBounds = function (){
+				var leftX = charX - canvWidth/2.2;
+				var topY = charY - canvHeight/2.2;
+				if (this.x < leftX - this.shape.width/2 || this.x > leftX + canvWidth + this.shape.width/2 || this.y < topY - this.shape.height/2 || this.y > topY + canvHeight + this.shape.height/2){
+					return true;
+				}
+				return false;
+			}
+			Projectile.prototype.draw = function (){
+				drawRotatedImage(this.shape, this.x + shipX - charX, this.y + shipY - charY, this.direction)
+			}
+			var projectiles = [];
+
+			function Laser(startX, startY, lWidth, rgb){
+				this.startX = startX;
+				this.startY = startY;
+				this.lWidth = lWidth;
+				this.rgb = rgb;
+				this.life = 30;
+				this.startLife = 30;
+				this.length = 800;
+			}
+
+			Laser.prototype.draw = function (dir){
+				var color = "rgba("+ this.rgb + "," + String(this.life/this.startLife/2 + 0.5) + ")";
+				var origPos = rotatePoint(this.startX, this.startY, onscreenX, onscreenY, rotation);
+
+				ctx.beginPath();
+				ctx.arc(origPos.x, origPos.y, 8, 0, Math.PI*2, true);
+				ctx.closePath();
+				ctx.fillStyle = color;
+				ctx.fill();
+
+				ctx.beginPath();
+				ctx.lineWidth = 2 + this.life/this.startLife * this.lWidth;
+				ctx.moveTo(origPos.x, origPos.y);
+
+				var endX = origPos.x + Math.cos(dir) * this.length;
+				var endY = origPos.y + Math.sin(dir) * this.length;
+
+				ctx.lineTo(endX, endY);
+				ctx.strokeStyle = color;
+				ctx.closePath();
+				ctx.stroke();
+				this.life--;
+			}
+			var lasers = [];
+
+			function renderFunction(width, height, renderFunction) {
+			    var buffer = document.createElement('canvas');
+			    buffer.width = width;
+			    buffer.height = height;
+			    renderFunction(buffer.getContext('2d'));
+			    return buffer;
+			}
+
+			//character model
+			charModel = renderFunction(40, 50, function (ctx){
+				ctx.beginPath();
+				ctx.moveTo(3,42);
+				ctx.lineTo(18,5);
+				ctx.lineTo(32,42);
+				ctx.arc(18,46,15,0-Math.PI/7,8*Math.PI/7,true);
+				ctx.closePath();
+				ctx.strokeStyle = "white";
+				ctx.lineWidth = 3;
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.moveTo(10,24);
+				ctx.lineTo(10,12);
+				ctx.moveTo(26,24);
+				ctx.lineTo(26,12);
+				ctx.moveTo(10,24);
+				ctx.closePath();
+				ctx.lineWidth = 2;
+				ctx.stroke();
+			});
+
+			shipX = onscreenX - charModel.width/2;
+			shipY = onscreenY - charModel.height/2;
+
+			//projectile model
+			projModel = renderFunction(8, 8, function (ctx){
+				ctx.beginPath();
+				ctx.moveTo(4,4);
+				ctx.arc(4,4,4,0,Math.PI*2,true);
+				ctx.closePath();
+				ctx.fillStyle = "green";
+				ctx.fill();
+			});
+
+			//thruster exhaust model
+			var thrusterImg = new Image();
+			thrusterImg.src = "Space Thruster.png";
+
+			//explosion models
+			var explosionPics = [];
+			for (var i = 1; i <= 16; i++){
+				var img = new Image();
+				img.src = "Explosion Pics/explosion-"+String(i)+".tiff";
+				explosionPics.push(img);
+			}
+
+			function rotatePoint(x, y, centerX, centerY, newRot){
+				var difX = x - centerX;
+				var difY = y - centerY;
+				var len = Math.sqrt(difX*difX + difY*difY);
+
+				var curDir = Math.atan2(difY, difX);
+
+				var newX = len*Math.cos(curDir + newRot + Math.PI*2) + centerX;
+				var newY = len*Math.sin(curDir + newRot + Math.PI*2) + centerY;
+
+				return {x:newX, y:newY};
+			}
+
+			function drawLasers(x, y){
+				var curLaser;
+				for (var i = 0; i < lasers.length; i++){
+					curLaser = lasers[i];
+					curLaser.draw(rotation-Math.PI/2);
+				}
+
+				for (var i = lasers.length-1; i >= 0; i--){
+					curLaser = lasers[i];
+					if (curLaser.life == 0){
+						lasers.splice(i, 1);
+					}
+				}
+			}
+
+			function drawPlanets(x, y){
+				var leftX = x - canvWidth/2;
+				var topY = y - canvHeight/2;
+
+				var thisPlanet;
+
+				for (var i = 0; i < planets.length; i++){
+					thisPlanet = planets[i];
+					if (thisPlanet.x > leftX - thisPlanet.r && thisPlanet.x < leftX + canvWidth + thisPlanet.r && thisPlanet.y > topY - thisPlanet.r && thisPlanet.y < topY + canvHeight + thisPlanet.r){
+						ctx.beginPath();
+						ctx.moveTo(thisPlanet.x - charX + canvWidth/2, thisPlanet.y - charY + canvHeight/2);
+						ctx.arc(thisPlanet.x - charX + canvWidth/2, thisPlanet.y - charY + canvHeight/2, thisPlanet.r, 0, Math.PI*2, true);
+						ctx.closePath();
+						ctx.fillStyle = thisPlanet.color;
+						ctx.fill();
+					}
+				}
+			}
+
+			function drawGrid(x,y){
+				var xOff = (x - canvWidth/2) % gridSpace;
+				var yOff = (y - canvHeight/2) % gridSpace;
+
+				var xLinesToDraw = canvWidth/gridSpace;
+				var yLinesToDraw = canvHeight/gridSpace;
+
+				ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+				ctx.lineWidth = 2;
+
+				ctx.beginPath();
+
+				for (var i = -1; i < xLinesToDraw + 1; i++){
+					ctx.moveTo(gridSpace*i - xOff, 0);
+					ctx.lineTo(gridSpace*i - xOff, canvHeight);
+				}
+
+				for (var i = -1; i < yLinesToDraw + 1; i++){
+					ctx.moveTo(0, gridSpace*i - yOff);
+					ctx.lineTo(canvWidth, gridSpace*i - yOff);
+				}
+
+				ctx.moveTo(xOff, 0);
+				ctx.closePath();
+
+				ctx.stroke();
+
+				ctx.beginPath();
+				ctx.lineWidth = 1;
+				ctx.strokeStyle = "rgba(0,0,0,1)";
+
+				if (y < canvHeight/2){ //upper left corner
+					ctx.moveTo(0, canvHeight/2 - y);
+					ctx.lineTo(canvWidth, canvHeight/2 - y);
+					ctx.moveTo(0, canvHeight/2 - y);
+				} else if (y > worldHeight - canvHeight/2) { //lower left corner
+					ctx.moveTo(0, worldHeight + canvHeight/2 - y);
+					ctx.lineTo(canvWidth, worldHeight + canvHeight/2 - y);
+					ctx.moveTo(0, worldHeight + canvHeight/2 - y);
+				}
+
+				if (x < canvWidth/2){
+					ctx.moveTo(canvWidth/2 - x, 0);
+					ctx.lineTo(canvWidth/2 - x, canvHeight);
+					ctx.moveTo(canvWidth/2 - x, 0);
+				} else if (x > worldWidth - canvWidth/2){
+					ctx.moveTo(worldWidth + canvWidth/2 - x, 0);
+					ctx.lineTo(worldWidth + canvWidth/2 - x, canvHeight);
+					ctx.moveTo(worldWidth + canvWidth/2 - x, 0);
+				}
+
+				ctx.closePath();
+				ctx.stroke();
+			}
+
+			function drawProjectiles(){
+				var thisProj;
+				for (var i = 0; i < projectiles.length; i++){
+					thisProj = projectiles[i];
+					thisProj.move();
+					thisProj.draw();
+				}
+				for (var i = projectiles.length - 1; i >= 0 ; i--){
+					thisProj = projectiles[i];
+					if (thisProj.isOutOfBounds()){
+						projectiles.splice(i,1);
+					}
+					if (thisProj.life == 0){
+						addExplosion(thisProj.x, thisProj.y);
+						projectiles.splice(i,1);
+					}
+				}
+			}
+
+			function drawExplosions(){
+				var curImage;
+				var curExplosion;
+				for (var i = 0; i < explosions.length; i++){
+					curExplosion = explosions[i];
+					curImage = explosionPics[curExplosion.n];
+
+					ctx.drawImage(curImage, curExplosion.x - curImage.width/2 + shipX - charX, curExplosion.y - curImage.height/2 + shipY - charY);
+
+					curExplosion.n++;
+				}
+
+				for (var i = 0; i < explosions.length; i++){
+					curExplosion = explosions[i];
+					if (curExplosion.n == explosionPics.length){
+						explosions.splice(i,1);
+					}
+				}
+			}
+
+			function checkKeysDown(e){
+				if (e.keyCode == 65){
+					aDown = true;
+				}
+				if (e.keyCode == 68){
+					dDown = true;
+				}
+				if (e.keyCode == 87){
+					wDown = true;
+				}
+				if (e.keyCode == 83){
+					sDown = true;
+				}
+				if (e.keyCode == 79){
+					oDown = true;
+				}
+				if (e.keyCode == 80){
+					pDown = true;
+				}
+			}
+
+			function checkKeysUp(e){
+				if (e.keyCode == 65){
+					aDown = false;
+				}
+				if (e.keyCode == 68){
+					dDown = false;
+				}
+				if (e.keyCode == 87){
+					wDown = false;
+				}
+				if (e.keyCode == 83){
+					sDown = false;
+				}
+				if (e.keyCode == 79){
+					oDown = false;
+				}
+				if (e.keyCode == 80){
+					pDown = false;
+				}
+			}
+
+			function fireLeftGun(){
+				leftTimer = 30;
+				
+				var projStartPos = rotatePoint(shipX + 10, shipY + 13, onscreenX, onscreenY, rotation);
+				var newProj = new Projectile(projStartPos.x, projStartPos.y, vX, vY, 5, rotation - Math.PI/2, projModel);
+
+				projectiles.push(newProj);
+
+				//lasers.push(new Laser(shipX + 10, shipY + 13, 5, "77, 232, 26"));
+			}
+
+			function fireRightGun(){
+				rightTimer = 60;
+
+				/*var projStartPos = rotatePoint(shipX + 26, shipY + 13, onscreenX, onscreenY, rotation);
+				var newProj = new Projectile(projStartPos.x, projStartPos.y, vX, vY, 5, rotation - Math.PI/2, projModel);
+
+				projectiles.push(newProj);*/
+
+				lasers.push(new Laser(shipX + 26, shipY + 13, 5, "77, 232, 26"));
+			}
+
+			function applyForce(rX, rY, fX, fY, mFC){ //rX and rY are the distances from point of force to center of mass. fX and fY is the force. Returns an object: {projX:..., projY:..., orth:..., r:...} Towards is the amount of force towards the center of mass, normal is the amount normal to it, r is the distance from the force to the center. Also takes magnitude of FC, which is optional. It will be ignored if it is 0.
+				//rotate force vectors for direction of ship
+
+				var mag = 1;
+				if (mFC === 0){
+					var magSquared = rX*rX + rY*rY;
+					if (magSquared === 0){
+						return false;
+					} else {
+						mag = Math.sqrt(magSquared);
+					}
+				} else {
+					mag = mFC;
+				}
+
+				var dot = fX*rX + fY*rY;
+				var proj = dot/mag;
+
+				var orth = Math.sqrt (fX*fX + fY*fY - proj*proj);
+				var crossZ = rX*fY - rY*fX;
+				if (crossZ < 0){
+					orth *= -1;
+				}
+
+				var projX = proj/mag * rX;
+				var projY = proj/mag * rY;
+
+				changeVels(projX, projY, orth, mag);
+
+				/*
+				dot product = fX*rX + fY*rY
+
+				projection of f onto fC = dot product / magnitude fC
+				orthagonal of f onto fC = sqrt (magSquared - proj*proj)
+				*/
+			}
+
+			function changeVels(projX, projY, orth, r){
+				//w looks kinda like omega :P
+				//l means linear
+				var aW = orth/(totalMass*momentOfInertia);
+				var aLX = projX/totalMass;
+				var aLY = projY/totalMass; 
+
+				var dir = Math.atan2(aLY, aLX);
+				var len = Math.sqrt(aLX*aLX + aLY*aLY);
+
+				aLX = len * Math.cos(dir + rotation + Math.PI*2);
+				aLY = len * Math.sin(dir + rotation + Math.PI*2);
+
+				omega += aW*dT/r;
+				vX += aLX*dT;
+				vY += aLY*dT;
+			}
+
+			function update(){
+				if (leftTimer > 0){
+					leftTimer--;
+				}
+
+				if (rightTimer > 0){
+					rightTimer--;
+				}
+
+				ctx.clearRect(0,0,canvWidth,canvHeight);
+
+				var addedPadding = 20;
+
+				var buffer = document.createElement('canvas');
+			   	buffer.width = charModel.width + addedPadding*2;
+			    buffer.height = charModel.height + addedPadding*2;
+			  	bufferCtx = buffer.getContext('2d');
+
+			  	drawProjectiles();
+			  	drawLasers();
+			  	drawExplosions();
+				
+				if (wDown && !aDown && !dDown){
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, leftForwardEngine.d);
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, rightForwardEngine.d);
+
+					drawExhaust(leftForwardEngine.x + addedPadding, leftForwardEngine.y + addedPadding, 0, bufferCtx);
+					drawExhaust(rightForwardEngine.x + addedPadding, rightForwardEngine.y + addedPadding, 0, bufferCtx);
+
+					/*bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
+					bufferCtx.arc(leftForwardEngine.x, leftForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
+					bufferCtx.arc(rightForwardEngine.x, rightForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();*/
+				}
+				if (sDown){
+					applyForce(backwardsEngine.x-centerX, backwardsEngine.y-centerY, backwardsEngine.fX, backwardsEngine.fY, backwardsEngine.d);
+
+					drawExhaust(backwardsEngine.x + addedPadding, backwardsEngine.y + addedPadding, Math.PI, bufferCtx);
+
+					/*bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(backwardsEngine.x, backwardsEngine.y);
+					bufferCtx.arc(backwardsEngine.x, backwardsEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();*/
+				}
+				if (dDown){
+					applyForce(leftForwardEngine.x-centerX, leftForwardEngine.y-centerY, leftForwardEngine.fX, leftForwardEngine.fY, leftForwardEngine.d);
+
+					drawExhaust(leftForwardEngine.x + addedPadding, leftForwardEngine.y + addedPadding, 0, bufferCtx);
+
+					/*bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(leftForwardEngine.x, leftForwardEngine.y);
+					bufferCtx.arc(leftForwardEngine.x, leftForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath(); lol
+					bufferCtx.fill();*/
+				}
+				if (aDown){
+					applyForce(rightForwardEngine.x-centerX, rightForwardEngine.y-centerY, rightForwardEngine.fX, rightForwardEngine.fY, rightForwardEngine.d);
+
+					drawExhaust(rightForwardEngine.x + addedPadding, rightForwardEngine.y + addedPadding, 0, bufferCtx);
+
+					/*bufferCtx.fillStyle = "red";
+					bufferCtx.beginPath();
+					bufferCtx.moveTo(rightForwardEngine.x, rightForwardEngine.y);
+					bufferCtx.arc(rightForwardEngine.x, rightForwardEngine.y, thrusterRadius, 0, Math.PI*2, true);
+					bufferCtx.closePath();
+					bufferCtx.fill();*/
+				}
+
+				drawPlanets(charX, charY);
+
+				if (oDown && leftTimer == 0){
+					fireLeftGun();
+				}
+
+				if (pDown && rightTimer == 0){
+					fireRightGun();
+				}
+
+				charX += vX;
+				charY += vY;
+				rotation += omega;
+
+				drawRotatedImage(charModel, onscreenX, onscreenY, rotation);
+				drawRotatedImage(buffer, onscreenX, onscreenY, rotation);
+
+				drawGrid(charX,charY);
+			}
+
+			function drawExhaust(x, y, rotation, ctx){
+				ctx.save(); 
+			 
+				ctx.translate(x, y);
+				ctx.rotate(rotation - Math.PI/2);
+				ctx.drawImage(thrusterImg, -(thrusterImg.width/2) - 10, -(thrusterImg.height/2));
+			 
+				ctx.restore(); 
+			}
+
+			function addExplosion(worldX, worldY){
+				explosions.push({x: worldX, y: worldY, n:0});
+			}
+
+			function drawRotatedImage(image, x, y, angle) { 
+			 
+				// save the current co-ordinate system 
+				// before we screw with it
+				ctx.save(); 
+			 
+				// move to the middle of where we want to draw our image
+				ctx.translate(x, y);
+			 
+				// rotate around that point
+				ctx.rotate(angle);
+			 
+				// draw it up and to the left by half the width
+				// and height of the image 
+				ctx.drawImage(image, -(image.width/2), -(image.height/2));
+			 
+				// and restore the co-ords to how they were when we began
+				ctx.restore(); 
+			}
+
+			init = setInterval(update, 20);
+
+			document.body.onkeydown = checkKeysDown;
+			document.body.onkeyup = checkKeysUp;
+		</script>
+	</body>
+</html>
