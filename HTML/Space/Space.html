@@ -41,7 +41,7 @@
 			var explosionPower = 10;
 
 			var health = 80; //max 100
-			var shields = 100;
+			var shields = 70;
 
 			var leftForwardEngine = {x:3, y:42, fX:0, fY:-5, d:0};
 			var rightForwardEngine = {x:33, y:42, fX:0, fY:-5, d:0};
@@ -152,6 +152,18 @@
 				ctx.fillStyle = "green";
 				ctx.fill();
 			});
+
+			shieldMeterModel = renderFunction(70, 88, function (ctx){
+				ctx.beginPath();
+				pathEllipse(ctx, 35, 44, 70, 88);
+				ctx.closePath();
+				ctx.fillStyle = "rgb(0, 86, 161)";
+				ctx.fill();
+			});
+			var innerShieldMeterCanvas = document.createElement('canvas');
+		    innerShieldMeterCanvas.width = shieldMeterModel.width;
+		    innerShieldMeterCanvas.height = shieldMeterModel. height;
+			var innerShieldMeterCtx = innerShieldMeterCanvas.getContext('2d');
 
 			//thruster exhaust model
 			var thrusterImg = new Image();
@@ -330,6 +342,41 @@
 
 					ctx.fill();
 				}
+
+				//draw outer shield ellipse meter
+				var ellipseX = 150;
+				var ellipseY = canvHeight - 70;
+				padding = 1;
+
+				ctx.beginPath();
+				pathEllipse(ctx, ellipseX, ellipseY, shieldMeterModel.width + padding*2, shieldMeterModel.height + padding*2);
+				ctx.closePath();
+				ctx.strokeStyle = "lightBlue";
+				ctx.stroke();		
+
+				//draw innerPart
+				var removeShieldsHeight = shieldMeterModel.height * (1 - shields/100);
+
+				innerShieldMeterCtx.clearRect(0, 0, innerShieldMeterCanvas.width, innerShieldMeterCanvas.height);
+				innerShieldMeterCtx.drawImage(shieldMeterModel, 0, 0);
+				innerShieldMeterCtx.clearRect(0, 0, innerShieldMeterCanvas.width, removeShieldsHeight);
+
+				ctx.drawImage(innerShieldMeterCanvas, ellipseX - innerShieldMeterCanvas.width/2, ellipseY - innerShieldMeterCanvas.height/2);
+			}
+
+			function pathEllipse(context, centerX, centerY, width, height) {  
+			  context.moveTo(centerX, centerY - height/2); // A1
+			  
+			  context.bezierCurveTo(
+			    centerX + width/2, centerY - height/2, // C1
+			    centerX + width/2, centerY + height/2, // C2
+			    centerX, centerY + height/2); // A2
+
+			  context.bezierCurveTo(
+			    centerX - width/2, centerY + height/2, // C3
+			    centerX - width/2, centerY - height/2, // C4
+			    centerX, centerY - height/2); // A1
+			 
 			}
 
 			function drawProjectiles(){
@@ -608,14 +655,14 @@
 				explosions.push({x: worldX, y: worldY, n:0});
 			}
 
-			function drawRotatedImage(image, x, y, angle) { 
+			function drawRotatedImage(image, centerX, centerY, angle) { 
 			 
 				// save the current co-ordinate system 
 				// before we screw with it
 				ctx.save(); 
 			 
 				// move to the middle of where we want to draw our image
-				ctx.translate(x, y);
+				ctx.translate(centerX, centerY);
 			 
 				// rotate around that point
 				ctx.rotate(angle);

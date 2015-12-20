@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>For Mommy</title>
+		<style type="text/css">
+			#overlayCanv{
+				position: absolute;
+			    left: 0px;
+			    top: 0px;
+
+			    z-index: 1;
+			}
+
+			#header{
+				width:100%;
+				height:70px;
+				line-height: 70px; 
+
+				text-align: center;
+				vertical-align: middle;
+				font-size:50px;
+				font-style:"Lucida Console";
+
+				background: green; /* For browsers that do not support gradients */
+			    background: -webkit-linear-gradient(lightGreen, green); /* For Safari 5.1 to 6.0 */
+			    background: -o-linear-gradient(lightGreen, green); /* For Opera 11.1 to 12.0 */
+			    background: -moz-linear-gradient(lightGreen, green); /* For Firefox 3.6 to 15 */
+			    background: linear-gradient(lightGreen, green); /* Standard syntax */
+			}
+
+			.cont{
+				width:380px;
+				height:410px;
+				position:relative;
+				margin:7px;
+
+				overflow:hidden;
+
+				float:left;
+			}
+
+			.img{
+				height:380px;
+			}
+
+			.lbl{
+				position:absolute;
+				bottom:0px;
+
+				width:100%;
+
+				text-align: center;
+				font-size:25px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="overlayCanv" width="1440" height="700"></canvas>
+
+		<div id="header">For Momma</div>
+
+		<div id="cont1" class="cont">
+			<img src="http://embracedisruption.com/wp-content/uploads/2012/08/ilovemom1.png" class="img"></img>
+			<div id="label1" class="lbl">Momma is super cool!</div>
+		</div>
+
+		<div id="cont2" class="cont">
+			<img src="http://images.inc.com/uploaded_files/image/1940x900/software-computer-code-1940x900_35196.jpg" class="img"></img>
+			<div id="label2" class="lbl">She helps me code.</div>
+		</div>
+
+		<div id="cont3" class="cont">
+			<img src="https://pbs.twimg.com/profile_images/447374371917922304/P4BzupWu.jpeg" class="img"></img>
+			<div id="label3" class="lbl">There is no better Momma bunny.</div>
+		</div>
+
+		<script type="text/javascript">
+			var canvas = document.getElementById("overlayCanv");
+
+			document.body.onload = function (){
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+			}
+
+			function canvResize(){
+				oldWidth = canvas.width;
+				oldHeight = canvas.height;
+
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+
+				for (var i = 0; i < xs.length; i++){
+					xs[i] *= canvas.width/oldWidth;
+					ys[i] *= canvas.height/oldHeight;
+				}
+			}
+			window.onresize = canvResize;
+
+			var ctx = canvas.getContext("2d");
+
+			var iconImage = new Image();
+			iconImage.src = "https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-128.png";
+
+			var r = 25;
+			var offX = -26;
+			var offY = -25;
+
+			var xs = [];
+			var ys = [];
+			var vXs = [];
+			var vYs = [];
+
+			function add(x, y, vX, vY){
+				xs.push(x);
+				ys.push(y);
+				vXs.push(vX);
+				vYs.push(vY);
+			}
+
+			add(300, 400, 3, 3);
+			add(250, 600, 5, 3);
+			add(700, 300, 3, -3.7);
+			add(800, 200, -2, -1);
+			add(1300, 100, -4, 0.5);
+
+			var oldWidth = 0;
+			var oldHeight = 0;
+
+			function update(){
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.beginPath();
+
+				var x;
+				var y;
+
+				for (var i = 0; i < xs.length; i++){
+					x = xs[i];
+					y = ys[i];
+
+					if (x + r > canvas.width || x - r < 0){
+						vXs[i] *= -1;
+					}
+					if (y + r > canvas.height || y - r < 0){
+						vYs[i] *= -1;
+					}
+
+					xs[i] += vXs[i];
+					ys[i] += vYs[i];
+
+					x = xs[i];
+					y = ys[i];
+
+					ctx.moveTo(x, y);
+					//ctx.arc(x, y, r, 0, Math.PI*2, true);
+					ctx.drawImage(iconImage, x + offX, y + offY, r*2, r*2);
+				}
+
+				ctx.closePath();
+				ctx.fillStyle = "red";
+				ctx.fill();
+			}
+
+			var init = setInterval(update, 17); //1000/60 ~ 17
+		</script>
+	</body>
+</html>
