@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Conway v1, Basic</title>
+		<style type="text/css">
+			canvas{
+				background-color:black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canv" width="1200" height="700"></canvas>
+
+		<script type="text/javascript">
+			var canvas = document.getElementById("canv");
+			var ctx = canvas.getContext("2d");
+
+			var cells = [];
+			var pastCells = [];
+			var cellSize = 2;
+
+			canvas.width = Math.floor(canvas.width/cellSize) * cellSize;
+			canvas.height = Math.floor(canvas.height/cellSize) * cellSize;
+
+			var cellsWidth = canvas.width/cellSize;
+			var cellsHeight = canvas.height/cellSize;
+
+			//0 = dead
+			//1 = alive
+			//array of arrays, cells is an array of columns (first # = x, second # = y)
+
+			function randCell(){
+				var alivePercent = 0.1;
+				if (Math.random() < alivePercent){
+					return 1;
+				}
+				return 0;
+			}
+
+			for (var i = 0; i < cellsWidth; i++){
+				cells.push([0]);
+				pastCells.push([0]);
+				for (var j = 0; j < cellsHeight; j++){
+					cells[i].push(randCell());
+					pastCells[i].push(cells[i][j]);
+				}
+				cells[i].push(0);
+				pastCells[i].push(0);
+			}
+
+			cells.unshift([]);
+			pastCells.unshift([]);
+			cells.push([]);
+			pastCells.push([]);
+			for (var i = 0; i < cellsHeight + 2; i++){
+				cells[0].push(0);
+				pastCells[0].push(0);
+				cells[cells.length - 1].push(0);
+				pastCells[pastCells.length - 1].push(0);
+			}
+
+			function drawCells(){
+				ctx.fillStyle = "white";
+				for (var i = 1; i <= cellsWidth; i++){
+					for (var j = 1; j <= cellsHeight; j++){
+						updatePastCells(i, j);
+						if (cells[i][j] === 1){
+							ctx.fillRect((i-1)*cellSize, (j-1)*cellSize, cellSize, cellSize);
+						}
+					}
+				}
+			}
+
+			function updatePastCells(i, j){
+				pastCells[i][j] = cells[i][j];
+			}
+
+			function changeState(i, j){
+				i++;
+				j++;
+				var upLeft = pastCells[i-1][j-1];
+				var left = pastCells[i-1][j];
+				var downLeft = pastCells[i-1][j+1];
+				var down = pastCells[i][j+1];
+				var downRight = pastCells[i+1][j+1];
+				var right = pastCells[i+1][j];
+				var upRight = pastCells[i+1][j-1];
+				var up = pastCells[i][j-1];
+
+				var sum = upLeft + left + downLeft + down + downRight + right + upRight + up;
+
+				if (pastCells[i][j] === 1){
+					if (sum < 2){
+						cells[i][j] = 0;
+					} else if (sum > 3){
+						cells[i][j] = 0;
+					}
+				} else if (sum === 3) {
+					cells[i][j] = 1;
+				}
+			}
+
+			function updateAllCells(){
+				for (var i = 0; i < cellsWidth; i++){
+					for (var j = 0; j < cellsHeight; j++){
+						changeState(i, j);
+					}
+				}
+			}
+
+			function update(){
+				updateAllCells();
+
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+				drawCells();
+			}
+
+			var init = setInterval(update, 25);
+		</script>
+	</body>
