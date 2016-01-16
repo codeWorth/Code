@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<img src="ledZep.jpg">
+		<canvas id="canv1"></canvas>
+		<canvas id="canv2"></canvas>
+		<script type="text/javascript">
+			var img = new Image();
+			img.src = "ledZep.jpg";
+
+			setTimeout(run, 1000);
+
+			function run(){
+				var redMaskCanv = document.getElementById('canv1');
+				redMaskCanv.width = img.width;
+				redMaskCanv.height = img.height;
+
+				var blobFilterCanv = document.getElementById('canv2');
+				blobFilterCanv.width = img.width;
+				blobFilterCanv.height = img.height;
+
+				var ctx1 = redMaskCanv.getContext('2d');
+				ctx1.drawImage(img, 0, 0);
+
+				var ctx2 = blobFilterCanv.getContext('2d');
+
+				var imgData = ctx1.getImageData(0, 0, redMaskCanv.width, redMaskCanv.height);
+				var redMin = 150;
+				var greenMax = 120;
+				var blueMax = 120;
+
+				var redMask = [];
+
+				for (var i = 0; i < redMaskCanv.width; i++){
+					redMask.push([]);
+					for (var j = 0; j < redMaskCanv.height; j++){
+						var dataIndex = (j * redMaskCanv.height + i)*4;
+						var curR = imgData.data[dataIndex];
+						var curG = imgData.data[dataIndex+1];
+						var curB = imgData.data[dataIndex+2];
+
+						if (curR > redMin && curG < greenMax && curB < blueMax){
+							ctx1.fillStyle = "red";
+							ctx1.fillRect(i, j, 1, 1);
+							redMask[i].push(1);
+						} else {
+							ctx1.fillStyle = "black";
+							ctx1.fillRect(i, j, 1, 1);
+							redMask[i].push(0);
+						}
+					}
+				} 
+
+				var aveSize = 3;
+				var blobMask = [];
+
+				var aveWeight = 1;
+
+				var minAve = 0.43;
+
+				for (var j = 0; j < redMask[0].length; j++){
+					blobMask.push([]);
+					for (var i = 0; i < redMask.length; i++){
+						var curAve = aveAround(i, j, aveSize, redMask);
+
+						var weightedAve = curAve*aveWeight + (redMask[i][j])*(1-aveWeight);
+
+						if (weightedAve > minAve){
+							ctx2.fillStyle = "red";
+							ctx2.fillRect(i, j, 1, 1);
+							blobMask[j].push(1);
+						} else {
+							ctx2.fillStyle = "black";
+							ctx2.fillRect(i, j, 1, 1);
+							blobMask[j].push(0);
+						}
+					}
+				}
+			}
+
+			function aveAround(i, j, size, array){
+				var up = j;
+				var left = i;
+
+				var i = 0;
+				while (up > 0 && i < size){
+					up--;
+					i++;
+				}
+
+				i = 0;
+				while (left > 0 && i < size){
+					left--;
+					i++;
+				}
+
+				var width = 0;
+				var height = 0;
+
+				var i = 0;
+				while (i+width < array.length && i < size){
+					width++;
+					i++;
+				}
+
+				i = 0;
+				while (j+height < array[0].length && i < size){
+					height++;
+					i++;
+				}
+
+				var sum = 0;
+				var count = 0;
+				for (var i = 0; i < width; i++){
+					for (var j = 0; j < height; j++){
+						sum += array[i+left][j+up];
+						count++;
+					}
+				}
+
+				return sum/count;
+			}
+		</script>
+	</body>
+	
+</html>

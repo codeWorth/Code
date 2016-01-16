@@ -21,6 +21,10 @@ public class Player{
 		field = theField;
 	}
 
+	public int score(){ //must return 0-9
+		return health/10;
+	}
+
 	public Player(int startX, int startY, Field theField, int nHealth, int nCooldown, int nDamage, int nPoints){
 		x = startX;
 		y = startY;
@@ -65,19 +69,19 @@ public class Player{
 
 
 	public boolean attackUp(){ 
-		return field.playerAttackUp(x, y, damage)
+		return field.playerAttackUp(x, y, damage);
 	}
 
 	public boolean attackDown(){
-		return field.attackSquare(x, y+1, damage);
+		return field.playerAttackDown(x, y, damage);
 	}
 
 	public boolean attackLeft(){
-		return field.attackSquare(x-1, y, damage);
+		return field.playerAttackLeft(x, y, damage);
 	}
 
 	public boolean attackRight(){
-		return field.attackSquare(x+1, y, damage);
+		return field.playerAttackRight(x, y, damage);
 	}
 
 

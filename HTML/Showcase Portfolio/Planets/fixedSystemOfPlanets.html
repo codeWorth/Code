@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Gravitationally Gravitating Towards Total Awesome</title>
+		<title>System of Planets</title>
 		<style type="text/css">
 			#mainCanvas{
 				background-color:black;
@@ -60,9 +60,15 @@
 			var playing = false;
 			var started = false;
 			var selected = "none";
-			var dT = 0.1;
+			var dT = 0.06;
 			var t = 0;
 			var init;
+
+			var camX = 0;
+			var camY = 0;
+			var moveDampening = 10;
+
+			var gridSpace = 50;
 		//helpful functions
 			function distance(x1,y1,x2,y2){
 				return Math.sqrt(Math.pow(x2-x1, 2)+Math.pow(y2-y1, 2));
@@ -125,6 +131,10 @@
 			}
 			
 			function updateBallStats(ballI){
+				if (!playing){
+					return;
+				}
+
 				mass[ballI] = parseFloat(massBox.value) * massConversionFactor;
 				initMass[ballI] = mass[ballI];
 				initSpeed[ballI] = parseFloat(speedBox.value) / speedConversionFactor;
@@ -147,6 +157,42 @@
 				angleBox.value = ""; 
 				xBox.value = "";
 				yBox.value = "";
+			}
+
+			function moveCam(){
+				if (x.length === 0){
+					return;
+				}
+
+				var wantedX = 0;
+				var wantedY = 0;
+
+				for (var i = 0; i < x.length; i++){
+					wantedX += x[i];
+					wantedY += y[i];
+				}
+				wantedX /= x.length;
+				wantedY /= y.length;
+
+				wantedX -= canvas.width/2;
+				wantedY -= canvas.height/2;
+
+				var xChange = (wantedX - camX)/moveDampening;
+				var yChange = (wantedY - camY)/moveDampening;
+
+				var minChange = 0.1;
+				if (xChange*xChange + yChange*yChange < minChange*minChange){ //if the change is very small
+					camX = wantedX; //just set the cam to the wanted place
+					camY = wantedY;
+				} else {
+					camX += xChange;
+					camY += yChange;
+				}
+			}
+
+			function resetCam(){
+				camX = 0;
+				camY = 0;
 			}
 			
 			function resetToInitial(){
@@ -182,6 +228,9 @@
 			
 		//canvas operation functions	
 			function drawBall(ballI){
+				ctx.save();
+				ctx.translate(-camX, -camY);
+
 				var lineLength = distance(0,0,xVel[ballI],yVel[ballI]);
 				var ballR = Math.max(Math.pow(mass[ballI]/massConversionFactor, 1/3), 5);
 				var addedX = ballR * (xVel[ballI]/lineLength);
@@ -202,14 +251,49 @@
 				ctx.fillStyle = "black";
 				ctx.textAlign = "center";
 				ctx.fillText(ballI+1, x[ballI], y[ballI]);
+
+				ctx.restore();
+			}
+
+			function drawGrid(x, y){
+				var xOff = (x - canvas.width/2) % gridSpace;
+				var yOff = (y - canvas.height/2) % gridSpace;
+
+				var xLinesToDraw = canvas.width/gridSpace;
+				var yLinesToDraw = canvas.height/gridSpace;
+
+				ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+				ctx.lineWidth = 2;
+
+				ctx.beginPath();
+
+				for (var i = -1; i < xLinesToDraw + 1; i++){
+					ctx.moveTo(gridSpace*i - xOff, 0);
+					ctx.lineTo(gridSpace*i - xOff, canvas.height);
+				}
+
+				for (var i = -1; i < yLinesToDraw + 1; i++){
+					ctx.moveTo(0, gridSpace*i - yOff);
+					ctx.lineTo(canvas.width, gridSpace*i - yOff);
+				}
+
+				ctx.moveTo(xOff, 0);
+				ctx.closePath();
+
+				ctx.stroke();
 			}
 			
 			function drawSelectCircle(ballI){
+				ctx.save();
+				ctx.translate(-camX, -camY);
+
 				ctx.strokeStyle = "yellow"				
 				ctx.beginPath();
 				ctx.arc(x[ballI], y[ballI], Math.max(Math.pow(mass[ballI]/massConversionFactor, 1/3), 5) + 1, 0, 2*Math.PI, true);
 				ctx.stroke();
 				ctx.closePath();
+
+				ctx.restore();
 			}
 			function selectBall(ballI){
 				drawSelectCircle(ballI);
@@ -218,13 +302,11 @@
 			}
 			
 			function deselectBall(ballI){
-				ctx.clearRect(0,0,1200,700);
 				selectedText.innerText = "Planet Selected: None";
 				updateBallStats(ballI);
 				clearUserInterface();
-				for(var i = 0;i<x.length;i++){
-					drawBall(i);
-				}
+				
+				redrawAllBalls();
 			}
 			
 			function redrawAllBalls(){
@@ -232,6 +314,8 @@
 				for(var i = 0;i<x.length;i++){
 					drawBall(i);
 				}
+
+				drawGrid(camX, camY);
 			}
 			
 			function arrowhead(fromx, fromy, tox, toy){
@@ -266,6 +350,10 @@
 
 			function ballClicked(mouseX, mouseY){
 				var i = mass.length;
+
+				mouseX += camX;
+				mouseY += camY;
+
 				while (i--){
 					if(distance(mouseX,mouseY,x[i],y[i])<=Math.max(Math.pow(mass[i], 1/3), 5)+2){
 						return i
@@ -275,28 +363,28 @@
 			}
 		//canvas click handeling
 			function onclickHandler(e){
-				if(!playing && !started){
-					var clicked = ballClicked(e.x,e.y);
-					if(e.altKey){
-						if(clicked > -1 && selected == "none"){
+				var clicked = ballClicked(e.x,e.y);
+				if(e.altKey){
+					if(clicked > -1 && selected == "none"){
+						if (!playing){
 							selected = clicked;
 							selectBall(clicked);
 						}
-					} else if(selected != "none" ){
-						if(!e.shiftKey && clicked == -1){
-							deselectBall(selected);
-							selected = "none";
-						}
-					} else if(!e.shiftKey){
-						addBall(e.x,e.y);
-						selectBall(x.length-1);
-						selected = x.length-1;
 					}
+				} else if(selected != "none" ){
+					if(!e.shiftKey && clicked == -1){
+						deselectBall(selected);
+						selected = "none";
+					}
+				} else if(!e.shiftKey && !started && !playing){
+					addBall(e.x,e.y);
+					selectBall(x.length-1);
+					selected = x.length-1;
 				}
 			}
 			
 			function mousemoveHandler(e){
-				if(mousedown && selected != "none"){
+				if(mousedown && selected != "none" && playing){
 					if(e.shiftKey){
 						changePosition(e.x,e.y,selected);
 					}
@@ -313,12 +401,18 @@
 						playing = false;
 						startButton.innerText = "Play";
 					} else {
-						init = setInterval(simulate, 2);
+						deselectBall(selected);
+						selected = "none";
+
+						init = setInterval(simulate, 4);
 						playing = true;
 						startButton.innerText = "Pause";
 					}
 				} else {
-					init = setInterval(simulate, 2);
+					deselectBall(selected);
+					selected = "none";
+
+					init = setInterval(simulate, 4);
 					started = true;
 					playing = true;
 					startButton.innerText = "Pause";
@@ -332,17 +426,28 @@
 					clearInterval(init);
 					started = false;
 					playing = false;
+
+					resetCam();
 					resetToInitial();
 				}
 			}
 			
 			function keyupHandler(e){
-				if(e.keyCode == 8 && selected != "none"){
-					if(!(massBox.hasFocus || speedBox.hasFocus || angleBox.hasFocus || xBox.hasFocus || yBox.hasFocus)){
-						deselectBall(selected);
-						fullDeleteBall(selected);
-						redrawAllBalls();
-						selected = "none";
+				if(selected != "none"){
+					if(!(document.activeElement === speedBox || document.activeElement === massBox || document.activeElement === angleBox || document.activeElement === xBox || document.activeElement === yBox)){
+						if (e.keyCode == 8){
+							deselectBall(selected);
+							fullDeleteBall(selected);
+							redrawAllBalls();
+							selected = "none";
+						}
+					} else {
+						if (e.keyCode == 13){
+							updateBallStats(selected);
+							document.activeElement.blur();
+							redrawAllBalls();
+							selectBall(selected);
+						}
 					}
 				}
 			}
@@ -381,7 +486,8 @@
 				var newY;
 				var mvX;
 				var mvY;
-				if(t % 5 == 0){
+				if(t % 4 == 0){
+					moveCam();
 					redrawAllBalls();
 				}
 				for(var j = 0;j<x.length;j++){
@@ -430,6 +536,8 @@
 					}
 				}
 			}
+
+			drawGrid(camX, camY);
 		</script>
 	<br/>
 	<pre>
@@ -438,11 +546,6 @@ Controls:
 	Alt-click to select planet
 	Alt-click-drag while a planet is selected to change velocity
 	Shift-click-drag while a planet is selected to change position
-	
-Possible stable(ish) orbits:
-    1. (two-bodies, sun+planet):
-	a. sun:mass=10000; speed=0; direction=90; x position:583; y position:376
-	b. planet:mass=0.02; speed=50; dircetion=0; x position=200; y position=362
 	</pre>
 	</body>
 </html>

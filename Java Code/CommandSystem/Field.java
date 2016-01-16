@@ -125,7 +125,7 @@ public class Field{
 			return true;
 		}
 
-		Player killedGuy = takeDamage(x, y-1, damage);
+		Player killedGuy = field[x][y-1].takeDamage(x, y-1, damage);
 		if (killedGuy != null){ //if the enemy player died, HANDLE IT
 			field[x][y].killedEnemy(killedGuy);
 		}
@@ -144,7 +144,7 @@ public class Field{
 			return true;
 		}
 
-		Player killedGuy = takeDamage(x, y+1, damage);
+		Player killedGuy = field[x][y+1].takeDamage(x, y+1, damage);
 		if (killedGuy != null){ //if the enemy player died, HANDLE IT
 			field[x][y].killedEnemy(killedGuy);
 		}
@@ -163,10 +163,10 @@ public class Field{
 			return true;
 		}
 
-		Player killedGuy = takeDamage(x-1, y, damage);
+		Player killedGuy = field[x-1][y].takeDamage(x-1, y, damage);
 		if (killedGuy != null){ //if the enemy player died, HANDLE IT
 			field[x][y].killedEnemy(killedGuy);
-		}
+		}    q
 
 		return true;
 	}
@@ -182,11 +182,75 @@ public class Field{
 			return true;
 		}
 
-		Player killedGuy = takeDamage(x+1, y, damage);
+		Player killedGuy = field[x+1][y].takeDamage(x+1, y, damage);
 		if (killedGuy != null){ //if the enemy player died, HANDLE IT
 			field[x][y].killedEnemy(killedGuy);
 		}
 
 		return true;
+	}
+
+
+	public Player[][] getField(){
+		return field;
+	}
+
+
+	public void printField(){
+		int cellWidth = 1;
+
+		double yToXRatio = 0.5; //x * 0.5 = y
+		int cellHeight = cellWidth * yToXRatio;
+
+		cellWidth += 1; //for dividers
+		cellHeight += 1;
+
+		for (var i = -1; i < (width+1) * cellWidth; i++){
+			for (var j = -1; j < (height+1) * cellHeight; j++){
+				if (i >= 0 && i < width*cellWidth){
+					if (j >= 0 && j < height*cellHeight){
+						//middle
+						int midRelX = i % cellWidth;
+						int midRelY = j % cellHeight;
+
+						Player thisPlayer = field[i][j];
+
+						if (midRelX == 0 && midRelY == 0){
+							System.out.print("+");
+						} else if (midRelX == 1 && midRelY == 1 && thisPlayer != null){
+							int score = thisPlayer.score();
+							System.out.print(score);
+						}
+					} else {
+						System.out.print("-"); //top or bottom
+					}
+				} else {
+					if (j >= 0 && j < height*cellHeight){
+						System.out.print("|"); //left or right
+					} else {
+						System.out.print(""); //corner
+					}
+				}
+			}
+			System.out.println("");
+		}
+
+		/*
+		  --------------     18 across
+		|				 |
+		|				 |
+		|				 |
+		|				 |
+		|			 	 |
+		|				 |
+		|				 | 9 down
+		  --------------
+		*/
+
+	}
+
+	public static void main(String[] args) {
+		Field field = new Field(7, 7);
+		field.printField();
 	}
 }
