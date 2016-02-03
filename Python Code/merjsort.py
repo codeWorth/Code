@@ -1,15 +1,17 @@
-def merjSort(array):
+
+
+def merjSort(array, side):
     if len(array) == 1:
         return array
     else:
         pL = len(array)/2
         print array[:pL]
         print array[pL:]
-        print "--------"
-        p1 = merjSort(array[:pL])
-        p2 = merjSort(array[pL:])
-        print p1
-        print p2
+        print side+" -------- "
+        p1 = merjSort(array[:pL], "Left")
+        p2 = merjSort(array[pL:], "Right")
+        print "Left"+" "+str(p1)
+        print "Right"+" "+str(p2)
         print "+++++++"
         n1 = 0
         n2 = 0
@@ -42,6 +44,6 @@ while True:
     
     print array
     print "--------"
-    end = merjSort(array)
+    end = merjSort(array, "Start")
     print "Result:"
     print end
