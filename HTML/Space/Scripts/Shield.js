@@ -59,9 +59,6 @@ function Shield(shipModel, padding, color, rechargeRate){ //model is model of sh
 
 	this.shieldModel = document.createElement('canvas');
 
-	console.log(renderFunction);
-	console.log(pathEllipse);
-
 	this.pad = 2;
 
 	this.shieldModel = document.createElement('canvas');
@@ -74,17 +71,17 @@ function Shield(shipModel, padding, color, rechargeRate){ //model is model of sh
 	shieldCtx.fillStyle = "rgba(" + this.color + ", 0.7)";
 	shieldCtx.beginPath();
 
-	shieldCtx.moveTo(this.a, this.b - this.b + this.pad); // A1
+	shieldCtx.moveTo(this.a, this.pad); // A1
   
 	shieldCtx.bezierCurveTo(
-		this.a + this.a, this.b - this.b, // C1
+		this.a + this.a, 0, // C1
 		this.a + this.a, this.b + this.b, // C2
 		this.a, this.b + this.b); // A2
 
 	shieldCtx.bezierCurveTo(
-		this.a - this.a, this.b + this.b, // C3
-		this.a - this.a, this.b - this.b + this.pad, // C4
-		this.a, this.b - this.b + this.pad); // A1
+		0, this.b + this.b, // C3
+		0, this.pad, // C4
+		this.a, this.pad); // A1
 
 	shieldCtx.closePath();
 	shieldCtx.fill();
@@ -94,7 +91,7 @@ function Shield(shipModel, padding, color, rechargeRate){ //model is model of sh
 }
 
 Shield.prototype.draw = function (ctx, centerX, centerY, rotation){
-	drawRotatedImage(this.shieldModel, centerX, centerY - this.pad, rotation);
+	drawRotatedImageAlpha(this.shieldModel, centerX-1, centerY - this.pad, rotation, this.level/100);
 }
 
 Shield.prototype.update = function (){

@@ -22,14 +22,19 @@
 			var init;
 			
 			var speed = 8;
+			var dampening = 1 - 0.001;
 			var radiusOfCircles = 12;
 			var radiusOfCirclesSquared = radiusOfCircles*radiusOfCircles;
 			
 			function createParticles(num){
 				var row = 1;
 				var column = 1;
+				var dX;
+				var dY;
 				for (var i = 1;i<=num;i++){
-					particles.push({x:column*radiusOfCircles*4,y:row*radiusOfCircles*4,dx:Math.random()*speed-speed/2,dy:Math.random()*speed-speed/2,color:"white"});
+					dX = Math.random()*speed-speed/2;
+					dY = Math.random()*speed-speed/2;
+					particles.push({x:column*radiusOfCircles*4,y:row*radiusOfCircles*4,dx:dX,dy:dY,color:"white",nDX:dX,nDY:dY});
 					column++;
 					drawPart(particles[i - 1]);
 					if ((column+1) * radiusOfCircles*4 > 1200 - radiusOfCircles){
@@ -44,70 +49,35 @@
 			function run(){
 				ctx.clearRect(0,0,1200,700);
 				for (var i = 0;i<particles.length;i++){
+					particle1 = particles[i];
+					if (particle1.x+particle1.dx > 1200 - radiusOfCircles  || particle1.x+particle1.dx < 0 + radiusOfCircles){
+						particle1.nDX *= -1;
+					}
+					if (particle1.y+particle1.dy > 700 - radiusOfCircles || particle1.y+particle1.dy < 0 + radiusOfCircles){
+						particle1.nDY *= -1;
+					}
+					for (var j = i+1;j<particles.length;j++){
+						particle2 = particles[j];
+						if (comingDistanceSquared(particle1,particle2) <= radiusOfCirclesSquared*4) {
+							bounce(particle1,particle2);
+							var count = 0;
+						}
+					}
+				}
+				for (var i = 0;i<particles.length;i++){
 					var particle = particles[i];
+					particle.dx = particle.nDX*dampening;
+					particle.dy = particle.nDY*dampening;
+
 					particle.x += particle.dx;
 					particle.y += particle.dy;
 					drawPart(particle);
 				}
-				for (var i = 0;i<particles.length;i++){
-					particle1 = particles[i];
-					if (particle1.x > 1200 - radiusOfCircles  || particle1.x < 0 + radiusOfCircles){
-						particle1.dx *= -1;
-						while (particle1.x + particle1.dx > 1200 - radiusOfCircles  || particle1.x + particle1.dx < 0 + radiusOfCircles){
-							particle1.x += particle1.dx;
-							particle1.y += particle1.dy;
-							ctx.beginPath();
-							ctx.fillStyle = "red";
-							ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
-							ctx.closePath();
-							ctx.fill();
-						}
-					}
-					if (particle1.y > 700 - radiusOfCircles || particle1.y < 0 + radiusOfCircles){
-						particle1.dy *= -1;
-						while (particle1.y + particle1.dy > 700 - radiusOfCircles  || particle1.y + particle1.dy < 0 + radiusOfCircles){
-							particle1.x += particle1.dx;
-							particle1.y += particle1.dy;
-							ctx.beginPath();
-							ctx.fillStyle = "red";
-							ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
-							ctx.closePath();
-							ctx.fill();
-						}
-					}
-					for (var j = i+1;j<particles.length;j++){
-						particle2 = particles[j];
-						if (distanceSquared(particle1,particle2) <= radiusOfCirclesSquared*4) {
-							bounce(particle1,particle2);
-							var count = 0;
-							while (distanceSquared({x:particle1.x+particle1.dx,y:particle1.y+particle1.dy},{x:particle2.x+particle2.dx,y:particle2.y+particle2.dy}) <= radiusOfCirclesSquared*4){
-								if (count > 100){
-									console.log('boop');
-									goButton.innerText = "Start";
-									clearInterval(init);
-								}
-								particle1.x += particle1.dx;
-								particle1.y += particle1.dy;
-								ctx.beginPath();
-								ctx.fillStyle = "red";
-								ctx.arc(particle1.x,particle1.y,radiusOfCircles,0,Math.PI*2,true);
-								ctx.closePath();
-								ctx.fill();
-								ctx.beginPath();
-								ctx.fillStyle = "red";
-								ctx.arc(particle2.x,particle2.y,radiusOfCircles,0,Math.PI*2,true);
-								ctx.closePath();
-								ctx.fill();
-								count++;
-							}
-						}
-					}
-				}
 			}
 			
-			function distanceSquared(p1,p2){
-				var d1 = p2.x-p1.x;
-				var d2 = p2.y-p1.y;
+			function comingDistanceSquared(p1,p2){
+				var d1 = p2.x+p2.dx-p1.x;
+				var d2 = p2.y+p2.dy-p1.y;
 				return d1*d1+d2*d2;
 			}
 			
@@ -124,15 +94,15 @@
 						var xL2 = (p2.dx/mL2 + p2.dy)/(mL2+1/mL2);
 						var vL2 = {x:xL2,y:mL*xL2};
 						
-						p1.dx -= vL.x;
-						p1.dy -= vL.y;
-						p2.dx += vL.x;
-						p2.dy += vL.y;
-					
-						p2.dx -= vL2.x;
-						p2.dy -= vL2.y;
-						p1.dx += vL2.x;
-						p1.dy += vL2.y;
+						p1.nDX -= vL.x;
+						p1.nDY -= vL.y;
+						p2.nDX += vL.x;
+						p2.nDY += vL.y;
+				 	
+						p2.nDX -= vL2.x;
+						p2.nDY -= vL2.y;
+						p1.nDX += vL2.x;
+						p1.nDY += vL2.y;
 					} else {
 						var xL = p1.dx;
 						var vL = {x:xL,y:0};
@@ -140,16 +110,16 @@
 						//v_l for v_2
 						var xL2 = p2.dx;
 						var vL2 = {x:xL2,y:0};
-						
-						p1.dx -= vL.x;
-						p1.dy -= vL.y;
-						p2.dx += vL.x;
-						p2.dy += vL.y;
-					
-						p2.dx -= vL2.x;
-						p2.dy -= vL2.y;
-						p1.dx += vL2.x;
-						p1.dy += vL2.y;
+					 	
+						p1.nDX -= vL.x;
+						p1.nDY -= vL.y;
+						p2.nDX += vL.x;
+						p2.nDY += vL.y;
+				 	
+						p2.nDX -= vL2.x;
+						p2.nDY -= vL2.y;
+						p1.nDX += vL2.x;
+						p1.nDY += vL2.y;
 					}
 				} else {
 					var xL = p1.dy;

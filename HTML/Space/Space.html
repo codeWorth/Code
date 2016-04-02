@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html>
 	<head>
 		<title>Space</title>
@@ -33,6 +33,7 @@
 		<script src="Scripts/Enemies.js"></script>
 		<script src="Scripts/Planets.js"></script>
 		<script src="Scripts/Thruster.js"></script>
+		<script src="Scripts/Minimap.js"></script>
 		<script src="Scripts/GeneralFunctions.js" id="helper"></script>
 	</head>
 	<body>
@@ -44,13 +45,15 @@
 			var ctx = mainCanv.getContext("2d");
 
 			var minimap = document.getElementById("minimap");
+			var miniCtx = minimap.getContext("2d");
 
 			var gridSpace = 75;
-			var worldWidth = 10000;
-			var worldHeight = 10000;
+			var worldWidth = 20000;
+			var worldHeight = 20000;
 
 			var init;
 			var grid;
+			var minimap;
 			var canvWidth;
 			var canvHeight;
 			var dT;
@@ -82,6 +85,8 @@
 
 				character = new Character(canvWidth, canvHeight, charModel);
 
+				minimap =  new Minimap(minimap.width, minimap.height, 0.4, miniCtx, character);
+
 				aDown = false;
 				dDown = false;
 				wDown = false;
@@ -89,7 +94,16 @@
 				oDown = false;
 				pDown = false;
 
-				planets = [new Planet(4500, 4500, 200, "red", character, canvWidth, canvHeight), new Planet(2500, 2500, 300, "green", character, canvWidth, canvHeight), new Planet(4500, 6000, 270, "lightBlue", character, canvWidth, canvHeight)];
+				planets = [new Planet(9500, 9500, 200, "red", character, canvWidth, canvHeight), new Planet(7500, 7500, 300, "green", character, canvWidth, canvHeight), new Planet(9500, 15000, 270, "lightBlue", character, canvWidth, canvHeight),
+					new Planet(1000, 5000, 300, "red", character, canvWidth, canvHeight),
+					new Planet(16000, 19000, 400, "lightBlue", character, canvWidth, canvHeight),
+					new Planet(14000, 2050, 230, "green", character, canvWidth, canvHeight),
+					new Planet(3000, 8505, 150, "green", character, canvWidth, canvHeight),
+					new Planet(13000, 18500, 200, "red", character, canvWidth, canvHeight),
+					new Planet(18000, 15400, 320, "lightBlue", character, canvWidth, canvHeight),
+					new Planet(16500, 14500, 280, "orange", character, canvWidth, canvHeight),
+					new Planet(11500, 2000, 330, "purple", character, canvWidth, canvHeight),
+					new Planet(5500, 1500, 260, "blue", character, canvWidth, canvHeight)]
 
 				projectiles = [];
 
@@ -172,6 +186,18 @@
 						explosions.splice(i,1);
 					}
 				}
+			}
+
+			function drawMinimap () {
+				minimap.clear();
+
+				var thisPlanet;
+				for (var i = 0; i < planets.length; i++){
+					thisPlanet = planets[i];
+					minimap.drawCircle(thisPlanet.x, thisPlanet.y, thisPlanet.r, thisPlanet.color);
+				}
+
+				minimap.drawCenterLine(character.rotation, 8);
 			}
 
 			function checkKeysDown(e){
@@ -276,6 +302,7 @@
 			  	drawProjectiles();
 			  	drawLasers();
 			  	drawExplosions();
+			  	drawMinimap();
 
 			  	updateEnemies();
 			  	updateGui(ctx, character, shieldMeterModel, innerShieldMeterCanvas);
@@ -303,6 +330,7 @@
 					fireRightGun();
 				}
 
+				character.checkForHitPlanet(planets);
 				character.draw(ctx, buffer);
 			}
 		</script>

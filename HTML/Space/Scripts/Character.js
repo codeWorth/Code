@@ -11,10 +11,12 @@ function Character(canvWidth, canvHeight, model){
 	this.charY = worldHeight/2;
 	this.rotation = 0;
 	this.totalMass = 30;
-	this.momentOfInertia = 2;
+	this.momentOfInertia = 2.25;
 	this.omega = 0; //angular velocity
 	this.vX = 0; //linear x vel
 	this.vY = 0; //linear y vel
+
+	this.MAX_VEL = 12;
 
 	this.screenWidth = canvWidth;
 	this.screenHeight = canvHeight;
@@ -38,7 +40,7 @@ function Character(canvWidth, canvHeight, model){
 	this.tier2Mult = 3.5;
 	this.timeSinceLastDamage = 0;
 
-	this.shields = new Shield(model, 1.1, "0, 50, 200", 0.5);
+	this.shields = new Shield(model, 1.2, "0, 50, 200", 0.5);
 
 	this.leftForwardEngine = {x:3, y:42, fX:0, fY:-5, d:0};
 	this.rightForwardEngine = {x:33, y:42, fX:0, fY:-5, d:0};
@@ -73,6 +75,48 @@ Character.prototype.changeVels = function(projX, projY, orth, r){
 	this.omega += aW*dT/r;
 	this.vX += aLX*dT;
 	this.vY += aLY*dT;
+}
+
+Character.prototype.hitPlanet = function (planetX, planetY, planetR){
+	//v_l for v_1
+
+	var bounceAmount = 1.02;
+
+	var vL;
+	var xL;
+	if (planetX-this.charX != 0){
+		var mL = (planetY-this.charY)/(planetX-this.charX);
+		if (mL != 0){
+			xL = (this.vX/mL + this.vY)/(mL+1/mL);
+			vL = {x:xL,y:mL*xL};
+		} else {
+			xL = this.vX;
+			vL = {x:xL,y:0};
+		}
+	} else {
+		xL = this.vY;
+		vL = {x:0,y:xL};
+	}
+
+	this.vX -= vL.x*bounceAmount;
+	this.vY -= vL.y*bounceAmount;
+}
+
+Character.prototype.checkForHitPlanet = function (planets){
+	var thisPlanet;
+	var distSquared;
+	var dX;
+	var dY;
+	for (var i = 0; i < planets.length; i++){
+		thisPlanet = planets[i];
+		dX = this.charX + this.vX - thisPlanet.x;
+		dY = this.charY + this.vY - thisPlanet.y;
+		distSquared = dX*dX + dY*dY;
+		if (distSquared < thisPlanet.r*thisPlanet.r){
+			this.hitPlanet(thisPlanet.x, thisPlanet.y, thisPlanet.r);
+			return;
+		}
+	}
 }
 
 Character.prototype.fireLeftGun = function(){
@@ -122,14 +166,36 @@ Character.prototype.draw = function(ctx, buffer){
 			this.health = 100;
 		}
 	}
-
 	this.charX += this.vX;
+	if (this.charX > worldWidth){
+		this.charX = worldWidth;
+		this.vX = 0;
+	} else if (this.charX < 0){
+		this.charX = 0;
+		this.vX = 0;
+	}
+
 	this.charY += this.vY;
+	if (this.charY > worldHeight){
+		this.charY = worldHeight;
+		this.vY = 0;
+	} else if (this.charY < 0){
+		this.charY = 0;
+		this.vY = 0;
+	}
+
+	var speed = Math.sqrt(this.vX*this.vX + this.vY*this.vY);
+	if (speed > this.MAX_VEL){
+		this.vX = this.vX * this.MAX_VEL/speed;
+		this.vY = this.vY * this.MAX_VEL/speed;
+	}
+
 	this.rotation += this.omega;
 
 	this.shields.update();
 
-	//ctx.fillRect(this.shipX, this.shipY, this.charModel.width, this.charModel.height);
+	ctx.fillStyle = "white";
+	ctx.fillText("Vx: "+ Math.round(this.vX*1000)/1000 + ", Vy: "+ Math.round(this.vY*1000)/1000 + ", Omega: " + Math.round(this.omega*1000)/100, 10, 10);
 
 	drawRotatedImage(this.charModel, this.onscreenX, this.onscreenY, this.rotation);
 	drawRotatedImage(buffer, this.onscreenX, this.onscreenY, this.rotation);

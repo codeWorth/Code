@@ -33,7 +33,7 @@ Grid.prototype.draw = function(x, y, ctx) {
 
 	ctx.beginPath();
 	ctx.lineWidth = 1;
-	ctx.strokeStyle = "rgba(0,0,0,1)";
+	ctx.strokeStyle = "rgba(255,255,255,1)";
 
 	if (y < canvHeight/2){ //upper left corner
 		ctx.moveTo(0, canvHeight/2 - y);

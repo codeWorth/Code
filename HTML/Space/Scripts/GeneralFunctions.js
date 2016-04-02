@@ -63,10 +63,10 @@ function pathEllipse(context, centerX, centerY, width, height) {
 }
 
 function outOfBounds(x, y, screenWidth, screenHeight, padding){
-	var xDist = x - screenWidth/2 + padding;
-	var yDist = y - screenHeight/2 + padding;
+	var xDist = x - screenWidth/2;
+	var yDist = y - screenHeight/2;
 
-	if (xDist*xDist > screenWidth*screenWidth || yDist*yDist > screenHeight*screenHeight){
+	if (xDist*xDist > screenWidth*screenWidth + padding*padding || yDist*yDist > screenHeight*screenHeight + padding*padding){
 		return true;
 	}
 	return false;
@@ -146,6 +146,19 @@ function drawRotatedImage(image, centerX, centerY, angle) {
 	ctx.drawImage(image, -(image.width/2), -(image.height/2));
  
 	// and restore the co-ords to how they were when we began
+	ctx.restore(); 
+}
+
+function drawRotatedImageAlpha(image, centerX, centerY, angle, a) { 			 
+	ctx.save(); 
+ 
+	ctx.translate(centerX, centerY);
+ 
+	ctx.rotate(angle);
+	ctx.globalAlpha = a;
+ 	ctx.drawImage(image, -(image.width/2), -(image.height/2));
+
+ 
 	ctx.restore(); 
 }
 
