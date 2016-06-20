@@ -124,14 +124,21 @@
 			
 			function showBallStats(ballI){
 				massBox.value = mass[ballI] / massConversionFactor;
-				speedBox.value = initSpeed[ballI] * speedConversionFactor;
-				angleBox.value = initAngle[ballI] / (Math.PI/180);
+				if (started){
+					var vx = xVel[ballI];
+					var vy = yVel[ballI];
+					speedBox.value = Math.sqrt(vx*vx+vy*vy) * speedConversionFactor;
+					angleBox.value = Math.atan2(vy,vx) * (180/Math.PI);
+				} else {
+					speedBox.value = initSpeed[ballI] * speedConversionFactor;
+					angleBox.value = initAngle[ballI] * (180/Math.PI);
+				}
 				xBox.value = x[ballI];
 				yBox.value = y[ballI]; 
 			}
 			
 			function updateBallStats(ballI){
-				if (!playing){
+				if (started){
 					return;
 				}
 
@@ -334,7 +341,7 @@
 		//on-canvas-ball functions
 			function changeVelocity(mouseX, mouseY, ballI){
 				speedBox.value = distance(x[ballI], y[ballI], mouseX, mouseY);
-				angleBox.value = angle(x[ballI], y[ballI], mouseX, mouseY) / (Math.PI/180);
+				angleBox.value = angle(x[ballI], y[ballI], mouseX, mouseY) * (180/Math.PI);
 				updateBallStats(ballI);
 				redrawAllBalls();
 				drawSelectCircle(ballI);
@@ -384,7 +391,7 @@
 			}
 			
 			function mousemoveHandler(e){
-				if(mousedown && selected != "none" && playing){
+				if(mousedown && selected != "none" && !started){
 					if(e.shiftKey){
 						changePosition(e.x,e.y,selected);
 					}
@@ -398,6 +405,7 @@
 				if(started){
 					if(playing){
 						clearInterval(init);
+						redrawAllBalls();
 						playing = false;
 						startButton.innerText = "Play";
 					} else {
@@ -487,8 +495,8 @@
 				var mvX;
 				var mvY;
 				if(t % 4 == 0){
-					moveCam();
 					redrawAllBalls();
+					moveCam();
 				}
 				for(var j = 0;j<x.length;j++){
 					xForceSum = 0;
