@@ -1,0 +1,93 @@
+
+(TEXT FOR SHC_fig1)
+We introduce a model for the effect of cesium adsorbates on the work function of transition
+metal surfaces. The model builds on the classical point-dipole equation by adding exponential
+terms that characterize the degree of orbital overlap between the 6s states of neighboring
+cesium adsorbates and its effect on the strength and orientation of electric dipoles along the
+adsorbate–substrate interface. The new model improves upon earlier models in terms of
+agreement with the work function–coverage curves obtained via first-principles calculations
+based on density functional theory.
+
+
+(TEXT FOR SHC_fig2)
+The work function and stability of 570 alloyed alkali earth oxide films on W(100) have been
+calculated within density functional theory. Computational screening of this large phase space
+was enabled by utilizing the virtual crystal approximation, where the degree of freedom in the
+chemical composition is modeled with virtual atoms of mixed Ca, Sr, and Ba character. Low
+work functions are achieved by doping the films with Sc or Li and alloys containing small
+amounts of Ca. In particular, Li doped systems with small Ca content also show favorable
+stability. We have shown that control of the screening of the intra-film interactions 
+by O atoms is essential for the design of new low work function materials.
+
+
+
+
+
+
+PROFILE LINK
+
+http://www.linkedin.com/in/cnorahs
+
+
+
+
+
+
+PUBLICATIONS
+
+S. H. Chou, J. Voss, A. Vojvodic, R. T. Howe, F. Abild-Pedersen,  	
+“DFT study of atomically-modified alkali-earth metal oxide films on tungsten”, 
+In revision at Journal of Physical Chemistry C, Jan. 2014
+
+I. Brodie, S. H. Chou, H. Yuan,
+“A general phenomenological model for work function”,
+In review at Surface Science, Jan. 2014
+
+J. Voss, A. Vojvodic, S. H. Chou, R. T. Howe, I. Bargatin, F. Abild-Pedersen,  	
+“Thermionic current densities from first principles”, 
+Journal of Chemical Physics, 138, 204701, May 2013
+
+S. H. Chou, J. Voss, I. Bargatin, A. Vojvodic, R. T. Howe, F. Abild-Pedersen,
+“An orbital-overlap model for minimal work functions of cesiated metal surfaces”,
+Journal of Physics: Condensed Matter 24, 445007, Sept. 2012
+
+R. Rithe, S. Chou, J. Gu, A. Wang, S. Datla, G. Gammie, D. Buss, A. Chandrakasan, 
+“The effect of random dopant fluctuations on logic timing at low voltage”, 
+IEEE Transactions on VLSI Systems 20, 5, May 2012
+
+
+
+
+PRESENTATIONS AND PATENT
+
+S. H. Chou, J. Voss, A. Vojvodic, R. T. Howe, F. Abild-Pedersen,  
+Discovering materials with ultra-low work functions for thermionic energy conversion, 
+presented at the American Institute of Chemical Engineers (AIChE) Annual Meeting, San Francisco, CA, Nov. 2013 
+
+S. H. Chou, H. Yuan, J. Voss, A. Vojvodic, F. Abild-Pedersen, P. Pianetta, J. K. Nørskov, R. T. Howe,
+Discovering materials with ultra-low work functions for thermionic energy conversion, 
+presented at Global Climate and Energy Project (GCEP) Research Symposium, Stanford, CA, Oct. 2013
+
+S. H. Chou, J. Voss, A. Vojvodic, R. T. Howe, F. Abild-Pedersen,  
+Discovering materials with ultra-low work functions for energy conversion applications, 
+presented at the European Materials Research Society (E-MRS) Fall Meeting, Warsaw, Poland, Sept. 2013
+
+S. H. Chou, J. Voss, J. W. Schwede, I. Bargatin, K. Littau, D. C. Riley, A. Vojvodic, F. Abild-Pedersen, 
+P. Pianetta, R. T. Howe, N. A. Melosh et al,  
+Capturing light and heat in concentrated solar thermal energy conversion: discovering materials with ultra-low work functions, 
+invited talk at Women Powering Technology Summit, Santa Clara, CA, June 2013 
+
+S. Chou, J. Voss, I. Bargatin, F. Abild-Pedersen, A. Vojvodic, P. Pianetta, J. K. Nørskov, R. T. Howe,
+Discovering materials with ultra-low work functions for energy conversion applications: orbital-overlap model
+presented at Global Climate and Energy Project (GCEP) Research Symposium, Stanford, CA, Oct. 2012
+
+S. Chou, I. Bargatin, F. Abild-Pedersen, A. Vojvodic, P. Pianetta, J. K. Nørskov, R. T. Howe,
+Using first-principles simulations to discover materials with ultra-low work functions for energy conversion applications, 
+presented at Global Climate and Energy Project (GCEP) Research Symposium, Stanford, CA, Oct. 2011
+
+R. Rithe, S. Chou, J. Gu, A. Wang, S. Datla, G. Gammie, D. Buss, A. Chandrakasan,
+Cell library characterization at low voltage using non-linear operating point analysis of local variations,
+presented at IEEE 24th International Conference on VLSI Design, 2011
+
+D. Buss, S. Chou, A. Wang, J. Gu, S. Datla, “Computationally efficient SSTA with non-Gaussian delay”, disclosure TI-66728
+

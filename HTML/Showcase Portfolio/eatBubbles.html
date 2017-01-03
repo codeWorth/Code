@@ -1,396 +1,402 @@
 <html>
   <body>
-    <canvas id="drawingBoard" width="1250" height="750" style="background-color:black"></canvas>
-    <script type = "text/javascript">
+	<canvas id="drawingBoard" width="1250" height="700" style="background-color:black"></canvas>
+	<script type = "text/javascript">
 		var canvas = document.getElementById('drawingBoard');
 		var ctx = canvas.getContext('2d');
 		var paused = true;
 		var init;
-		var ballsToGenerate=15;
+		var ballsToGenerate = 15;
 		var canvasWidth = 1250;
-		var canvasHeight = 750;
+		var canvasHeight = 700;
 		var win = false;
 		var ballSizes = new Array();
 		var ballX = new Array();
 		var ballY = new Array();
 		var i = 0;
-		var characterSpeed=0.95;
-		var otherBallSpeed=0.8;
-		characterX=600;
-		characterY=325;
-		characterSize=15;
-		var right=false;
-		var left=false;
-		var up=false;
-		var down=false;
-		var begining=true;
-		function randrange(minimum, maximum){
-		 var randomNumber=Math.round(Math.random()*(maximum-minimum))+minimum;
-		 return randomNumber;
+		var characterSpeed = 0.95;
+		var otherBallSpeed = 0.8;
+		characterX = 600;
+		characterY = 325;
+		characterSize = 15;
+		var right = false;
+		var left = false;
+		var up = false;
+		var down = false;
+		var begining = true;
+
+		function randrange(minimum, maximum) {
+			var randomNumber = Math.round(Math.random() * (maximum - minimum)) + minimum;
+			return randomNumber;
 		}
-		function distance(x1,y1,x2,y2){
-		 return Math.sqrt(Math.pow(x2-x1, 2)+Math.pow(y2-y1, 2));
+
+		function distance(x1, y1, x2, y2) {
+			var dist1 = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+			var dist2 = Math.sqrt(Math.pow(canvasWidth - Math.abs(x2 - x1), 2) + Math.pow(canvasHeight - Math.abs(y2 - y1), 2));
+
+			if (dist1 < dist2) {
+				return dist1;
+			} else {
+				return -dist2;
+			}
 		}
-		
-		
-		
-		
-		function pauseScreen(){
-		 ctx.clearRect(0,0,canvasWidth,canvasHeight);
-		 ctx.font="100px Arail";
-		 ctx.fillStyle="white";
-		 if(begining==true){
-		  win = false;
-		  ctx.fillText("Click to start", 330, 390);
-		 }
-		 else{
-		  ctx.fillText("Click to resume", 330, 390);
-		 }
+
+
+		function pauseScreen() {
+			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			ctx.font = "100px Arail";
+			ctx.fillStyle = "white";
+			if (begining == true) {
+				win = false;
+				ctx.fillText("Click to start", 330, 390);
+			} else {
+				ctx.fillText("Click to resume", 330, 390);
+			}
 		}
-		function startOrPause(){
-		 if(paused==true){
-		  paused=false;
-		  ctx.clearRect(0,0,canvasWidth,canvasHeight);
-		  ctx.strokeStyle="white"
-		  ctx.beginPath();
-		  ctx.arc(characterX, characterY, 15, 0, Math.PI*2, true);
-		  ctx.closePath();
-		  ctx.stroke();
-		  init=setInterval(draw, 10);
-		  if(begining==true){
-		   generateStartingBubbles();
-		  }
-		 }
-		 else{
-		  paused=true;
-		  begining=false;
-		  clearInterval(init);
-		  pauseScreen();
-		 }
+
+		function startOrPause() {
+			if (paused == true) {
+				paused = false;
+				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+				ctx.strokeStyle = "white"
+				ctx.beginPath();
+				ctx.arc(characterX, characterY, 15, 0, Math.PI * 2, true);
+				ctx.closePath();
+				ctx.stroke();
+				init = setInterval(draw, 10);
+				if (begining == true) {
+					generateStartingBubbles();
+				}
+			} else {
+				paused = true;
+				begining = false;
+				clearInterval(init);
+				pauseScreen();
+			}
 		}
 		pauseScreen();
-		function gameOver(){
-		 ctx.clearRect(0,0,canvasWidth,canvasHeight);
-		 ctx.fillStyle="white";
-		 if(win){
-		  ctx.clearRect(0,0,canvasWidth,canvasHeight);
-		  ctx.fillText("You Win!", 200, 320);
-		 }
-		 else{
-		  ctx.fillText("Game Over.", 200, 320);
-		 }
-		 ctx.fillText("Click to play again.", 150, 420);
-		 win = false;
-		 ballSizes=[];
-		 ballX=[];
-		 ballY=[];
-		 characterX=600;
-		 characterY=325;
-		 characterSize=15;
-		 right=false;
-		 left=false;
-		 up=false;
-		 down=false;
-		 setTimeout(begining=true, 100);
-		 setTimeout(paused=true, 100);
-		}
-		
-		
-		
-		
-		function keysPressedUpdate(e){
-		 if(paused==false){
-		  if(e.keyCode==37){
-		   left=true;
-		  }
-		  if(e.keyCode==38){
-		   down=true;
-		  }
-		  if(e.keyCode==39){
-		   right=true;
-		  }
-		  if(e.keyCode==40){
-		   up=true;
-		  }
-		 }
-		}
-		function keysUpUpdate(e){
-		 if(paused==false){
-		  if(e.keyCode==37){
-		   left=false;
-		  }
-		  if(e.keyCode==38){
-		   down=false;
-		  }
-		  if(e.keyCode==39){
-		   right=false;
-		  }
-		  if(e.keyCode==40){
-		   up=false;
-		  }
-		 }
-		}
-		function replaceBalls(){
-		 var i = ballX.length;
-		 while(i<ballsToGenerate){
-		  var touchingOthers = false;
-		  var newSize=randrange(characterSize/2+2.5, characterSize+10);
-		  var newX=randrange(70, canvasWidth-70);
-		  var newY=randrange(20, canvasHeight-20);
-		  for(var j = 0;j<ballX.length;j++){
-		   if(distance(newX, newY, ballX[j], ballY[j])<(newSize+ballSizes[j])*1.25){
-			touchingOthers=true;
-		   }
-		  }
-		  if(distance(newX, newY, characterX, characterY)<(newSize+characterSize)*1.25){
-		  	touchingOthers = true;
-		  }
-		  if(touchingOthers==false){
-		   ballX[ballX.length]=newX;
-		   ballY[ballY.length]=newY;
-		   ballSizes[ballSizes.length]=newSize;
-		   i++;
-		  }
-		 }
-		}
-		function draw(){
-		 ctx.clearRect(0,0,canvasWidth,canvasHeight);
-		 ctx.textAlign="right";
-		 ctx.fillStyle="white";
-		 ctx.font="15px Arial";
-		 ctx.beginPath();
-		 ctx.fillText((Math.round(characterSize)-15)*100, 1195, 20);
-		 ctx.closePath();
-		 ctx.fill();
-		 ctx.font="100px Arial";
-		 ctx.textAlign="left";
-		 var gameIsOver=false;
-		 if(left==true){
-		  characterX+=-(characterSpeed+characterSize/30);
-		 }
-		 if(down==true){
-		  characterY+=-(characterSpeed+characterSize/30);
-		 }
-		 if(right==true){
-		  characterX+=characterSpeed+characterSize/30;
-		 }
-		 if(up==true){
-		  characterY+=characterSpeed+characterSize/30;
-		 }
-		 if(characterX>canvasWidth){
-		  characterX=0;
-		 }
-		 if(characterX<0){
-		  characterX=canvasWidth;
-		 }
-		 if(characterY>canvasHeight){
-		  characterY=0;
-		 }
-		 if(characterY<0){
-		  characterY=canvasHeight;
-		 }
-		 ctx.strokeStyle="white"
-		 ctx.beginPath();
-		 for(var width=characterSize-1;width<characterSize+1;width++){
-		  ctx.arc(characterX, characterY, width, 0, Math.PI*2, true);
-		 }
-		 ctx.closePath();
-		 ctx.stroke();
-		 //makes sure that all balls are on the screen, so that when a ball is added, it doesn't have indexing issues
-		 if(ballX.length==ballsToGenerate){
-		  //deletes the ball it's touching if the human-controlled ball is bigger, and ends game if the human ball is smaller then the one its touching
-		  for(var i = 0;i<ballX.length;i++){
-		   if(i<ballX.length){
-			if(distance(characterX, characterY, ballX[i], ballY[i])<characterSize+ballSizes[i]){
-			 if(characterSize>ballSizes[i]){
-			  characterSize+=Math.pow(ballSizes[i], 1/2);
-			  ballSizes.splice(i,1);
-			  ballX.splice(i,1);
-			  ballY.splice(i,1);
-			 }
-			 else{
-			  gameOver();
-			  gameIsOver=true;
-			  clearInterval(init);
-			 }
+
+		function gameOver() {
+			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			ctx.fillStyle = "white";
+			if (win) {
+				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+				ctx.fillText("You Win!", 200, 320);
+			} else {
+				ctx.fillText("Game Over.", 200, 320);
 			}
-		   }
-		  }
-		  //draws all the other balls
-		  if(gameIsOver==false){
-		   closestBall();
-		  }
-		 }
-		 else{
-		  replaceBalls();
-		 }
-		 otherBalls();
-		 if((Math.round(characterSize)-15)*100>10000){
-		  win=true;
-		  gameIsOver=true;
-		  clearInterval(init);
-		  gameOver();
-		 }
+			ctx.fillText("Click to play again.", 150, 420);
+			win = false;
+			ballSizes = [];
+			ballX = [];
+			ballY = [];
+			characterX = 600;
+			characterY = 325;
+			characterSize = 15;
+			right = false;
+			left = false;
+			up = false;
+			down = false;
+			setTimeout(begining = true, 100);
+			setTimeout(paused = true, 100);
 		}
-		function otherBalls(){
-		 for(var i = 0;i<ballX.length;i++){
-		  ctx.strokeStyle="red"
-		  ctx.beginPath();
-		  for(var width=ballSizes[i]-1;width<ballSizes[i]+1;width++){
-		   ctx.arc(ballX[i], ballY[i], width, 0, Math.PI*2, true);
-		  }
-		  ctx.closePath();
-		  ctx.stroke();
-		 }
-		}
-		function generateStartingBubbles(){
-		 var i = 0;
-		 while(i<ballsToGenerate){
-		  var touchingOthers = false;
-		  ballSizes[ballSizes.length]=randrange(5, 12);
-		  var newX=randrange(70, canvasWidth-70);
-		  var newY=randrange(20, canvasHeight-20);
-		  var touchingOthers = false;
-		  for(var j = 0;j<ballX.length;j++){
-		   if(distance(newX, newY, ballX[j], ballY[j])<(ballSizes[i]+ballSizes[j])*1.25){
-			touchingOthers=true;
-		   }
-		  }
-		  if(touchingOthers==false){
-		   ballX[ballX.length]=newX;
-		   ballY[ballY.length]=newY;
-		   i++;
-		  }
-		 }
-		 otherBalls();
-		}
-		
-		
-		
-		
-		function goToBall(radians, j){
-		 radians+=Math.PI;
-		 ballX[j]+=Math.sin(radians)*(otherBallSpeed+ballSizes[j]/60);
-		 ballY[j]+=Math.cos(radians)*(otherBallSpeed+ballSizes[j]/60);
-		 if(ballX[j]>canvasWidth){
-		  ballX[j]=0;
-		 }
-		 if(ballX[j]<0){
-		  ballX[j]=canvasWidth;
-		 }
-		 if(ballY[j]>canvasHeight){
-		  ballY[j]=0;
-		 }
-		 if(ballY[j]<0){
-		  ballY[j]=canvasHeight;
-		 }
-		 for(var i = 0;i<ballX.length;i++){
-		  if(i!=j && i<ballX.length){
-		   if(distance(ballX[j], ballY[j], ballX[i], ballY[i])<ballSizes[j]+ballSizes[i]){
-			if(ballSizes[j]>ballSizes[i]){
-			 ballSizes[j]+=ballSizes[i]/7;
-			 ballSizes.splice(i,1);
-			 ballX.splice(i,1);
-			 ballY.splice(i,1);
+
+
+
+
+		function keysPressedUpdate(e) {
+			if (paused == false) {
+				if (e.keyCode == 37) {
+					left = true;
+				}
+				if (e.keyCode == 38) {
+					down = true;
+				}
+				if (e.keyCode == 39) {
+					right = true;
+				}
+				if (e.keyCode == 40) {
+					up = true;
+				}
 			}
-			else{
-			 ballSizes[i]+=ballSizes[j]/7;
-			 ballSizes.splice(j,1);
-			 ballX.splice(j,1);
-			 ballY.splice(j,1);
-			}
-		   }
-		  }
-		 }
 		}
-		function goAwayFromBall(radians, j){
-		 ballX[j]+=Math.sin(radians)*(otherBallSpeed+ballSizes[j]/60);
-		 ballY[j]+=Math.cos(radians)*(otherBallSpeed+ballSizes[j]/60);
-		 if(ballX[j]>canvasWidth){
-		  ballX[j]=0;
-		 }
-		 if(ballX[j]<0){
-		  ballX[j]=canvasWidth;
-		 }
-		 if(ballY[j]>canvasHeight){
-		  ballY[j]=0;
-		 }
-		 if(ballY[j]<0){
-		  ballY[j]=canvasHeight;
-		 }
-		 for(var i = 0;i<ballX.length;i++){
-		  if(i!=j && i<ballX.length){
-		   if(distance(ballX[j], ballY[j], ballX[i], ballY[i])<ballSizes[j]+ballSizes[i]){
-			if(ballSizes[j]>ballSizes[i]){
-			 ballSizes[j]+=ballSizes[i]/7;
-			 ballSizes.splice(i,1);
-			 ballX.splice(i,1);
-			 ballY.splice(i,1);
+
+		function keysUpUpdate(e) {
+			if (paused == false) {
+				if (e.keyCode == 37) {
+					left = false;
+				}
+				if (e.keyCode == 38) {
+					down = false;
+				}
+				if (e.keyCode == 39) {
+					right = false;
+				}
+				if (e.keyCode == 40) {
+					up = false;
+				}
 			}
-			else{
-			 ballSizes[i]+=ballSizes[j]/7;
-			 ballSizes.splice(j,1);
-			 ballX.splice(j,1);
-			 ballY.splice(j,1);
-			}
-		   }
-		  }
-		 }
 		}
-		function closestBall(){
-		 var closestDistance;
-		 var closestIndex;
-		 var distanceBetween;
-		 for(var i = 0;i<ballX.length;i++){
-		  closestDistance=3000;
-		  var j = 0;
-		  while(j<ballX.length){
-		   if(j!=i){
-			distanceBetween = distance(ballX[j], ballY[j], ballX[i], ballY[i]);
-			if(distanceBetween<closestDistance){
-			 closestDistance=distanceBetween;
-			 closestIndex=j;
+
+		function replaceBalls() {
+			var i = ballX.length;
+			while (i < ballsToGenerate) {
+				var touchingOthers = false;
+				var newSize = randrange(characterSize / 2 + 2.5, characterSize + 10);
+				var newX = randrange(70, canvasWidth - 70);
+				var newY = randrange(20, canvasHeight - 20);
+				for (var j = 0; j < ballX.length; j++) {
+					if (distance(newX, newY, ballX[j], ballY[j]) < (newSize + ballSizes[j]) * 1.25) {
+						touchingOthers = true;
+					}
+				}
+				if (distance(newX, newY, characterX, characterY) < (newSize + characterSize) * 1.25) {
+					touchingOthers = true;
+				}
+				if (touchingOthers == false) {
+					ballX[ballX.length] = newX;
+					ballY[ballY.length] = newY;
+					ballSizes[ballSizes.length] = newSize;
+					i++;
+				}
 			}
-		   }
-		   j++;
-		  }
-		  distanceBetween = distance(characterX, characterY, ballX[i], ballY[i]);
-		  if(distanceBetween<closestDistance){
-		   closestDistance=distanceBetween;
-		   closestIndex="character";
-		  }
-		  if(closestIndex==="character"){
-		   ctx.moveTo(ballX[i], ballY[i]);
-		   ctx.lineTo(characterX, characterY);
-		   ctx.stroke();
-		   if(ballSizes[i]>characterSize){
-			goAwayFromBall(Math.atan2(characterX-ballX[i], characterY-ballY[i]), i);
-		   }
-		   else{
-			goToBall(Math.atan2(characterX-ballX[i], characterY-ballY[i]), i);
-		   }
-		  }
-		  else{
-		   ctx.moveTo(ballX[i], ballY[i]);
-		   ctx.lineTo(ballX[closestIndex], ballY[closestIndex]);
-		   ctx.stroke();
-		   if(ballSizes[i]>ballSizes[closestIndex]){
-			goAwayFromBall(Math.atan2(ballX[closestIndex]-ballX[i], ballY[closestIndex]-ballY[i]), i);
-		   }
-		   else{
-			goToBall(Math.atan2(ballX[closestIndex]-ballX[i], ballY[closestIndex]-ballY[i]), i);
-		   }
-		  }
-		 }
 		}
-		
-		
-		
-		
+
+		function draw() {
+			ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+			ctx.textAlign = "right";
+			ctx.fillStyle = "white";
+			ctx.font = "15px Arial";
+			ctx.beginPath();
+			ctx.fillText((Math.round(characterSize) - 15) * 100, 1195, 20);
+			ctx.closePath();
+			ctx.fill();
+			ctx.font = "100px Arial";
+			ctx.textAlign = "left";
+			var gameIsOver = false;
+			if (left == true) {
+				characterX += -(characterSpeed + characterSize / 30);
+			}
+			if (down == true) {
+				characterY += -(characterSpeed + characterSize / 30);
+			}
+			if (right == true) {
+				characterX += characterSpeed + characterSize / 30;
+			}
+			if (up == true) {
+				characterY += characterSpeed + characterSize / 30;
+			}
+			if (characterX > canvasWidth) {
+				characterX = 0;
+			}
+			if (characterX < 0) {
+				characterX = canvasWidth;
+			}
+			if (characterY > canvasHeight) {
+				characterY = 0;
+			}
+			if (characterY < 0) {
+				characterY = canvasHeight;
+			}
+			ctx.strokeStyle = "white"
+			ctx.beginPath();
+			for (var width = characterSize - 1; width < characterSize + 1; width++) {
+				ctx.arc(characterX, characterY, width, 0, Math.PI * 2, true);
+			}
+			ctx.closePath();
+			ctx.stroke();
+			//makes sure that all balls are on the screen, so that when a ball is added, it doesn't have indexing issues
+			if (ballX.length == ballsToGenerate) {
+				//deletes the ball it's touching if the human-controlled ball is bigger, and ends game if the human ball is smaller then the one its touching
+				for (var i = 0; i < ballX.length; i++) {
+					if (i < ballX.length) {
+						if (distance(characterX, characterY, ballX[i], ballY[i]) < characterSize + ballSizes[i]) {
+							if (characterSize > ballSizes[i]) {
+								characterSize += Math.pow(ballSizes[i], 1 / 2);
+								ballSizes.splice(i, 1);
+								ballX.splice(i, 1);
+								ballY.splice(i, 1);
+							} else {
+								gameOver();
+								gameIsOver = true;
+								clearInterval(init);
+							}
+						}
+					}
+				}
+				//draws all the other balls
+				if (gameIsOver == false) {
+					closestBall();
+				}
+			} else {
+				replaceBalls();
+			}
+			otherBalls();
+			if ((Math.round(characterSize) - 15) * 100 > 10000) {
+				win = true;
+				gameIsOver = true;
+				clearInterval(init);
+				gameOver();
+			}
+		}
+
+		function otherBalls() {
+			for (var i = 0; i < ballX.length; i++) {
+				ctx.strokeStyle = "red"
+				ctx.beginPath();
+				for (var width = ballSizes[i] - 1; width < ballSizes[i] + 1; width++) {
+					ctx.arc(ballX[i], ballY[i], width, 0, Math.PI * 2, true);
+				}
+				ctx.closePath();
+				ctx.stroke();
+			}
+		}
+
+		function generateStartingBubbles() {
+			var i = 0;
+			while (i < ballsToGenerate) {
+				var touchingOthers = false;
+				ballSizes[ballSizes.length] = randrange(5, 12);
+				var newX = randrange(70, canvasWidth - 70);
+				var newY = randrange(20, canvasHeight - 20);
+				var touchingOthers = false;
+				for (var j = 0; j < ballX.length; j++) {
+					if (distance(newX, newY, ballX[j], ballY[j]) < (ballSizes[i] + ballSizes[j]) * 1.25) {
+						touchingOthers = true;
+					}
+				}
+				if (touchingOthers == false) {
+					ballX[ballX.length] = newX;
+					ballY[ballY.length] = newY;
+					i++;
+				}
+			}
+			otherBalls();
+		}
+
+
+
+
+		function goToBall(radians, j) {
+			radians += Math.PI;
+			ballX[j] += Math.sin(radians) * (otherBallSpeed + ballSizes[j] / 60);
+			ballY[j] += Math.cos(radians) * (otherBallSpeed + ballSizes[j] / 60);
+			if (ballX[j] > canvasWidth) {
+				ballX[j] = 0;
+			}
+			if (ballX[j] < 0) {
+				ballX[j] = canvasWidth;
+			}
+			if (ballY[j] > canvasHeight) {
+				ballY[j] = 0;
+			}
+			if (ballY[j] < 0) {
+				ballY[j] = canvasHeight;
+			}
+			for (var i = 0; i < ballX.length; i++) {
+				if (i != j && i < ballX.length) {
+					if (distance(ballX[j], ballY[j], ballX[i], ballY[i]) < ballSizes[j] + ballSizes[i]) {
+						if (ballSizes[j] > ballSizes[i]) {
+							ballSizes[j] += ballSizes[i] / 7;
+							ballSizes.splice(i, 1);
+							ballX.splice(i, 1);
+							ballY.splice(i, 1);
+						} else {
+							ballSizes[i] += ballSizes[j] / 7;
+							ballSizes.splice(j, 1);
+							ballX.splice(j, 1);
+							ballY.splice(j, 1);
+						}
+					}
+				}
+			}
+		}
+
+		function goAwayFromBall(radians, j) {
+			ballX[j] += Math.sin(radians) * (otherBallSpeed + ballSizes[j] / 60);
+			ballY[j] += Math.cos(radians) * (otherBallSpeed + ballSizes[j] / 60);
+			if (ballX[j] > canvasWidth) {
+				ballX[j] = 0;
+			}
+			if (ballX[j] < 0) {
+				ballX[j] = canvasWidth;
+			}
+			if (ballY[j] > canvasHeight) {
+				ballY[j] = 0;
+			}
+			if (ballY[j] < 0) {
+				ballY[j] = canvasHeight;
+			}
+			for (var i = 0; i < ballX.length; i++) {
+				if (i != j && i < ballX.length) {
+					if (distance(ballX[j], ballY[j], ballX[i], ballY[i]) < ballSizes[j] + ballSizes[i]) {
+						if (ballSizes[j] > ballSizes[i]) {
+							ballSizes[j] += ballSizes[i] / 7;
+							ballSizes.splice(i, 1);
+							ballX.splice(i, 1);
+							ballY.splice(i, 1);
+						} else {
+							ballSizes[i] += ballSizes[j] / 7;
+							ballSizes.splice(j, 1);
+							ballX.splice(j, 1);
+							ballY.splice(j, 1);
+						}
+					}
+				}
+			}
+		}
+
+		function closestBall() {
+			var closestDistance;
+			var closestIndex;
+			var distanceBetween;
+			for (var i = 0; i < ballX.length; i++) {
+				closestDistance = 3000;
+				var j = 0;
+				while (j < ballX.length) {
+					if (j != i) {
+						distanceBetween = distance(ballX[j], ballY[j], ballX[i], ballY[i]);
+						if (distanceBetween < closestDistance) {
+							closestDistance = distanceBetween;
+							closestIndex = j;
+						}
+					}
+					j++;
+				}
+				distanceBetween = distance(characterX, characterY, ballX[i], ballY[i]);
+				if (distanceBetween < closestDistance) {
+					closestDistance = distanceBetween;
+					closestIndex = "character";
+				}
+				if (closestIndex === "character") {
+					ctx.moveTo(ballX[i], ballY[i]);
+					ctx.lineTo(characterX, characterY);
+					ctx.stroke();
+					if (ballSizes[i] > characterSize) {
+						goAwayFromBall(Math.atan2(characterX - ballX[i], characterY - ballY[i]), i);
+					} else {
+						goToBall(Math.atan2(characterX - ballX[i], characterY - ballY[i]), i);
+					}
+				} else {
+					ctx.moveTo(ballX[i], ballY[i]);
+					ctx.lineTo(ballX[closestIndex], ballY[closestIndex]);
+					ctx.stroke();
+					if (ballSizes[i] > ballSizes[closestIndex]) {
+						goAwayFromBall(Math.atan2(ballX[closestIndex] - ballX[i], ballY[closestIndex] - ballY[i]), i);
+					} else {
+						goToBall(Math.atan2(ballX[closestIndex] - ballX[i], ballY[closestIndex] - ballY[i]), i);
+					}
+				}
+			}
+		}
+
+
+
+
 		canvas.addEventListener('click', startOrPause);
-		document.onkeydown=keysPressedUpdate;
-		document.onkeyup=keysUpUpdate;
-    </script>
+		document.onkeydown = keysPressedUpdate;
+		document.onkeyup = keysUpUpdate;
+	</script>
   </body>
 </html>
 

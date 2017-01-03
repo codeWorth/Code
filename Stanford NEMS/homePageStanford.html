@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+		<link href="https://www.stanford.edu/su-identity/css/su-identity.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://www.stanford.edu/su-identity/css/ie/ie8.css" />
+		<link rel="stylesheet" type="text/css" href="https://www.stanford.edu/su-identity/css/ie/ie7.css" />
+		<script src="Scripts/stanfordJavascriptGeneral.js"></script>
+		<link rel="stylesheet" type="text/css" href="Stylesheets/headerCss.css" />
+		<link rel="stylesheet" type="text/css" href="Stylesheets/standordCss.css" />
+		<title>Stanford NEMS</title>
+		<style type="text/css">
+			#body{
+				padding:10px;
+			}
+				#centered{
+					display:table;
+					margin:auto;
+				}
+					#infoText:hover{
+						cursor:default;
+					}
+					#infoText{
+						padding:5px;
+						float:left;
+						height:400px;
+						width:290px;
+						border-radius:6px;
+						border:none;
+						box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+					}
+						#scrollImageTexts{
+							position:relative;
+							width:290px;
+							height:400px;
+						}
+							.scrollImageText{
+								padding:0px 10px;
+								color:#820000;
+								position:absolute;
+								font-family:"Crimson Text", sans-serif;
+								width:280px;
+							}
+					
+						#readMoreButton{
+							float:right;
+							position:relative;
+							right:10px;
+							font-size:10pt;
+							background: -webkit-linear-gradient(#CC0000, #CC0000); /* For Safari */
+							background: -o-linear-gradient(#CC0000, #CC0000); /* For Opera 11.1 to 12.0 */
+							background: -moz-linear-gradient(#CC0000, #CC0000); /* For Firefox 3.6 to 15 */
+							background: linear-gradient(#CC0000, #CC0000); /* Standard syntax */
+							border-radius:6px;
+							border:none;
+							top:360px;
+						}
+						#readMoreButton:hover{
+							background: -webkit-linear-gradient(#DB4D4D, #CC0000); /* For Safari */
+							background: -o-linear-gradient(#DB4D4D, #CC0000); /* For Opera 11.1 to 12.0 */
+							background: -moz-linear-gradient(#DB4D4D, #CC0000); /* For Firefox 3.6 to 15 */
+							background: linear-gradient(#DB4D4D, #CC0000); /* Standard syntax */
+							cursor:pointer;
+						}
+					#infoImage:hover {
+						cursor:pointer;
+					}
+					#infoImage{
+						width:537px;
+						height:400px;
+						float:left;
+						margin-right:5px;
+					}
+						#arrows{
+							width:0px;
+							height:0px;
+						}
+							#rightArrow{
+								z-index:1;
+								position:relative;
+								left:450px;
+								top:150px;
+								width:100px;
+								opacity:0.3;
+								behavior:url(-ms-transform.htc);
+								/* Firefox */
+								-moz-transform:rotate(180deg);
+								/* Safari and Chrome */
+								-webkit-transform:rotate(180deg);
+								/* Opera */
+								-o-transform:rotate(180deg);
+							}
+							#leftArrow{
+								z-index:1;
+								position:relative;
+								top:50px;
+								right:20px;
+								width:100px;
+								opacity:0.3;
+							}
+							#rightArrow:hover{
+								opacity:0.6;
+								cursor:pointer;
+							}
+							#leftArrow:hover{
+								opacity:0.6;
+								cursor:pointer;
+							}
+					#scrollImages{
+						position:relative;
+						height:400px;
+					}
+						.scrollImage {
+							position:absolute;
+							height:400px;
+							opacity:1;
+							border-radius:6px;
+							box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+						}
+				#news{
+					padding:10px;
+					background-color:white;
+					margin-top:10px;
+					margin-left:-9px;
+					margin-bottom:-9px;
+					margin-right:-9px;
+				}
+					#container{
+						display:table;
+						margin: auto;
+						max-width:940px;
+					}
+						.newstile{
+							background-color:#f2f1eb;
+							display:table;
+							border-radius:7px;
+							box-shadow:0px 0px 5px 1px rgba(0,0,0,0.1);
+							padding:5px;
+							float:left;
+							margin:15px;
+						}
+							.newstile_header{
+								font-size:25px;
+							}
+							.tilereadmore{
+								font-size:10pt;
+								background: -webkit-linear-gradient(#CC0000, #CC0000); /* For Safari */
+								background: -o-linear-gradient(#CC0000, #CC0000); /* For Opera 11.1 to 12.0 */
+								background: -moz-linear-gradient(#CC0000, #CC0000); /* For Firefox 3.6 to 15 */
+								background: linear-gradient(#CC0000, #CC0000); /* Standard syntax */
+								border-radius:6px;
+								border:none;
+								cursor:default;
+							}
+							.tilereadmore:hover{
+								background: -webkit-linear-gradient(#DB4D4D, #CC0000); /* For Safari */
+								background: -o-linear-gradient(#DB4D4D, #CC0000); /* For Opera 11.1 to 12.0 */
+								background: -moz-linear-gradient(#DB4D4D, #CC0000); /* For Firefox 3.6 to 15 */
+								background: linear-gradient(#DB4D4D, #CC0000); /* Standard syntax */
+								cursor:pointer;
+							}
+							.imgs{
+								display:block;
+								overflow:auto;
+							}	
+								.imgWithCaption{
+									float:left;
+									word-wrap: break-word;
+									margin:5px;
+								}
+		</style>
+	</head>
+	<body>
+		<div id="su-wrap"> <!-- #su-wrap start -->
+ 		<div id="su-content"> <!-- #su-content start -->
+		<div id="header">
+			<div id="headerWithoutNavigate" class="backgroundRedColor">
+				<input type="text" id="searchBar" placeholder="Search">
+				<div id="stanfordTitle" class="whiteText">Stanford University NEMS</div>
+			</div>
+			<div id="navigateBar">
+				<a href="stanfordContactUs.html"><input type="button" value="Contact Us" class="menuButton"></a>
+				<!--<a href="stanfordLinks.html"><input type="button" value="Important Links" class="menuButton"></a>-->
+				<!--<a href="stanfordDownloads.html"><input type="button" value="Downloads" class="menuButton"></a>-->
+				<a href="stanfordPeople.html"><input type="button" value="People" class="menuButton"></a>
+				<!--<a href="stanfordPublications.html"><input type="button" value="Publications" class="menuButton"></a>-->
+				<a href="stanfordProject.html"><input type="button" value="Projects" class="menuButton"></a>
+			</div>
+		</div>
+		<div id="body" class="backgroundDarkerWhiteColor">
+			<div id="centered">
+				<div id="infoImage">
+					<div id="arrows">
+						<img id="rightArrow" src="http://uxrepo.com/static/icon-sets/ionicons/svg/ios7-arrow-back.svg"></img>
+						<img id="leftArrow" src="http://uxrepo.com/static/icon-sets/ionicons/svg/ios7-arrow-back.svg"></img>
+					</div>
+					<div id="scrollImages">
+						<img class="scrollImage" id="0" src="Images/nanotech1example.jpg"></img>
+						<img class="scrollImage" id="1" src="Images/homemems2.jpg"></img>
+						<img class="scrollImage" id="2" src="Images/homemems3.jpg"></img>
+					</div>
+				</div>
+				<div id="infoText" class="redText backgroundWhiteColor">
+					<div id="scrollImagesTexts">
+						<p class="scrollImageText" id="0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec vestibulum mi, eu mollis nibh. Vestibulum euismod, orci ut porttitor dictum, velit dolor sodales leo, at iaculis metus leo malesuada mi. In non fermentum nulla. Hattem patta lei inatalis.</p>
+						<p class="scrollImageText" id="1">Vivamus in dapibus dui. Nulla quis mi commodo, tincidunt eros gravida, rutrum nibh. Vestibulum ac arcu vulputate, tincidunt ante id, molestie massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+						<p class="scrollImageText" id="2">Mauris nec vestibulum mi, eu mollis nibh. Vestibulum euismod, orci ut porttitor dictum, velit dolor sodales leo, at iaculis metus leo malesuada mi. In non fermentum nulla. Vivamus in dapibus dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
+					<input type="button" value="Read More" id="readMoreButton" class="whiteText">
+				</div>
+			</div>
+			<div id="news">
+				<div id="container">
+					<div style="margin-left:15px; font-size:35pt;" class="redText">News and Current Events</div>
+					<div class="newstile" style="width:880px;">
+						<div class="newstile_header">Hey look! A header.</div>
+						News. This is news. Much news. Add new here. Also Pictures: 
+						<div class="imgs">
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://static6.businessinsider.com/image/51c3212a6bb3f79c2000000f/this-space-picture-changes-our-understanding-of-how-black-holes-form.jpg" style="width:400px;" />
+								<div class="captionText" style="width:349px">This is a caption. It makes this have captions. Its purpose is to provide captions.
+								</div> 
+							</div>
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://cdn.rsvlts.com/wp-content/uploads/2012/12/Witchs-Broom.jpeg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+						</div>
+						<br/>Click <a href="https://www.google.com">this link</a> for a useless website. I just use the bar at the top of safari! Don't you like filler text? Sometimes I write filler text like this, sometimes I write it like Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec vestibulum mi, eu mollis nibh.
+						<br/><a href="https://www.google.com"><input type="button" value="Read More" class="tilereadmore whiteText"></a>
+					</div>
+					<div class="newstile" style="width:420px;">
+						<div class="newstile_header">Woooow! This is another header!</div>
+						This is basically a duplicate, btw. News. This is news. Much news. Add new here. Also Pictures: 
+						<div class="imgs">
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://mintywhite.com/wp-content/uploads/2012/10/fond-ecran-wallpaper-image-arriere-plan-hd-29-HD.jpg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+						</div>
+						<br/>Click <a href="https://www.google.com">this link</a> for a useless website. I just use the bar at the top of safari! Don't you like filler text? Sometimes I write filler text like this, sometimes I write it like Lorem ipsum dolor sit amet, consectetur adipinsectetur aet, consectetuscike Lorem ipsusectetur adipinsecm dolor sit amet, consectetur aet, consectetur adipiscike Lorem idipiing elit. Mauris nec vestibulum mi, eu moc vestibulum mi, eu mllis nibh.
+						<br/><a href="https://www.google.com"><input type="button" value="Read More" class="tilereadmore whiteText"></a>
+					</div>
+					<div class="newstile" style="width:420px;">
+						<div class="newstile_header">This header is anticlimactic.</div>
+						This is basically a duplicate, btw. News. This is news. Much news. Add new here. Also Pictures: 
+						<div class="imgs">
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://images.nationalgeographic.com/wpf/media-live/photos/000/411/cache/northern-lights-picture-aurora-borealis-september-2011-yukon_41173_600x450.jpg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+						</div>
+						<br/>Click <a href="https://www.google.com">this link</a> for a useless website. I just use the bar at the top of safari! Don't you like filler text? Sometimes I write filler text like this, sometimes I write it like Lorem ipsum dolor sit amet, consectetur adipiscike Lorem ipsum dolor sit amet.
+						<br/><a href="https://www.google.com"><input type="button" value="Read More" class="tilereadmore whiteText"><a/>
+					</div>
+					<div class="newstile" style="width:880px;">
+						<div class="newstile_header">This header is anticlimactic.</div>
+						This is basically a duplicate, btw. News. This is news. Much news. Add new here. Also Pictures: 
+						<div class="imgs">
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://wallpapershero.com/wp-content/uploads/2013/10/Beauty-of-Nature-Wallpapers.jpg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://2.bp.blogspot.com/-qkiBFQco1Xw/T8srlweUvoI/AAAAAAAAEQM/WBveO1dVlD8/s1600/nature-wallpaper-27.jpg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+						</div>
+						<br/>Click <a href="https://www.google.com">this link</a> for a useless website. I just use the bar at the top of safari! Don't you like filler text? Sometimes I write filler text like this, sometimes I write it like Lorem ipsum dolor sit ampsum dolor sit amet, consectetur adipisciket, consectetur adipiscike Lorem ipsum doI write it like Lorem ipsum dolor sit ampsum dollor sirem ipsum dolor sit ampsum dolor sit amet, consectetur adipisciket, consectetur adipiscike Lorem ipsum doI write it like Lorem ipsum dolor sit ampsum dollor sit amett amet.
+						<br/><a href="https://www.google.com"><input type="button" value="Read More" class="tilereadmore whiteText"><a/>
+					</div>
+					<div class="newstile" style="width:420px;">
+						<div class="newstile_header">This header is anticlimactic.</div>
+						This is basically a duplicate, btw. News. This is news. Much news. Add new here. Also Pictures: 
+						<div class="imgs">
+							<div class="imgWithCaption">
+								<img class="captionImage" src="http://upload.wikimedia.org/wikipedia/commons/e/e9/Sombrero_Galaxy_in_infrared_light_(Hubble_Space_Telescope_and_Spitzer_Space_Telescope).jpg" style="width:400px" />
+								<div class="captionText" style="width:349px">Dont u like captions?? I like captions. Everyone likes captions, except for him. He hates captions. Isn't that strange, that he doesn't like captions?</div> 
+							</div>
+						</div>
+						<br/>Click <a href="https://www.google.com">this link</a> for a useless website. I just use the bar at the top of safari! Don't you like filler text? Sometimes I write filler text like this, sometimes I write it like Lorem ipsum dolor sit amet, consectetur adipiscike Lorem ipsum dolor sit amet.
+						<br/><a href="https://www.google.com"><input type="button" value="Read More" class="tilereadmore whiteText"><a/>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div> <!-- #su-content end -->
+		</div> <!-- #su-wrap end -->
+		<!-- Global footer snippet start -->
+		<div id="global-footer">
+		  <div class="container">
+			<div class="row">
+			  <div id="bottom-logo" class="span2">
+				<a href="http://www.stanford.edu">
+				  <img src="https://www.stanford.edu/su-identity/images/footer-stanford-logo@2x.png" alt="Stanford University" width="105" height="49"/>
+				</a>
+			  </div>
+			  <!-- #bottom-logo end -->
+			  <div id="bottom-text" class="span10">
+				<ul>
+				  <li class="home"><a href="http://www.stanford.edu">SU Home</a></li>
+				  <li class="maps alt"><a href="http://visit.stanford.edu/plan/maps.html">Maps &amp; Directions</a></li>
+				  <li class="search-stanford"><a href="http://www.stanford.edu/search/">Search Stanford</a></li>
+				  <li class="terms alt"><a href="http://www.stanford.edu/site/terms.html">Terms of Use</a></li>
+				  <li class="emergency-info"><a href="http://emergency.stanford.edu">Emergency Info</a></li>
+				</ul>
+			  </div> <!-- .bottom-text end -->
+			  <div class="clear"></div>
+			  <p class="copyright vcard">&copy; <span class="fn org">Stanford University</span>, <span class="adr"> <span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span></span>.&nbsp;&nbsp;
+			  <span id="copyright-complaint"><a href="http://www.stanford.edu/group/security/dmca.html" class="copyright-complaint" >Copyright Complaints</a></span>
+			  </p>
+			</div> <!-- .row end --> 
+		  </div> <!-- .container end --> 
+		</div> <!-- global-footer end -->
+		<!-- Global footer snippet end -->
+		<script type="text/javascript">
+			var fadeTime = 1000;
+			var offsetFadeInTime = 350;
+			var fadeInOrOutTime = fadeTime-offsetFadeInTime;
+			var numOfChanges = 50;
+			var rightPictureArrow = document.getElementById('rightArrow');
+			var leftPictureArrow = document.getElementById('leftArrow');
+			var imagesContainer = document.getElementById('scrollImages');
+			var readMoreButton = document.getElementById('readMoreButton');
+			
+			var currentScrollIndex = 0;
+			var links = ["https://www.google.com","https://www.stanford.edu","http://engineering.stanford.edu"]
+			
+			var scrollImages = elementsWithTagNameAndClass('img', 'scrollImage');
+			var scrollTexts = elementsWithTagNameAndClass('p','scrollImageText');
+			function updateScroll(){
+				for (var i = 0;i<scrollImages.length;i++){
+					if (scrollImages[i].id == currentScrollIndex) {
+						scrollImages[i].style.opacity = '1';
+						scrollTexts[i].style.opacity = '1';
+						scrollTexts[i].style.zIndex = '0';
+					} else {
+						scrollImages[i].style.opacity = '0';
+						scrollTexts[i].style.opacity = '0';
+						scrollTexts[i].style.zIndex = '-1';
+					}
+				}
+			}
+			updateScroll();
+			
+			function rightIndexHandle(){
+				currentScrollIndex--;
+				if (currentScrollIndex < 0){
+					currentScrollIndex = scrollImages.length -1;
+				}
+				return currentScrollIndex;
+			}
+			function leftIndexHandle(){
+				currentScrollIndex++;
+				if (currentScrollIndex >= scrollImages.length){
+					currentScrollIndex = 0;
+				}
+				return currentScrollIndex;
+			}
+			
+			rightPictureArrow.onclick = function (e){
+				rightCycleTrigger(e,scrollImages,scrollTexts,currentScrollIndex,fadeInOrOutTime,numOfChanges,updateScroll,rightIndexHandle);
+			}
+			leftPictureArrow.onclick = function (e){
+				leftCycleTrigger(e,scrollImages,scrollTexts,currentScrollIndex,fadeInOrOutTime,numOfChanges,updateScroll,leftIndexHandle);
+			}
+			
+			imagesContainer.onclick = function (e){
+				window.location.href = links[currentScrollIndex];
+			}
+			readMoreButton.onclick = function (e){
+				window.location.href = links[currentScrollIndex];
+			}
+			
+			var stanfordTitle = document.getElementById('stanfordTitle');
+			stanfordTitle.onclick = function (e){
+				window.location.href = "homePageStanford.html";
+			}
+		</script>
+	</body>
+</html>
